@@ -8,6 +8,13 @@
 }
 
 @font-face {
+  src: url('/fonts/Pretendard-Medium.woff2') format('woff2');
+  font-family: 'Pretendard';
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
   src: url('/fonts/Pretendard-Bold.woff2') format('woff2');
   font-family: 'Pretendard';
   font-weight: 700;
