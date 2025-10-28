@@ -12,7 +12,7 @@ export const Button = ({
 }
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 h-10 px-4 font-medium text-sm rounded-sm cursor-pointer transition-bg duration-200',
+  'inline-flex items-center justify-center gap-2 h-10 px-4 font-medium text-sm rounded-sm cursor-pointer transition-bg duration-200 ease-out',
   {
     variants: {
       variant: {
