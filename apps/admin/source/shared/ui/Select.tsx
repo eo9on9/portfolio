@@ -18,6 +18,7 @@ interface SelectProps {
   defaultValue?: string
   options: { label: string; value: string }[]
   placeholder?: string
+  id?: string
 }
 
 export const Select = ({
@@ -25,6 +26,7 @@ export const Select = ({
   onChange,
   defaultValue,
   options,
+  id,
   placeholder,
 }: SelectProps) => (
   <SelectRoot
@@ -32,7 +34,10 @@ export const Select = ({
     onValueChange={onChange}
     defaultValue={defaultValue}
   >
-    <SelectTrigger className="inline-flex items-center gap-2 h-10 pl-4 pr-3 text-sm text-gray-800 data-placeholder:text-gray-400 outline-none bg-gray-100 rounded-sm cursor-pointer">
+    <SelectTrigger
+      id={id}
+      className="inline-flex items-center justify-between gap-2 h-10 pl-4 pr-3 text-sm text-gray-800 data-placeholder:text-gray-400 outline-none bg-gray-100 rounded-sm cursor-pointer"
+    >
       <SelectValue placeholder={placeholder} />
       <SelectIcon>
         <ChevronDown className="w-4 h-4 text-gray-500" />
