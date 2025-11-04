@@ -1,3 +1,4 @@
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { cva } from 'class-variance-authority'
 import {
@@ -47,37 +48,43 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
         </div>
         <ul className="flex flex-col gap-1">
           <li>
-            <Link
-              href="/"
-              className={linkCn({ isActive: currentPath === '/' })}
-            >
-              <span className={linkIconCn()}>
-                <LayoutDashboard className="w-4 h-4" />
-              </span>
-              <span className={linkTextCn({ isOpen })}>메인</span>
-            </Link>
+            <Beacon>
+              <Link
+                href="/"
+                className={linkCn({ isActive: currentPath === '/' })}
+              >
+                <span className={linkIconCn()}>
+                  <LayoutDashboard className="w-4 h-4" />
+                </span>
+                <span className={linkTextCn({ isOpen })}>메인</span>
+              </Link>
+            </Beacon>
           </li>
           <li>
-            <Link
-              href="/customer"
-              className={linkCn({ isActive: currentPath === '/customer' })}
-            >
-              <span className={linkIconCn()}>
-                <Users className="w-4 h-4" />
-              </span>
-              <span className={linkTextCn({ isOpen })}>고객 관리</span>
-            </Link>
+            <Beacon>
+              <Link
+                href="/customer"
+                className={linkCn({ isActive: currentPath === '/customer' })}
+              >
+                <span className={linkIconCn()}>
+                  <Users className="w-4 h-4" />
+                </span>
+                <span className={linkTextCn({ isOpen })}>고객 관리</span>
+              </Link>
+            </Beacon>
           </li>
           <li>
-            <Link
-              href="/order"
-              className={linkCn({ isActive: currentPath === '/order' })}
-            >
-              <span className={linkIconCn()}>
-                <ShoppingCart className="w-4 h-4" />
-              </span>
-              <span className={linkTextCn({ isOpen })}>주문 관리</span>
-            </Link>
+            <Beacon>
+              <Link
+                href="/order"
+                className={linkCn({ isActive: currentPath === '/order' })}
+              >
+                <span className={linkIconCn()}>
+                  <ShoppingCart className="w-4 h-4" />
+                </span>
+                <span className={linkTextCn({ isOpen })}>주문 관리</span>
+              </Link>
+            </Beacon>
           </li>
           <li>
             <Link
@@ -172,11 +179,11 @@ const pinCn = cva('w-4 h-4 transition-all duration-200 ease-out', {
   },
 })
 
-const linkCn = cva('flex items-center text-gray-800 rounded-sm', {
+const linkCn = cva('flex items-center text-gray-800 rounded-sm ', {
   variants: {
     isActive: {
       true: 'bg-gray-100',
-      false: 'bg-transparent',
+      false: 'bg-transparent hover:bg-gray-50',
     },
   },
 })

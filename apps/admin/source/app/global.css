@@ -51,8 +51,24 @@
   }
 }
 
+@keyframes beep {
+  25% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+}
+
 @layer utilities {
   .animate-in {
     animation: animate-in 200ms ease-out forwards;
+  }
+
+  .animate-beep {
+    animation: beep 2s ease-in-out infinite;
   }
 }

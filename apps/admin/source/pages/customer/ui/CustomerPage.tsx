@@ -1,11 +1,13 @@
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
+import { Modal } from '@shared/ui/Modal'
 import { Select } from '@shared/ui/Select'
 import { Table, TableColumn } from '@shared/ui/Table'
 import { Sidebar } from '@widgets/layout/ui/Sidebar'
 import { cva } from 'class-variance-authority'
-import { Edit, Plus, Trash2, X } from 'lucide-react'
+import { Edit, FunnelX, Plus, Trash2 } from 'lucide-react'
 import { useState } from 'react'
 
 interface TableData {
@@ -141,6 +143,7 @@ const tableColumns: TableColumn<TableData>[] = [
 
 export const CustomerPage = () => {
   const [isSidePinned, setIsSidePinned] = useState(true)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <div className="flex min-w-[980px]">
@@ -159,10 +162,16 @@ export const CustomerPage = () => {
             </p>
           </div>
           {/* PageActions */}
-          <Button variant="primary" size="lg">
-            <Plus className="w-4 h-4" />
-            고객 추가
-          </Button>
+          <Beacon>
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={() => setIsModalOpen(true)}
+            >
+              <Plus className="w-4 h-4" />
+              고객 추가
+            </Button>
+          </Beacon>
         </div>
         {/* Filter */}
         <div className="grid grid-cols-2 gap-4">
@@ -187,12 +196,16 @@ export const CustomerPage = () => {
           </FormField>
         </div>
         <div className="flex items-center justify-end">
-          <Button variant="secondary" size="md">
-            <X className="w-4 h-4" />
-            필터 초기화
-          </Button>
+          <Beacon>
+            <Button variant="secondary" size="md">
+              <FunnelX className="w-4 h-4" />
+              필터 초기화
+            </Button>
+          </Beacon>
         </div>
-        <Table data={tableData} columns={tableColumns} />
+        <div className="flex flex-col gap-2">
+          <Table data={tableData} columns={tableColumns} />
+        </div>
         {/* Pagination */}
         <div className="flex items-center justify-center gap-1">
           <Button variant="ghost" size="md">
@@ -211,13 +224,35 @@ export const CustomerPage = () => {
             5
           </Button>
         </div>
+        <Modal
+          title="고객 추가"
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        >
+          <div className="flex flex-col gap-4 py-4">
+            <div className="flex flex-col gap-2">
+              <FormField label="이름">
+                <Input placeholder="고객 이름을 입력하세요" />
+              </FormField>
+              <FormField label="이메일">
+                <Input placeholder="example@email.com" />
+              </FormField>
+              <FormField label="전화번호">
+                <Input placeholder="010-0000-0000" />
+              </FormField>
+            </div>
+            <Button variant="primary" size="lg">
+              추가하기
+            </Button>
+          </div>
+        </Modal>
       </div>
     </div>
   )
 }
 
 const contentCn = cva(
-  'flex-1 flex flex-col gap-6 p-6 transition-all duration-200 ease-out',
+  'flex-1 flex flex-col gap-6 p-6 pb-10 transition-all duration-200 ease-out',
   {
     variants: {
       isSidePinned: {
