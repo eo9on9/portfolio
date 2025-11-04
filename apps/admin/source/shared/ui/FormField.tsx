@@ -17,7 +17,9 @@ export const FormField = ({
   const id = useId()
 
   if (!isValidElement(children)) {
-    console.warn('FormField.Body expects a single ReactElement as its child.')
+    console.warn(
+      'FormField children expects a single ReactElement as its child.',
+    )
     return null
   }
 

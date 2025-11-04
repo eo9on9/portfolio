@@ -8,8 +8,9 @@ interface IDType {
 
 export interface TableColumn<T extends IDType> {
   header: string
-  accessorKey: keyof T
+  accessorKey?: keyof T
   align?: 'left' | 'center' | 'right'
+  render?: (item: T) => ReactNode
 }
 
 interface TableProps<T extends IDType> {
@@ -20,16 +21,16 @@ interface TableProps<T extends IDType> {
 export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
   return (
     <div className="overflow-x-auto">
-      <div className="w-fit min-w-full border border-gray-300 rounded-md">
+      <div className="w-fit min-w-full rounded-md border border-gray-300 overflow-hidden">
         <table className="w-full">
           <thead>
-            <tr className="border-b border-gray-300">
+            <tr className="border-b border-gray-300 bg-white">
               {columns.map(column => (
                 <th
                   key={column.accessorKey as string}
                   className={cn(
                     cellCn({ align: column?.align }),
-                    'h-9 font-medium',
+                    'h-12 font-medium',
                   )}
                 >
                   {column.header}
@@ -39,16 +40,15 @@ export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
           </thead>
           <tbody>
             {data.map(item => (
-              <tr
-                key={item.id}
-                className="border-b border-gray-300 last:border-b-0"
-              >
-                {columns.map(column => (
+              <tr key={item.id} className="bg-white hover:bg-gray-50">
+                {columns.map((column, index) => (
                   <td
-                    key={column.accessorKey as string}
+                    key={(column.accessorKey as string) ?? index}
                     className={cn(cellCn({ align: column?.align }), 'h-12')}
                   >
-                    {item[column.accessorKey] as ReactNode}
+                    {column.render
+                      ? column.render(item)
+                      : (item[column.accessorKey!] as ReactNode)}
                   </td>
                 ))}
               </tr>

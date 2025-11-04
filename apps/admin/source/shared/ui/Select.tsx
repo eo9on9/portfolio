@@ -45,7 +45,7 @@ export const Select = ({
     </SelectTrigger>
     <SelectPortal>
       <SelectContent position="popper" sideOffset={8} className="animate-in">
-        <SelectViewport className="flex flex-col gap-1 min-w-(--radix-select-trigger-width) p-2 border border-gray-800 bg-white rounded-sm shadow-md">
+        <SelectViewport className="flex flex-col gap-1 min-w-(--radix-select-trigger-width) p-2 border border-gray-300 bg-white rounded-sm shadow-md">
           {options.map(({ value, label }) => (
             <SelectItem
               key={value}

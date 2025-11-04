@@ -8,15 +8,20 @@ import {
   Pin,
   Settings,
   ShoppingCart,
+  User,
   Users,
 } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-export const Sidebar = () => {
+interface SidebarProps {
+  isPinned: boolean
+  setIsPinned: (isPinned: boolean) => void
+}
+
+export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
   const router = useRouter()
-  const [isPinned, setIsPinned] = useState(true)
   const [isHover, setIsHover] = useState(false)
 
   const isOpen = isPinned || isHover
@@ -110,15 +115,17 @@ export const Sidebar = () => {
         </ul>
       </div>
       <div className="flex flex-col gap-2 items-start">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full">
           <div>
-            <div className="w-9 h-9 bg-gray-200 rounded-full" />
+            <div className="flex items-center justify-center w-9 h-9 bg-gray-200 rounded-full">
+              <User className="w-4 h-4 text-gray-800" />
+            </div>
           </div>
           <div className={avatarTextCn({ isOpen })}>
             <p className="text-sm text-gray-800 font-medium whitespace-nowrap">
               John Doe
             </p>
-            <p className="text-xs text-gray-500 whitespace-nowrap">
+            <p className="text-xs text-gray-500 whitespace-nowrap text-ellipsis overflow-hidden">
               john.doe@example.com
             </p>
           </div>
@@ -133,7 +140,7 @@ export const Sidebar = () => {
 }
 
 const containerCn = cva(
-  'overflow-y-auto fixed top-0 left-0 bottom-0 flex flex-col justify-between gap-4 box-content p-4 border-r border-gray-200 bg-gray-100 transition-w duration-300 ease-out',
+  'overflow-y-auto fixed top-0 left-0 bottom-0 flex flex-col justify-between gap-4 box-content px-4 py-6 border-r border-gray-200 bg-white transition-w duration-300 ease-out',
   {
     variants: {
       isOpen: {
@@ -168,7 +175,7 @@ const pinCn = cva('w-4 h-4 transition-all duration-200 ease-out', {
 const linkCn = cva('flex items-center text-gray-800 rounded-sm', {
   variants: {
     isActive: {
-      true: 'bg-gray-200',
+      true: 'bg-gray-100',
       false: 'bg-transparent',
     },
   },
@@ -188,14 +195,17 @@ const linkTextCn = cva(
   },
 )
 
-const avatarTextCn = cva('transition-all duration-200 ease-out', {
-  variants: {
-    isOpen: {
-      true: 'w-full opacity-100',
-      false: 'w-0 opacity-0',
+const avatarTextCn = cva(
+  'flex-1 min-w-0 transition-all duration-200 ease-out',
+  {
+    variants: {
+      isOpen: {
+        true: 'w-full opacity-100',
+        false: 'w-0 opacity-0',
+      },
     },
   },
-})
+)
 
 const logoutTextCn = cva(
   'overflow-hidden flex-1 block text-sm whitespace-nowrap transition-all duration-200 ease-out',

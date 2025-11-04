@@ -34,6 +34,12 @@
   --default-font-family: var(--font-pretendard);
 }
 
+@layer base {
+  body {
+    @apply bg-gray-50;
+  }
+}
+
 @keyframes animate-in {
   from {
     opacity: 0;
