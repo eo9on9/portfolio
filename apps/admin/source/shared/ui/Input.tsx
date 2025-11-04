@@ -1,4 +1,4 @@
-import { cn } from '@/source/shared/util/cn'
+import { cn } from '@shared/util/cn'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ReactNode

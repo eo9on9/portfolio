@@ -1,3 +1,4 @@
+import { cn } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import { ReactNode } from 'react'
 
@@ -19,14 +20,17 @@ interface TableProps<T extends IDType> {
 export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
   return (
     <div className="overflow-x-auto">
-      <div className="border border-gray-300 rounded-md">
+      <div className="w-fit border border-gray-300 rounded-md">
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-300">
               {columns.map(column => (
                 <th
                   key={column.accessorKey as string}
-                  className={tableCellVariants({ align: column?.align })}
+                  className={cn(
+                    cellCn({ align: column?.align }),
+                    'h-9 font-semibold',
+                  )}
                 >
                   {column.header}
                 </th>
@@ -42,7 +46,7 @@ export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
                 {columns.map(column => (
                   <td
                     key={column.accessorKey as string}
-                    className={tableCellVariants({ align: column?.align })}
+                    className={cn(cellCn({ align: column?.align }), 'h-12')}
                   >
                     {item[column.accessorKey] as ReactNode}
                   </td>
@@ -56,7 +60,7 @@ export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
   )
 }
 
-const tableCellVariants = cva('p-2 text-sm text-gray-800', {
+const cellCn = cva('p-2 text-sm text-gray-800', {
   variants: {
     align: {
       left: 'text-left',
