@@ -20,7 +20,7 @@ interface TableProps<T extends IDType> {
 export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
   return (
     <div className="overflow-x-auto">
-      <div className="w-fit border border-gray-300 rounded-md">
+      <div className="w-fit min-w-full border border-gray-300 rounded-md">
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-300">
@@ -29,7 +29,7 @@ export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
                   key={column.accessorKey as string}
                   className={cn(
                     cellCn({ align: column?.align }),
-                    'h-9 font-semibold',
+                    'h-9 font-medium',
                   )}
                 >
                   {column.header}

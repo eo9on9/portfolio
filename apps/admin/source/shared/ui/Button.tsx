@@ -1,17 +1,27 @@
+import { cn } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost'
   size?: 'md' | 'lg'
+  onClick?: () => void
+  className?: string
 }
 
 export const Button = ({
   variant = 'primary',
   size = 'md',
+  className,
   children,
+  onClick,
 }: React.PropsWithChildren<ButtonProps>) => {
   return (
-    <button className={buttonVariants({ variant, size })}>{children}</button>
+    <button
+      className={cn(buttonVariants({ variant, size }), className)}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   )
 }
 
