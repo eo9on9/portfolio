@@ -15,7 +15,7 @@
     "incremental": true,
     "paths": {
       "@app/*": ["./source/app/*"],
-      "@pages/*": ["./pages/*"],
+      "@pages/*": ["./source/pages/*"],
       "@widgets/*": ["./source/widgets/*"],
       "@features/*": ["./source/features/*"],
       "@entities/*": ["./source/entities/*"],
