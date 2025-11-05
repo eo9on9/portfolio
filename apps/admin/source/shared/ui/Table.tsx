@@ -21,7 +21,7 @@ interface TableProps<T extends IDType> {
 export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
   return (
     <div className="overflow-x-auto">
-      <div className="w-fit min-w-full rounded-md border border-gray-200 overflow-hidden">
+      <div className="w-fit min-w-full rounded-sm border border-gray-200 overflow-hidden">
         <table className="w-full">
           <thead>
             <tr className="border-b border-gray-200 bg-white">

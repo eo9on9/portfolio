@@ -40,25 +40,27 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <h1 className={titleCn({ isOpen })}>관리자 시스템</h1>
-          <Button
-            variant="ghost"
-            size="md"
-            onClick={() => setIsPinned(!isPinned)}
-          >
-            <Pin className={pinCn({ isPinned })} />
-          </Button>
+          <Beacon>
+            <Button
+              variant="ghost"
+              size="md"
+              onClick={() => setIsPinned(!isPinned)}
+            >
+              <Pin className={pinCn({ isPinned })} />
+            </Button>
+          </Beacon>
         </div>
         <ul className="flex flex-col gap-1">
           <li>
             <Beacon>
               <Link
-                href="/"
-                className={linkCn({ isActive: currentPath === '/' })}
+                href="/dashboard"
+                className={linkCn({ isActive: currentPath === '/dashboard' })}
               >
                 <span className={linkIconCn()}>
                   <LayoutDashboard className="w-4 h-4" />
                 </span>
-                <span className={linkTextCn({ isOpen })}>메인</span>
+                <span className={linkTextCn({ isOpen })}>대시보드</span>
               </Link>
             </Beacon>
           </li>
@@ -111,15 +113,17 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
             </Link>
           </li>
           <li>
-            <Link
-              href="#"
-              className={linkCn({ isActive: currentPath === '/setting' })}
-            >
-              <span className={linkIconCn()}>
-                <Settings className="w-4 h-4" />
-              </span>
-              <span className={linkTextCn({ isOpen })}>설정</span>
-            </Link>
+            <Beacon>
+              <Link
+                href="/setting"
+                className={linkCn({ isActive: currentPath === '/setting' })}
+              >
+                <span className={linkIconCn()}>
+                  <Settings className="w-4 h-4" />
+                </span>
+                <span className={linkTextCn({ isOpen })}>설정</span>
+              </Link>
+            </Beacon>
           </li>
         </ul>
       </div>

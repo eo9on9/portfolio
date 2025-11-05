@@ -13,7 +13,7 @@ export const LoginPage = () => {
 
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-gray-500">
-      <div className="flex flex-col w-[360px] gap-4 p-6 rounded-lg bg-white">
+      <div className="flex flex-col w-[400px] gap-4 p-6 rounded-sm bg-white">
         <div className="flex flex-col items-center justify-center gap-2">
           <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center">
             <Lock className="w-8 h-8 text-gray-500" />

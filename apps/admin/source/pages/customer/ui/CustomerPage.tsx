@@ -163,7 +163,7 @@ export const CustomerPage = () => {
         }
       />
       {/* Filter */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-2">
         <FormField label="이름">
           <Input />
         </FormField>

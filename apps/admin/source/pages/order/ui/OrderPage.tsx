@@ -162,7 +162,7 @@ export const OrderPage = () => {
   return (
     <MainLayout>
       <PageTop title="주문 관리" description="전체 주문 내역을 관리합니다." />
-      <div className="grid grid-cols-[5fr_3fr] gap-4">
+      <div className="grid grid-cols-[5fr_3fr] gap-2">
         <Input placeholder="주문 검색 (주문 번호, 고객명, 상품명)" />
         <Select
           options={[
