@@ -1,8 +1,8 @@
+import { AddCustomerModal } from '@features/customer/ui/AddCustomerModal'
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
-import { Modal } from '@shared/ui/Modal'
 import { Select } from '@shared/ui/Select'
 import { Table, TableColumn } from '@shared/ui/Table'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
@@ -162,6 +162,7 @@ export const CustomerPage = () => {
           </Beacon>
         }
       />
+
       {/* Filter */}
       <div className="grid grid-cols-2 gap-2">
         <FormField label="이름">
@@ -184,6 +185,8 @@ export const CustomerPage = () => {
           />
         </FormField>
       </div>
+
+      {/* Filter Actions */}
       <div className="flex items-center gap-2 justify-between">
         <Beacon>
           <Button variant="ghost" size="lg">
@@ -198,9 +201,10 @@ export const CustomerPage = () => {
           </Button>
         </Beacon>
       </div>
-      <div className="flex flex-col gap-2">
-        <Table data={tableData} columns={tableColumns} />
-      </div>
+
+      {/* Table */}
+      <Table data={tableData} columns={tableColumns} />
+
       {/* Pagination */}
       <div className="flex items-center justify-center gap-1">
         <Button variant="ghost" size="md">
@@ -219,28 +223,12 @@ export const CustomerPage = () => {
           5
         </Button>
       </div>
-      <Modal
-        title="고객 추가"
+
+      {/* Modals */}
+      <AddCustomerModal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-      >
-        <div className="flex flex-col gap-4 py-4">
-          <div className="flex flex-col gap-2">
-            <FormField label="이름">
-              <Input placeholder="고객 이름을 입력하세요" />
-            </FormField>
-            <FormField label="이메일">
-              <Input placeholder="example@email.com" />
-            </FormField>
-            <FormField label="전화번호">
-              <Input placeholder="010-0000-0000" />
-            </FormField>
-          </div>
-          <Button variant="primary" size="lg">
-            추가하기
-          </Button>
-        </div>
-      </Modal>
+      />
     </MainLayout>
   )
 }
