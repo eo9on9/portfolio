@@ -64,7 +64,9 @@ export const Modal = ({
                 </Button>
               </DialogClose>
             </div>
-            <DialogDescription>{children}</DialogDescription>
+            <DialogDescription asChild>
+              <div>{children}</div>
+            </DialogDescription>
           </DialogContent>
         </div>
       </DialogPortal>
