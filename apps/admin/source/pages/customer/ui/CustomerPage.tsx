@@ -5,9 +5,9 @@ import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 import { Select } from '@shared/ui/Select'
 import { Table, TableColumn } from '@shared/ui/Table'
-import { Sidebar } from '@widgets/layout/ui/Sidebar'
-import { cva } from 'class-variance-authority'
-import { Edit, FunnelX, Plus, Trash2 } from 'lucide-react'
+import { MainLayout } from '@widgets/layout/ui/MainLayout'
+import { PageTop } from '@widgets/layout/ui/PageTop'
+import { Edit, FunnelX, Plus, Search, Trash2 } from 'lucide-react'
 import { useState } from 'react'
 
 interface TableData {
@@ -142,26 +142,14 @@ const tableColumns: TableColumn<TableData>[] = [
 ]
 
 export const CustomerPage = () => {
-  const [isSidePinned, setIsSidePinned] = useState(true)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <div className="flex min-w-[980px]">
-      <Sidebar isPinned={isSidePinned} setIsPinned={setIsSidePinned} />
-      {/* content */}
-      <div className={contentCn({ isSidePinned })}>
-        {/* PageTop */}
-        <div className="flex items-center justify-between">
-          {/* PageInfo */}
-          <div className="flex flex-col gap-2">
-            {/* PageTitle */}
-            <h2 className="text-xl font-medium text-gray-800">고객 관리</h2>
-            {/* PageDescription */}
-            <p className="text-base text-gray-500">
-              전체 고객 정보를 관리합니다.
-            </p>
-          </div>
-          {/* PageActions */}
+    <MainLayout>
+      <PageTop
+        title="고객 관리"
+        description="전체 고객 정보를 관리합니다."
+        actions={
           <Beacon>
             <Button
               variant="primary"
@@ -172,93 +160,87 @@ export const CustomerPage = () => {
               고객 추가
             </Button>
           </Beacon>
-        </div>
-        {/* Filter */}
-        <div className="grid grid-cols-2 gap-4">
-          <FormField label="이름">
-            <Input />
-          </FormField>
-          <FormField label="이메일">
-            <Input />
-          </FormField>
-          <FormField label="전화번호">
-            <Input />
-          </FormField>
-          <FormField label="상태">
-            <Select
-              options={[
-                { label: '전체', value: 'all' },
-                { label: '활성', value: 'active' },
-                { label: '비활성', value: 'inactive' },
-              ]}
-              defaultValue="all"
-            />
-          </FormField>
-        </div>
-        <div className="flex items-center justify-end">
-          <Beacon>
-            <Button variant="secondary" size="md">
-              <FunnelX className="w-4 h-4" />
-              필터 초기화
-            </Button>
-          </Beacon>
-        </div>
-        <div className="flex flex-col gap-2">
-          <Table data={tableData} columns={tableColumns} />
-        </div>
-        {/* Pagination */}
-        <div className="flex items-center justify-center gap-1">
-          <Button variant="ghost" size="md">
-            1
-          </Button>
-          <Button variant="primary" size="md">
-            2
-          </Button>
-          <Button variant="ghost" size="md">
-            3
-          </Button>
-          <Button variant="ghost" size="md">
-            4
-          </Button>
-          <Button variant="ghost" size="md">
-            5
-          </Button>
-        </div>
-        <Modal
-          title="고객 추가"
-          open={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-        >
-          <div className="flex flex-col gap-4 py-4">
-            <div className="flex flex-col gap-2">
-              <FormField label="이름">
-                <Input placeholder="고객 이름을 입력하세요" />
-              </FormField>
-              <FormField label="이메일">
-                <Input placeholder="example@email.com" />
-              </FormField>
-              <FormField label="전화번호">
-                <Input placeholder="010-0000-0000" />
-              </FormField>
-            </div>
-            <Button variant="primary" size="lg">
-              추가하기
-            </Button>
-          </div>
-        </Modal>
+        }
+      />
+      {/* Filter */}
+      <div className="grid grid-cols-2 gap-4">
+        <FormField label="이름">
+          <Input />
+        </FormField>
+        <FormField label="이메일">
+          <Input />
+        </FormField>
+        <FormField label="전화번호">
+          <Input />
+        </FormField>
+        <FormField label="상태">
+          <Select
+            options={[
+              { label: '전체', value: 'all' },
+              { label: '활성', value: 'active' },
+              { label: '비활성', value: 'inactive' },
+            ]}
+            defaultValue="all"
+          />
+        </FormField>
       </div>
-    </div>
+      <div className="flex items-center gap-2 justify-between">
+        <Beacon>
+          <Button variant="ghost" size="lg">
+            <FunnelX className="w-4 h-4" />
+            필터 초기화
+          </Button>
+        </Beacon>
+        <Beacon>
+          <Button variant="primary" size="lg">
+            <Search className="w-4 h-4" />
+            검색
+          </Button>
+        </Beacon>
+      </div>
+      <div className="flex flex-col gap-2">
+        <Table data={tableData} columns={tableColumns} />
+      </div>
+      {/* Pagination */}
+      <div className="flex items-center justify-center gap-1">
+        <Button variant="ghost" size="md">
+          1
+        </Button>
+        <Button variant="primary" size="md">
+          2
+        </Button>
+        <Button variant="ghost" size="md">
+          3
+        </Button>
+        <Button variant="ghost" size="md">
+          4
+        </Button>
+        <Button variant="ghost" size="md">
+          5
+        </Button>
+      </div>
+      <Modal
+        title="고객 추가"
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <div className="flex flex-col gap-4 py-4">
+          <div className="flex flex-col gap-2">
+            <FormField label="이름">
+              <Input placeholder="고객 이름을 입력하세요" />
+            </FormField>
+            <FormField label="이메일">
+              <Input placeholder="example@email.com" />
+            </FormField>
+            <FormField label="전화번호">
+              <Input placeholder="010-0000-0000" />
+            </FormField>
+          </div>
+          <Button variant="primary" size="lg">
+            추가하기
+          </Button>
+        </div>
+      </Modal>
+    </MainLayout>
   )
 }
-
-const contentCn = cva(
-  'flex-1 flex flex-col gap-6 p-6 pb-10 transition-all duration-200 ease-out',
-  {
-    variants: {
-      isSidePinned: {
-        true: 'ml-[225px]',
-        false: 'ml-[69px]',
-      },
-    },
-  },
-)

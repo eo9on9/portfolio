@@ -4,7 +4,6 @@ import { cva } from 'class-variance-authority'
 import {
   FileText,
   LayoutDashboard,
-  LogOut,
   Package,
   Pin,
   Settings,
@@ -88,7 +87,7 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
           </li>
           <li>
             <Link
-              href="/product"
+              href="#"
               className={linkCn({ isActive: currentPath === '/product' })}
             >
               <span className={linkIconCn()}>
@@ -99,7 +98,7 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
           </li>
           <li>
             <Link
-              href="/report"
+              href="#"
               className={linkCn({ isActive: currentPath === '/report' })}
             >
               <span className={linkIconCn()}>
@@ -110,7 +109,7 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
           </li>
           <li>
             <Link
-              href="/setting"
+              href="#"
               className={linkCn({ isActive: currentPath === '/setting' })}
             >
               <span className={linkIconCn()}>
@@ -137,17 +136,19 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
             </p>
           </div>
         </div>
-        <Button variant="ghost" size="md" className="flex items-center">
-          <LogOut className="w-4 h-4 mr-2" />
-          <span className={logoutTextCn({ isOpen })}>로그아웃</span>
-        </Button>
+        {/* <Beacon>
+          <Button variant="ghost" size="md" className="flex items-center">
+            <LogOut className="w-4 h-4" />
+            <span className={logoutTextCn({ isOpen })}>로그아웃</span>
+          </Button>
+        </Beacon> */}
       </div>
     </div>
   )
 }
 
 const containerCn = cva(
-  'overflow-y-auto fixed top-0 left-0 bottom-0 flex flex-col justify-between gap-4 box-content px-4 py-6 border-r border-gray-200 bg-white transition-w duration-300 ease-out',
+  'z-50 overflow-y-auto fixed top-0 left-0 bottom-0 flex flex-col justify-between gap-4 box-content px-4 py-6 border-r border-gray-200 bg-white transition-w duration-300 ease-out',
   {
     variants: {
       isOpen: {

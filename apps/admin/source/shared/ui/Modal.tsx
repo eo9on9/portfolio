@@ -51,7 +51,7 @@ export const Modal = ({
   return (
     <Dialog open={isCreated} onOpenChange={onClose}>
       <DialogPortal>
-        <div className="fixed inset-0 flex items-center justify-center">
+        <div className="z-100 fixed inset-0 flex items-center justify-center">
           <DialogOverlay className={dimCn({ isShow })} />
           <DialogContent className={contentCn({ isShow })}>
             <div className="flex items-center justify-between">
