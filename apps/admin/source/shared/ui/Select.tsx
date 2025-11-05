@@ -10,6 +10,7 @@ import {
   SelectValue,
   SelectViewport,
 } from '@radix-ui/react-select'
+import { cva } from 'class-variance-authority'
 import { Check, ChevronDown } from 'lucide-react'
 
 interface SelectProps {
@@ -19,6 +20,7 @@ interface SelectProps {
   options: { label: string; value: string }[]
   placeholder?: string
   id?: string
+  isError?: boolean
 }
 
 export const Select = ({
@@ -28,42 +30,55 @@ export const Select = ({
   options,
   id,
   placeholder,
-}: SelectProps) => (
-  <SelectRoot
-    value={value}
-    onValueChange={onChange}
-    defaultValue={defaultValue}
-  >
-    <SelectTrigger
-      id={id}
-      className="inline-flex items-center justify-between gap-2 h-10 pl-4 pr-3 text-sm text-gray-800 data-placeholder:text-gray-400 outline-none bg-gray-100 rounded-sm cursor-pointer"
+  isError,
+}: SelectProps) => {
+  console.log('isError', isError)
+  return (
+    <SelectRoot
+      value={value}
+      onValueChange={onChange}
+      defaultValue={defaultValue}
     >
-      <SelectValue placeholder={placeholder} />
-      <SelectIcon>
-        <ChevronDown className="w-4 h-4 text-gray-500" />
-      </SelectIcon>
-    </SelectTrigger>
-    <SelectPortal>
-      <SelectContent
-        position="popper"
-        sideOffset={8}
-        className="z-110 animate-in"
-      >
-        <SelectViewport className="flex flex-col gap-1 min-w-(--radix-select-trigger-width) p-2 border border-gray-300 bg-white rounded-sm shadow-md">
-          {options.map(({ value, label }) => (
-            <SelectItem
-              key={value}
-              value={value}
-              className="flex items-center gap-2 px-2 h-8 text-sm text-gray-800 outline-none rounded-sm focus:bg-gray-100 cursor-pointer"
-            >
-              <SelectItemText>{label}</SelectItemText>
-              <SelectItemIndicator>
-                <Check className="w-4 h-4 text-gray-500" />
-              </SelectItemIndicator>
-            </SelectItem>
-          ))}
-        </SelectViewport>
-      </SelectContent>
-    </SelectPortal>
-  </SelectRoot>
+      <SelectTrigger id={id} className={triggerVariants({ isError })}>
+        <SelectValue placeholder={placeholder} />
+        <SelectIcon>
+          <ChevronDown className="w-4 h-4 text-gray-500" />
+        </SelectIcon>
+      </SelectTrigger>
+      <SelectPortal>
+        <SelectContent
+          position="popper"
+          sideOffset={8}
+          className="z-110 animate-in"
+        >
+          <SelectViewport className="flex flex-col gap-1 min-w-(--radix-select-trigger-width) p-2 border border-gray-300 bg-white rounded-sm shadow-md">
+            {options.map(({ value, label }) => (
+              <SelectItem
+                key={value}
+                value={value}
+                className="flex items-center gap-2 px-2 h-8 text-sm text-gray-800 outline-none rounded-sm focus:bg-gray-100 cursor-pointer"
+              >
+                <SelectItemText>{label}</SelectItemText>
+                <SelectItemIndicator>
+                  <Check className="w-4 h-4 text-gray-500" />
+                </SelectItemIndicator>
+              </SelectItem>
+            ))}
+          </SelectViewport>
+        </SelectContent>
+      </SelectPortal>
+    </SelectRoot>
+  )
+}
+
+const triggerVariants = cva(
+  'inline-flex items-center justify-between gap-2 h-10 pl-4 pr-3 text-sm text-gray-800 data-placeholder:text-gray-400 bg-gray-100 rounded-sm cursor-pointer',
+  {
+    variants: {
+      isError: {
+        true: 'outline-1 outline-red-400',
+        false: 'outline-transparent',
+      },
+    },
+  },
 )

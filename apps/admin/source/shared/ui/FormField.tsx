@@ -8,10 +8,12 @@ import {
 
 interface FormFieldProps {
   label: string
+  errorMessage?: string
 }
 
 export const FormField = ({
   label,
+  errorMessage,
   children,
 }: PropsWithChildren<FormFieldProps>) => {
   const id = useId()
@@ -24,7 +26,9 @@ export const FormField = ({
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const childrenWithId = cloneElement(children as ReactElement<any>, { id })
+  const childrenWithProps = cloneElement(children as ReactElement<any>, {
+    id,
+  })
 
   return (
     <div className="flex flex-col gap-2">
@@ -33,7 +37,8 @@ export const FormField = ({
           {label}
         </label>
       </div>
-      {childrenWithId}
+      {childrenWithProps}
+      {errorMessage && <p className="text-xs text-red-500">{errorMessage}</p>}
     </div>
   )
 }
