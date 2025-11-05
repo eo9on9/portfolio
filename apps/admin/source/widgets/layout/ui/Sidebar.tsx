@@ -1,5 +1,8 @@
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
+import { FormField } from '@shared/ui/FormField'
+import { Input } from '@shared/ui/Input'
+import { Modal } from '@shared/ui/Modal'
 import { cva } from 'class-variance-authority'
 import {
   FileText,
@@ -23,7 +26,7 @@ interface SidebarProps {
 export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
   const router = useRouter()
   const [isHover, setIsHover] = useState(false)
-
+  const [isModalOpen, setIsModalOpen] = useState(false)
   const isOpen = isPinned || isHover
 
   const currentPath = router.pathname
@@ -123,9 +126,13 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
       <div className="flex flex-col gap-2 items-start">
         <div className="flex items-center gap-2 w-full">
           <div>
-            <div className="flex items-center justify-center w-9 h-9 bg-gray-200 rounded-full">
-              <User className="w-4 h-4 text-gray-800" />
-            </div>
+            <button onClick={() => setIsModalOpen(true)}>
+              <Beacon>
+                <div className="flex items-center justify-center w-9 h-9 bg-gray-200 rounded-full">
+                  <User className="w-4 h-4 text-gray-800" />
+                </div>
+              </Beacon>
+            </button>
           </div>
           <div className={avatarTextCn({ isOpen })}>
             <p className="text-sm text-gray-800 font-medium whitespace-nowrap">
@@ -136,13 +143,37 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
             </p>
           </div>
         </div>
-        {/* <Beacon>
-          <Button variant="ghost" size="md" className="flex items-center">
-            <LogOut className="w-4 h-4" />
-            <span className={logoutTextCn({ isOpen })}>로그아웃</span>
-          </Button>
-        </Beacon> */}
       </div>
+      <Modal
+        title="사용자 정보"
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      >
+        <div className="flex flex-col gap-4 py-4">
+          <div className="grid grid-cols-2 gap-2">
+            <FormField label="이름">
+              <Input value="김관리" readOnly />
+            </FormField>
+            <FormField label="이메일">
+              <Input value="admin@example.com" readOnly />
+            </FormField>
+            <FormField label="전화번호">
+              <Input value="010-1234-5678" readOnly />
+            </FormField>
+            <FormField label="권한">
+              <Input value="관리자" readOnly />
+            </FormField>
+          </div>
+
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={() => setIsModalOpen(false)}
+          >
+            로그아웃
+          </Button>
+        </div>
+      </Modal>
     </div>
   )
 }

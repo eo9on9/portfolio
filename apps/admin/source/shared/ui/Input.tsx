@@ -6,11 +6,11 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = ({ icon, className, ...props }: InputProps) => {
   return (
-    <div className="inline-flex items-center gap-2 h-10 px-4 text-sm bg-gray-100 rounded-sm outline-1 outline-transparent focus-within:outline-gray-300 focus-within:bg-white transition-outline duration-200 ease-out">
+    <div className="inline-flex items-center gap-2 h-10 px-4 text-sm bg-gray-100 rounded-sm outline-1 outline-transparent focus-within:outline-gray-300 focus-within:bg-white transition-outline duration-200 ease-out has-read-only:bg-white">
       {icon}
       <input
         className={cn(
-          'flex-1 outline-none text-gray-800 placeholder:text-gray-400',
+          'flex-1 outline-none text-gray-800 placeholder:text-gray-400 read-only:text-gray-500',
           className,
         )}
         {...props}
