@@ -12,7 +12,7 @@ const data: GetStateSummariesResDTO = {
   },
   product: {
     total: 567,
-    percentage: 4.1,
+    percentage: -1.02,
   },
   sales: {
     total: 45200000,

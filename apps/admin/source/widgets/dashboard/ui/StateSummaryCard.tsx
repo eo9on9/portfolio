@@ -16,13 +16,13 @@ export const StateSummaryCard = ({
   percentage = 0,
 }: StateSummaryCardProps) => {
   const isPositive = percentage > 0
-  const percentageText = isPositive ? `+${percentage}%` : `-${percentage}%`
+  const percentageText = isPositive ? `+${percentage}%` : `${percentage}%`
 
   return (
     <Card title={title} icon={icon}>
       <div className="flex flex-col gap-1">
         <p className="text-xl font-medium text-gray-800">{content}</p>
-        {percentage > 0 && (
+        {percentage && (
           <p className="flex items-center gap-1 text-xs">
             <span className={percentageVariants({ isPositive })}>
               {percentageText}

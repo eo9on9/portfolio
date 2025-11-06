@@ -1,6 +1,6 @@
 import { request } from '@shared/api/request'
+import { KindOfStateCategory } from '@widgets/dashboard/model/stateCategory'
 import { StateSummary } from '@widgets/dashboard/model/stateSummary'
-import { KindOfSummaryStateCategory } from '@widgets/dashboard/model/stateSummaryCategory'
 import { fromStateSummaryDTO, StateSummaryDTO } from './dto/stateSummary'
 
 export interface GetStateSummariesResDTO {
@@ -10,10 +10,7 @@ export interface GetStateSummariesResDTO {
   sales: StateSummaryDTO
 }
 
-export type GetStateSummariesRes = Record<
-  KindOfSummaryStateCategory,
-  StateSummary
->
+export type GetStateSummariesRes = Record<KindOfStateCategory, StateSummary>
 
 const fromGetSummaryStatesResDTO = (
   dto: GetStateSummariesResDTO,

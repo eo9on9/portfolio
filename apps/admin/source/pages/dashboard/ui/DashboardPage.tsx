@@ -1,28 +1,9 @@
+import { StateProgressCard } from '@widgets/dashboard/ui/StateProgressCard'
 import { StateSummaryCardList } from '@widgets/dashboard/ui/StateSummaryCardList'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
-import { ChartLine, List, PieChart as PieChartIcon } from 'lucide-react'
-import {
-  CartesianGrid,
-  Cell,
-  Line,
-  LineChart,
-  Pie,
-  PieChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from 'recharts'
-
-const salesData = [
-  { name: '1월', 매출: 4000, 주문: 2400 },
-  { name: '2월', 매출: 3000, 주문: 1398 },
-  { name: '3월', 매출: 2000, 주문: 9800 },
-  { name: '4월', 매출: 2780, 주문: 3908 },
-  { name: '5월', 매출: 1890, 주문: 4800 },
-  { name: '6월', 매출: 2390, 주문: 3800 },
-]
+import { List, PieChart as PieChartIcon } from 'lucide-react'
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 
 const categoryData = [
   { name: '전자제품', value: 400 },
@@ -44,46 +25,7 @@ export const DashboardPage = () => {
       <PageTop title="대시보드" description="전체 현황을 확인하세요." />
       <StateSummaryCardList />
       <div className="grid grid-cols-2 gap-2">
-        <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-gray-800">
-              월별 매출 및 주문 추이
-            </p>
-            <ChartLine className="w-4 h-4 text-gray-500" />
-          </div>
-          <ResponsiveContainer width="100%" height={240}>
-            <LineChart data={salesData}>
-              <CartesianGrid strokeDasharray="2 2" />
-              <XAxis
-                dataKey="name"
-                stroke="var(--color-gray-500)"
-                fontSize="12px"
-              />
-              <YAxis stroke="var(--color-gray-500)" fontSize="var(--text-xs)" />
-              <Tooltip
-                labelStyle={{
-                  fontSize: 'var(--text-xs)',
-                }}
-                contentStyle={{
-                  fontSize: 'var(--text-xs)',
-                }}
-              />
-              {/* <Legend /> */}
-              <Line
-                type="monotone"
-                dataKey="매출"
-                stroke="var(--color-blue-400)"
-                strokeWidth={1}
-              />
-              <Line
-                type="monotone"
-                dataKey="주문"
-                stroke="var(--color-green-400)"
-                strokeWidth={1}
-              />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+        <StateProgressCard />
         <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
           <div className="flex items-center justify-between">
             <p className="text-sm font-medium text-gray-800">
