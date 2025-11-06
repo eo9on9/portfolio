@@ -3,6 +3,7 @@ import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
+import { Pagination } from '@shared/ui/Pagination'
 import { Select } from '@shared/ui/Select'
 import { Table, TableColumn } from '@shared/ui/Table'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
@@ -143,6 +144,7 @@ const tableColumns: TableColumn<TableData>[] = [
 
 export const CustomerPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [page, setPage] = useState(1)
 
   return (
     <MainLayout>
@@ -206,23 +208,7 @@ export const CustomerPage = () => {
       <Table data={tableData} columns={tableColumns} />
 
       {/* Pagination */}
-      <div className="flex items-center justify-center gap-1">
-        <Button variant="ghost" size="md">
-          1
-        </Button>
-        <Button variant="primary" size="md">
-          2
-        </Button>
-        <Button variant="ghost" size="md">
-          3
-        </Button>
-        <Button variant="ghost" size="md">
-          4
-        </Button>
-        <Button variant="ghost" size="md">
-          5
-        </Button>
-      </div>
+      <Pagination totalPages={13} currentPage={page} onPageChange={setPage} />
 
       {/* Modals */}
       <AddCustomerModal

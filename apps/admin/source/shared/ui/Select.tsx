@@ -32,7 +32,6 @@ export const Select = ({
   placeholder,
   isError,
 }: SelectProps) => {
-  console.log('isError', isError)
   return (
     <SelectRoot
       value={value}
