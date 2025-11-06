@@ -1,4 +1,4 @@
-import { SummaryStateCardList } from '@widgets/dashboard/ui/SummaryStateCardList'
+import { StateSummaryCardList } from '@widgets/dashboard/ui/StateSummaryCardList'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
 import { ChartLine, List, PieChart as PieChartIcon } from 'lucide-react'
@@ -42,7 +42,7 @@ export const DashboardPage = () => {
   return (
     <MainLayout>
       <PageTop title="대시보드" description="전체 현황을 확인하세요." />
-      <SummaryStateCardList />
+      <StateSummaryCardList />
       <div className="grid grid-cols-2 gap-2">
         <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
           <div className="flex items-center justify-between">

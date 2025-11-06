@@ -1,4 +1,4 @@
-export interface SummaryState {
+export interface StateSummary {
   total: number
   percentage: number
 }

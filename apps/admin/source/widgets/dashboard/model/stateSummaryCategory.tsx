@@ -6,16 +6,16 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 
-export const SUMMARY_STATE_CATEGORY = [
+export const STATE_SUMMARY_CATEGORY = [
   'customer',
   'order',
   'product',
   'sales',
 ] as const
 
-export type KindOfSummaryStateCategory = (typeof SUMMARY_STATE_CATEGORY)[number]
+export type KindOfSummaryStateCategory = (typeof STATE_SUMMARY_CATEGORY)[number]
 
-export const SUMMARY_STATE_CATEGORY_LABELS: Record<
+export const STATE_SUMMARY_CATEGORY_LABELS: Record<
   KindOfSummaryStateCategory,
   string
 > = {
@@ -25,7 +25,7 @@ export const SUMMARY_STATE_CATEGORY_LABELS: Record<
   sales: '매출',
 }
 
-export const SUMMARY_STATE_CATEGORY_ICONS: Record<
+export const STATE_SUMMARY_CATEGORY_ICONS: Record<
   KindOfSummaryStateCategory,
   LucideIcon
 > = {

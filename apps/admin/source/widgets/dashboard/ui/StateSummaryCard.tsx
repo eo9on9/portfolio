@@ -2,19 +2,19 @@ import { Card } from '@shared/ui/Card'
 import { cva } from 'class-variance-authority'
 import { ReactNode } from 'react'
 
-interface SummaryStateCardProps {
+interface StateSummaryCardProps {
   title: string
   icon: ReactNode
   content: ReactNode
   percentage?: number
 }
 
-export const SummaryStateCard = ({
+export const StateSummaryCard = ({
   title,
   icon,
   content,
   percentage = 0,
-}: SummaryStateCardProps) => {
+}: StateSummaryCardProps) => {
   const isPositive = percentage > 0
   const percentageText = isPositive ? `+${percentage}%` : `-${percentage}%`
 

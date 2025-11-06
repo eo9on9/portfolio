@@ -1,38 +1,38 @@
 import { toCompactNumber } from '@shared/util/format'
 import { useSuspenseQuery } from '@tanstack/react-query'
-import { getSummaryStates } from '@widgets/dashboard/api/getSummaryStates'
-import { SUMMARY_STATE_CATEGORY_LABELS } from '@widgets/dashboard/model/summaryStateCategory'
+import { getStateSummaries } from '@widgets/dashboard/api/getSummaryStates'
+import { STATE_SUMMARY_CATEGORY_LABELS } from '@widgets/dashboard/model/stateSummaryCategory'
 import { DollarSign, Package, ShoppingCart, Users } from 'lucide-react'
-import { SummaryStateCard } from '../SummaryStateCard'
+import { StateSummaryCard } from '../StateSummaryCard'
 
 export const Core = () => {
   const { data: states } = useSuspenseQuery({
     queryKey: ['summary-states'],
-    queryFn: getSummaryStates,
+    queryFn: getStateSummaries,
   })
 
   return (
     <div className="grid grid-cols-4 gap-2">
-      <SummaryStateCard
-        title={`총 ${SUMMARY_STATE_CATEGORY_LABELS.customer}`}
+      <StateSummaryCard
+        title={`총 ${STATE_SUMMARY_CATEGORY_LABELS.customer}`}
         icon={<Users className={iconCn} />}
         content={states?.customer.total.toLocaleString()}
         percentage={states?.customer.percentage}
       />
-      <SummaryStateCard
-        title={`총 ${SUMMARY_STATE_CATEGORY_LABELS.order}`}
+      <StateSummaryCard
+        title={`총 ${STATE_SUMMARY_CATEGORY_LABELS.order}`}
         icon={<ShoppingCart className={iconCn} />}
         content={states?.order.total.toLocaleString()}
         percentage={states?.order.percentage}
       />
-      <SummaryStateCard
-        title={`총 ${SUMMARY_STATE_CATEGORY_LABELS.product}`}
+      <StateSummaryCard
+        title={`총 ${STATE_SUMMARY_CATEGORY_LABELS.product}`}
         icon={<Package className={iconCn} />}
         content={states?.product.total.toLocaleString()}
         percentage={states?.product.percentage}
       />
-      <SummaryStateCard
-        title={`총 ${SUMMARY_STATE_CATEGORY_LABELS.sales}`}
+      <StateSummaryCard
+        title={`총 ${STATE_SUMMARY_CATEGORY_LABELS.sales}`}
         icon={<DollarSign className={iconCn} />}
         content={`₩${toCompactNumber(states?.sales.total ?? 0)}`}
         percentage={states?.sales.percentage}

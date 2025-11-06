@@ -1,7 +1,7 @@
-import { GetSummaryStatesResDTO } from '@widgets/dashboard/api/getSummaryStates'
+import { GetStateSummariesResDTO } from '@widgets/dashboard/api/getSummaryStates'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-const data: GetSummaryStatesResDTO = {
+const data: GetStateSummariesResDTO = {
   customer: {
     total: 2345,
     percentage: 12.5,
@@ -22,7 +22,7 @@ const data: GetSummaryStatesResDTO = {
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<GetSummaryStatesResDTO | { message: string }>,
+  res: NextApiResponse<GetStateSummariesResDTO | { message: string }>,
 ) {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method Not Allowed' })

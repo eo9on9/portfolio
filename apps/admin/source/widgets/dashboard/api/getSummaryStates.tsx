@@ -1,34 +1,34 @@
 import { request } from '@shared/api/request'
-import { SummaryState } from '@widgets/dashboard/model/summaryState'
-import { KindOfSummaryStateCategory } from '@widgets/dashboard/model/summaryStateCategory'
-import { fromSummaryStateDTO, SummaryStateDTO } from './dto/summaryState'
+import { StateSummary } from '@widgets/dashboard/model/stateSummary'
+import { KindOfSummaryStateCategory } from '@widgets/dashboard/model/stateSummaryCategory'
+import { fromStateSummaryDTO, StateSummaryDTO } from './dto/stateSummary'
 
-export interface GetSummaryStatesResDTO {
-  customer: SummaryStateDTO
-  order: SummaryStateDTO
-  product: SummaryStateDTO
-  sales: SummaryStateDTO
+export interface GetStateSummariesResDTO {
+  customer: StateSummaryDTO
+  order: StateSummaryDTO
+  product: StateSummaryDTO
+  sales: StateSummaryDTO
 }
 
-export type GetSummaryStatesRes = Record<
+export type GetStateSummariesRes = Record<
   KindOfSummaryStateCategory,
-  SummaryState
+  StateSummary
 >
 
 const fromGetSummaryStatesResDTO = (
-  dto: GetSummaryStatesResDTO,
-): GetSummaryStatesRes => {
+  dto: GetStateSummariesResDTO,
+): GetStateSummariesRes => {
   return {
-    customer: fromSummaryStateDTO(dto.customer),
-    order: fromSummaryStateDTO(dto.order),
-    product: fromSummaryStateDTO(dto.product),
-    sales: fromSummaryStateDTO(dto.sales),
+    customer: fromStateSummaryDTO(dto.customer),
+    order: fromStateSummaryDTO(dto.order),
+    product: fromStateSummaryDTO(dto.product),
+    sales: fromStateSummaryDTO(dto.sales),
   }
 }
 
-export const getSummaryStates = async () => {
-  const response = await request.get<GetSummaryStatesResDTO>(
-    '/dashboard/summary-states',
+export const getStateSummaries = async () => {
+  const response = await request.get<GetStateSummariesResDTO>(
+    '/dashboard/state-summaries',
   )
 
   return fromGetSummaryStatesResDTO(response)
