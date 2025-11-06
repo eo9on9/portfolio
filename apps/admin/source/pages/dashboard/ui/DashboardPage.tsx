@@ -1,23 +1,9 @@
+import { SalesRateCard } from '@widgets/dashboard/ui/SalesRateCard'
 import { StateProgressCard } from '@widgets/dashboard/ui/StateProgressCard'
 import { StateSummaryCardList } from '@widgets/dashboard/ui/StateSummaryCardList'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
-import { List, PieChart as PieChartIcon } from 'lucide-react'
-import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
-
-const categoryData = [
-  { name: '전자제품', value: 400 },
-  { name: '의류', value: 300 },
-  { name: '식품', value: 300 },
-  { name: '도서', value: 200 },
-]
-
-const COLORS = [
-  'var(--color-blue-400)',
-  'var(--color-green-400)',
-  'var(--color-yellow-400)',
-  'var(--color-orange-400)',
-]
+import { List } from 'lucide-react'
 
 export const DashboardPage = () => {
   return (
@@ -26,40 +12,7 @@ export const DashboardPage = () => {
       <StateSummaryCardList />
       <div className="grid grid-cols-2 gap-2">
         <StateProgressCard />
-        <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-gray-800">
-              카테고리별 판매 비율
-            </p>
-            <PieChartIcon className="w-4 h-4 text-gray-500" />
-          </div>
-          <ResponsiveContainer width="100%" height={240}>
-            <PieChart>
-              <Pie
-                data={categoryData}
-                cx="50%"
-                cy="50%"
-                labelLine={false}
-                label={entry => entry.name}
-                outerRadius={80}
-                dataKey="value"
-              >
-                {categoryData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                    fontSize="var(--text-xs)"
-                  />
-                ))}
-              </Pie>
-              <Tooltip
-                contentStyle={{
-                  fontSize: 'var(--text-xs)',
-                }}
-              />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
+        <SalesRateCard />
       </div>
       <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
         <div className="flex items-center justify-between">
