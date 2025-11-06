@@ -76,7 +76,7 @@ const triggerVariants = cva(
   {
     variants: {
       isError: {
-        true: 'outline-1 outline-red-400',
+        true: 'outline-1 outline-error',
         false: 'outline-transparent',
       },
     },

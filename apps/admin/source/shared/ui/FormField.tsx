@@ -38,7 +38,7 @@ export const FormField = ({
         </label>
       </div>
       {childrenWithProps}
-      {errorMessage && <p className="text-xs text-red-500">{errorMessage}</p>}
+      {errorMessage && <p className="text-xs text-error">{errorMessage}</p>}
     </div>
   )
 }

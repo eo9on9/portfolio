@@ -26,7 +26,7 @@ const containerVariants = cva(
   {
     variants: {
       isError: {
-        true: 'outline-red-400 focus-within:outline-red-400',
+        true: 'outline-error focus-within:outline-error',
         false: 'outline-transparent focus-within:outline-gray-300',
       },
     },

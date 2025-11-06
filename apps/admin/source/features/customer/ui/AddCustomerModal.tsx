@@ -5,6 +5,7 @@ import {
   VALIDATION_PHONE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
@@ -96,9 +97,16 @@ export const AddCustomerModal = ({
             />
           </FormField>
         </div>
-        <Button variant="primary" size="lg" onClick={handleAddCustomer}>
-          추가하기
-        </Button>
+        <Beacon>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={handleAddCustomer}
+            className="w-full"
+          >
+            추가하기
+          </Button>
+        </Beacon>
       </div>
     </Modal>
   )

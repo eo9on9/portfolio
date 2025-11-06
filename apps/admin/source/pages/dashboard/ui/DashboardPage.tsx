@@ -1,14 +1,7 @@
+import { SummaryStateCardList } from '@widgets/dashboard/ui/SummaryStateCardList'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
-import {
-  ChartLine,
-  DollarSign,
-  List,
-  Package,
-  PieChart as PieChartIcon,
-  ShoppingCart,
-  Users,
-} from 'lucide-react'
+import { ChartLine, List, PieChart as PieChartIcon } from 'lucide-react'
 import {
   CartesianGrid,
   Cell,
@@ -49,64 +42,7 @@ export const DashboardPage = () => {
   return (
     <MainLayout>
       <PageTop title="대시보드" description="전체 현황을 확인하세요." />
-      <div className="grid grid-cols-4 gap-2">
-        {/* Card */}
-        <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-gray-800">총 고객</p>
-            <Users className="w-4 h-4 text-gray-500" />
-          </div>
-          <div className="flex flex-col gap-1">
-            <p className="text-xl font-medium text-gray-800">2,345</p>
-            <p className="flex items-center gap-1 text-xs">
-              <span className="text-green-500">+12.5%</span>
-              <span className="text-gray-500">지난달 대비</span>
-            </p>
-          </div>
-        </div>
-        {/* Card */}
-        <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-gray-800">총 주문</p>
-            <ShoppingCart className="w-4 h-4 text-gray-500" />
-          </div>
-          <div className="flex flex-col gap-1">
-            <p className="text-xl font-medium text-gray-800">1,234</p>
-            <p className="flex items-center gap-1 text-xs">
-              <span className="text-green-500">+8.2%</span>
-              <span className="text-gray-500">지난달 대비</span>
-            </p>
-          </div>
-        </div>
-        {/* Card */}
-        <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-gray-800">총 상품</p>
-            <Package className="w-4 h-4 text-gray-500" />
-          </div>
-          <div className="flex flex-col gap-1">
-            <p className="text-xl font-medium text-gray-800">567</p>
-            <p className="flex items-center gap-1 text-xs">
-              <span className="text-green-500">+4.1%</span>
-              <span className="text-gray-500">지난달 대비</span>
-            </p>
-          </div>
-        </div>
-        {/* Card */}
-        <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
-          <div className="flex items-center justify-between">
-            <p className="text-sm font-medium text-gray-800">총 매출</p>
-            <DollarSign className="w-4 h-4 text-gray-500" />
-          </div>
-          <div className="flex flex-col gap-1">
-            <p className="text-xl font-medium text-gray-800">₩45.2M</p>
-            <p className="flex items-center gap-1 text-xs">
-              <span className="text-green-500">+15.3%</span>
-              <span className="text-gray-500">지난달 대비</span>
-            </p>
-          </div>
-        </div>
-      </div>
+      <SummaryStateCardList />
       <div className="grid grid-cols-2 gap-2">
         <div className="flex flex-col gap-6 border border-gray-200 bg-white rounded-sm p-4">
           <div className="flex items-center justify-between">
