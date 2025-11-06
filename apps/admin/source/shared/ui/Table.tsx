@@ -1,5 +1,6 @@
 import { cn } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
+import { LoaderCircle } from 'lucide-react'
 import { ReactNode } from 'react'
 
 interface IDType {
@@ -16,9 +17,16 @@ export interface TableColumn<T extends IDType> {
 interface TableProps<T extends IDType> {
   columns: TableColumn<T>[]
   data: T[]
+  isLoading?: boolean
+  // loadingMessage?: string
+  // emptyMessage?: string
 }
 
-export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
+export const Table = <T extends IDType>({
+  data,
+  columns,
+  isLoading,
+}: TableProps<T>) => {
   return (
     <div className="overflow-x-auto">
       <div className="w-fit min-w-full rounded-sm border border-gray-200 overflow-hidden">
@@ -39,20 +47,42 @@ export const Table = <T extends IDType>({ data, columns }: TableProps<T>) => {
             </tr>
           </thead>
           <tbody>
-            {data.map(item => (
-              <tr key={item.id} className="bg-white hover:bg-gray-50">
-                {columns.map((column, index) => (
-                  <td
-                    key={(column.accessorKey as string) ?? index}
-                    className={cn(cellCn({ align: column?.align }), 'h-12')}
-                  >
-                    {column.render
-                      ? column.render(item)
-                      : (item[column.accessorKey!] as ReactNode)}
-                  </td>
-                ))}
+            {isLoading ? (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="h-48 text-center text-gray-500 bg-white"
+                >
+                  <div className="flex items-center justify-center h-full">
+                    <LoaderCircle className="w-8 h-8 animate-spin" />
+                  </div>
+                </td>
               </tr>
-            ))}
+            ) : !data.length ? (
+              <tr>
+                <td
+                  colSpan={columns.length}
+                  className="h-48 text-center text-gray-500 bg-white"
+                >
+                  데이터가 없습니다.
+                </td>
+              </tr>
+            ) : (
+              data.map(item => (
+                <tr key={item.id} className="bg-white hover:bg-gray-50">
+                  {columns.map((column, index) => (
+                    <td
+                      key={(column.accessorKey as string) ?? index}
+                      className={cn(cellCn({ align: column?.align }), 'h-12')}
+                    >
+                      {column.render
+                        ? column.render(item)
+                        : (item[column.accessorKey!] as ReactNode)}
+                    </td>
+                  ))}
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

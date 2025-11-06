@@ -13,11 +13,16 @@ import {
 import { cva } from 'class-variance-authority'
 import { Check, ChevronDown } from 'lucide-react'
 
-interface SelectProps {
+export interface SelectOption {
+  label: string
+  value: string
+}
+
+export interface SelectProps {
   value?: string
   onChange?: (value: string) => void
   defaultValue?: string
-  options: { label: string; value: string }[]
+  options: SelectOption[]
   placeholder?: string
   id?: string
   isError?: boolean
