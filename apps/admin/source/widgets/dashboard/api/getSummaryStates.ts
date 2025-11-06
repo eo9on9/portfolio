@@ -1,7 +1,10 @@
 import { request } from '@shared/api/request'
 import { KindOfStateCategory } from '@widgets/dashboard/model/stateCategory'
-import { StateSummary } from '@widgets/dashboard/model/stateSummary'
-import { fromStateSummaryDTO, StateSummaryDTO } from './dto/stateSummary'
+
+export interface StateSummaryDTO {
+  total: number
+  percentage: number
+}
 
 export interface GetStateSummariesResDTO {
   customer: StateSummaryDTO
@@ -10,7 +13,19 @@ export interface GetStateSummariesResDTO {
   sales: StateSummaryDTO
 }
 
+export interface StateSummary {
+  total: number
+  percentage: number
+}
+
 export type GetStateSummariesRes = Record<KindOfStateCategory, StateSummary>
+
+const fromStateSummaryDTO = (dto: StateSummaryDTO): StateSummary => {
+  return {
+    total: dto.total,
+    percentage: dto.percentage,
+  }
+}
 
 const fromGetSummaryStatesResDTO = (
   dto: GetStateSummariesResDTO,
@@ -24,9 +39,8 @@ const fromGetSummaryStatesResDTO = (
 }
 
 export const getStateSummaries = async () => {
-  const response = await request.get<GetStateSummariesResDTO>(
-    '/dashboard/state-summaries',
-  )
+  const response =
+    await request.get<GetStateSummariesResDTO>('/states/summaries')
 
   return fromGetSummaryStatesResDTO(response)
 }

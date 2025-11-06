@@ -22,9 +22,7 @@ const fromGetStateProgressResDTO = (
 }
 
 export const getStateProgress = async () => {
-  const response = await request.get<GetStateProgressResDTO>(
-    '/dashboard/state-progress',
-  )
+  const response = await request.get<GetStateProgressResDTO>('/states/progress')
 
   return fromGetStateProgressResDTO(response)
 }
