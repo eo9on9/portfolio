@@ -1,4 +1,4 @@
-import { RecentOrderList } from '@widgets/dashboard/ui/RecentOrderList'
+import { RecentOrderListCard } from '@widgets/dashboard/ui/RecentOrderListCard'
 import { SalesRateCard } from '@widgets/dashboard/ui/SalesRateCard'
 import { StateProgressCard } from '@widgets/dashboard/ui/StateProgressCard'
 import { StateSummaryCardList } from '@widgets/dashboard/ui/StateSummaryCardList'
@@ -14,7 +14,7 @@ export const DashboardPage = () => {
         <StateProgressCard />
         <SalesRateCard />
       </div>
-      <RecentOrderList />
+      <RecentOrderListCard />
     </MainLayout>
   )
 }

@@ -36,7 +36,7 @@ export const Core = () => {
           <XAxis
             dataKey="name"
             stroke="var(--color-gray-500)"
-            fontSize="12px"
+            fontSize="var(--text-xs)"
           />
           <YAxis stroke="var(--color-gray-500)" fontSize="var(--text-xs)" />
           <Tooltip
