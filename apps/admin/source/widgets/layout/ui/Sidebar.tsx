@@ -92,8 +92,9 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
           </li>
           <li>
             <Link
-              href="#"
+              href="/product"
               className={linkCn({ isActive: currentPath === '/product' })}
+              onClick={e => e.preventDefault()}
             >
               <span className={linkIconCn()}>
                 <Package className="w-4 h-4" />
@@ -103,8 +104,9 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
           </li>
           <li>
             <Link
-              href="#"
+              href="/report"
               className={linkCn({ isActive: currentPath === '/report' })}
+              onClick={e => e.preventDefault()}
             >
               <span className={linkIconCn()}>
                 <FileText className="w-4 h-4" />
