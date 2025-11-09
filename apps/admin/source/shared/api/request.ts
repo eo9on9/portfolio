@@ -1,5 +1,11 @@
 import axios, { type AxiosRequestConfig, type Method } from 'axios'
 
+interface BaseResponse<T> {
+  success: boolean
+  message: string
+  data: T
+}
+
 const BASE_URL =
   typeof window === 'undefined'
     ? process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000/api'
@@ -12,9 +18,26 @@ const axiosInstance = axios.create({
 })
 
 const sendRequest = async <T>(config: AxiosRequestConfig): Promise<T> => {
-  const response = await axiosInstance.request<T>(config)
+  try {
+    const response = await axiosInstance.request<BaseResponse<T>>(config)
 
-  return response.data
+    if (!response.data.success) {
+      throw new Error(
+        response.data.message || '요청 처리 중 오류가 발생했습니다.',
+      )
+    }
+
+    return response.data.data
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(
+        error.response?.data.message ||
+          `HTTP ${error.response?.status}: ${error.message}`,
+      )
+    }
+
+    throw error
+  }
 }
 
 const createMethodRequest =

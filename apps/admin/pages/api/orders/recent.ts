@@ -39,13 +39,14 @@ const data: GetRecentOrdersResDTO = [
   },
 ]
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<GetRecentOrdersResDTO | { message: string }>,
-) {
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method Not Allowed' })
   }
 
-  res.status(200).json(data)
+  res.status(200).json({
+    success: true,
+    message: '성공',
+    data,
+  })
 }
