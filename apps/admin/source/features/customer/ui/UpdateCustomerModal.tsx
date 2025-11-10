@@ -7,7 +7,6 @@ import {
   CUSTOMER_STATUS,
   CUSTOMER_STATUS_LABELS,
 } from '@entities/customer/model/customerStatus'
-import { useCustomerFilterUrlParams } from '@features/customer/model/useCustomerFilterUrlParams'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
@@ -19,9 +18,11 @@ import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 import { Select, SelectOption } from '@shared/ui/Select'
+import { useToast } from '@shared/ui/Toast'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import { useCustomerFilterUrlParams } from '../model/useCustomerFilterUrlParams'
 
 interface UpdateCustomerModalProps {
   customer: Customer
@@ -44,9 +45,9 @@ export const UpdateCustomerModal = ({
   isOpen,
   onClose,
 }: UpdateCustomerModalProps) => {
+  const toast = useToast()
   const queryClient = useQueryClient()
   const { urlParams } = useCustomerFilterUrlParams()
-
   const { mutateAsync, isPending } = useMutation({
     mutationFn: updateCustomer,
     onSuccess: () => {
@@ -65,9 +66,17 @@ export const UpdateCustomerModal = ({
   } = useForm<UpdateCustomerForm>()
 
   const handleUpdateCustomer = handleSubmit(async data => {
-    await mutateAsync({ id: customer.id, ...data })
+    try {
+      await mutateAsync({ id: customer.id, ...data })
 
-    onClose?.()
+      toast.success('고객 정보가 수정되었습니다.')
+
+      onClose?.()
+    } catch (error) {
+      console.error(error)
+
+      toast.error('고객 정보 수정에 실패했습니다.')
+    }
   })
 
   useEffect(() => {

@@ -40,7 +40,7 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
         isOpen={isOpen}
         setIsOpen={setIsOpen}
       />
-      <PrimitiveToastViewport className="fixed bottom-0 right-0 p-4" />
+      <PrimitiveToastViewport className="z-120 fixed bottom-0 right-0 p-4" />
     </PrimitiveToastProvider>
   )
 }

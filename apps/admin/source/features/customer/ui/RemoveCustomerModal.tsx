@@ -1,8 +1,10 @@
+import { GetCustomersRes } from '@entities/customer/api/getCustomers'
 import { removeCustomer } from '@entities/customer/api/removeCustomer'
 import { Customer } from '@entities/customer/model/customer'
 import { useCustomerFilterUrlParams } from '@features/customer/model/useCustomerFilterUrlParams'
 import { Button } from '@shared/ui/Button'
 import { Modal } from '@shared/ui/Modal'
+import { useToast } from '@shared/ui/Toast'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 interface RemoveCustomerModalProps {
@@ -16,22 +18,39 @@ export const RemoveCustomerModal = ({
   isOpen,
   onClose,
 }: RemoveCustomerModalProps) => {
+  const toast = useToast()
   const queryClient = useQueryClient()
-  const { urlParams } = useCustomerFilterUrlParams()
-
+  const { urlParams, setUrlParams } = useCustomerFilterUrlParams()
   const { mutateAsync, isPending } = useMutation({
     mutationFn: removeCustomer,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
         queryKey: ['customers', JSON.stringify(urlParams)],
       })
+
+      const data = queryClient.getQueryData<GetCustomersRes>([
+        'customers',
+        JSON.stringify(urlParams),
+      ])
+
+      if (!data?.customers.length) {
+        setUrlParams({ ...urlParams, page: 1 })
+      }
     },
   })
 
   const handleRemoveCustomer = async () => {
-    await mutateAsync({ id: customer.id })
+    try {
+      await mutateAsync({ id: customer.id })
 
-    onClose?.()
+      toast.success('고객이 삭제되었습니다.')
+
+      onClose?.()
+    } catch (error) {
+      console.error(error)
+
+      toast.error('고객 삭제에 실패했습니다.')
+    }
   }
 
   return (

@@ -2,7 +2,7 @@ import {
   createCustomer,
   CreateCustomerParams,
 } from '@entities/customer/api/createCustomer'
-import { useCustomerFilterUrlParams } from '@features/customer/model/useCustomerFilterUrlParams'
+import { GetCustomersRes } from '@entities/customer/api/getCustomers'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
@@ -14,9 +14,11 @@ import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
+import { useToast } from '@shared/ui/Toast'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useCustomerFilterUrlParams } from '../model/useCustomerFilterUrlParams'
 
 interface CreateCustomerModalProps {
   open?: boolean
@@ -29,14 +31,24 @@ export const CreateCustomerModal = ({
   open = false,
   onClose,
 }: CreateCustomerModalProps) => {
+  const toast = useToast()
   const queryClient = useQueryClient()
-  const { urlParams } = useCustomerFilterUrlParams()
-
+  const { urlParams, setUrlParams } = useCustomerFilterUrlParams()
   const { mutateAsync, isPending } = useMutation({
     mutationFn: createCustomer,
-    onSuccess: () => {
-      queryClient.invalidateQueries({
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
         queryKey: ['customers', JSON.stringify(urlParams)],
+      })
+
+      const data = queryClient.getQueryData<GetCustomersRes>([
+        'customers',
+        JSON.stringify(urlParams),
+      ])
+
+      setUrlParams({
+        ...urlParams,
+        page: data?.totalPages ?? 1,
       })
     },
   })
@@ -46,26 +58,29 @@ export const CreateCustomerModal = ({
     register,
     handleSubmit,
     formState: { errors, isDirty },
-  } = useForm<CreateCustomerForm>({
-    defaultValues: {
-      name: '',
-      email: '',
-      phone: '',
-    },
-  })
+  } = useForm<CreateCustomerForm>()
 
   const handleAddCustomer = handleSubmit(async data => {
     try {
       await mutateAsync(data)
 
+      toast.success('고객이 추가되었습니다.')
+
       onClose?.()
     } catch (error) {
       console.error(error)
+
+      toast.error('고객 추가에 실패했습니다.')
     }
   })
 
   useEffect(() => {
-    if (!open) reset()
+    if (open)
+      reset({
+        name: '',
+        email: '',
+        phone: '',
+      })
   }, [open, reset])
 
   return (
