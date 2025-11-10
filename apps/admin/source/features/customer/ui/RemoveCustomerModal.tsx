@@ -6,9 +6,9 @@ import { Modal } from '@shared/ui/Modal'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 interface RemoveCustomerModalProps {
-  customer: Customer | null
+  customer: Customer
   isOpen: boolean
-  onClose: () => void
+  onClose?: () => void
 }
 
 export const RemoveCustomerModal = ({
@@ -28,12 +28,10 @@ export const RemoveCustomerModal = ({
     },
   })
 
-  if (!customer) return null
-
   const handleRemoveCustomer = async () => {
     await mutateAsync({ id: customer.id })
 
-    onClose()
+    onClose?.()
   }
 
   return (

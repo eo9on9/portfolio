@@ -18,9 +18,9 @@ const fromRemoveCustomerResDTO = (dto: RemoveCustomerResDTO): Customer => {
 export const removeCustomer = async (
   params: RemoveCustomerParams,
 ): Promise<Customer> => {
-  const response = await request.delete<RemoveCustomerResDTO>(`/customers`, {
-    params,
-  })
+  const response = await request.delete<RemoveCustomerResDTO>(
+    `/customers/${params.id}`,
+  )
 
   return fromRemoveCustomerResDTO(response)
 }

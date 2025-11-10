@@ -2,6 +2,7 @@ import {
   createCustomer,
   CreateCustomerParams,
 } from '@entities/customer/api/createCustomer'
+import { useCustomerFilterUrlParams } from '@features/customer/model/useCustomerFilterUrlParams'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
@@ -16,7 +17,6 @@ import { Modal } from '@shared/ui/Modal'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { useCustomerFilterUrlParams } from '../model/useCustomerFilterUrlParams'
 
 interface AddCustomerModalProps {
   open?: boolean
@@ -45,7 +45,7 @@ export const AddCustomerModal = ({
     reset,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty },
   } = useForm<CreateCustomerForm>({
     defaultValues: {
       name: '',
@@ -119,6 +119,7 @@ export const AddCustomerModal = ({
             onClick={handleAddCustomer}
             className="w-full"
             isLoading={isPending}
+            disabled={!isDirty}
           >
             추가하기
           </Button>

@@ -6,7 +6,7 @@
     "phone": "01065450001",
     "orders": 20,
     "spent": 560561,
-    "status": "inactive"
+    "status": "active"
   },
   {
     "id": 2,
@@ -276,7 +276,7 @@
     "phone": "01079600031",
     "orders": 13,
     "spent": 955094,
-    "status": "active"
+    "status": "inactive"
   },
   {
     "id": 32,

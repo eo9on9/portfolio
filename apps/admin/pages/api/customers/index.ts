@@ -1,16 +1,7 @@
 import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
-
-interface Customer {
-  id: number
-  name: string
-  email: string
-  phone: string
-  orders: number
-  spent: number
-  status: 'active' | 'inactive'
-}
+import { Customer } from './types'
 
 const PAGE_SIZE = 10
 const dataFile = path.join(
@@ -22,78 +13,6 @@ const dataFile = path.join(
 )
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // ✅ 신규 고객 추가 (POST)
-  if (req.method === 'POST') {
-    const { name, email, phone } = req.body
-
-    if (!name || !email || !phone) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'name, email, phone are required' })
-    }
-
-    // 파일 데이터 로드
-    const fileData = fs.readFileSync(dataFile, 'utf-8')
-    const customers: Customer[] = JSON.parse(fileData)
-
-    // 새 ID 생성
-    const newId =
-      customers.length > 0 ? Math.max(...customers.map(c => c.id)) + 1 : 1
-
-    // 신규 고객 객체
-    const newCustomer: Customer = {
-      id: newId,
-      name,
-      email,
-      phone,
-      orders: 0,
-      spent: 0,
-      status: 'inactive',
-    }
-
-    customers.push(newCustomer)
-    fs.writeFileSync(dataFile, JSON.stringify(customers, null, 2))
-
-    return res.status(201).json({
-      success: true,
-      message: '신규 고객이 등록되었습니다.',
-      data: newCustomer,
-    })
-  }
-
-  // ✅ 고객 삭제 (DELETE)
-  if (req.method === 'DELETE') {
-    const { id } = req.query
-
-    if (!id) {
-      return res
-        .status(400)
-        .json({ success: false, message: '고객 ID가 필요합니다.' })
-    }
-
-    const fileData = fs.readFileSync(dataFile, 'utf-8')
-    const customers: Customer[] = JSON.parse(fileData)
-    const targetId = Number(id)
-
-    const index = customers.findIndex(c => c.id === targetId)
-    if (index === -1) {
-      return res
-        .status(404)
-        .json({ success: false, message: '해당 고객을 찾을 수 없습니다.' })
-    }
-
-    const deleted = customers[index]
-    const updated = customers.filter(c => c.id !== targetId)
-
-    fs.writeFileSync(dataFile, JSON.stringify(updated, null, 2))
-
-    return res.status(200).json({
-      success: true,
-      message: '고객이 삭제되었습니다.',
-      data: deleted,
-    })
-  }
-
   // ✅ 고객 목록 조회 (GET)
   if (req.method === 'GET') {
     const fileData = fs.readFileSync(dataFile, 'utf-8')
@@ -133,8 +52,43 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  // ✅ 허용되지 않은 메서드
-  res.setHeader('Allow', ['GET', 'POST', 'DELETE'])
+  // ✅ 신규 고객 추가 (POST)
+  if (req.method === 'POST') {
+    const { name, email, phone } = req.body
+
+    if (!name || !email || !phone) {
+      return res
+        .status(400)
+        .json({ success: false, message: 'name, email, phone are required' })
+    }
+
+    const fileData = fs.readFileSync(dataFile, 'utf-8')
+    const customers: Customer[] = JSON.parse(fileData)
+
+    const newId =
+      customers.length > 0 ? Math.max(...customers.map(c => c.id)) + 1 : 1
+
+    const newCustomer: Customer = {
+      id: newId,
+      name,
+      email,
+      phone,
+      orders: 0,
+      spent: 0,
+      status: 'inactive',
+    }
+
+    customers.push(newCustomer)
+    fs.writeFileSync(dataFile, JSON.stringify(customers, null, 2))
+
+    return res.status(201).json({
+      success: true,
+      message: '신규 고객이 등록되었습니다.',
+      data: newCustomer,
+    })
+  }
+
+  res.setHeader('Allow', ['GET', 'POST'])
   return res.status(405).json({
     success: false,
     message: `Method ${req.method} Not Allowed`,
