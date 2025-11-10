@@ -6,7 +6,7 @@
     "phone": "01065450001",
     "orders": 20,
     "spent": 560561,
-    "status": "active"
+    "status": "inactive"
   },
   {
     "id": 2,
@@ -276,7 +276,7 @@
     "phone": "01079600031",
     "orders": 13,
     "spent": 955094,
-    "status": "inactive"
+    "status": "active"
   },
   {
     "id": 32,
@@ -577,7 +577,7 @@
   },
   {
     "id": 65,
-    "name": "장현우",
+    "name": "박현우",
     "email": "user65@example.com",
     "phone": "01017150065",
     "orders": 28,
@@ -604,7 +604,7 @@
   },
   {
     "id": 68,
-    "name": "조도윤",
+    "name": "장현우",
     "email": "user68@example.com",
     "phone": "01091740068",
     "orders": 21,

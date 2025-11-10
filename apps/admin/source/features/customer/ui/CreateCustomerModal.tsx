@@ -18,17 +18,17 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-interface AddCustomerModalProps {
+interface CreateCustomerModalProps {
   open?: boolean
   onClose?: () => void
 }
 
 type CreateCustomerForm = CreateCustomerParams
 
-export const AddCustomerModal = ({
+export const CreateCustomerModal = ({
   open = false,
   onClose,
-}: AddCustomerModalProps) => {
+}: CreateCustomerModalProps) => {
   const queryClient = useQueryClient()
   const { urlParams } = useCustomerFilterUrlParams()
 

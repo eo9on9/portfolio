@@ -1,4 +1,4 @@
-import { AddCustomerModal } from '@features/customer/ui/AddCustomerModal'
+import { CreateCustomerModal } from '@features/customer/ui/CreateCustomerModal'
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { PageTop } from '@widgets/layout/ui/PageTop'
@@ -26,7 +26,7 @@ export const CustomerPageTop = () => {
           </Beacon>
         }
       />
-      <AddCustomerModal
+      <CreateCustomerModal
         open={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
