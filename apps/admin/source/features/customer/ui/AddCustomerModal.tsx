@@ -1,4 +1,7 @@
-import { CreateCustomerParams } from '@entities/customer/api/createCustomer'
+import {
+  createCustomer,
+  CreateCustomerParams,
+} from '@entities/customer/api/createCustomer'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
@@ -10,8 +13,10 @@ import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useCustomerFilterUrlParams } from '../model/useCustomerFilterUrlParams'
 
 interface AddCustomerModalProps {
   open?: boolean
@@ -24,11 +29,23 @@ export const AddCustomerModal = ({
   open = false,
   onClose,
 }: AddCustomerModalProps) => {
+  const queryClient = useQueryClient()
+  const { urlParams } = useCustomerFilterUrlParams()
+
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: createCustomer,
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['customers', JSON.stringify(urlParams)],
+      })
+    },
+  })
+
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<CreateCustomerForm>({
     defaultValues: {
       name: '',
@@ -37,14 +54,12 @@ export const AddCustomerModal = ({
     },
   })
 
-  const handleAddCustomer = handleSubmit(data => {
+  const handleAddCustomer = handleSubmit(async data => {
     try {
-      // TODO: add customer
-      console.log(data)
+      await mutateAsync(data)
 
       onClose?.()
     } catch (error) {
-      // TODO: handle error
       console.error(error)
     }
   })
@@ -85,7 +100,7 @@ export const AddCustomerModal = ({
           </FormField>
           <FormField label="휴대폰 번호" errorMessage={errors.phone?.message}>
             <Input
-              placeholder="010-0000-0000"
+              placeholder="01012345678"
               isError={!!errors.phone}
               {...register('phone', {
                 required: VALIDATION_REQUIRED.message,
@@ -103,6 +118,7 @@ export const AddCustomerModal = ({
             size="lg"
             onClick={handleAddCustomer}
             className="w-full"
+            isLoading={isPending}
           >
             추가하기
           </Button>

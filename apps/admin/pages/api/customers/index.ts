@@ -1,7 +1,6 @@
 import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
-import customersData from './data.json'
 
 interface Customer {
   id: number
@@ -30,7 +29,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     if (!name || !email || !phone) {
       return res
         .status(400)
-        .json({ message: 'name, email, phone are required' })
+        .json({ success: false, message: 'name, email, phone are required' })
     }
 
     // 파일 데이터 로드
@@ -57,16 +56,50 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     return res.status(201).json({
       success: true,
-      message: '성공',
+      message: '신규 고객이 등록되었습니다.',
       data: newCustomer,
+    })
+  }
+
+  // ✅ 고객 삭제 (DELETE)
+  if (req.method === 'DELETE') {
+    const { id } = req.query
+
+    if (!id) {
+      return res
+        .status(400)
+        .json({ success: false, message: '고객 ID가 필요합니다.' })
+    }
+
+    const fileData = fs.readFileSync(dataFile, 'utf-8')
+    const customers: Customer[] = JSON.parse(fileData)
+    const targetId = Number(id)
+
+    const index = customers.findIndex(c => c.id === targetId)
+    if (index === -1) {
+      return res
+        .status(404)
+        .json({ success: false, message: '해당 고객을 찾을 수 없습니다.' })
+    }
+
+    const deleted = customers[index]
+    const updated = customers.filter(c => c.id !== targetId)
+
+    fs.writeFileSync(dataFile, JSON.stringify(updated, null, 2))
+
+    return res.status(200).json({
+      success: true,
+      message: '고객이 삭제되었습니다.',
+      data: deleted,
     })
   }
 
   // ✅ 고객 목록 조회 (GET)
   if (req.method === 'GET') {
-    const { name, email, phone, status, page = '1' } = req.query
+    const fileData = fs.readFileSync(dataFile, 'utf-8')
+    let filtered: Customer[] = JSON.parse(fileData)
 
-    let filtered = customersData as Customer[]
+    const { name, email, phone, status, page = '1' } = req.query
 
     if (name) {
       filtered = filtered.filter(c =>
@@ -92,7 +125,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     return res.status(200).json({
       success: true,
-      message: '성공',
+      message: '고객 목록 조회 성공',
       data: {
         totalPages: Math.ceil(filtered.length / PAGE_SIZE),
         customers: paged,
@@ -101,6 +134,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   // ✅ 허용되지 않은 메서드
-  res.setHeader('Allow', ['GET', 'POST'])
-  return res.status(405).json({ message: `Method ${req.method} Not Allowed` })
+  res.setHeader('Allow', ['GET', 'POST', 'DELETE'])
+  return res.status(405).json({
+    success: false,
+    message: `Method ${req.method} Not Allowed`,
+  })
 }

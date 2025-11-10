@@ -1,0 +1,632 @@
+[
+  {
+    "id": 1,
+    "name": "최민수",
+    "email": "user1@example.com",
+    "phone": "01065450001",
+    "orders": 20,
+    "spent": 560561,
+    "status": "inactive"
+  },
+  {
+    "id": 2,
+    "name": "강지훈",
+    "email": "user2@example.com",
+    "phone": "01068910002",
+    "orders": 25,
+    "spent": 959516,
+    "status": "inactive"
+  },
+  {
+    "id": 3,
+    "name": "박서연",
+    "email": "user3@example.com",
+    "phone": "01052280003",
+    "orders": 22,
+    "spent": 909752,
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "name": "임지민",
+    "email": "user4@example.com",
+    "phone": "01046370004",
+    "orders": 8,
+    "spent": 715900,
+    "status": "inactive"
+  },
+  {
+    "id": 5,
+    "name": "이도윤",
+    "email": "user5@example.com",
+    "phone": "01016000005",
+    "orders": 4,
+    "spent": 606240,
+    "status": "inactive"
+  },
+  {
+    "id": 6,
+    "name": "박서연",
+    "email": "user6@example.com",
+    "phone": "01092150006",
+    "orders": 12,
+    "spent": 585416,
+    "status": "active"
+  },
+  {
+    "id": 7,
+    "name": "조지훈",
+    "email": "user7@example.com",
+    "phone": "01099790007",
+    "orders": 22,
+    "spent": 84043,
+    "status": "active"
+  },
+  {
+    "id": 8,
+    "name": "김민수",
+    "email": "user8@example.com",
+    "phone": "01098280008",
+    "orders": 3,
+    "spent": 795793,
+    "status": "inactive"
+  },
+  {
+    "id": 9,
+    "name": "임지민",
+    "email": "user9@example.com",
+    "phone": "01094370009",
+    "orders": 12,
+    "spent": 53821,
+    "status": "inactive"
+  },
+  {
+    "id": 10,
+    "name": "임예린",
+    "email": "user10@example.com",
+    "phone": "01070130010",
+    "orders": 7,
+    "spent": 865975,
+    "status": "inactive"
+  },
+  {
+    "id": 11,
+    "name": "강하늘",
+    "email": "user11@example.com",
+    "phone": "01020530011",
+    "orders": 6,
+    "spent": 348212,
+    "status": "active"
+  },
+  {
+    "id": 12,
+    "name": "최유진",
+    "email": "user12@example.com",
+    "phone": "01062200012",
+    "orders": 5,
+    "spent": 377844,
+    "status": "active"
+  },
+  {
+    "id": 13,
+    "name": "장지훈",
+    "email": "user13@example.com",
+    "phone": "01056220013",
+    "orders": 21,
+    "spent": 912414,
+    "status": "active"
+  },
+  {
+    "id": 14,
+    "name": "정지민",
+    "email": "user14@example.com",
+    "phone": "01090180014",
+    "orders": 6,
+    "spent": 591587,
+    "status": "inactive"
+  },
+  {
+    "id": 15,
+    "name": "윤지민",
+    "email": "user15@example.com",
+    "phone": "01035250015",
+    "orders": 7,
+    "spent": 465544,
+    "status": "active"
+  },
+  {
+    "id": 16,
+    "name": "임도윤",
+    "email": "user16@example.com",
+    "phone": "01051950016",
+    "orders": 10,
+    "spent": 518743,
+    "status": "active"
+  },
+  {
+    "id": 17,
+    "name": "윤도윤",
+    "email": "user17@example.com",
+    "phone": "01050590017",
+    "orders": 22,
+    "spent": 94427,
+    "status": "active"
+  },
+  {
+    "id": 18,
+    "name": "김민수",
+    "email": "user18@example.com",
+    "phone": "01058590018",
+    "orders": 12,
+    "spent": 888953,
+    "status": "active"
+  },
+  {
+    "id": 19,
+    "name": "조수빈",
+    "email": "user19@example.com",
+    "phone": "01056690019",
+    "orders": 21,
+    "spent": 663515,
+    "status": "inactive"
+  },
+  {
+    "id": 20,
+    "name": "최현우",
+    "email": "user20@example.com",
+    "phone": "01010290020",
+    "orders": 7,
+    "spent": 220230,
+    "status": "active"
+  },
+  {
+    "id": 21,
+    "name": "정현우",
+    "email": "user21@example.com",
+    "phone": "01049410021",
+    "orders": 1,
+    "spent": 515673,
+    "status": "inactive"
+  },
+  {
+    "id": 22,
+    "name": "윤예린",
+    "email": "user22@example.com",
+    "phone": "01025440022",
+    "orders": 18,
+    "spent": 882342,
+    "status": "active"
+  },
+  {
+    "id": 23,
+    "name": "정예린",
+    "email": "user23@example.com",
+    "phone": "01067780023",
+    "orders": 5,
+    "spent": 919573,
+    "status": "active"
+  },
+  {
+    "id": 24,
+    "name": "조도윤",
+    "email": "user24@example.com",
+    "phone": "01016630024",
+    "orders": 22,
+    "spent": 95603,
+    "status": "inactive"
+  },
+  {
+    "id": 25,
+    "name": "박현우",
+    "email": "user25@example.com",
+    "phone": "01058590025",
+    "orders": 10,
+    "spent": 669038,
+    "status": "inactive"
+  },
+  {
+    "id": 26,
+    "name": "정하늘",
+    "email": "user26@example.com",
+    "phone": "01075660026",
+    "orders": 7,
+    "spent": 658684,
+    "status": "active"
+  },
+  {
+    "id": 27,
+    "name": "임민수",
+    "email": "user27@example.com",
+    "phone": "01027580027",
+    "orders": 29,
+    "spent": 744662,
+    "status": "inactive"
+  },
+  {
+    "id": 28,
+    "name": "조민수",
+    "email": "user28@example.com",
+    "phone": "01067660028",
+    "orders": 7,
+    "spent": 356021,
+    "status": "inactive"
+  },
+  {
+    "id": 29,
+    "name": "강예린",
+    "email": "user29@example.com",
+    "phone": "01084840029",
+    "orders": 28,
+    "spent": 901741,
+    "status": "inactive"
+  },
+  {
+    "id": 30,
+    "name": "정수빈",
+    "email": "user30@example.com",
+    "phone": "01015810030",
+    "orders": 25,
+    "spent": 893961,
+    "status": "inactive"
+  },
+  {
+    "id": 31,
+    "name": "조하늘",
+    "email": "user31@example.com",
+    "phone": "01079600031",
+    "orders": 13,
+    "spent": 955094,
+    "status": "active"
+  },
+  {
+    "id": 32,
+    "name": "강현우",
+    "email": "user32@example.com",
+    "phone": "01076790032",
+    "orders": 22,
+    "spent": 515417,
+    "status": "inactive"
+  },
+  {
+    "id": 33,
+    "name": "이수빈",
+    "email": "user33@example.com",
+    "phone": "01047360033",
+    "orders": 5,
+    "spent": 930332,
+    "status": "inactive"
+  },
+  {
+    "id": 34,
+    "name": "이도윤",
+    "email": "user34@example.com",
+    "phone": "01010710034",
+    "orders": 6,
+    "spent": 545388,
+    "status": "inactive"
+  },
+  {
+    "id": 35,
+    "name": "최현우",
+    "email": "user35@example.com",
+    "phone": "01047720035",
+    "orders": 26,
+    "spent": 930626,
+    "status": "inactive"
+  },
+  {
+    "id": 36,
+    "name": "장수빈",
+    "email": "user36@example.com",
+    "phone": "01082080036",
+    "orders": 30,
+    "spent": 812726,
+    "status": "inactive"
+  },
+  {
+    "id": 37,
+    "name": "이현우",
+    "email": "user37@example.com",
+    "phone": "01039820037",
+    "orders": 21,
+    "spent": 792402,
+    "status": "inactive"
+  },
+  {
+    "id": 38,
+    "name": "장지훈",
+    "email": "user38@example.com",
+    "phone": "01063750038",
+    "orders": 22,
+    "spent": 522574,
+    "status": "inactive"
+  },
+  {
+    "id": 39,
+    "name": "윤지훈",
+    "email": "user39@example.com",
+    "phone": "01087730039",
+    "orders": 2,
+    "spent": 860832,
+    "status": "inactive"
+  },
+  {
+    "id": 40,
+    "name": "임서연",
+    "email": "user40@example.com",
+    "phone": "01070430040",
+    "orders": 5,
+    "spent": 737007,
+    "status": "inactive"
+  },
+  {
+    "id": 41,
+    "name": "조예린",
+    "email": "user41@example.com",
+    "phone": "01068680041",
+    "orders": 26,
+    "spent": 476875,
+    "status": "active"
+  },
+  {
+    "id": 42,
+    "name": "최도윤",
+    "email": "user42@example.com",
+    "phone": "01078900042",
+    "orders": 4,
+    "spent": 81171,
+    "status": "active"
+  },
+  {
+    "id": 43,
+    "name": "이수빈",
+    "email": "user43@example.com",
+    "phone": "01063020043",
+    "orders": 27,
+    "spent": 398959,
+    "status": "inactive"
+  },
+  {
+    "id": 44,
+    "name": "정지훈",
+    "email": "user44@example.com",
+    "phone": "01095630044",
+    "orders": 11,
+    "spent": 271147,
+    "status": "active"
+  },
+  {
+    "id": 45,
+    "name": "박민수",
+    "email": "user45@example.com",
+    "phone": "01053460045",
+    "orders": 21,
+    "spent": 43929,
+    "status": "inactive"
+  },
+  {
+    "id": 46,
+    "name": "장하늘",
+    "email": "user46@example.com",
+    "phone": "01019250046",
+    "orders": 15,
+    "spent": 853825,
+    "status": "inactive"
+  },
+  {
+    "id": 47,
+    "name": "김지훈",
+    "email": "user47@example.com",
+    "phone": "01044550047",
+    "orders": 25,
+    "spent": 493847,
+    "status": "inactive"
+  },
+  {
+    "id": 48,
+    "name": "최유진",
+    "email": "user48@example.com",
+    "phone": "01063230048",
+    "orders": 29,
+    "spent": 212789,
+    "status": "inactive"
+  },
+  {
+    "id": 49,
+    "name": "임예린",
+    "email": "user49@example.com",
+    "phone": "01076100049",
+    "orders": 17,
+    "spent": 661791,
+    "status": "inactive"
+  },
+  {
+    "id": 50,
+    "name": "장예린",
+    "email": "user50@example.com",
+    "phone": "01014290050",
+    "orders": 8,
+    "spent": 826993,
+    "status": "inactive"
+  },
+  {
+    "id": 51,
+    "name": "임민수",
+    "email": "user51@example.com",
+    "phone": "01033620051",
+    "orders": 5,
+    "spent": 146323,
+    "status": "inactive"
+  },
+  {
+    "id": 52,
+    "name": "장서연",
+    "email": "user52@example.com",
+    "phone": "01055310052",
+    "orders": 16,
+    "spent": 484699,
+    "status": "inactive"
+  },
+  {
+    "id": 53,
+    "name": "조현우",
+    "email": "user53@example.com",
+    "phone": "01062000053",
+    "orders": 9,
+    "spent": 450160,
+    "status": "active"
+  },
+  {
+    "id": 54,
+    "name": "조수빈",
+    "email": "user54@example.com",
+    "phone": "01035120054",
+    "orders": 15,
+    "spent": 190560,
+    "status": "inactive"
+  },
+  {
+    "id": 55,
+    "name": "조지훈",
+    "email": "user55@example.com",
+    "phone": "01024040055",
+    "orders": 4,
+    "spent": 557261,
+    "status": "inactive"
+  },
+  {
+    "id": 56,
+    "name": "임도윤",
+    "email": "user56@example.com",
+    "phone": "01027640056",
+    "orders": 5,
+    "spent": 582875,
+    "status": "inactive"
+  },
+  {
+    "id": 57,
+    "name": "임서연",
+    "email": "user57@example.com",
+    "phone": "01023000057",
+    "orders": 8,
+    "spent": 641815,
+    "status": "inactive"
+  },
+  {
+    "id": 58,
+    "name": "강도윤",
+    "email": "user58@example.com",
+    "phone": "01086000058",
+    "orders": 19,
+    "spent": 529937,
+    "status": "active"
+  },
+  {
+    "id": 59,
+    "name": "정서연",
+    "email": "user59@example.com",
+    "phone": "01064030059",
+    "orders": 15,
+    "spent": 894839,
+    "status": "active"
+  },
+  {
+    "id": 60,
+    "name": "장민수",
+    "email": "user60@example.com",
+    "phone": "01066430060",
+    "orders": 7,
+    "spent": 576917,
+    "status": "inactive"
+  },
+  {
+    "id": 61,
+    "name": "정수빈",
+    "email": "user61@example.com",
+    "phone": "01046910061",
+    "orders": 10,
+    "spent": 73952,
+    "status": "inactive"
+  },
+  {
+    "id": 62,
+    "name": "이지훈",
+    "email": "user62@example.com",
+    "phone": "01078640062",
+    "orders": 3,
+    "spent": 597796,
+    "status": "inactive"
+  },
+  {
+    "id": 63,
+    "name": "임서연",
+    "email": "user63@example.com",
+    "phone": "01053360063",
+    "orders": 26,
+    "spent": 591913,
+    "status": "active"
+  },
+  {
+    "id": 64,
+    "name": "박예린",
+    "email": "user64@example.com",
+    "phone": "01068730064",
+    "orders": 17,
+    "spent": 400090,
+    "status": "inactive"
+  },
+  {
+    "id": 65,
+    "name": "장현우",
+    "email": "user65@example.com",
+    "phone": "01017150065",
+    "orders": 28,
+    "spent": 415756,
+    "status": "active"
+  },
+  {
+    "id": 66,
+    "name": "박하늘",
+    "email": "user66@example.com",
+    "phone": "01071150066",
+    "orders": 9,
+    "spent": 246308,
+    "status": "active"
+  },
+  {
+    "id": 67,
+    "name": "조도윤",
+    "email": "user67@example.com",
+    "phone": "01019950067",
+    "orders": 15,
+    "spent": 676928,
+    "status": "active"
+  },
+  {
+    "id": 68,
+    "name": "조도윤",
+    "email": "user68@example.com",
+    "phone": "01091740068",
+    "orders": 21,
+    "spent": 129800,
+    "status": "inactive"
+  },
+  {
+    "id": 69,
+    "name": "강예린",
+    "email": "user69@example.com",
+    "phone": "01086100069",
+    "orders": 29,
+    "spent": 937980,
+    "status": "inactive"
+  },
+  {
+    "id": 70,
+    "name": "최하늘",
+    "email": "user70@example.com",
+    "phone": "01034580070",
+    "orders": 30,
+    "spent": 330460,
+    "status": "active"
+  }
+]

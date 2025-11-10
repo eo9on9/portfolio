@@ -1,16 +1,7 @@
 import { Customer } from '@entities/customer/model/customer'
 import { KindOfCustomerStatus } from '@entities/customer/model/customerStatus'
 import { request } from '@shared/api/request'
-
-export interface CustomerDTO {
-  id: number
-  name: string
-  email: string
-  phone: string
-  orders: number
-  spent: number
-  status: string
-}
+import { CustomerDTO, fromCustomerDTO } from './dto/customer'
 
 export type GetCustomersResDTO = {
   customers: CustomerDTO[]
@@ -20,18 +11,6 @@ export type GetCustomersResDTO = {
 export type GetCustomersRes = {
   customers: Customer[]
   totalPages: number
-}
-
-const fromCustomerDTO = (dto: CustomerDTO): Customer => {
-  return {
-    id: dto.id,
-    name: dto.name,
-    email: dto.email,
-    phone: dto.phone,
-    orders: dto.orders,
-    spent: dto.spent,
-    status: dto.status as KindOfCustomerStatus,
-  }
 }
 
 const fromGetCustomersResDTO = (dto: GetCustomersResDTO): GetCustomersRes => {

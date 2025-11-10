@@ -1,5 +1,6 @@
 import { cn } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
+import { LoaderCircle } from 'lucide-react'
 import { PropsWithChildren } from 'react'
 
 interface ButtonProps {
@@ -8,6 +9,7 @@ interface ButtonProps {
   onClick?: () => void
   className?: string
   disabled?: boolean
+  isLoading?: boolean
 }
 
 export const Button = ({
@@ -17,14 +19,15 @@ export const Button = ({
   children,
   onClick,
   disabled,
+  isLoading,
 }: PropsWithChildren<ButtonProps>) => {
   return (
     <button
       className={cn(buttonVariants({ variant, size, disabled }), className)}
       onClick={onClick}
-      disabled={disabled}
+      disabled={disabled || isLoading}
     >
-      {children}
+      {isLoading ? <LoaderCircle className="w-4 h-4 animate-spin" /> : children}
     </button>
   )
 }

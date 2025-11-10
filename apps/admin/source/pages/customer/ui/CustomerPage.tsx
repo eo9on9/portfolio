@@ -18,7 +18,7 @@ export const CustomerPage = () => {
   const { urlParams, setUrlParams } = useCustomerFilterUrlParams()
 
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ['customers', urlParams],
+    queryKey: ['customers', JSON.stringify(urlParams)],
     queryFn: () =>
       getCustomers({
         name: emptyToUndefined(urlParams.name),
