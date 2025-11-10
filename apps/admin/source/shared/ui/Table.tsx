@@ -8,7 +8,8 @@ interface IDType {
 }
 
 export interface TableColumn<T extends IDType> {
-  header: string
+  header?: string
+  headerRender?: () => ReactNode
   accessorKey?: keyof T
   align?: 'left' | 'center' | 'right'
   render?: (item: T) => ReactNode
@@ -41,7 +42,7 @@ export const Table = <T extends IDType>({
                     'h-12 font-medium',
                   )}
                 >
-                  {column.header}
+                  {column.headerRender ? column.headerRender() : column.header}
                 </th>
               ))}
             </tr>

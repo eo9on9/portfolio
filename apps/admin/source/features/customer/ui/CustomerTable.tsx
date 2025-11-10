@@ -1,8 +1,10 @@
 import { Customer } from '@entities/customer/model/customer'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { Table, TableColumn } from '@shared/ui/Table'
 import { Edit, Trash2 } from 'lucide-react'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
+import { RemoveCustomerModal } from './RemoveCustomerModal'
 
 interface CustomerTableProps {
   data: Customer[]
@@ -10,6 +12,12 @@ interface CustomerTableProps {
 }
 
 export const CustomerTable = ({ data, isLoading }: CustomerTableProps) => {
+  const [isOpenRemoveCustomerModal, setIsOpenRemoveCustomerModal] =
+    useState(false)
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer | null>(
+    null,
+  )
+
   const tableColumns: TableColumn<Customer>[] = useMemo(
     () => [
       {
@@ -42,14 +50,22 @@ export const CustomerTable = ({ data, isLoading }: CustomerTableProps) => {
         accessorKey: 'status',
       },
       {
-        header: 'Actions',
+        // header: 'Actions',
+        headerRender: () => <Beacon>Actions</Beacon>,
         align: 'center',
-        render: () => (
+        render: row => (
           <div className="flex items-center justify-center gap-1">
             <Button variant="ghost" size="md">
               <Edit className="w-4 h-4 text-gray-800" />
             </Button>
-            <Button variant="ghost" size="md">
+            <Button
+              variant="ghost"
+              size="md"
+              onClick={() => {
+                setSelectedCustomer(row)
+                setIsOpenRemoveCustomerModal(true)
+              }}
+            >
               <Trash2 className="w-4 h-4 text-red-600" />
             </Button>
           </div>
@@ -58,5 +74,14 @@ export const CustomerTable = ({ data, isLoading }: CustomerTableProps) => {
     ],
     [],
   )
-  return <Table data={data} columns={tableColumns} isLoading={isLoading} />
+  return (
+    <>
+      <Table data={data} columns={tableColumns} isLoading={isLoading} />
+      <RemoveCustomerModal
+        isOpen={isOpenRemoveCustomerModal}
+        onClose={() => setIsOpenRemoveCustomerModal(false)}
+        customer={selectedCustomer}
+      />
+    </>
+  )
 }
