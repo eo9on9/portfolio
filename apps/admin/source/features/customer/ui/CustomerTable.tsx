@@ -9,7 +9,7 @@ import { UpdateCustomerModal } from './UpdateCustomerModal'
 
 interface CustomerTableProps {
   data: Customer[]
-  isLoading: boolean
+  isLoading?: boolean
 }
 
 export const CustomerTable = ({ data, isLoading }: CustomerTableProps) => {

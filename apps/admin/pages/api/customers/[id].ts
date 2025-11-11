@@ -7,8 +7,8 @@ const dataFile = path.join(
   process.cwd(),
   'pages',
   'api',
-  'customers',
-  'data.json',
+  '_data',
+  'customers.json',
 )
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {

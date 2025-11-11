@@ -1,3 +1,4 @@
+import { tokenStorage } from '@shared/store/tokenStorage'
 import axios, { type AxiosRequestConfig, type Method } from 'axios'
 
 interface BaseResponse<T> {
@@ -15,6 +16,16 @@ const axiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: { 'Content-Type': 'application/json' },
   timeout: 10000,
+})
+
+axiosInstance.interceptors.request.use(config => {
+  const token = tokenStorage.getToken()
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+
+  return config
 })
 
 const sendRequest = async <T>(config: AxiosRequestConfig): Promise<T> => {
