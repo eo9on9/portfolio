@@ -19,7 +19,7 @@ export const Button = ({
   children,
   onClick,
   disabled,
-  isLoading,
+  isLoading = false,
 }: PropsWithChildren<ButtonProps>) => {
   return (
     <button
@@ -27,13 +27,16 @@ export const Button = ({
       onClick={onClick}
       disabled={disabled || isLoading}
     >
-      {isLoading ? <LoaderCircle className="w-4 h-4 animate-spin" /> : children}
+      <span className={textWrapperVariants({ isLoading })}>{children}</span>
+      {isLoading && (
+        <LoaderCircle className="absolute inset-0 m-auto size-4 animate-spin" />
+      )}
     </button>
   )
 }
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 font-medium text-sm rounded-sm cursor-pointer transition-bg duration-200 ease-out',
+  'relative inline-block font-medium text-sm rounded-sm cursor-pointer transition-bg duration-200 ease-out',
   {
     variants: {
       variant: {
@@ -52,3 +55,12 @@ const buttonVariants = cva(
     },
   },
 )
+
+const textWrapperVariants = cva('flex items-center justify-center gap-2', {
+  variants: {
+    isLoading: {
+      true: 'opacity-0',
+      false: 'opacity-100',
+    },
+  },
+})

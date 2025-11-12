@@ -2,9 +2,17 @@
   {
     "id": "u1",
     "email": "admin@example.com",
-    "password": "admin123",
+    "password": "admin12",
     "name": "홍길동",
     "phone": "01012345678",
-    "role": "admin"
+    "role": "admin",
+    "notifications": {
+      "newOrder": true,
+      "lowStock": false,
+      "customerInquiry": false,
+      "deliveryStatusChange": true,
+      "weeklyReport": true
+    },
+    "lastPasswordChangedAt": 1762931854655
   }
 ]

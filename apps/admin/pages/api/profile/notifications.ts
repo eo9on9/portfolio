@@ -2,7 +2,14 @@ import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
 import users from '../_data/users.json'
-import { User } from './types'
+
+// 알림 설정 타입
+type NotificationKeys =
+  | 'newOrder'
+  | 'lowStock'
+  | 'customerInquiry'
+  | 'deliveryStatusChange'
+  | 'weeklyReport'
 
 const dataFile = path.join(process.cwd(), 'pages', 'api', '_data', 'users.json')
 
@@ -17,11 +24,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  // 2️⃣ 토큰 추출
+  // 2️⃣ 토큰 파싱
   const token = authHeader.replace('Bearer ', '')
   const [, userId, issuedAt] = token.split('_')
 
-  // 3️⃣ 토큰 유효성 검사
   if (!userId || !issuedAt) {
     return res.status(400).json({
       code: 'BAD_REQUEST',
@@ -30,7 +36,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  // 4️⃣ 만료 체크
+  // 3️⃣ 토큰 만료 시뮬레이션 (1시간)
   const ONE_HOUR = 60 * 60 * 1000
   const isExpired = Date.now() - Number(issuedAt) > ONE_HOUR
   if (isExpired) {
@@ -41,7 +47,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  // 5️⃣ 유저 찾기
+  // 4️⃣ 유저 찾기
   const userIndex = users.findIndex(u => u.id === userId)
   if (userIndex === -1) {
     return res.status(401).json({
@@ -54,62 +60,70 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const user = users[userIndex]
 
   // ==================================================
-  // GET: 프로필 조회
+  // GET: 알림 설정 조회
   // ==================================================
   if (req.method === 'GET') {
     return res.status(200).json({
       code: 'SUCCESS',
-      message: 'User found',
-      data: {
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        role: user.role,
-      },
+      message: 'Notification settings fetched successfully',
+      data: user.notifications,
     })
   }
 
   // ==================================================
-  // PUT: 프로필 업데이트
+  // PUT: 알림 설정 변경
   // ==================================================
   if (req.method === 'PUT') {
-    const { name, phone, role } = req.body as Partial<User>
+    const updates = req.body as Partial<Record<NotificationKeys, boolean>>
 
-    if (!name && !phone && !role) {
+    // 요청 바디 유효성 검사
+    if (!updates || Object.keys(updates).length === 0) {
       return res.status(400).json({
         code: 'BAD_REQUEST',
-        message: 'No fields provided to update',
+        message: 'Request body must include at least one notification key',
         data: null,
       })
     }
 
-    // 기존 유저 정보 갱신
-    const updatedUser = {
-      ...user,
-      name: name ?? user.name,
-      phone: phone ?? user.phone,
-      role: role ?? user.role,
+    // 유효한 키만 필터링
+    const validKeys = Object.keys(user.notifications) as NotificationKeys[]
+    const invalidKeys = Object.keys(updates).filter(
+      key => !validKeys.includes(key as NotificationKeys),
+    )
+
+    if (invalidKeys.length > 0) {
+      return res.status(400).json({
+        code: 'BAD_REQUEST',
+        message: `Unknown notification keys: ${invalidKeys.join(', ')}`,
+        data: null,
+      })
     }
 
-    // 배열 업데이트
-    users[userIndex] = updatedUser
+    // 업데이트 적용
+    for (const [key, value] of Object.entries(updates)) {
+      if (typeof value === 'boolean') {
+        user.notifications[key as NotificationKeys] = value
+      }
+    }
 
-    // 실제 파일 덮어쓰기
+    users[userIndex] = user
+
+    // 파일 저장
     try {
       fs.writeFileSync(dataFile, JSON.stringify(users, null, 2), 'utf-8')
     } catch (err) {
       console.error('❌ Failed to write users.json:', err)
       return res.status(500).json({
         code: 'INTERNAL_ERROR',
-        message: 'Failed to update user data file',
+        message: 'Failed to update notification settings file',
         data: null,
       })
     }
 
     return res.status(200).json({
       code: 'SUCCESS',
-      message: 'Profile updated successfully',
-      data: updatedUser,
+      message: 'Notification settings updated successfully',
+      data: user.notifications,
     })
   }
 

@@ -5,6 +5,14 @@
     "password": "admin123",
     "name": "홍길동",
     "phone": "01012345678",
-    "role": "admin"
+    "role": "admin",
+    "notifications": {
+      "newOrder": true,
+      "lowStock": false,
+      "customerInquiry": false,
+      "deliveryStatusChange": true,
+      "weeklyReport": true
+    },
+    "lastPasswordChangedAt": 1731391442651
   }
 ]

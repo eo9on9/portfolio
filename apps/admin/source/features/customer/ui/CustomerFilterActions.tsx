@@ -39,6 +39,7 @@ export const CustomerFilterActions = ({
             setValue('page', 1)
             onFilter?.()
           }}
+          // isLoading
         >
           <Search className="w-4 h-4" />
           검색

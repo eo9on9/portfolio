@@ -24,3 +24,8 @@ export const VALIDATION_PHONE = validationFactory(
   /^01[0-9]{8,9}$/,
   '휴대폰 번호 형식을 하이픈(-) 없이 입력해주세요.',
 )
+
+export const VALIDATION_PASSWORD = validationFactory(
+  /^.{6,}$/,
+  '6자 이상으로 입력해주세요.',
+)
