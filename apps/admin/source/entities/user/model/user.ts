@@ -1,8 +1,8 @@
 import { KindOfUserRole } from '@entities/user/model/userRole'
 
 export interface User {
-  id: string
-  email: string
   name: string
+  email: string
+  phone: string
   role: KindOfUserRole
 }

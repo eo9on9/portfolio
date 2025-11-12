@@ -1,8 +1,6 @@
+import { UserProfile } from '@features/user/ui/UserProfile'
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
-import { FormField } from '@shared/ui/FormField'
-import { Input } from '@shared/ui/Input'
-import { Modal } from '@shared/ui/Modal'
 import { cva } from 'class-variance-authority'
 import {
   FileText,
@@ -11,7 +9,6 @@ import {
   Pin,
   Settings,
   ShoppingCart,
-  User,
   Users,
 } from 'lucide-react'
 import Link from 'next/link'
@@ -26,7 +23,6 @@ interface SidebarProps {
 export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
   const router = useRouter()
   const [isHover, setIsHover] = useState(false)
-  const [isModalOpen, setIsModalOpen] = useState(false)
   const isOpen = isPinned || isHover
 
   const currentPath = router.pathname
@@ -129,57 +125,15 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
           </li>
         </ul>
       </div>
-      <div className="flex flex-col gap-2 items-start">
-        <div className="flex items-center gap-2 w-full">
-          <div>
-            <button onClick={() => setIsModalOpen(true)}>
-              <Beacon>
-                <div className="flex items-center justify-center w-9 h-9 bg-gray-200 rounded-full">
-                  <User className="w-4 h-4 text-gray-800" />
-                </div>
-              </Beacon>
-            </button>
-          </div>
-          <div className={avatarTextCn({ isOpen })}>
-            <p className="text-sm text-gray-800 font-medium whitespace-nowrap">
-              John Doe
-            </p>
-            <p className="text-xs text-gray-500 whitespace-nowrap text-ellipsis overflow-hidden">
-              john.doe@example.com
-            </p>
-          </div>
-        </div>
-      </div>
-      <Modal
-        title="사용자 정보"
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      >
-        <div className="flex flex-col gap-4 py-4">
-          <div className="grid grid-cols-2 gap-2">
-            <FormField label="이름">
-              <Input value="김관리" readOnly />
-            </FormField>
-            <FormField label="이메일">
-              <Input value="admin@example.com" readOnly />
-            </FormField>
-            <FormField label="전화번호">
-              <Input value="010-1234-5678" readOnly />
-            </FormField>
-            <FormField label="권한">
-              <Input value="관리자" readOnly />
-            </FormField>
-          </div>
-
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={() => setIsModalOpen(false)}
-          >
-            로그아웃
-          </Button>
-        </div>
-      </Modal>
+      <UserProfile
+        user={{
+          name: 'John Doe',
+          email: 'john.doe@example.com',
+          phone: '01012345678',
+          role: 'admin',
+        }}
+        isFolded={!isOpen}
+      />
     </div>
   )
 }
@@ -230,18 +184,6 @@ const linkIconCn = cva('flex items-center justify-center w-9 h-8')
 
 const linkTextCn = cva(
   'overflow-hidden flex-1 block text-sm whitespace-nowrap transition-all duration-200 ease-out',
-  {
-    variants: {
-      isOpen: {
-        true: 'w-full opacity-100',
-        false: 'w-0 opacity-0',
-      },
-    },
-  },
-)
-
-const avatarTextCn = cva(
-  'flex-1 min-w-0 transition-all duration-200 ease-out',
   {
     variants: {
       isOpen: {

@@ -38,12 +38,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     success: true,
     message: 'User found',
     data: {
-      user: {
-        id: user.id,
-        email: user.email,
-        name: user.name,
-        role: user.role,
-      },
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
+      role: user.role,
     },
   })
 }

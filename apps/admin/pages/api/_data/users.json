@@ -4,6 +4,7 @@
     "email": "admin@example.com",
     "password": "admin123",
     "name": "홍길동",
-    "role": "admin"
+    "role": "admin",
+    "phone": "01012345678"
   }
 ]
