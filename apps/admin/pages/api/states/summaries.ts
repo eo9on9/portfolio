@@ -22,11 +22,15 @@ const data: GetStateSummariesResDTO = {
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
-    return res.status(405).json({ message: 'Method Not Allowed' })
+    return res.status(405).json({
+      code: 'METHOD_NOT_ALLOWED',
+      message: 'Method Not Allowed',
+      data: null,
+    })
   }
 
   res.status(200).json({
-    success: true,
+    code: 'SUCCESS',
     message: '성공',
     data,
   })

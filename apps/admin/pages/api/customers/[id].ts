@@ -16,9 +16,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const targetId = Number(id)
 
   if (!id || isNaN(targetId)) {
-    return res
-      .status(400)
-      .json({ success: false, message: '유효한 고객 ID가 필요합니다.' })
+    return res.status(400).json({
+      code: 'BAD_REQUEST',
+      message: '유효한 고객 ID가 필요합니다.',
+      data: null,
+    })
   }
 
   const fileData = fs.readFileSync(dataFile, 'utf-8')
@@ -29,9 +31,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
     const customer = customers.find(c => c.id === targetId)
     if (!customer) {
-      return res
-        .status(404)
-        .json({ success: false, message: '해당 고객을 찾을 수 없습니다.' })
+      return res.status(404).json({
+        code: 'NOT_FOUND',
+        message: '해당 고객을 찾을 수 없습니다.',
+        data: null,
+      })
     }
 
     return res.status(200).json({
@@ -46,9 +50,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const { name, email, phone, status } = req.body
 
     if (index === -1) {
-      return res
-        .status(404)
-        .json({ success: false, message: '해당 고객을 찾을 수 없습니다.' })
+      return res.status(404).json({
+        code: 'NOT_FOUND',
+        message: '해당 고객을 찾을 수 없습니다.',
+        data: null,
+      })
     }
 
     const updatedCustomer = {
@@ -63,7 +69,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     fs.writeFileSync(dataFile, JSON.stringify(customers, null, 2))
 
     return res.status(200).json({
-      success: true,
+      code: 'SUCCESS',
       message: '고객 정보가 수정되었습니다.',
       data: updatedCustomer,
     })
@@ -72,9 +78,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // ✅ 고객 삭제 (DELETE)
   if (req.method === 'DELETE') {
     if (index === -1) {
-      return res
-        .status(404)
-        .json({ success: false, message: '해당 고객을 찾을 수 없습니다.' })
+      return res.status(404).json({
+        code: 'NOT_FOUND',
+        message: '해당 고객을 찾을 수 없습니다.',
+        data: null,
+      })
     }
 
     const deleted = customers[index]
@@ -82,7 +90,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     fs.writeFileSync(dataFile, JSON.stringify(updated, null, 2))
 
     return res.status(200).json({
-      success: true,
+      code: 'SUCCESS',
       message: '고객이 삭제되었습니다.',
       data: deleted,
     })
@@ -90,7 +98,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   res.setHeader('Allow', ['GET', 'PUT', 'DELETE'])
   return res.status(405).json({
-    success: false,
+    code: 'METHOD_NOT_ALLOWED',
     message: `Method ${req.method} Not Allowed`,
+    data: null,
   })
 }

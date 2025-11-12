@@ -43,7 +43,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const paged = filtered.slice(start, end)
 
     return res.status(200).json({
-      success: true,
+      code: 'SUCCESS',
       message: '고객 목록 조회 성공',
       data: {
         totalPages: Math.ceil(filtered.length / PAGE_SIZE),
@@ -57,9 +57,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const { name, email, phone } = req.body
 
     if (!name || !email || !phone) {
-      return res
-        .status(400)
-        .json({ success: false, message: 'name, email, phone are required' })
+      return res.status(400).json({
+        code: 'BAD_REQUEST',
+        message: 'name, email, phone are required',
+        data: null,
+      })
     }
 
     const fileData = fs.readFileSync(dataFile, 'utf-8')
@@ -82,7 +84,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     fs.writeFileSync(dataFile, JSON.stringify(customers, null, 2))
 
     return res.status(201).json({
-      success: true,
+      code: 'SUCCESS',
       message: '신규 고객이 등록되었습니다.',
       data: newCustomer,
     })
@@ -90,7 +92,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   res.setHeader('Allow', ['GET', 'POST'])
   return res.status(405).json({
-    success: false,
+    code: 'METHOD_NOT_ALLOWED',
     message: `Method ${req.method} Not Allowed`,
+    data: null,
   })
 }

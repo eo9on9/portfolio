@@ -4,11 +4,11 @@ import { FallbackProps } from 'react-error-boundary'
 
 export const AppErrorFallback = ({ error }: FallbackProps) => {
   useEffect(() => {
-    if (error.response?.status === 401) {
+    if (error.code === 'UNAUTHORIZED') {
       accessTokenStorage.clear()
       window.location.href = '/login'
     }
-  }, [error.response?.status])
+  }, [error.code])
 
   return null
 }

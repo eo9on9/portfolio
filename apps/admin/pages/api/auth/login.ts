@@ -6,7 +6,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { email, password } = req.body
   const user = users.find(u => u.email === email && u.password === password)
 
-  if (!user) return res.status(401).json({ message: 'Invalid credentials' })
+  if (!user)
+    return res
+      .status(401)
+      .json({ code: 'NOT_FOUND', message: 'Invalid credentials', data: null })
 
   const now = new Date().getTime()
 
@@ -24,7 +27,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   res.setHeader('Set-Cookie', cookie)
 
   res.status(200).json({
-    success: true,
+    code: 'SUCCESS',
     message: 'Login successful',
     data: {
       accessToken,
