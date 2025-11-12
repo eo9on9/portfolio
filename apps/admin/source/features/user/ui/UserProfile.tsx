@@ -16,6 +16,8 @@ export const UserProfile = ({ isFolded = false }: UserProfileProps) => {
   const { data: user } = useQuery({
     queryKey: ['profile'],
     queryFn: getProfile,
+    throwOnError: true,
+    retry: false,
   })
 
   return (

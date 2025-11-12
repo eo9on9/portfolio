@@ -1,11 +1,7 @@
 import { accessTokenStorage } from '@shared/store/accessTokenStorage'
 import axios, { type AxiosRequestConfig, type Method } from 'axios'
-
-interface BaseResponse<T> {
-  success: boolean
-  message: string
-  data: T
-}
+import { ApiError } from './ApiError'
+import { BaseResponse } from './types'
 
 const BASE_URL =
   typeof window === 'undefined'
@@ -43,10 +39,7 @@ const sendRequest = async <T>(config: AxiosRequestConfig): Promise<T> => {
     return response.data.data
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      throw new Error(
-        error.response?.data.message ||
-          `HTTP ${error.response?.status}: ${error.message}`,
-      )
+      throw ApiError.from(error)
     }
 
     throw error
