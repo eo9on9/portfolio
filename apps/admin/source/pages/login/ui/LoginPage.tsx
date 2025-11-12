@@ -1,5 +1,5 @@
 import { login, LoginParams } from '@features/auth/api/login'
-import { tokenStorage } from '@shared/store/tokenStorage'
+import { accessTokenStorage } from '@shared/store/accessTokenStorage'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
@@ -25,7 +25,7 @@ export const LoginPage = () => {
     try {
       const response = await mutateAsync(data)
 
-      tokenStorage.setToken(response.token)
+      accessTokenStorage.set(response.accessToken)
 
       toast.success('로그인에 성공했습니다.')
 

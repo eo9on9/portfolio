@@ -8,23 +8,23 @@ export interface LoginParams {
 }
 
 interface LoginResDTO {
-  token: string
+  accessToken: string
   user: {
-    id: string
-    email: string
     name: string
+    email: string
+    phone: string
     role: string
   }
 }
 
 export interface LoginRes {
-  token: string
+  accessToken: string
   user: User
 }
 
 const fromLoginResDTO = (dto: LoginResDTO): LoginRes => {
   return {
-    token: dto.token,
+    accessToken: dto.accessToken,
     user: fromUserDTO(dto.user),
   }
 }

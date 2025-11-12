@@ -125,15 +125,7 @@ export const Sidebar = ({ isPinned, setIsPinned }: SidebarProps) => {
           </li>
         </ul>
       </div>
-      <UserProfile
-        user={{
-          name: 'John Doe',
-          email: 'john.doe@example.com',
-          phone: '01012345678',
-          role: 'admin',
-        }}
-        isFolded={!isOpen}
-      />
+      <UserProfile isFolded={!isOpen} />
     </div>
   )
 }

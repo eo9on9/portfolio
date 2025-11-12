@@ -11,7 +11,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   // 2️⃣ 토큰 추출
   const token = authHeader.replace('Bearer ', '')
-  const [userId, issuedAt] = token.split('-')
+  const [, userId, issuedAt] = token.split('_')
 
   // 3️⃣ 유효성 검사 (토큰 구조 확인)
   if (!userId || !issuedAt) {

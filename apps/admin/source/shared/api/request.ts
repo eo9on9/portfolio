@@ -1,4 +1,4 @@
-import { tokenStorage } from '@shared/store/tokenStorage'
+import { accessTokenStorage } from '@shared/store/accessTokenStorage'
 import axios, { type AxiosRequestConfig, type Method } from 'axios'
 
 interface BaseResponse<T> {
@@ -19,10 +19,12 @@ const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use(config => {
-  const token = tokenStorage.getToken()
+  const accessToken = accessTokenStorage.get()
 
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`
+  console.log('accessToken', accessToken)
+
+  if (accessToken) {
+    config.headers.Authorization = `Bearer ${accessToken}`
   }
 
   return config

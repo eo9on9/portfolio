@@ -1,9 +1,10 @@
 [
   {
-    "id": "u_1",
+    "id": "u1",
     "email": "admin@example.com",
     "password": "admin123",
     "name": "홍길동",
+    "phone": "01012345678",
     "role": "admin"
   }
 ]
