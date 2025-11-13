@@ -47,7 +47,7 @@ export const CustomerTable = ({ data, isLoading }: CustomerTableProps) => {
       {
         header: 'Spent',
         accessorKey: 'spent',
-        // render: row => `₩${row.spent.toLocaleString()}`,
+        render: row => `₩${row.spent.toLocaleString()}`,
       },
       {
         header: 'Status',

@@ -1,7 +1,4 @@
-import {
-  CUSTOMER_STATUS,
-  CUSTOMER_STATUS_LABELS,
-} from '@entities/customer/model/customerStatus'
+import { CUSTOMER_STATUS_LABELS } from '@entities/customer/model/customerStatus'
 import { CustomerFilterForm } from '@features/customer/model/useCustomerFilterForm'
 import {
   VALIDATION_EMAIL,
@@ -10,18 +7,15 @@ import {
 } from '@shared/constant/validation'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
-import { Select, SelectOption } from '@shared/ui/Select'
+import { Select } from '@shared/ui/Select'
 import { withAll } from '@shared/util/form'
 import { Controller, useFormContext } from 'react-hook-form'
 
 const STATUS_OPTIONS = withAll(
-  CUSTOMER_STATUS.map(
-    status =>
-      ({
-        label: CUSTOMER_STATUS_LABELS[status],
-        value: status,
-      }) as SelectOption,
-  ),
+  Object.entries(CUSTOMER_STATUS_LABELS).map(([key, value]) => ({
+    label: value,
+    value: key,
+  })),
 )
 
 export const CustomerFilterForms = () => {

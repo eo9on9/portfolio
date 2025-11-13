@@ -47,7 +47,14 @@ export const ProfileSettingContent = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UpdateProfileForms>()
+  } = useForm<UpdateProfileForms>({
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      role: '' as KindOfUserRole,
+    },
+  })
 
   const { mutate, isPending } = useMutation({
     mutationFn: updateProfile,

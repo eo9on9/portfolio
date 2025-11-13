@@ -2,7 +2,7 @@
   {
     "id": "u1",
     "email": "admin@example.com",
-    "password": "admin12",
+    "password": "admin123",
     "name": "홍길동",
     "phone": "01012345678",
     "role": "admin",
@@ -13,6 +13,6 @@
       "deliveryStatusChange": true,
       "weeklyReport": true
     },
-    "lastPasswordChangedAt": 1762931854655
+    "lastPasswordChangedAt": 1731391442651
   }
 ]

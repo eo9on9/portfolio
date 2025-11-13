@@ -1,20 +1,18 @@
 import {
-  CUSTOMER_FILTER_FORM_DEFAULT_VALUES,
-  CustomerFilterForm,
-} from '@features/customer/model/useCustomerFilterForm'
+  ORDER_FILTER_FORM_DEFAULT_VALUES,
+  OrderFilterForm,
+} from '@features/order/model/useOrderFilterForm'
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FunnelX, Search } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
 
-interface CustomerFilterActionsProps {
+interface OrderFilterActionsProps {
   onFilter?: () => void
 }
 
-export const CustomerFilterActions = ({
-  onFilter,
-}: CustomerFilterActionsProps) => {
-  const { reset, setValue } = useFormContext<CustomerFilterForm>()
+export const OrderFilterActions = ({ onFilter }: OrderFilterActionsProps) => {
+  const { reset, setValue } = useFormContext<OrderFilterForm>()
 
   return (
     <div className="flex items-center gap-2 justify-between">
@@ -23,7 +21,7 @@ export const CustomerFilterActions = ({
           variant="ghost"
           size="lg"
           onClick={() => {
-            reset(CUSTOMER_FILTER_FORM_DEFAULT_VALUES)
+            reset(ORDER_FILTER_FORM_DEFAULT_VALUES)
             onFilter?.()
           }}
         >

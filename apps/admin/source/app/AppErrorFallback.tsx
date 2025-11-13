@@ -8,6 +8,11 @@ export const AppErrorFallback = ({ error }: FallbackProps) => {
       accessTokenStorage.clear()
       window.location.href = '/login'
     }
+
+    if (error.code === 'TOKEN_EXPIRED') {
+      accessTokenStorage.clear()
+      window.location.href = '/login'
+    }
   }, [error.code])
 
   return null

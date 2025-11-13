@@ -17,7 +17,7 @@ import { CustomerPageTop } from './CustomerPageTop'
 export const CustomerPage = () => {
   const { urlParams, setUrlParams } = useCustomerFilterUrlParams()
 
-  const { data, isLoading, isFetching } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: ['customers', JSON.stringify(urlParams)],
     queryFn: () =>
       getCustomers({
@@ -30,7 +30,7 @@ export const CustomerPage = () => {
     refetchOnWindowFocus: false,
   })
 
-  const { isStableLoading } = useStableLoading(isLoading || isFetching)
+  const { isStableLoading } = useStableLoading(isFetching)
 
   const form = useCustomerFilterForm()
 

@@ -14,5 +14,6 @@
   "tailwindCSS.classFunctions": ["cva", "cx"],
   "files.associations": {
     "*.css": "tailwindcss"
-  }
+  },
+  "typescript.preferences.importModuleSpecifier": "non-relative"
 }

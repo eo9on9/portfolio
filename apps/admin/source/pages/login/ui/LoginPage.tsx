@@ -49,35 +49,37 @@ export const LoginPage = () => {
             관리자 계정으로 시스템에 접속해주세요
           </p>
         </div>
-        <div className="flex flex-col gap-2">
-          <FormField label="아이디">
-            <Input
-              icon={<Mail className="w-4 h-4 text-gray-500" />}
-              placeholder="admin@example.com"
-              {...register('email', {
-                required: true,
-              })}
-            />
-          </FormField>
-          <FormField label="비밀번호">
-            <Input
-              type="password"
-              icon={<Key className="w-4 h-4 text-gray-500" />}
-              placeholder="••••••"
-              {...register('password', {
-                required: true,
-              })}
-            />
-          </FormField>
-        </div>
-        <Button
-          variant="primary"
-          size="lg"
-          onClick={handleLogin}
-          isLoading={isPending}
-        >
-          로그인
-        </Button>
+        <form className="flex flex-col gap-4" onSubmit={handleLogin}>
+          <div className="flex flex-col gap-2">
+            <FormField label="아이디">
+              <Input
+                icon={<Mail className="w-4 h-4 text-gray-500" />}
+                placeholder="admin@example.com"
+                {...register('email', {
+                  required: true,
+                })}
+              />
+            </FormField>
+            <FormField label="비밀번호">
+              <Input
+                type="password"
+                icon={<Key className="w-4 h-4 text-gray-500" />}
+                placeholder="••••••"
+                {...register('password', {
+                  required: true,
+                })}
+              />
+            </FormField>
+          </div>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={handleLogin}
+            isLoading={isPending}
+          >
+            로그인
+          </Button>
+        </form>
         <div className="flex flex-col items-center justify-center gap-2 bg-gray-100 p-2 rounded-sm">
           <p className="text-sm font-medium text-gray-800">테스트 계정</p>
           <div className="flex flex-col items-center justify-center gap-1">
