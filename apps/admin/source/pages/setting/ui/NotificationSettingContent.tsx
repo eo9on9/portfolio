@@ -1,6 +1,7 @@
 import { getNotifications } from '@entities/user/api/getNotifications'
 import { updateNotifications } from '@entities/user/api/updateNotifications'
 import { Notifications } from '@entities/user/model/notifications'
+import { Beacon } from '@shared/ui/Beacon'
 import { Switch } from '@shared/ui/Switch'
 import { useToast } from '@shared/ui/Toast'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
@@ -63,10 +64,12 @@ export const NotificationSettingContent = () => {
                 새로운 주문이 접수되면 알림을 받습니다.
               </p>
             </div>
-            <Switch
-              value={notis?.newOrder}
-              onChange={value => handleChange('newOrder', value)}
-            />
+            <Beacon className="flex">
+              <Switch
+                value={notis?.newOrder}
+                onChange={value => handleChange('newOrder', value)}
+              />
+            </Beacon>
           </div>
         </li>
         <li className="not-last:pb-4 not-last:mb-4 not-last:border-b border-gray-200">
@@ -77,10 +80,12 @@ export const NotificationSettingContent = () => {
                 재고가 부족하면 알림을 받습니다.
               </p>
             </div>
-            <Switch
-              value={notis?.lowStock}
-              onChange={value => handleChange('lowStock', value)}
-            />
+            <Beacon className="flex">
+              <Switch
+                value={notis?.lowStock}
+                onChange={value => handleChange('lowStock', value)}
+              />
+            </Beacon>
           </div>
         </li>
         <li className="not-last:pb-4 not-last:mb-4 not-last:border-b border-gray-200">
@@ -91,10 +96,12 @@ export const NotificationSettingContent = () => {
                 새로운 고객 문의가 등록되면 알림을 받습니다.
               </p>
             </div>
-            <Switch
-              value={notis?.customerInquiry}
-              onChange={value => handleChange('customerInquiry', value)}
-            />
+            <Beacon className="flex">
+              <Switch
+                value={notis?.customerInquiry}
+                onChange={value => handleChange('customerInquiry', value)}
+              />
+            </Beacon>
           </div>
         </li>
         <li className="not-last:pb-4 not-last:mb-4 not-last:border-b border-gray-200">
@@ -107,10 +114,12 @@ export const NotificationSettingContent = () => {
                 주문 배송 상태가 변경되면 알림을 받습니다.
               </p>
             </div>
-            <Switch
-              value={notis?.deliveryStatusChange}
-              onChange={value => handleChange('deliveryStatusChange', value)}
-            />
+            <Beacon className="flex">
+              <Switch
+                value={notis?.deliveryStatusChange}
+                onChange={value => handleChange('deliveryStatusChange', value)}
+              />
+            </Beacon>
           </div>
         </li>
         <li className="not-last:pb-4 not-last:mb-4 not-last:border-b border-gray-200">
@@ -121,10 +130,12 @@ export const NotificationSettingContent = () => {
                 매주 월요일 주간 리포트를 받습니다.
               </p>
             </div>
-            <Switch
-              value={notis?.weeklyReport}
-              onChange={value => handleChange('weeklyReport', value)}
-            />
+            <Beacon className="flex">
+              <Switch
+                value={notis?.weeklyReport}
+                onChange={value => handleChange('weeklyReport', value)}
+              />
+            </Beacon>
           </div>
         </li>
       </ul>

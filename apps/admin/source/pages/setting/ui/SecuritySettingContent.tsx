@@ -4,6 +4,7 @@ import {
   VALIDATION_PASSWORD,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
@@ -127,14 +128,16 @@ export const SecuritySettingContent = () => {
         </FormField>
       </div>
       <div className="flex items-center justify-end">
-        <Button
-          variant="primary"
-          size="lg"
-          onClick={handleResetPassword}
-          isLoading={isPending}
-        >
-          비밀번호 변경
-        </Button>
+        <Beacon>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={handleResetPassword}
+            isLoading={isPending}
+          >
+            비밀번호 변경
+          </Button>
+        </Beacon>
       </div>
     </div>
   )
