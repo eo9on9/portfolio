@@ -11,6 +11,10 @@ import { Select } from '@shared/ui/Select'
 import { withAll } from '@shared/util/form'
 import { Controller, useFormContext } from 'react-hook-form'
 
+interface CustomerFilterFormsProps {
+  onFilter?: () => void
+}
+
 const STATUS_OPTIONS = withAll(
   Object.entries(CUSTOMER_STATUS_LABELS).map(([key, value]) => ({
     label: value,
@@ -18,7 +22,7 @@ const STATUS_OPTIONS = withAll(
   })),
 )
 
-export const CustomerFilterForms = () => {
+export const CustomerFilterForms = ({ onFilter }: CustomerFilterFormsProps) => {
   const {
     control,
     register,
@@ -26,50 +30,55 @@ export const CustomerFilterForms = () => {
   } = useFormContext<CustomerFilterForm>()
 
   return (
-    <div className="grid grid-cols-2 gap-2">
-      <FormField label="이름" errorMessage={errors.name?.message}>
-        <Input
-          placeholder="고객 이름을 입력하세요"
-          isError={!!errors.name}
-          {...register('name', {
-            pattern: {
-              value: VALIDATION_NAME.pattern,
-              message: VALIDATION_NAME.message,
-            },
-          })}
-        />
-      </FormField>
-      <FormField label="이메일" errorMessage={errors.email?.message}>
-        <Input
-          placeholder="example@email.com"
-          isError={!!errors.email}
-          {...register('email', {
-            pattern: {
-              value: VALIDATION_EMAIL.pattern,
-              message: VALIDATION_EMAIL.message,
-            },
-          })}
-        />
-      </FormField>
-      <FormField label="전화번호" errorMessage={errors.phone?.message}>
-        <Input
-          placeholder="01012345678"
-          isError={!!errors.phone}
-          {...register('phone', {
-            pattern: {
-              value: VALIDATION_PHONE.pattern,
-              message: VALIDATION_PHONE.message,
-            },
-          })}
-        />
-      </FormField>
-      <FormField label="상태">
-        <Controller
-          control={control}
-          name="status"
-          render={({ field }) => <Select options={STATUS_OPTIONS} {...field} />}
-        />
-      </FormField>
-    </div>
+    <form>
+      <div className="grid grid-cols-2 gap-2">
+        <FormField label="이름" errorMessage={errors.name?.message}>
+          <Input
+            placeholder="고객 이름을 입력하세요"
+            isError={!!errors.name}
+            {...register('name', {
+              pattern: {
+                value: VALIDATION_NAME.pattern,
+                message: VALIDATION_NAME.message,
+              },
+            })}
+          />
+        </FormField>
+        <FormField label="이메일" errorMessage={errors.email?.message}>
+          <Input
+            placeholder="example@email.com"
+            isError={!!errors.email}
+            {...register('email', {
+              pattern: {
+                value: VALIDATION_EMAIL.pattern,
+                message: VALIDATION_EMAIL.message,
+              },
+            })}
+          />
+        </FormField>
+        <FormField label="전화번호" errorMessage={errors.phone?.message}>
+          <Input
+            placeholder="01012345678"
+            isError={!!errors.phone}
+            {...register('phone', {
+              pattern: {
+                value: VALIDATION_PHONE.pattern,
+                message: VALIDATION_PHONE.message,
+              },
+            })}
+          />
+        </FormField>
+        <FormField label="상태">
+          <Controller
+            control={control}
+            name="status"
+            render={({ field }) => (
+              <Select options={STATUS_OPTIONS} {...field} />
+            )}
+          />
+        </FormField>
+      </div>
+      <button type="submit" hidden onClick={onFilter} />
+    </form>
   )
 }

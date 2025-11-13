@@ -2,6 +2,7 @@ import { GetCustomersRes } from '@entities/customer/api/getCustomers'
 import { removeCustomer } from '@entities/customer/api/removeCustomer'
 import { Customer } from '@entities/customer/model/customer'
 import { useCustomerFilterUrlParams } from '@features/customer/model/useCustomerFilterUrlParams'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { Modal } from '@shared/ui/Modal'
 import { useToast } from '@shared/ui/Toast'
@@ -61,14 +62,17 @@ export const RemoveCustomerModal = ({
             {customer?.name} 고객을 삭제하시겠습니까?
           </p>
         </div>
-        <Button
-          variant="primary"
-          size="lg"
-          onClick={handleRemoveCustomer}
-          isLoading={isPending}
-        >
-          삭제하기
-        </Button>
+        <Beacon>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={handleRemoveCustomer}
+            isLoading={isPending}
+            className="w-full"
+          >
+            삭제하기
+          </Button>
+        </Beacon>
       </div>
     </Modal>
   )

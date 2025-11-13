@@ -13,6 +13,7 @@ import {
   VALIDATION_PHONE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
@@ -141,15 +142,18 @@ export const UpdateCustomerModal = ({
             </FormField>
           </div>
         </div>
-        <Button
-          variant="primary"
-          size="lg"
-          onClick={handleUpdateCustomer}
-          isLoading={isPending}
-          disabled={!isDirty}
-        >
-          수정하기
-        </Button>
+        <Beacon>
+          <Button
+            variant="primary"
+            size="lg"
+            className="w-full"
+            onClick={handleUpdateCustomer}
+            isLoading={isPending}
+            disabled={!isDirty}
+          >
+            수정하기
+          </Button>
+        </Beacon>
       </div>
     </Modal>
   )
