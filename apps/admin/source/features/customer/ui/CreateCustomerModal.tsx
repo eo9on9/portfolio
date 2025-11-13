@@ -115,7 +115,7 @@ export const CreateCustomerModal = ({
           </FormField>
           <FormField label="휴대폰 번호" errorMessage={errors.phone?.message}>
             <Input
-              placeholder="01012345678"
+              placeholder="010-1234-5678"
               isError={!!errors.phone}
               {...register('phone', {
                 required: VALIDATION_REQUIRED.message,

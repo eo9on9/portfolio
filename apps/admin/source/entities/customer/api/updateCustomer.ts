@@ -1,6 +1,7 @@
 import {
   CustomerDTO,
   fromCustomerDTO,
+  toCustomerDTO,
 } from '@entities/customer/api/dto/customer'
 import { Customer } from '@entities/customer/model/customer'
 import { KindOfCustomerStatus } from '@entities/customer/model/customerStatus'
@@ -25,7 +26,7 @@ export const updateCustomer = async ({
   ...params
 }: UpdateCustomerParams): Promise<Customer> => {
   const response = await request.put<UpdateCustomerResDTO>(`/customers/${id}`, {
-    data: params,
+    data: toCustomerDTO(params),
   })
   return fromUpdateCustomerResDTO(response)
 }

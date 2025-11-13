@@ -1,7 +1,11 @@
+import {
+  CustomerDTO,
+  fromCustomerDTO,
+  toCustomerDTO,
+} from '@entities/customer/api/dto/customer'
 import { Customer } from '@entities/customer/model/customer'
 import { KindOfCustomerStatus } from '@entities/customer/model/customerStatus'
 import { request } from '@shared/api/request'
-import { CustomerDTO, fromCustomerDTO } from './dto/customer'
 
 export type GetCustomersResDTO = {
   customers: CustomerDTO[]
@@ -32,7 +36,7 @@ export const getCustomers = async (
   params: GetCustomersParams,
 ): Promise<GetCustomersRes> => {
   const response = await request.get<GetCustomersResDTO>('/customers', {
-    params,
+    params: toCustomerDTO(params),
   })
   return fromGetCustomersResDTO(response)
 }

@@ -1,6 +1,7 @@
 import {
   CustomerDTO,
   fromCustomerDTO,
+  toCustomerDTO,
 } from '@entities/customer/api/dto/customer'
 import { Customer } from '@entities/customer/model/customer'
 import { request } from '@shared/api/request'
@@ -21,7 +22,7 @@ export const createCustomer = async (
   params: CreateCustomerParams,
 ): Promise<Customer> => {
   const response = await request.post<CreateCustomerResDTO>('/customers', {
-    data: params,
+    data: toCustomerDTO(params),
   })
 
   return fromCreateCustomerResDTO(response)

@@ -21,8 +21,8 @@ export const VALIDATION_EMAIL = validationFactory(
 )
 
 export const VALIDATION_PHONE = validationFactory(
-  /^01[0-9]{8,9}$/,
-  '휴대폰 번호 형식을 하이픈(-) 없이 입력해주세요.',
+  /^\d{3}-\d{3,4}-\d{4}$/,
+  '휴대폰 번호 형식으로 입력해주세요.',
 )
 
 export const VALIDATION_PASSWORD = validationFactory(

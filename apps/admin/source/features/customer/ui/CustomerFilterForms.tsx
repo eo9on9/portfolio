@@ -58,7 +58,7 @@ export const CustomerFilterForms = ({ onFilter }: CustomerFilterFormsProps) => {
         </FormField>
         <FormField label="전화번호" errorMessage={errors.phone?.message}>
           <Input
-            placeholder="01012345678"
+            placeholder="010-1234-5678"
             isError={!!errors.phone}
             {...register('phone', {
               pattern: {

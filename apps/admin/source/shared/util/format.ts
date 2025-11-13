@@ -24,3 +24,11 @@ export function toDate(timestamp: number): string {
   const day = String(date.getDate()).padStart(2, '0')
   return `${year}-${month}-${day}`
 }
+
+export function toPhone(phone: string): string {
+  return phone.replace(/(\d{3})(\d{3,4})(\d{4})/, '$1-$2-$3')
+}
+
+export function toPhoneNumber(phone: string): string {
+  return phone.replace(/-/g, '')
+}
