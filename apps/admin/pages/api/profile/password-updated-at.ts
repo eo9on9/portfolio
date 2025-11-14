@@ -1,4 +1,4 @@
-import { requireAuth } from '@shared/server/requireAuth'
+import { requireAuth } from '@server/requireAuth'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(

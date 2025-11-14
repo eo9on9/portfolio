@@ -12,7 +12,8 @@
       "@widgets/*": ["./source/widgets/*"],
       "@features/*": ["./source/features/*"],
       "@entities/*": ["./source/entities/*"],
-      "@shared/*": ["./source/shared/*"]
+      "@shared/*": ["./source/shared/*"],
+      "@server/*": ["./server/*"]
     }
   },
   "include": [

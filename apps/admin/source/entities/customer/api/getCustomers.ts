@@ -32,11 +32,12 @@ export interface GetCustomersParams {
   page: number
 }
 
-export const getCustomers = async (
-  params: GetCustomersParams,
-): Promise<GetCustomersRes> => {
+export const getCustomers = async ({
+  page,
+  ...params
+}: GetCustomersParams): Promise<GetCustomersRes> => {
   const response = await request.get<GetCustomersResDTO>('/customers', {
-    params: toCustomerDTO(params),
+    params: { page, ...toCustomerDTO(params) },
   })
   return fromGetCustomersResDTO(response)
 }

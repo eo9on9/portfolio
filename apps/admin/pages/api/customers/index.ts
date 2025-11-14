@@ -1,6 +1,6 @@
-import { getRedis } from '@shared/server/redis'
-import { requireAuth } from '@shared/server/requireAuth'
-import { Customer } from '@shared/server/types'
+import { getRedis } from '@server/redis'
+import { requireAuth } from '@server/requireAuth'
+import { Customer } from '@server/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const PAGE_SIZE = 10
@@ -25,9 +25,9 @@ export default async function handler(
     const rawCustomers = await redis.get('customers')
     const customers = rawCustomers && JSON.parse(rawCustomers)
 
-    let filtered: Customer[] = [...customers]
-
     const { name, email, phone, status, page = '1' } = req.query
+
+    let filtered: Customer[] = [...customers]
 
     if (name) {
       filtered = filtered.filter(c =>

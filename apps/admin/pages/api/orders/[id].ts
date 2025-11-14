@@ -1,6 +1,6 @@
-import { getRedis } from '@shared/server/redis'
-import { requireAuth } from '@shared/server/requireAuth'
-import { Order } from '@shared/server/types'
+import { getRedis } from '@server/redis'
+import { requireAuth } from '@server/requireAuth'
+import { Order } from '@server/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(

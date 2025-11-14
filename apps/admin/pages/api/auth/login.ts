@@ -1,5 +1,5 @@
-import { getRedis } from '@shared/server/redis'
-import { User } from '@shared/server/types'
+import { getRedis } from '@server/redis'
+import { User } from '@server/types'
 import { serialize } from 'cookie'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
