@@ -23,10 +23,7 @@ export const CustomerFilterForms = () => {
     control,
     register,
     formState: { errors },
-    watch,
   } = useFormContext<CustomerFilterForm>()
-
-  console.log('===', watch('status'))
 
   return (
     <div className="grid grid-cols-2 gap-2">
@@ -70,16 +67,13 @@ export const CustomerFilterForms = () => {
         <Controller
           control={control}
           name="status"
-          render={({ field }) => {
-            console.log('field.value', field.value)
-            return (
-              <Select
-                options={STATUS_OPTIONS}
-                onChange={field.onChange}
-                value={field.value}
-              />
-            )
-          }}
+          render={({ field }) => (
+            <Select
+              options={STATUS_OPTIONS}
+              onChange={field.onChange}
+              value={field.value}
+            />
+          )}
         />
       </FormField>
     </div>

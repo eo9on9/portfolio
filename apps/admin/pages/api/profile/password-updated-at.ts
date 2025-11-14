@@ -20,7 +20,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
   if (!userId || !issuedAt) {
     return res.status(400).json({
-      code: 'BAD_REQUEST',
+      code: 'UNAUTHORIZED',
       message: 'Invalid token format',
       data: null,
     })
@@ -63,7 +63,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const user = users.find(u => u.id === userId)
   if (!user) {
     return res.status(401).json({
-      code: 'NOT_FOUND',
+      code: 'UNAUTHORIZED',
       message: 'User not found',
       data: null,
     })

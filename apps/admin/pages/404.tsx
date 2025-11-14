@@ -1,12 +1,1 @@
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
-
-export default function NotFound() {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.replace('/dashboard')
-  }, [router])
-
-  return null
-}
+export { NotFoundPage as default } from '@app/NotFoundPage'
