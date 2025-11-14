@@ -1,4 +1,4 @@
-import { getRedis } from '@server/redis'
+import { redis } from '@server/redis'
 import { requireAuth } from '@server/requireAuth'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -6,8 +6,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const redis = await getRedis()
-
   // ==================================================
   // 인증 및 유저 확인
   // ==================================================

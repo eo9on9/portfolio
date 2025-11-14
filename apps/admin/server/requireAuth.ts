@@ -1,4 +1,4 @@
-import { getRedis } from '@server/redis'
+import { redis } from '@server/redis'
 import { User } from '@server/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -40,7 +40,6 @@ export async function requireAuth(req: NextApiRequest, res: NextApiResponse) {
   }
 
   // 5) Redis 유저 조회
-  const redis = await getRedis()
   const users = await redis.get('users')
   const user: User =
     users && JSON.parse(users).find((u: User) => u.id === userId)

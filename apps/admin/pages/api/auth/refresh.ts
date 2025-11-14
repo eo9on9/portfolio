@@ -1,4 +1,4 @@
-import { getRedis } from '@server/redis'
+import { redis } from '@server/redis'
 import { User } from '@server/types'
 import { serialize } from 'cookie'
 import type { NextApiRequest, NextApiResponse } from 'next'
@@ -7,8 +7,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const redis = await getRedis()
-
   // 메서드 제한
   if (req.method !== 'POST') {
     return res.status(405).json({

@@ -1,4 +1,4 @@
-import { getRedis } from '@server/redis'
+import { redis } from '@server/redis'
 import { requireAuth } from '@server/requireAuth'
 import { User } from '@server/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
@@ -53,7 +53,6 @@ export default async function handler(
     }
 
     // 배열 업데이트
-    const redis = await getRedis()
     const users = await redis.get('users')
     const updatedUsers =
       users &&
