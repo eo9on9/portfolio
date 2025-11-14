@@ -1,8 +1,8 @@
+import { User } from '@shared/server/types'
 import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
 import users from '../_data/users.json'
-import { User } from './types'
 
 const dataFile = path.join(process.cwd(), 'pages', 'api', '_data', 'users.json')
 

@@ -1,8 +1,8 @@
+import { Order } from '@shared/server/types'
 import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
 import users from '../_data/users.json'
-import { Order } from './types'
 
 const ordersFile = path.join(
   process.cwd(),

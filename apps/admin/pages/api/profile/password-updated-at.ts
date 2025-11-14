@@ -1,7 +1,7 @@
+import { User } from '@shared/server/types'
 import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
-import { User } from './types'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // 1️⃣ 인증 헤더 확인

@@ -1,7 +1,7 @@
+import { Customer } from '@shared/server/types'
 import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
-import { Customer } from './types'
 
 const PAGE_SIZE = 10
 const dataFile = path.join(
