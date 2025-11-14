@@ -49,7 +49,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  const user = users[userIndex]
+  const user = users[userIndex]!
 
   // ==================================================
   // PUT: 비밀번호 변경

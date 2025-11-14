@@ -48,7 +48,7 @@ export const CustomerPage = () => {
     <MainLayout>
       <CustomerPageTop />
       <FormProvider {...form}>
-        <CustomerFilterForms onFilter={handleFilter} />
+        <CustomerFilterForms />
         <CustomerFilterActions onFilter={handleFilter} />
         <CustomerTable
           data={data?.customers ?? []}

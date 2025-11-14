@@ -3,7 +3,8 @@ import { ToggleGroup } from '@shared/ui/ToggleGroup'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
 import { Bell, Lock, User } from 'lucide-react'
-import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { NotificationSettingContent } from './NotificationSettingContent'
 import { ProfileSettingContent } from './ProfileSettingContent'
 import { SecuritySettingContent } from './SecuritySettingContent'
@@ -27,7 +28,17 @@ const ToggleGroupOptions = [
 ]
 
 export const SettingPage = () => {
-  const [selectedTab, setSelectedTab] = useState(ToggleGroupOptions[0].value)
+  const router = useRouter()
+  const params = useSearchParams()
+
+  const toggleValue = params.get('toggle') ?? ToggleGroupOptions[0]?.value
+
+  const setToggle = (value: string) => {
+    const q = new URLSearchParams()
+    q.set('toggle', value)
+    const qs = q.toString() ?? ''
+    router.push(`?${qs}`)
+  }
 
   return (
     <MainLayout>
@@ -35,13 +46,13 @@ export const SettingPage = () => {
       <Beacon className="w-fit">
         <ToggleGroup
           options={ToggleGroupOptions}
-          value={selectedTab}
-          onChange={setSelectedTab}
+          value={toggleValue}
+          onChange={value => setToggle(value)}
         />
       </Beacon>
-      {selectedTab === 'profile' && <ProfileSettingContent />}
-      {selectedTab === 'notification' && <NotificationSettingContent />}
-      {selectedTab === 'security' && <SecuritySettingContent />}
+      {toggleValue === 'profile' && <ProfileSettingContent />}
+      {toggleValue === 'notification' && <NotificationSettingContent />}
+      {toggleValue === 'security' && <SecuritySettingContent />}
     </MainLayout>
   )
 }

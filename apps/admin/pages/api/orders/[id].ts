@@ -105,7 +105,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     // 상태 업데이트
-    orders[orderIndex].status = status as Order['status']
+    orders[orderIndex]!.status = status as Order['status']
 
     // 파일 저장
     try {

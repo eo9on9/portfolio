@@ -36,6 +36,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         email: user.email,
         name: user.name,
         role: user.role,
+        phone: user.phone,
       },
     },
   })

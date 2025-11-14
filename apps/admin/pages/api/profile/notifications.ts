@@ -57,7 +57,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  const user = users[userIndex]
+  const user = users[userIndex]!
 
   // ==================================================
   // GET: 알림 설정 조회

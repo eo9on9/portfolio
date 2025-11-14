@@ -65,7 +65,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       ...(status !== undefined && { status }),
     }
 
-    customers[index] = updatedCustomer
+    customers[index] = updatedCustomer as Customer
     fs.writeFileSync(dataFile, JSON.stringify(customers, null, 2))
 
     return res.status(200).json({

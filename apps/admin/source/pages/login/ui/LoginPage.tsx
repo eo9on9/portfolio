@@ -7,6 +7,7 @@ import { useToast } from '@shared/ui/Toast'
 import { useMutation } from '@tanstack/react-query'
 import { Key, Lock, Mail } from 'lucide-react'
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 type LoginForm = LoginParams
@@ -29,13 +30,21 @@ export const LoginPage = () => {
 
       toast.success('로그인에 성공했습니다.')
 
-      router.push('/dashboard')
+      router.replace('/dashboard')
     } catch (error) {
       console.error(error)
 
       toast.error('로그인에 실패했습니다. 테스트 계정으로 로그인해주세요.')
     }
   })
+
+  useEffect(() => {
+    const isAlreadyLoggedIn = accessTokenStorage.get()
+
+    if (isAlreadyLoggedIn) {
+      router.replace('/dashboard')
+    }
+  }, [router])
 
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-gray-500">

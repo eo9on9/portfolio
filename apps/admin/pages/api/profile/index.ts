@@ -51,7 +51,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  const user = users[userIndex]
+  const user = users[userIndex]!
 
   // ==================================================
   // GET: 프로필 조회

@@ -46,7 +46,7 @@ export const OrderPage = () => {
     <MainLayout>
       <PageTop title="주문 관리" description="전체 주문 내역을 관리합니다." />
       <FormProvider {...form}>
-        <OrderFilterForms onFilter={handleFilter} />
+        <OrderFilterForms />
         <OrderFilterActions onFilter={handleFilter} />
         <OrderTable data={data?.orders ?? []} isLoading={isStableLoading} />
         <OrderPagination
