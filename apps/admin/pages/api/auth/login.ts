@@ -1,10 +1,21 @@
-import users from '@shared/server/data/users.json'
+import { getRedis } from '@shared/server/redis'
+import { User } from '@shared/server/types'
 import { serialize } from 'cookie'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const redis = await getRedis()
+
   const { email, password } = req.body
-  const user = users.find(u => u.email === email && u.password === password)
+
+  const rawUsers = await redis.get('users')
+  const users = rawUsers && JSON.parse(rawUsers)
+  const user = users.find(
+    (u: User) => u.email === email && u.password === password,
+  )
 
   if (!user)
     return res

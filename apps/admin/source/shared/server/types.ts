@@ -24,6 +24,7 @@ export interface User {
   email: string
   phone: string
   role: string
+  password: string
   notifications: {
     newOrder: boolean
     lowStock: boolean

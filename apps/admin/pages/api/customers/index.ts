@@ -1,23 +1,31 @@
+import { getRedis } from '@shared/server/redis'
+import { requireAuth } from '@shared/server/requireAuth'
 import { Customer } from '@shared/server/types'
-import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import path from 'path'
 
 const PAGE_SIZE = 10
-const dataFile = path.join(
-  process.cwd(),
-  'source',
-  'shared',
-  'server',
-  'data',
-  'customers.json',
-)
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // ✅ 고객 목록 조회 (GET)
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const redis = await getRedis()
+
+  // ==================================================
+  // 인증 및 유저 확인
+  // ==================================================
+  const user = await requireAuth(req, res)
+
+  if (!user) return
+
+  // ==================================================
+  // GET: 고객 목록 조회
+  // ==================================================
   if (req.method === 'GET') {
-    const fileData = fs.readFileSync(dataFile, 'utf-8')
-    let filtered: Customer[] = JSON.parse(fileData)
+    const rawCustomers = await redis.get('customers')
+    const customers = rawCustomers && JSON.parse(rawCustomers)
+
+    let filtered: Customer[] = [...customers]
 
     const { name, email, phone, status, page = '1' } = req.query
 
@@ -53,7 +61,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  // ✅ 신규 고객 추가 (POST)
+  // ==================================================
+  // POST: 신규 고객 추가
+  // ==================================================
   if (req.method === 'POST') {
     const { name, email, phone } = req.body
 
@@ -65,11 +75,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       })
     }
 
-    const fileData = fs.readFileSync(dataFile, 'utf-8')
-    const customers: Customer[] = JSON.parse(fileData)
+    const rawCustomers = await redis.get('customers')
+    const customers = rawCustomers && JSON.parse(rawCustomers)
 
     const newId =
-      customers.length > 0 ? Math.max(...customers.map(c => c.id)) + 1 : 1
+      customers.length > 0
+        ? Math.max(...customers.map((c: Customer) => c.id)) + 1
+        : 1
 
     const newCustomer: Customer = {
       id: newId,
@@ -81,8 +93,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       status: 'inactive',
     }
 
-    customers.push(newCustomer)
-    fs.writeFileSync(dataFile, JSON.stringify(customers, null, 2))
+    const updatedCustomers = [...customers, newCustomer]
+    await redis.set('customers', JSON.stringify(updatedCustomers))
 
     return res.status(201).json({
       code: 'SUCCESS',
@@ -91,10 +103,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  res.setHeader('Allow', ['GET', 'POST'])
+  // ==================================================
+  // 허용되지 않은 메서드
+  // ==================================================
   return res.status(405).json({
     code: 'METHOD_NOT_ALLOWED',
-    message: `Method ${req.method} Not Allowed`,
+    message: 'Method Not Allowed',
     data: null,
   })
 }

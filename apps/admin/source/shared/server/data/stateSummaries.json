@@ -1,0 +1,18 @@
+{
+  "customer": {
+    "total": 2345,
+    "percentage": 12.5
+  },
+  "order": {
+    "total": 1234,
+    "percentage": 8.2
+  },
+  "product": {
+    "total": 567,
+    "percentage": -1.02
+  },
+  "sales": {
+    "total": 45200000,
+    "percentage": 15.3
+  }
+}

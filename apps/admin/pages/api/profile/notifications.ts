@@ -1,9 +1,8 @@
-import users from '@shared/server/data/users.json'
-import fs from 'fs'
+import { getRedis } from '@shared/server/redis'
+import { requireAuth } from '@shared/server/requireAuth'
+import { User } from '@shared/server/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import path from 'path'
 
-// 알림 설정 타입
 type NotificationKeys =
   | 'newOrder'
   | 'lowStock'
@@ -11,60 +10,18 @@ type NotificationKeys =
   | 'deliveryStatusChange'
   | 'weeklyReport'
 
-const dataFile = path.join(
-  process.cwd(),
-  'source',
-  'shared',
-  'server',
-  'data',
-  'users.json',
-)
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const redis = await getRedis()
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // 1️⃣ 인증 헤더 확인
-  const authHeader = req.headers.authorization
-  if (!authHeader) {
-    return res.status(401).json({
-      code: 'UNAUTHORIZED',
-      message: 'Missing Authorization header',
-      data: null,
-    })
-  }
+  // ==================================================
+  // 인증 및 유저 확인
+  // ==================================================
+  const user = await requireAuth(req, res)
 
-  // 2️⃣ 토큰 파싱
-  const token = authHeader.replace('Bearer ', '')
-  const [, userId, issuedAt] = token.split('_')
-
-  if (!userId || !issuedAt) {
-    return res.status(400).json({
-      code: 'UNAUTHORIZED',
-      message: 'Invalid token format',
-      data: null,
-    })
-  }
-
-  // 3️⃣ 토큰 만료 시뮬레이션 (1시간)
-  const ONE_HOUR = 60 * 60 * 1000
-  const isExpired = Date.now() - Number(issuedAt) > ONE_HOUR
-  if (isExpired) {
-    return res.status(401).json({
-      code: 'TOKEN_EXPIRED',
-      message: 'Token expired',
-      data: null,
-    })
-  }
-
-  // 4️⃣ 유저 찾기
-  const userIndex = users.findIndex(u => u.id === userId)
-  if (userIndex === -1) {
-    return res.status(401).json({
-      code: 'UNAUTHORIZED',
-      message: 'User not found',
-      data: null,
-    })
-  }
-
-  const user = users[userIndex]!
+  if (!user) return
 
   // ==================================================
   // GET: 알림 설정 조회
@@ -106,26 +63,20 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       })
     }
 
-    // 업데이트 적용
-    for (const [key, value] of Object.entries(updates)) {
-      if (typeof value === 'boolean') {
-        user.notifications[key as NotificationKeys] = value
-      }
+    const updatedUser = {
+      ...user,
+      notifications: {
+        ...user.notifications,
+        ...updates,
+      },
     }
 
-    users[userIndex] = user
+    const users = await redis.get('users')
+    const updatedUsers =
+      users &&
+      JSON.parse(users).map((u: User) => (u.id === user.id ? updatedUser : u))
 
-    // 파일 저장
-    try {
-      fs.writeFileSync(dataFile, JSON.stringify(users, null, 2), 'utf-8')
-    } catch (err) {
-      console.error('❌ Failed to write users.json:', err)
-      return res.status(500).json({
-        code: 'INTERNAL_ERROR',
-        message: 'Failed to update notification settings file',
-        data: null,
-      })
-    }
+    await redis.set('users', JSON.stringify(updatedUsers))
 
     return res.status(200).json({
       code: 'SUCCESS',
@@ -139,7 +90,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // ==================================================
   return res.status(405).json({
     code: 'METHOD_NOT_ALLOWED',
-    message: 'Only GET and PUT are allowed',
+    message: 'Method Not Allowed',
     data: null,
   })
 }

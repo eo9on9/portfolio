@@ -1,64 +1,18 @@
-import users from '@shared/server/data/users.json'
+import { getRedis } from '@shared/server/redis'
+import { requireAuth } from '@shared/server/requireAuth'
 import { User } from '@shared/server/types'
-import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import path from 'path'
 
-const dataFile = path.join(
-  process.cwd(),
-  'source',
-  'shared',
-  'server',
-  'data',
-  'users.json',
-)
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  // ==================================================
+  // 인증 및 유저 확인
+  // ==================================================
+  const user = await requireAuth(req, res)
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // 1️⃣ 인증 헤더 확인
-  const authHeader = req.headers.authorization
-  if (!authHeader) {
-    return res.status(401).json({
-      code: 'UNAUTHORIZED',
-      message: 'Missing Authorization header',
-      data: null,
-    })
-  }
-
-  // 2️⃣ 토큰 추출
-  const token = authHeader.replace('Bearer ', '')
-  const [, userId, issuedAt] = token.split('_')
-
-  // 3️⃣ 토큰 유효성 검사
-  if (!userId || !issuedAt) {
-    return res.status(400).json({
-      code: 'UNAUTHORIZED',
-      message: 'Invalid token format',
-      data: null,
-    })
-  }
-
-  // 4️⃣ 만료 체크
-  const ONE_HOUR = 60 * 60 * 1000
-  const isExpired = Date.now() - Number(issuedAt) > ONE_HOUR
-  if (isExpired) {
-    return res.status(401).json({
-      code: 'TOKEN_EXPIRED',
-      message: 'Token expired',
-      data: null,
-    })
-  }
-
-  // 5️⃣ 유저 찾기
-  const userIndex = users.findIndex(u => u.id === userId)
-  if (userIndex === -1) {
-    return res.status(401).json({
-      code: 'UNAUTHORIZED',
-      message: 'User not found',
-      data: null,
-    })
-  }
-
-  const user = users[userIndex]!
+  if (!user) return
 
   // ==================================================
   // GET: 프로필 조회
@@ -99,19 +53,13 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     // 배열 업데이트
-    users[userIndex] = updatedUser
+    const redis = await getRedis()
+    const users = await redis.get('users')
+    const updatedUsers =
+      users &&
+      JSON.parse(users).map((u: User) => (u.id === user.id ? updatedUser : u))
 
-    // 실제 파일 덮어쓰기
-    try {
-      fs.writeFileSync(dataFile, JSON.stringify(users, null, 2), 'utf-8')
-    } catch (err) {
-      console.error('❌ Failed to write users.json:', err)
-      return res.status(500).json({
-        code: 'INTERNAL_ERROR',
-        message: 'Failed to update user data file',
-        data: null,
-      })
-    }
+    await redis.set('users', JSON.stringify(updatedUsers))
 
     return res.status(200).json({
       code: 'SUCCESS',
@@ -125,7 +73,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // ==================================================
   return res.status(405).json({
     code: 'METHOD_NOT_ALLOWED',
-    message: 'Only GET and PUT are allowed',
+    message: 'Method Not Allowed',
     data: null,
   })
 }

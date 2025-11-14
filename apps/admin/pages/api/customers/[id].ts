@@ -1,18 +1,21 @@
+import { getRedis } from '@shared/server/redis'
+import { requireAuth } from '@shared/server/requireAuth'
 import { Customer } from '@shared/server/types'
-import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import path from 'path'
 
-const dataFile = path.join(
-  process.cwd(),
-  'source',
-  'shared',
-  'server',
-  'data',
-  'customers.json',
-)
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const redis = await getRedis()
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  // ==================================================
+  // 인증 및 유저 확인
+  // ==================================================
+  const user = await requireAuth(req, res)
+
+  if (!user) return
+
   const { id } = req.query
   const targetId = Number(id)
 
@@ -24,13 +27,15 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  const fileData = fs.readFileSync(dataFile, 'utf-8')
-  const customers: Customer[] = JSON.parse(fileData)
-  const index = customers.findIndex(c => c.id === targetId)
+  const rawCustomers = await redis.get('customers')
+  const customers = rawCustomers && JSON.parse(rawCustomers)
+  const index = customers.findIndex((c: Customer) => c.id === targetId)
 
-  // ✅ 단일 고객 조회 (GET)
+  // ==================================================
+  // GET: 단일 고객 조회
+  // ==================================================
   if (req.method === 'GET') {
-    const customer = customers.find(c => c.id === targetId)
+    const customer = customers.find((c: Customer) => c.id === targetId)
     if (!customer) {
       return res.status(404).json({
         code: 'NOT_FOUND',
@@ -46,7 +51,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  // ✅ 고객 수정 (PUT)
+  // ==================================================
+  // PUT: 고객 정보 수정
+  // ==================================================
   if (req.method === 'PUT') {
     const { name, email, phone, status } = req.body
 
@@ -66,8 +73,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       ...(status !== undefined && { status }),
     }
 
-    customers[index] = updatedCustomer as Customer
-    fs.writeFileSync(dataFile, JSON.stringify(customers, null, 2))
+    const updatedCustomers = customers.map((c: Customer) =>
+      c.id === targetId ? updatedCustomer : c,
+    )
+
+    await redis.set('customers', JSON.stringify(updatedCustomers))
 
     return res.status(200).json({
       code: 'SUCCESS',
@@ -76,7 +86,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  // ✅ 고객 삭제 (DELETE)
+  // ==================================================
+  // DELETE: 고객 삭제
+  // ==================================================
   if (req.method === 'DELETE') {
     if (index === -1) {
       return res.status(404).json({
@@ -87,8 +99,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     const deleted = customers[index]
-    const updated = customers.filter(c => c.id !== targetId)
-    fs.writeFileSync(dataFile, JSON.stringify(updated, null, 2))
+    const updated = customers.filter((c: Customer) => c.id !== targetId)
+
+    await redis.set('customers', JSON.stringify(updated))
 
     return res.status(200).json({
       code: 'SUCCESS',
@@ -97,10 +110,12 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     })
   }
 
-  res.setHeader('Allow', ['GET', 'PUT', 'DELETE'])
+  // ==================================================
+  // 허용되지 않은 메서드
+  // ==================================================
   return res.status(405).json({
     code: 'METHOD_NOT_ALLOWED',
-    message: `Method ${req.method} Not Allowed`,
+    message: 'Method Not Allowed',
     data: null,
   })
 }

@@ -1,62 +1,20 @@
-import users from '@shared/server/data/users.json'
-import fs from 'fs'
+import { getRedis } from '@shared/server/redis'
+import { requireAuth } from '@shared/server/requireAuth'
+import { User } from '@shared/server/types'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import path from 'path'
 
-const dataFile = path.join(
-  process.cwd(),
-  'source',
-  'shared',
-  'server',
-  'data',
-  'users.json',
-)
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const redis = await getRedis()
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // 1️⃣ 인증 헤더 확인
-  const authHeader = req.headers.authorization
-  if (!authHeader) {
-    return res.status(401).json({
-      code: 'UNAUTHORIZED',
-      message: 'Missing Authorization header',
-      data: null,
-    })
-  }
+  // ==================================================
+  // 인증 및 유저 확인
+  // ==================================================
+  const user = await requireAuth(req, res)
 
-  // 2️⃣ 토큰 파싱
-  const token = authHeader.replace('Bearer ', '')
-  const [, userId, issuedAt] = token.split('_')
-
-  if (!userId || !issuedAt) {
-    return res.status(400).json({
-      code: 'UNAUTHORIZED',
-      message: 'Invalid token format',
-      data: null,
-    })
-  }
-
-  // 3️⃣ 토큰 만료 시뮬레이션 (1시간)
-  const ONE_HOUR = 60 * 60 * 1000
-  const isExpired = Date.now() - Number(issuedAt) > ONE_HOUR
-  if (isExpired) {
-    return res.status(401).json({
-      code: 'TOKEN_EXPIRED',
-      message: 'Token expired',
-      data: null,
-    })
-  }
-
-  // 4️⃣ 유저 찾기
-  const userIndex = users.findIndex(u => u.id === userId)
-  if (userIndex === -1) {
-    return res.status(401).json({
-      code: 'UNAUTHORIZED',
-      message: 'User not found',
-      data: null,
-    })
-  }
-
-  const user = users[userIndex]!
+  if (!user) return
 
   // ==================================================
   // PUT: 비밀번호 변경
@@ -104,21 +62,17 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     // 비밀번호 변경
-    user.password = newPassword
-    user.lastPasswordChangedAt = Date.now()
-    users[userIndex] = user
-
-    // 파일 저장
-    try {
-      fs.writeFileSync(dataFile, JSON.stringify(users, null, 2), 'utf-8')
-    } catch (err) {
-      console.error('❌ Failed to write users.json:', err)
-      return res.status(500).json({
-        code: 'INTERNAL_ERROR',
-        message: 'Failed to update user password file',
-        data: null,
-      })
+    const updatedUser = {
+      ...user,
+      password: newPassword,
     }
+
+    const users = await redis.get('users')
+    const updatedUsers =
+      users &&
+      JSON.parse(users).map((u: User) => (u.id === user.id ? updatedUser : u))
+
+    await redis.set('users', JSON.stringify(updatedUsers))
 
     return res.status(200).json({
       code: 'SUCCESS',

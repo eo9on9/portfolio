@@ -1,8 +1,14 @@
-import users from '@shared/server/data/users.json'
+import { getRedis } from '@shared/server/redis'
+import { User } from '@shared/server/types'
 import { serialize } from 'cookie'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const redis = await getRedis()
+
   // 메서드 제한
   if (req.method !== 'POST') {
     return res.status(405).json({
@@ -46,7 +52,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   // 3️⃣ 유저 존재 여부 확인
-  const user = users.find(u => u.id === userId)
+  const rawUsers = await redis.get('users')
+  const users = rawUsers && JSON.parse(rawUsers)
+  const user = users.find((u: User) => u.id === userId)
   if (!user) {
     return res.status(401).json({
       code: 'UNAUTHORIZED',

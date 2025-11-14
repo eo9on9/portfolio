@@ -1,80 +1,27 @@
-import users from '@shared/server/data/users.json'
+import { getRedis } from '@shared/server/redis'
+import { requireAuth } from '@shared/server/requireAuth'
 import { Order } from '@shared/server/types'
-import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import path from 'path'
 
-const ordersFile = path.join(
-  process.cwd(),
-  'source',
-  'shared',
-  'server',
-  'data',
-  'orders.json',
-)
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
+  const redis = await getRedis()
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  // 1️⃣ 인증 헤더 확인
-  const authHeader = req.headers.authorization
-  if (!authHeader) {
-    return res.status(401).json({
-      code: 'UNAUTHORIZED',
-      message: 'Missing Authorization header',
-      data: null,
-    })
-  }
+  // ==================================================
+  // 인증 및 유저 확인
+  // ==================================================
+  const user = await requireAuth(req, res)
 
-  // 2️⃣ 토큰 추출
-  const token = authHeader.replace('Bearer ', '')
-  const [, userId, issuedAt] = token.split('_')
-
-  // 3️⃣ 토큰 유효성 검사
-  if (!userId || !issuedAt) {
-    return res.status(400).json({
-      code: 'UNAUTHORIZED',
-      message: 'Invalid token format',
-      data: null,
-    })
-  }
-
-  // 4️⃣ 만료 체크
-  const ONE_HOUR = 60 * 60 * 1000
-  const isExpired = Date.now() - Number(issuedAt) > ONE_HOUR
-  if (isExpired) {
-    return res.status(401).json({
-      code: 'TOKEN_EXPIRED',
-      message: 'Token expired',
-      data: null,
-    })
-  }
-
-  // 5️⃣ 유저 찾기
-  const userIndex = users.findIndex(u => u.id === userId)
-  if (userIndex === -1) {
-    return res.status(401).json({
-      code: 'UNAUTHORIZED',
-      message: 'User not found',
-      data: null,
-    })
-  }
+  if (!user) return
 
   // ==================================================
   // GET: 주문 목록 조회
   // ==================================================
   if (req.method === 'GET') {
-    // 파일 읽기
-    let orders: Order[] = []
-    try {
-      const fileContent = fs.readFileSync(ordersFile, 'utf-8')
-      orders = JSON.parse(fileContent)
-    } catch (err) {
-      console.error('❌ Failed to read orders.json:', err)
-      return res.status(500).json({
-        code: 'INTERNAL_ERROR',
-        message: 'Failed to read orders data file',
-        data: null,
-      })
-    }
+    const rawOrders = await redis.get('orders')
+    const orders = rawOrders && JSON.parse(rawOrders)
 
     // 쿼리 파라미터 추출
     const { query, page, status } = req.query
@@ -96,7 +43,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     // 🔍 검색어(query) 필터
     if (query && String(query).trim() !== '') {
       const q = String(query).toLowerCase()
-      filtered = filtered.filter(order => {
+      filtered = filtered.filter((order: Order) => {
         return (
           order.id.toLowerCase().includes(q) ||
           order.customer.toLowerCase().includes(q) ||
@@ -108,7 +55,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     // 🔍 상태(status) 필터
     if (status && String(status).trim() !== '') {
       const s = String(status).toLowerCase()
-      filtered = filtered.filter(order => order.status.toLowerCase() === s)
+      filtered = filtered.filter(
+        (order: Order) => order.status.toLowerCase() === s,
+      )
     }
 
     // 페이지네이션
