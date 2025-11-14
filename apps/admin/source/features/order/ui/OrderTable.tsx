@@ -1,4 +1,5 @@
 import { Order } from '@entities/order/model/order'
+import { ORDER_STATUS_LABELS } from '@entities/order/model/orderStatus'
 import { ViewOrderModal } from '@features/order/ui/ViewOrderModal'
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
@@ -46,7 +47,7 @@ export const OrderTable = ({ data, isLoading }: OrderTableProps) => {
       },
       {
         header: 'Status',
-        accessorKey: 'status',
+        render: row => `${ORDER_STATUS_LABELS[row.status]}`,
       },
       {
         headerRender: () => <Beacon>Actions</Beacon>,

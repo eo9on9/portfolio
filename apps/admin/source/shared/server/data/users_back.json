@@ -3,7 +3,7 @@
     "id": "u1",
     "email": "admin@example.com",
     "password": "admin123",
-    "name": "홍길동",
+    "name": "김관리",
     "phone": "01012345678",
     "role": "admin",
     "notifications": {

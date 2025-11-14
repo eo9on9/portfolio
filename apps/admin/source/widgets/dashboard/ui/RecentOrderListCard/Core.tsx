@@ -18,14 +18,14 @@ export const Core = () => {
       <ul>
         {data.map(order => (
           <li
-            key={order.orderId}
+            key={order.id}
             className="grid grid-cols-4 items-center not-last:mb-4 not-last:pb-4 not-last:border-b border-gray-200 text-sm text-gray-800"
           >
             <div className="flex flex-col gap-1">
-              <p>{order.orderId}</p>
+              <p>{order.id}</p>
               <p className="text-xs text-gray-500">{order.customer}</p>
             </div>
-            <p>{order.productName}</p>
+            <p>{order.product}</p>
             <p className="text-right">₩{order.amount.toLocaleString()}</p>
             <p className="text-right">{ORDER_STATUS_LABELS[order.status]}</p>
           </li>

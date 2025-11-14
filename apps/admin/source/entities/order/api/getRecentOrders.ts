@@ -1,32 +1,15 @@
-import { KindOfOrderStatus } from '@entities/order/model/orderStatus'
+import { fromOrderDTO, OrderDTO } from '@entities/order/api/dto/order'
+import { Order } from '@entities/order/model/order'
 import { request } from '@shared/api/request'
 
-export type GetRecentOrdersResDTO = Array<{
-  orderId: string
-  customer: string
-  productName: string
-  amount: number
-  status: string
-}>
+export type GetRecentOrdersResDTO = OrderDTO[]
 
-export type GetRecentOrdersRes = Array<{
-  orderId: string
-  customer: string
-  productName: string
-  amount: number
-  status: KindOfOrderStatus
-}>
+export type GetRecentOrdersRes = Order[]
 
 const fromGetRecentOrdersResDTO = (
   dto: GetRecentOrdersResDTO,
 ): GetRecentOrdersRes => {
-  return dto.map(item => ({
-    orderId: item.orderId,
-    customer: item.customer,
-    productName: item.productName,
-    amount: item.amount,
-    status: item.status as KindOfOrderStatus,
-  }))
+  return dto.map(order => fromOrderDTO(order))
 }
 
 export const getRecentOrders = async () => {

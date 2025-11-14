@@ -1,7 +1,7 @@
+import users from '@shared/server/data/users.json'
 import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
-import users from '../_data/users.json'
 
 // 알림 설정 타입
 type NotificationKeys =
@@ -11,7 +11,14 @@ type NotificationKeys =
   | 'deliveryStatusChange'
   | 'weeklyReport'
 
-const dataFile = path.join(process.cwd(), 'pages', 'api', '_data', 'users.json')
+const dataFile = path.join(
+  process.cwd(),
+  'source',
+  'shared',
+  'server',
+  'data',
+  'users.json',
+)
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // 1️⃣ 인증 헤더 확인

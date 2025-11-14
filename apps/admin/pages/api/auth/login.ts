@@ -1,6 +1,6 @@
+import users from '@shared/server/data/users.json'
 import { serialize } from 'cookie'
 import type { NextApiRequest, NextApiResponse } from 'next'
-import users from '../_data/users.json'
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { email, password } = req.body

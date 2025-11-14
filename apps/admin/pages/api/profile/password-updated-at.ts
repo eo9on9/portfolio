@@ -3,6 +3,15 @@ import fs from 'fs'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
 
+const dataFile = path.join(
+  process.cwd(),
+  'source',
+  'shared',
+  'server',
+  'data',
+  'users.json',
+)
+
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   // 1️⃣ 인증 헤더 확인
   const authHeader = req.headers.authorization
@@ -38,14 +47,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   // 4️⃣ users.json 파일 읽기
-  const dataFile = path.join(
-    process.cwd(),
-    'pages',
-    'api',
-    '_data',
-    'users.json',
-  )
-
   let users: User[] = []
   try {
     const fileContent = fs.readFileSync(dataFile, 'utf-8')

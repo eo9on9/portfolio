@@ -1,4 +1,5 @@
 import { Customer } from '@entities/customer/model/customer'
+import { CUSTOMER_STATUS_LABELS } from '@entities/customer/model/customerStatus'
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { Table, TableColumn } from '@shared/ui/Table'
@@ -51,7 +52,7 @@ export const CustomerTable = ({ data, isLoading }: CustomerTableProps) => {
       },
       {
         header: 'Status',
-        accessorKey: 'status',
+        render: row => `${CUSTOMER_STATUS_LABELS[row.status]}`,
       },
       {
         headerRender: () => <Beacon>Actions</Beacon>,

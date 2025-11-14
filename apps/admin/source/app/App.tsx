@@ -1,6 +1,7 @@
 import { ToastProvider } from '@shared/ui/Toast/useToast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { LayoutProvider } from '@widgets/layout/model/useLayout'
+import Head from 'next/head'
 import { PropsWithChildren } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { AppErrorFallback } from './AppErrorFallback'
@@ -9,12 +10,17 @@ const queryClient = new QueryClient()
 
 export const App = ({ children }: PropsWithChildren) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ErrorBoundary FallbackComponent={AppErrorFallback}>
-        <ToastProvider>
-          <LayoutProvider>{children}</LayoutProvider>
-        </ToastProvider>
-      </ErrorBoundary>
-    </QueryClientProvider>
+    <>
+      <Head>
+        <title>관리자 시스템</title>
+      </Head>
+      <QueryClientProvider client={queryClient}>
+        <ErrorBoundary FallbackComponent={AppErrorFallback}>
+          <ToastProvider>
+            <LayoutProvider>{children}</LayoutProvider>
+          </ToastProvider>
+        </ErrorBoundary>
+      </QueryClientProvider>
+    </>
   )
 }

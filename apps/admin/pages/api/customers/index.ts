@@ -6,9 +6,10 @@ import path from 'path'
 const PAGE_SIZE = 10
 const dataFile = path.join(
   process.cwd(),
-  'pages',
-  'api',
-  '_data',
+  'source',
+  'shared',
+  'server',
+  'data',
   'customers.json',
 )
 

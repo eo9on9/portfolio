@@ -2,7 +2,7 @@ import { copyFileSync, existsSync, readdirSync } from 'node:fs'
 import { resolve } from 'node:path'
 import process from 'node:process'
 
-const dataDir = resolve('pages/api/_data')
+const dataDir = resolve('source/shared/server/data')
 
 if (!existsSync(dataDir)) {
   console.warn(`[restore-data] Data directory missing: ${dataDir}`)
