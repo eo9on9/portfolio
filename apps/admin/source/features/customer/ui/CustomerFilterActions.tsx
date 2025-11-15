@@ -18,20 +18,7 @@ export const CustomerFilterActions = ({
 
   return (
     <div className="flex items-center gap-2 justify-between">
-      <Beacon>
-        <Button
-          variant="ghost"
-          size="lg"
-          onClick={() => {
-            reset(CUSTOMER_FILTER_FORM_DEFAULT_VALUES)
-            onFilter?.()
-          }}
-        >
-          <FunnelX className="w-4 h-4" />
-          필터 초기화
-        </Button>
-      </Beacon>
-      <Beacon>
+      <Beacon className="order-2">
         <Button
           variant="primary"
           size="lg"
@@ -42,6 +29,19 @@ export const CustomerFilterActions = ({
         >
           <Search className="w-4 h-4" />
           검색
+        </Button>
+      </Beacon>
+      <Beacon className="order-1">
+        <Button
+          variant="ghost"
+          size="lg"
+          onClick={() => {
+            reset(CUSTOMER_FILTER_FORM_DEFAULT_VALUES)
+            onFilter?.()
+          }}
+        >
+          <FunnelX className="w-4 h-4" />
+          필터 초기화
         </Button>
       </Beacon>
     </div>

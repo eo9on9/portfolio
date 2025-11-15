@@ -53,14 +53,14 @@ export const Select = ({
         <SelectContent
           position="popper"
           sideOffset={8}
-          className="z-110 animate-in"
+          className="z-110 animate-in focus:ring-0"
         >
           <SelectViewport className="flex flex-col gap-1 min-w-(--radix-select-trigger-width) p-2 border border-gray-300 bg-white rounded-sm shadow-md">
             {options.map(({ value, label }) => (
               <SelectItem
                 key={value}
                 value={value}
-                className="flex items-center gap-2 px-2 h-8 text-sm text-gray-800 outline-none rounded-sm focus:bg-gray-100 cursor-pointer"
+                className="flex items-center gap-2 px-2 h-8 text-sm text-gray-800 outline-none rounded-sm focus:bg-gray-100 cursor-pointer focus:ring-0"
               >
                 <SelectItemText>{label}</SelectItemText>
                 <SelectItemIndicator>

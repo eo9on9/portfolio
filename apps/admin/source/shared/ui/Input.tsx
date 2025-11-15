@@ -12,7 +12,7 @@ export const Input = ({ icon, className, isError, ...props }: InputProps) => {
       {icon}
       <input
         className={cn(
-          'flex-1 outline-none text-gray-800 placeholder:text-gray-400 read-only:text-gray-500',
+          'flex-1 outline-none text-gray-800 placeholder:text-gray-400 read-only:text-gray-500 focus:ring-0',
           className,
         )}
         {...props}

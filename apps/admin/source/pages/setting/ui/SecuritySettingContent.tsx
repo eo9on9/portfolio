@@ -4,7 +4,6 @@ import {
   VALIDATION_PASSWORD,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
@@ -26,7 +25,7 @@ export const SecuritySettingContent = () => {
     queryFn: getPasswordUpdatedAt,
   })
 
-  const { mutate, isPending } = useMutation({
+  const { isPending } = useMutation({
     mutationFn: resetPassword,
     onSuccess: () => {
       toast.success('비밀번호 변경 성공')
@@ -49,11 +48,8 @@ export const SecuritySettingContent = () => {
     },
   })
 
-  const handleResetPassword = handleSubmit(data => {
-    mutate({
-      oldPassword: data.oldPassword,
-      newPassword: data.newPassword,
-    })
+  const handleResetPassword = handleSubmit(() => {
+    toast.success('원활한 데모를 위해 비밀번호 변경 기능은 비활성화되었습니다.')
   })
 
   return (
@@ -128,16 +124,14 @@ export const SecuritySettingContent = () => {
         </FormField>
       </div>
       <div className="flex items-center justify-end">
-        <Beacon>
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={handleResetPassword}
-            isLoading={isPending}
-          >
-            비밀번호 변경
-          </Button>
-        </Beacon>
+        <Button
+          variant="primary"
+          size="lg"
+          onClick={handleResetPassword}
+          isLoading={isPending}
+        >
+          비밀번호 변경
+        </Button>
       </div>
     </div>
   )
