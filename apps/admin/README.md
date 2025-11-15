@@ -2,13 +2,13 @@
 
 [🔗 서비스 바로가기](https://portfolio-admin-git-main-eo9on9s-projects.vercel.app/)
 
-[🔗 개발 문서 바로가기](https://개발문서노션링크)
+[🔗 개발 문서 바로가기](https://morning-stone-025.notion.site/2ace1b2593048015a62fdeb9eeff63f5)
 
 ## 소개
 
 서비스 운영자가 실제로 사용할 만한 CRUD·필터링·대시보드 기능을 중심으로 구현한 관리자 시스템입니다.
 
-핵심 구현 내용은 별도의 [개발 문서](https://개발문서노션링크)는 별도로 작성되었습니다.
+핵심 구현 내용은 별도의 [개발 문서](https://morning-stone-025.notion.site/2ace1b2593048015a62fdeb9eeff63f5)는 별도로 작성되었습니다.
 
 ## 사용 기술
 

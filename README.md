@@ -6,4 +6,4 @@
 
 ## 목차
 
-1. [관리자 시스템(어드민) 웹](https://레포링크)
+1. [관리자 시스템(어드민) 웹](https://github.com/eo9on9/portfolio/tree/main/apps/admin)
