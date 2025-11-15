@@ -8,7 +8,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = ({ icon, className, isError, ...props }: InputProps) => {
   return (
-    <div className={containerVariants({ isError })}>
+    <div className={containerVariants({ isError, readOnly: !!props.readOnly })}>
       {icon}
       <input
         className={cn(
@@ -22,12 +22,16 @@ export const Input = ({ icon, className, isError, ...props }: InputProps) => {
 }
 
 const containerVariants = cva(
-  'inline-flex items-center gap-2 h-10 px-4 text-sm bg-gray-100 rounded-sm outline-1 focus-within:bg-white transition-outline duration-200 ease-out has-read-only:bg-white',
+  'inline-flex items-center gap-2 h-10 px-4 text-sm rounded-sm outline-1 focus-within:bg-white transition-outline duration-200 ease-out',
   {
     variants: {
       isError: {
         true: 'outline-error focus-within:outline-error',
         false: 'outline-transparent focus-within:outline-gray-300',
+      },
+      readOnly: {
+        true: 'bg-white',
+        false: 'bg-gray-100 focus-within:bg-white',
       },
     },
     defaultVariants: {
