@@ -1,40 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 관리자 시스템(어드민) 웹
 
-## Getting Started
+[🔗 서비스 바로가기](https://portfolio-admin-git-main-eo9on9s-projects.vercel.app/)
 
-First, run the development server:
+[🔗 개발 문서 바로가기](https://개발문서노션링크)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 소개
+
+서비스 운영자가 실제로 사용할 만한 CRUD·필터링·대시보드 기능을 중심으로 구현한 관리자 시스템입니다.
+
+핵심 구현 내용은 별도의 [개발 문서](https://개발문서노션링크)는 별도로 작성되었습니다.
+
+## 사용 기술
+
+- 코어: TypeScript, React, Next.js
+- UI·스타일링: Tailwind CSS, Radix UI, Lucid Icons
+- 상태 관리: TanStack Query, React Hook Form
+- 서버·스토리지: Next.js, Redis
+- 코드 품질: ESLint, Prettier
+- CI·CD: Vercel
+
+## 실행 방법
+
+### 필요 프로그램
+
+- [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)
+- [pnpm](https://pnpm.io/ko/installation)
+
+### 설치 방법
+
+```
+# .nvmrc에 명시된 Node.js 버전 설치
+nvm install
+
+# 해당 Node.js 버전 사용
+nvm use
+
+# 프로젝트 의존성 설치
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 실행 스크립트
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```
+# 개발 환경
+pnpm dev
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 폴더 아키텍처
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+> [FSD(Feature Sliced Design)](https://feature-sliced.design/)
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 단위에 따른 레이어들로 구조화하는 아키텍처입니다. 관심사의 분리와 확장성을 목표로 합니다.
+- 전역(shared) → 도메인(entity) → 기능(feature) → 화면(widget) → 페이지(page) 순의 단방향으로 의존성이 흐릅니다.
 
-## Learn More
+### 레이어 간략 소개
 
-To learn more about Next.js, take a look at the following resources:
+- app: 애플리케이션 단위
+- pages: 라우트 페이지 단위
+- widgets: 화면의 섹션 단위
+- features: 행동·기능 단위
+- entities: 비즈니스 도메인 단위
+- shared: 공통 전역 리소스 단위
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## 로드맵
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- 테스트: 기능 모듈과 UI 모듈의 단위 테스트 도입으로 코드 안정성 확보할 예정입니다.
