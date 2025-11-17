@@ -1,5 +1,6 @@
 import { login, LoginParams } from '@features/auth/api/login'
 import { accessTokenStorage } from '@shared/store/accessTokenStorage'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
@@ -80,14 +81,17 @@ export const LoginPage = () => {
               />
             </FormField>
           </div>
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={handleLogin}
-            isLoading={isPending}
-          >
-            로그인
-          </Button>
+          <Beacon>
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={handleLogin}
+              isLoading={isPending}
+              className="w-full"
+            >
+              로그인
+            </Button>
+          </Beacon>
         </form>
         <div className="flex flex-col items-center justify-center gap-2 bg-gray-100 p-2 rounded-sm">
           <p className="text-sm font-medium text-gray-800">테스트 계정</p>
