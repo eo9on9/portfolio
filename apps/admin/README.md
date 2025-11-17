@@ -57,7 +57,7 @@ pnpm dev
 - pages: 라우트 페이지 단위
 - widgets: 화면의 섹션 단위
 - features: 행동·기능 단위
-- entities: 비즈니스 도메인 단위ㄱ
+- entities: 비즈니스 도메인 단위
 - shared: 공통 전역 리소스 단위
 
 ## 핵심 구현 내용
