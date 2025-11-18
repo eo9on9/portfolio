@@ -1,0 +1,29 @@
+{
+  "extends": "@repo/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "jsxImportSource": "@emotion/react",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@app/*": ["./sources/app/*"],
+      "@pages/*": ["./sources/pages/*"],
+      "@widgets/*": ["./sources/widgets/*"],
+      "@features/*": ["./sources/features/*"],
+      "@entities/*": ["./sources/entities/*"],
+      "@shared/*": ["./sources/shared/*"],
+      "@server/*": ["./server/*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
