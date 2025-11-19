@@ -17,7 +17,7 @@ export const Input = ({ icon, className, isError, ...props }: InputProps) => {
 }
 
 const containerVariants = cva(
-  'inline-flex items-center gap-2 h-10 px-4 text-sm rounded-lg outline-1 focus-within:bg-white transition-outline duration-200 ease-out',
+  'inline-flex items-center gap-2 h-10 px-4 text-sm rounded-sm outline-1 focus-within:bg-white transition-outline duration-200 ease-out',
   {
     variants: {
       isError: {

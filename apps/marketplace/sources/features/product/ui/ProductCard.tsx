@@ -61,11 +61,11 @@ export const ProductCard = ({
 }
 
 const containerTw = tw`
-  flex gap-4 p-4 border border-gray-300 bg-white rounded-lg
+  flex gap-4 p-4 border border-gray-300 bg-white rounded-sm
   hover:shadow-lg transition-shadow duration-200 ease-out
 `
 
-const imageTw = tw`relative size-28 rounded-lg overflow-hidden`
+const imageTw = tw`relative size-28 rounded-sm overflow-hidden`
 
 const gradeTw = tw`absolute top-2 left-2 flex`
 

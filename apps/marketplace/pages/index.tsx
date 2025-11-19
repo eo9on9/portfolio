@@ -1,6 +1,17 @@
+import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
+import { ProductCard } from '@features/product/ui/ProductCard'
+import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
+import { Badge } from '@shared/ui/Badge'
+import { Button } from '@shared/ui/Button'
+import { Input } from '@shared/ui/Input'
+import { Modal } from '@shared/ui/Modal'
+import { ToggleGroup } from '@shared/ui/ToggleGroup'
 import Head from 'next/head'
+import { useState } from 'react'
 
 export default function Home() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <>
       <Head>
@@ -10,6 +21,40 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <h1>Home</h1>
+      <div className="flex flex-col gap-2 p-6">
+        <Badge>구매</Badge>
+        <ProductTypeBadge type="buy" />
+        <ProductTypeBadge type="sell" />
+        <ItemGradeBadge grade="normal" />
+        <ItemGradeBadge grade="rare" />
+        <ItemGradeBadge grade="epic" />
+        <ItemGradeBadge grade="legendary" />
+        <Input />
+        <Button onClick={() => setIsModalOpen(true)}>모달 열기</Button>
+        <Modal
+          title="모달 제목"
+          open={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        >
+          <div>모달 내용</div>
+        </Modal>
+        <ToggleGroup
+          options={[
+            { label: '전체', value: 'all' },
+            { label: '구매', value: 'buy' },
+            { label: '판매', value: 'sell' },
+          ]}
+          defaultValue="all"
+        />
+        <ProductCard
+          productId="1"
+          itemKey="woodenSword"
+          type="sell"
+          price={100}
+          amount={2}
+          createdAt={1763530721716}
+        />
+      </div>
     </>
   )
 }
