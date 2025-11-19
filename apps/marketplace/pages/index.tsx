@@ -5,6 +5,7 @@ import { Badge } from '@shared/ui/Badge'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
+import { Select } from '@shared/ui/Select'
 import { ToggleGroup } from '@shared/ui/ToggleGroup'
 import Head from 'next/head'
 import { useState } from 'react'
@@ -30,6 +31,14 @@ export default function Home() {
         <ItemGradeBadge grade="epic" />
         <ItemGradeBadge grade="legendary" />
         <Input />
+        <Select
+          options={[
+            { label: '전체', value: 'all' },
+            { label: '구매', value: 'buy' },
+            { label: '판매', value: 'sell' },
+          ]}
+          defaultValue="all"
+        />
         <Button onClick={() => setIsModalOpen(true)}>모달 열기</Button>
         <Modal
           title="모달 제목"
