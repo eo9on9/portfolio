@@ -32,4 +32,17 @@
   /* fonts */
   --font-pretendard: 'Pretendard', sans-serif;
   --default-font-family: var(--font-pretendard);
+
+  /* colors */
+  --color-primary: var(--color-gray-800);
+  --color-secondary: var(--color-gray-500);
+}
+
+@layer base {
+  body {
+    @apply bg-gray-50;
+  }
+  button:not([disabled]) {
+    @apply cursor-pointer;
+  }
 }
