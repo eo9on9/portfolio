@@ -1,7 +1,6 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
-    "jsxImportSource": "@emotion/react",
     "plugins": [
       {
         "name": "next"

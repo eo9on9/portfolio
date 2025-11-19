@@ -11,7 +11,7 @@
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit"
   },
-  "tailwindCSS.classFunctions": ["cva", "cn"],
+  "tailwindCSS.classFunctions": ["cva", "cn", "tw"],
   "files.associations": {
     "*.css": "tailwindcss"
   },
