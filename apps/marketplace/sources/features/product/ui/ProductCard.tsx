@@ -60,10 +60,14 @@ export const ProductCard = ({
   )
 }
 
-const containerTw = cn`
-  flex gap-4 p-4 border border-gray-300 bg-white rounded-sm
-  hover:shadow-lg transition-shadow duration-200 ease-out
-`
+const containerTw = cn([
+  /** base */
+  'flex gap-4 w-full p-4 border border-gray-200 bg-white rounded-sm',
+  /** animation */
+  'transition-shadow duration-200 ease-out',
+  /** states */
+  'hover:shadow-lg',
+])
 
 const imageTw = cn`relative size-28 rounded-sm overflow-hidden`
 

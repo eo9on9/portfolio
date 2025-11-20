@@ -1,4 +1,5 @@
 import { cn } from '@shared/util/cn'
+import { cva } from 'class-variance-authority'
 import { useState } from 'react'
 
 interface ToggleGroupProps {
@@ -6,6 +7,7 @@ interface ToggleGroupProps {
   defaultValue?: string
   value?: string
   onChange?: (value: string) => void
+  fill?: boolean
 }
 
 export const ToggleGroup = ({
@@ -13,6 +15,7 @@ export const ToggleGroup = ({
   defaultValue,
   value: _value,
   onChange,
+  fill = false,
 }: ToggleGroupProps) => {
   const [innerValue, setInnerValue] = useState(defaultValue)
 
@@ -26,7 +29,7 @@ export const ToggleGroup = ({
   }
 
   return (
-    <div className={containerTw}>
+    <div className={containerVariants({ fill })}>
       {options.map(option => (
         <button
           type="button"
@@ -42,11 +45,21 @@ export const ToggleGroup = ({
   )
 }
 
-const containerTw = cn`inline-flex w-fit items-center gap-2 p-1 bg-gray-100 rounded-sm`
+const containerVariants = cva(
+  cn`inline-flex items-center gap-2 p-1 bg-gray-100 rounded-sm`,
+  {
+    variants: {
+      fill: {
+        true: 'w-full',
+        false: 'w-fit',
+      },
+    },
+  },
+)
 
 const labelTw = cn([
   /** base */
-  'flex items-center justify-center gap-2 px-3 py-1.5 min-w-[100px] rounded-sm cursor-pointer',
+  'flex-1 flex items-center justify-center gap-2 px-3 py-1.5 rounded-sm cursor-pointer',
   /** animation */
   'transition-bg duration-200 ease-out',
   /** states */
