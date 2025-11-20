@@ -16,12 +16,12 @@ export const Input = ({ icon, className, isError, ...props }: InputProps) => {
 }
 
 const containerVariants = cva(
-  'inline-flex items-center gap-2 h-10 px-4 text-sm rounded-sm outline-1 focus-within:bg-white transition-outline duration-200 ease-out',
+  'inline-flex items-center gap-2 h-10 px-4 text-sm rounded-sm border focus-within:bg-white focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-gray-300 transition-border duration-200 ease-out',
   {
     variants: {
       isError: {
-        true: 'outline-error focus-within:outline-error',
-        false: 'outline-transparent focus-within:outline-gray-300',
+        true: 'border-error focus-within:border-error',
+        false: 'border-transparent focus-within:border-gray-300',
       },
       readOnly: {
         true: 'bg-white',

@@ -57,6 +57,9 @@
   .animateBeep {
     animation: beep 2s ease-in-out infinite;
   }
+  .animateShimmer {
+    animation: shimmer 2s infinite linear;
+  }
 }
 
 @keyframes selectShow {
@@ -79,5 +82,14 @@
   }
   75% {
     opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
   }
 }

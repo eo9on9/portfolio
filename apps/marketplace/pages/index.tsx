@@ -6,6 +6,7 @@ import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 import { Select } from '@shared/ui/Select'
+import { Skeleton } from '@shared/ui/Skeleton'
 import { ToggleGroup } from '@shared/ui/ToggleGroup'
 import Head from 'next/head'
 import { useState } from 'react'
@@ -29,6 +30,7 @@ export default function Home() {
         <ItemGradeBadge grade="normal" />
         <ItemGradeBadge grade="rare" />
         <ItemGradeBadge grade="epic" />
+        <Skeleton className="w-10 h-10" />
         <ItemGradeBadge grade="legendary" />
         <Input />
         <Select
