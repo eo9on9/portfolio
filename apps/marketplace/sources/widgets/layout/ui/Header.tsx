@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <header className={containerCn}>
       <div className={leftCn}>
-        <Link href="/" className={logoCn}>
+        <Link href="/main" className={logoCn}>
           <Image src="/images/logo.png" alt="logo" width={40} height={40} />
         </Link>
         <h1 className={titleCn}>아이템 거래소</h1>
@@ -16,7 +16,7 @@ export const Header = () => {
       <ul className={menuCn}>
         <li>
           <MenuButton
-            href="/"
+            href="/main"
             icon={<Home className="size-4" />}
             label="메인"
           />
@@ -37,7 +37,7 @@ export const Header = () => {
         </li>
         <li>
           <MenuButton
-            href="/manage"
+            href="/message"
             icon={<MessageSquare className="size-4" />}
             label="쪽지함"
             noticeCount={3}
