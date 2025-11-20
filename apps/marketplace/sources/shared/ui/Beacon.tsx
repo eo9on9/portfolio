@@ -23,5 +23,5 @@ const beaconTw = cn([
   /** base */
   'absolute -right-1 -top-1 size-1.5 bg-red-500 rounded-full pointer-events-none',
   /** animation */
-  'animateBeep',
+  'animate-[beep_2s_ease-in-out_infinite]',
 ])

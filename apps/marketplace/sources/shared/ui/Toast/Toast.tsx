@@ -45,8 +45,11 @@ export const Toast = ({
 
 const toastVariants = cva(
   [
+    /** base */
     'py-2 px-4 rounded-sm shadow-md',
+    /** state:open */
     'data-[state=open]:animate-[toastIn_100ms_ease-out_forwards]',
+    /** state:closed */
     'data-[state=closed]:animate-[toastOut_100ms_ease-out_forwards]',
   ],
   {

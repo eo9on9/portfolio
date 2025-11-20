@@ -81,7 +81,7 @@ const triggerVariants = cva(triggerBaseTw, {
 
 const iconTw = cn`size-4 text-gray-500`
 
-const contentTw = cn`z-110 animateSelectShow focus:ring-0`
+const contentTw = cn`z-110 animate-[selectIn_200ms_ease-out_forwards] focus:ring-0`
 
 const viewportTw = cn`flex flex-col gap-1 min-w-(--radix-select-trigger-width) p-2 border border-gray-300 bg-white rounded-sm shadow-md`
 

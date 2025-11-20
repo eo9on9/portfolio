@@ -3,16 +3,21 @@ import { ProductCard } from '@features/product/ui/ProductCard'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
 import { Badge } from '@shared/ui/Badge'
 import { Button } from '@shared/ui/Button'
+import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 import { Select } from '@shared/ui/Select'
 import { Skeleton } from '@shared/ui/Skeleton'
+import { useToast } from '@shared/ui/Toast'
 import { ToggleGroup } from '@shared/ui/ToggleGroup'
+import { Header } from '@widgets/layout/ui/Header'
 import Head from 'next/head'
 import { useState } from 'react'
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const toast = useToast()
 
   return (
     <>
@@ -24,6 +29,7 @@ export default function Home() {
       </Head>
       <h1>Home</h1>
       <div className="flex flex-col gap-2 p-6">
+        <Header />
         <Badge>구매</Badge>
         <ProductTypeBadge type="buy" />
         <ProductTypeBadge type="sell" />
@@ -33,6 +39,20 @@ export default function Home() {
         <Skeleton className="w-10 h-10" />
         <ItemGradeBadge grade="legendary" />
         <Input />
+        <FormField label="입력">
+          <Input />
+        </FormField>
+        <Button variant="primary" onClick={() => toast.success('성공')}>
+          성공
+        </Button>
+        <Button variant="primary" onClick={() => toast.error('실패')}>
+          실패
+        </Button>
+        <Button variant="primary" onClick={() => toast.default('기본')}>
+          기본
+        </Button>
+        <Button variant="secondary">버튼</Button>
+        <Button variant="ghost">버튼</Button>
         <Select
           options={[
             { label: '전체', value: 'all' },
