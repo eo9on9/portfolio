@@ -7,7 +7,7 @@ import {
   DialogPortal,
   DialogTitle,
 } from '@radix-ui/react-dialog'
-import { tw } from '@shared/util/tw'
+import { cn } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import { X } from 'lucide-react'
 import { PropsWithChildren, useEffect, useRef, useState } from 'react'
@@ -75,16 +75,16 @@ export const Modal = ({
   )
 }
 
-const containerTw = tw`z-100 fixed inset-0 flex items-center justify-center`
+const containerTw = cn`z-100 fixed inset-0 flex items-center justify-center`
 
-const headTw = tw`flex items-center justify-between`
+const headTw = cn`flex items-center justify-between`
 
-const titleTw = tw`text-lg font-semibold text-gray-800`
+const titleTw = cn`text-lg font-semibold text-gray-800`
 
-const xTw = tw`size-4 text-gray-500`
+const xTw = cn`size-4 text-gray-500`
 
 const dimVariants = cva(
-  tw`absolute inset-0 bg-black/50 transition-opacity duration-200 ease-out`,
+  cn`absolute inset-0 bg-black/50 transition-opacity duration-200 ease-out`,
   {
     variants: {
       isShow: {
@@ -96,7 +96,7 @@ const dimVariants = cva(
 )
 
 const contentVariants = cva(
-  tw`p-6 relative w-lg bg-white rounded-sm shadow-md transition-all duration-200 ease-out`,
+  cn`p-6 relative w-lg bg-white rounded-sm shadow-md transition-all duration-200 ease-out`,
   {
     variants: {
       isShow: {

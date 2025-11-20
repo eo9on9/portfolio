@@ -1,4 +1,4 @@
-import { cn } from '@shared/util/cn'
+import { cnMerge } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import { LoaderCircle } from 'lucide-react'
 import { PropsWithChildren } from 'react'
@@ -23,7 +23,10 @@ export const Button = ({
 }: PropsWithChildren<ButtonProps>) => {
   return (
     <button
-      className={cn(buttonVariants({ variant, size, disabled }), className)}
+      className={cnMerge(
+        buttonVariants({ variant, size, disabled }),
+        className,
+      )}
       onClick={onClick}
       disabled={disabled || isLoading}
     >

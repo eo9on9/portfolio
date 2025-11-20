@@ -10,7 +10,7 @@ import {
   SelectValue,
   SelectViewport,
 } from '@radix-ui/react-select'
-import { tw } from '@shared/util/tw'
+import { cn } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import { Check, ChevronDown } from 'lucide-react'
 
@@ -68,7 +68,7 @@ export const Select = ({
   )
 }
 
-const triggerBaseTw = tw`inline-flex items-center justify-between gap-2 h-10 pl-4 pr-3 text-sm text-gray-800 data-placeholder:text-gray-400 bg-gray-100 rounded-sm cursor-pointer`
+const triggerBaseTw = cn`inline-flex items-center justify-between gap-2 h-10 pl-4 pr-3 text-sm text-gray-800 data-placeholder:text-gray-400 bg-gray-100 rounded-sm cursor-pointer`
 
 const triggerVariants = cva(triggerBaseTw, {
   variants: {
@@ -79,10 +79,10 @@ const triggerVariants = cva(triggerBaseTw, {
   },
 })
 
-const iconTw = tw`size-4 text-gray-500`
+const iconTw = cn`size-4 text-gray-500`
 
-const contentTw = tw`z-110 animateSelectShow focus:ring-0`
+const contentTw = cn`z-110 animateSelectShow focus:ring-0`
 
-const viewportTw = tw`flex flex-col gap-1 min-w-(--radix-select-trigger-width) p-2 border border-gray-300 bg-white rounded-sm shadow-md`
+const viewportTw = cn`flex flex-col gap-1 min-w-(--radix-select-trigger-width) p-2 border border-gray-300 bg-white rounded-sm shadow-md`
 
-const itemTw = tw`flex items-center gap-2 px-2 h-8 text-sm text-gray-800 outline-none rounded-sm focus:bg-gray-100 cursor-pointer focus:ring-0`
+const itemTw = cn`flex items-center gap-2 px-2 h-8 text-sm text-gray-800 outline-none rounded-sm focus:bg-gray-100 cursor-pointer focus:ring-0`

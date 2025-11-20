@@ -1,4 +1,4 @@
-import { tw } from '@shared/util/tw'
+import { cn } from '@shared/util/cn'
 import { useState } from 'react'
 
 interface ToggleGroupProps {
@@ -42,9 +42,9 @@ export const ToggleGroup = ({
   )
 }
 
-const containerTw = tw`inline-flex w-fit items-center gap-2 p-1 bg-gray-100 rounded-sm`
+const containerTw = cn`inline-flex w-fit items-center gap-2 p-1 bg-gray-100 rounded-sm`
 
-const labelTw = tw([
+const labelTw = cn([
   /** base */
   'flex items-center justify-center gap-2 px-3 py-1.5 min-w-[100px] rounded-sm cursor-pointer',
   /** animation */
@@ -53,4 +53,4 @@ const labelTw = tw([
   'aria-pressed:bg-white aria-pressed:cursor-auto',
 ])
 
-const textTw = tw`text-sm font-medium text-gray-800`
+const textTw = cn`text-sm font-medium text-gray-800`

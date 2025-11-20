@@ -3,8 +3,8 @@ import { ITEM_DATABASE, KindOfItemKey } from '@entities/item/model/itemDatabase'
 import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
 import { KindOfProductType } from '@features/product/model/productType'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
+import { cn } from '@shared/util/cn'
 import { toAgo, toPrice } from '@shared/util/format'
-import { tw } from '@shared/util/tw'
 import Image from 'next/image'
 
 interface ProductCardProps {
@@ -60,31 +60,31 @@ export const ProductCard = ({
   )
 }
 
-const containerTw = tw`
+const containerTw = cn`
   flex gap-4 p-4 border border-gray-300 bg-white rounded-sm
   hover:shadow-lg transition-shadow duration-200 ease-out
 `
 
-const imageTw = tw`relative size-28 rounded-sm overflow-hidden`
+const imageTw = cn`relative size-28 rounded-sm overflow-hidden`
 
-const gradeTw = tw`absolute top-2 left-2 flex`
+const gradeTw = cn`absolute top-2 left-2 flex`
 
-const infoTw = tw`flex-1 flex flex-col justify-between gap-2 py-1`
+const infoTw = cn`flex-1 flex flex-col justify-between gap-2 py-1`
 
-const upperInfoTw = tw`flex flex-col gap-1`
+const upperInfoTw = cn`flex flex-col gap-1`
 
-const lowerInfoTw = tw`flex flex-col gap-2`
+const lowerInfoTw = cn`flex flex-col gap-2`
 
-const infoLineTw = tw`flex items-center justify-between`
+const infoLineTw = cn`flex items-center justify-between`
 
-const nameTw = tw`text-lg font-semibold text-gray-800`
+const nameTw = cn`text-lg font-semibold text-gray-800`
 
-const categoryTw = tw`text-base text-gray-500`
+const categoryTw = cn`text-base text-gray-500`
 
-const priceAmountTw = tw`flex items-center gap-2`
+const priceAmountTw = cn`flex items-center gap-2`
 
-const priceTw = tw`text-base text-blue-600`
+const priceTw = cn`text-base text-blue-600`
 
-const amountTw = tw`text-base text-gray-500`
+const amountTw = cn`text-base text-gray-500`
 
-const agoTw = tw`text-sm text-gray-500`
+const agoTw = cn`text-sm text-gray-500`

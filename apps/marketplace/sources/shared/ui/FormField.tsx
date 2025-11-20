@@ -1,4 +1,4 @@
-import { tw } from '@shared/util/tw'
+import { cn } from '@shared/util/cn'
 import {
   cloneElement,
   isValidElement,
@@ -44,8 +44,8 @@ export const FormField = ({
   )
 }
 
-const containerTw = tw`flex flex-col gap-2`
+const containerTw = cn`flex flex-col gap-2`
 
-const labelTw = tw`text-sm font-medium text-gray-800`
+const labelTw = cn`text-sm font-medium text-gray-800`
 
-const errorMessageTw = tw`text-xs text-error`
+const errorMessageTw = cn`text-xs text-error`

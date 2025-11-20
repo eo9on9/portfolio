@@ -1,5 +1,4 @@
-import { cn } from '@shared/util/cn'
-import { tw } from '@shared/util/tw'
+import { cn, cnMerge } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -11,7 +10,7 @@ export const Input = ({ icon, className, isError, ...props }: InputProps) => {
   return (
     <div className={containerVariants({ isError, readOnly: !!props.readOnly })}>
       {icon}
-      <input className={cn(inputTw, className)} {...props} />
+      <input className={cnMerge(inputTw, className)} {...props} />
     </div>
   )
 }
@@ -35,4 +34,4 @@ const containerVariants = cva(
   },
 )
 
-const inputTw = tw`flex-1 outline-none text-gray-800 placeholder:text-gray-400 read-only:text-gray-500 focus:ring-0`
+const inputTw = cn`flex-1 outline-none text-gray-800 placeholder:text-gray-400 read-only:text-gray-500 focus:ring-0`
