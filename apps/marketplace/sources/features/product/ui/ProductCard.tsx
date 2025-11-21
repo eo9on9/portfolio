@@ -29,7 +29,12 @@ export const ProductCard = ({
   const item = ITEM_DATABASE[itemKey]
 
   return (
-    <button className={containerTw} onClick={() => onClick?.(productId)}>
+    <div
+      className={containerTw}
+      onClick={() => onClick?.(productId)}
+      role="button"
+      tabIndex={0}
+    >
       <div className={imageTw}>
         <Image src={item.imageSrc} alt={item.name} fill />
         <div className={gradeTw}>
@@ -56,24 +61,24 @@ export const ProductCard = ({
           </div>
         </div>
       </div>
-    </button>
+    </div>
   )
 }
 
 const containerTw = cn([
   /** base */
-  'flex gap-4 w-full p-4 border border-gray-200 bg-white rounded-sm',
+  'flex gap-4 w-full p-2 border border-gray-200 bg-white rounded-sm cursor-pointer',
   /** animation */
   'transition-shadow duration-200 ease-out',
   /** states */
-  'hover:shadow-lg',
+  'hover:shadow-md',
 ])
 
-const imageTw = cn`relative size-28 rounded-sm overflow-hidden`
+const imageTw = cn`relative size-24 rounded-sm overflow-hidden`
 
 const gradeTw = cn`absolute top-2 left-2 flex`
 
-const infoTw = cn`flex-1 flex flex-col justify-between gap-2 py-1`
+const infoTw = cn`flex-1 flex flex-col justify-between gap-2`
 
 const upperInfoTw = cn`flex flex-col gap-1`
 
@@ -81,7 +86,7 @@ const lowerInfoTw = cn`flex flex-col gap-2`
 
 const infoLineTw = cn`flex items-center justify-between`
 
-const nameTw = cn`text-lg font-semibold text-gray-800`
+const nameTw = cn`text-lg font-medium text-gray-800`
 
 const categoryTw = cn`text-base text-gray-500`
 

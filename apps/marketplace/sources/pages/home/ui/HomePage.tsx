@@ -15,8 +15,8 @@ export const HomePage = () => {
         <ToggleGroup
           options={[
             { label: '전체', value: 'all' },
-            { label: '구매', value: 'buy' },
             { label: '판매', value: 'sell' },
+            { label: '구매', value: 'buy' },
           ]}
           defaultValue="all"
           fill

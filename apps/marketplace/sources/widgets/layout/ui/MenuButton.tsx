@@ -1,7 +1,7 @@
 import { cn } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { ReactNode } from 'react'
 
 interface MenuButtonProps {
@@ -18,7 +18,9 @@ export const MenuButton = ({
   noticeCount,
 }: MenuButtonProps) => {
   const pathname = usePathname()
-  const isPressed = pathname === href
+  const params = useSearchParams()
+  const isPressed =
+    pathname === href || params.get('from') === href.replace('/', '')
 
   return (
     <Link href={href} className={linkVariants({ isPressed })}>

@@ -38,3 +38,26 @@ export function toAgo(timestamp: number): string {
 export function toPrice(price: number): string {
   return price.toLocaleString()
 }
+
+export function toFullDate(timestamp: number): string {
+  const date = new Date(timestamp)
+
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+
+  let hours = date.getHours()
+  const minutes = String(date.getMinutes()).padStart(2, '0')
+
+  const isAM = hours < 12
+  const ampm = isAM ? '오전' : '오후'
+
+  // 한국식 12시간제
+  hours = hours % 12
+  if (hours === 0) hours = 12
+
+  // 두 자리로 맞출 필요 있으면 pad 추가 가능
+  const hh = String(hours).padStart(2, '0')
+
+  return `${year}년 ${month}월 ${day}일 ${ampm} ${hh}:${minutes}`
+}

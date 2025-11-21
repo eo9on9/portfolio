@@ -39,8 +39,8 @@ const gradeTw = cn`absolute top-2 left-2 flex`
 
 const descriptionTw = cn`text-base text-gray-500`
 
-const priceTw = cn`flex items-center justify-between border-t border-gray-200 pt-4 my-4`
+const priceTw = cn`flex items-center justify-between bg-gray-100 p-4 my-2 rounded-sm`
 
-const priceLabelTw = cn`text-base text-gray-500`
+const priceLabelTw = cn`text-base text-gray-800`
 
 const priceValueTw = cn`text-base text-blue-600`
