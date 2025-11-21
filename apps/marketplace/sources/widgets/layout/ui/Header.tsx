@@ -40,7 +40,7 @@ export const Header = () => {
             href="/message"
             icon={<MessageSquare className="size-4" />}
             label="쪽지함"
-            // noticeCount={3}
+            noticeCount={3}
           />
         </li>
       </ul>

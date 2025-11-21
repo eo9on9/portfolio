@@ -9,7 +9,7 @@ export const ManagePage = () => {
     <MainLayout>
       <PageTop
         title="아이템 관리"
-        description="내가 등록한 아이템을 관리합니다."
+        description="내가 등록한 아이템을 관리하세요."
       />
       <div className={toggleGroupContainerCn}>
         <ToggleGroup
