@@ -1,0 +1,107 @@
+{
+  "wooden_sword": {
+    "name": "나무 검",
+    "category": "weapon",
+    "image_src": "/images/wooden-sword.png",
+    "grade": "normal",
+    "description": "나무로 만들어진 검. (공격력 +10)"
+  },
+  "stone_sword": {
+    "name": "돌 검",
+    "category": "weapon",
+    "image_src": "/images/stone-sword.png",
+    "grade": "normal",
+    "description": "돌로 만들어진 검. (공격력 +12)"
+  },
+  "steel_sword": {
+    "name": "강철 검",
+    "category": "weapon",
+    "image_src": "/images/steel-sword.png",
+    "grade": "rare",
+    "description": "강철로 만들어진 검. (공격력 +14)"
+  },
+  "demon_sword": {
+    "name": "악마의 검",
+    "category": "weapon",
+    "image_src": "/images/demon-sword.png",
+    "grade": "epic",
+    "description": "악마의 힘을 담은 검. (공격력 +20)"
+  },
+  "dragon_sword": {
+    "name": "용의 검",
+    "category": "weapon",
+    "image_src": "/images/dragon-sword.png",
+    "grade": "legendary",
+    "description": "용의 힘을 담은 검. (공격력 +24)"
+  },
+  "cloth_armor": {
+    "name": "천 갑옷",
+    "category": "armor",
+    "image_src": "/images/cloth-armor.png",
+    "grade": "normal",
+    "description": "천으로 만들어진 갑옷. (방어력 +10)"
+  },
+  "leather_armor": {
+    "name": "가죽 갑옷",
+    "category": "armor",
+    "image_src": "/images/leather-armor.png",
+    "grade": "normal",
+    "description": "가죽으로 만들어진 갑옷. (방어력 +12)"
+  },
+  "metal_armor": {
+    "name": "금속 갑옷",
+    "category": "armor",
+    "image_src": "/images/metal-armor.png",
+    "grade": "rare",
+    "description": "금속으로 만들어진 갑옷. (방어력 +14)"
+  },
+  "dragon_armor": {
+    "name": "용 갑옷",
+    "category": "armor",
+    "image_src": "/images/dragon-armor.png",
+    "grade": "epic",
+    "description": "용의 힘을 담은 갑옷. (방어력 +16)"
+  },
+  "hp_potion": {
+    "name": "HP 포션",
+    "category": "consumable",
+    "image_src": "/images/hp-potion.png",
+    "grade": "normal",
+    "description": "HP를 회복하는 포션. (HP +100)"
+  },
+  "mp_potion": {
+    "name": "MP 포션",
+    "category": "consumable",
+    "image_src": "/images/mp-potion.png",
+    "grade": "normal",
+    "description": "MP를 회복하는 포션. (MP +100)"
+  },
+  "ring": {
+    "name": "반지",
+    "category": "accessory",
+    "image_src": "/images/ring.png",
+    "grade": "normal",
+    "description": "반지. (속성 +10)"
+  },
+  "crown": {
+    "name": "왕관",
+    "category": "accessory",
+    "image_src": "/images/crown.png",
+    "grade": "rare",
+    "description": "왕관. (속성 +12)"
+  },
+  "ore": {
+    "name": "광석",
+    "category": "material",
+    "image_src": "/images/ore.png",
+    "grade": "normal",
+    "description": "광석. (속성 +10)"
+  },
+  "scroll": {
+    "name": "스크롤",
+    "category": "material",
+    "image_src": "/images/scroll.png",
+    "grade": "normal",
+    "description": "문서. (속성 +10)"
+  }
+}

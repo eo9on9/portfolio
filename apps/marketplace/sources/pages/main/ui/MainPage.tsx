@@ -4,6 +4,7 @@ import {
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
 import { ProductCard } from '@features/product/ui/ProductCard'
+import { Beacon } from '@shared/ui/Beacon'
 import { IntersectionDetector } from '@shared/ui/IntersectionDetector'
 import { ToggleGroup } from '@shared/ui/ToggleGroup'
 import { ALL_VALUE, allToUndefined, withAll } from '@shared/util/form'
@@ -53,33 +54,39 @@ export const MainPage = () => {
         description="가장 최근에 등록된 아이템을 확인하세요."
       />
       <div className="w-full max-w-lg">
-        <ToggleGroup
-          options={TOGGLE_GROUP_OPTIONS}
-          value={tab}
-          onChange={value => {
-            const q = new URLSearchParams()
-            q.set('tab', value)
-            const qs = q.toString() ?? ''
-            router.push(`?${qs}`)
-            queryClient.removeQueries({ queryKey: ['products'] })
-          }}
-          fill
-        />
+        <Beacon className="block">
+          <ToggleGroup
+            options={TOGGLE_GROUP_OPTIONS}
+            value={tab}
+            onChange={value => {
+              const q = new URLSearchParams()
+              q.set('tab', value)
+              const qs = q.toString() ?? ''
+              router.push(`?${qs}`)
+              queryClient.removeQueries({ queryKey: ['products'] })
+            }}
+            fill
+          />
+        </Beacon>
       </div>
       <ul className="grid grid-cols-1 desktop:grid-cols-2 gap-4">
         {data?.pages
           .flatMap(page => page.products)
           .map(product => (
             <li key={product.id}>
-              <ProductCard
-                productId={product.id}
-                itemKey={product.itemKey}
-                type={product.type}
-                price={product.price}
-                amount={product.amount}
-                createdAt={product.createdAt}
-                onClick={id => router.push(`/detail/${id}?from=main`)}
-              />
+              <Beacon>
+                <ProductCard
+                  productId={product.id}
+                  itemKey={product.itemKey}
+                  type={product.type}
+                  price={product.price}
+                  amount={product.amount}
+                  createdAt={product.createdAt}
+                  onClick={() =>
+                    router.push(`/detail/${product.itemKey}?from=main`)
+                  }
+                />
+              </Beacon>
             </li>
           ))}
       </ul>

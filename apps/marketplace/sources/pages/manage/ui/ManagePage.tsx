@@ -26,7 +26,7 @@ export const ManagePage = () => {
           <ProductManageCard
             product={{
               id: '1',
-              itemKey: 'woodenSword',
+              itemKey: 'wooden_sword',
               type: 'sell',
               listedBy: 'seller1',
               price: 40000000,
@@ -40,7 +40,7 @@ export const ManagePage = () => {
           <ProductManageCard
             product={{
               id: '2',
-              itemKey: 'woodenSword',
+              itemKey: 'wooden_sword',
               type: 'sell',
               listedBy: 'seller1',
               price: 40000000,
@@ -54,7 +54,7 @@ export const ManagePage = () => {
           <ProductManageCard
             product={{
               id: '3',
-              itemKey: 'woodenSword',
+              itemKey: 'wooden_sword',
               type: 'sell',
               listedBy: 'seller1',
               price: 40000000,
@@ -68,7 +68,7 @@ export const ManagePage = () => {
           <ProductManageCard
             product={{
               id: '4',
-              itemKey: 'woodenSword',
+              itemKey: 'wooden_sword',
               type: 'buy',
               listedBy: 'seller1',
               price: 40000000,
@@ -82,7 +82,7 @@ export const ManagePage = () => {
           <ProductManageCard
             product={{
               id: '5',
-              itemKey: 'woodenSword',
+              itemKey: 'wooden_sword',
               type: 'buy',
               listedBy: 'seller1',
               price: 40000000,
@@ -96,7 +96,7 @@ export const ManagePage = () => {
           <ProductManageCard
             product={{
               id: '6',
-              itemKey: 'woodenSword',
+              itemKey: 'wooden_sword',
               type: 'buy',
               listedBy: 'seller1',
               price: 40000000,

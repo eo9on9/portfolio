@@ -1,11 +1,16 @@
+import { KindOfItemKey } from '@entities/item/model/itemKey'
 import { ProductDetailCard } from '@pages/detail/ui/ProductDetailCard'
 import { ProductListingCard } from '@pages/detail/ui/ProductListingCard'
 import { ProductPriceCard } from '@pages/detail/ui/ProductPriceCard'
 import { cn } from '@shared/util/cn'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
+import { useRouter } from 'next/router'
 
 export const DetailPage = () => {
+  const router = useRouter()
+  const { itemKey } = router.query as { itemKey: KindOfItemKey }
+
   return (
     <MainLayout>
       <PageTop
@@ -17,7 +22,7 @@ export const DetailPage = () => {
         {/* 좌측 */}
         <div className={leftCn}>
           {/* 상세 카드 */}
-          <ProductDetailCard />
+          <ProductDetailCard itemKey={itemKey} />
         </div>
 
         {/* 우측 */}
@@ -26,7 +31,7 @@ export const DetailPage = () => {
           <ProductPriceCard />
 
           {/* 등록 리스트 */}
-          <ProductListingCard />
+          <ProductListingCard itemKey={itemKey} />
         </div>
       </div>
     </MainLayout>

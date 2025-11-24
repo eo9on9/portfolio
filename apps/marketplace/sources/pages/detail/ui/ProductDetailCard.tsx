@@ -1,46 +1,52 @@
+import { getItemWiki } from '@entities/item/api/getItemWiki'
+import { KindOfItemKey } from '@entities/item/model/itemKey'
 import { ItemCategoryBadge } from '@entities/item/ui/ItemCategoryBadge'
 import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
+import { getPriceHistory } from '@features/product/api/getPriceHistory'
 import { Button } from '@shared/ui/Button'
-import { cn } from '@shared/util/cn'
+import { toPrice } from '@shared/util/format'
+import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 
-export const ProductDetailCard = () => {
+interface ProductDetailCardProps {
+  itemKey: KindOfItemKey
+}
+
+export const ProductDetailCard = ({ itemKey }: ProductDetailCardProps) => {
+  const { data: itemWiki } = useQuery({
+    queryKey: ['item-wiki'],
+    queryFn: getItemWiki,
+  })
+
+  const { data: priceHistory } = useQuery({
+    queryKey: ['price-history'],
+    queryFn: getPriceHistory,
+  })
+
+  const info = itemWiki?.[itemKey]
+
+  if (!info) return null
+
   return (
-    <div className={containerTw}>
-      <div className={imageTw}>
-        <Image src="/images/wooden-sword.png" alt="나무 검" fill />
-        <div className={gradeTw}>
-          <ItemGradeBadge grade="normal" />
+    <div className="flex flex-col gap-2 p-4 border border-gray-200 bg-white rounded-sm">
+      <div className="overflow-hidden relative aspect-square rounded-sm">
+        <Image src={info.imageSrc} alt={info.name} loading="eager" fill />
+        <div className="absolute top-2 left-2 flex">
+          <ItemGradeBadge grade={info.grade} />
         </div>
       </div>
-      <div className={titleWrapTw}>
-        <h3 className={titleTw}>나무 검</h3>
-        <ItemCategoryBadge category="weapon" />
+      <div className="flex items-center gap-2">
+        <h3 className="text-lg font-medium text-gray-800">{info.name}</h3>
+        <ItemCategoryBadge category={info.category} />
       </div>
-      <p className={descriptionTw}>나무로 만들어진 검. (공격력 +10)</p>
-      <div className={priceTw}>
-        <p className={priceLabelTw}>평균 시세</p>
-        <p className={priceValueTw}>4,833,333 G</p>
+      <p className="text-base text-gray-500">{info.description}</p>
+      <div className="flex items-center justify-between bg-gray-100 p-4 my-2 rounded-sm">
+        <p className="text-base text-gray-800">평균 시세</p>
+        <p className="text-base text-blue-600">
+          {toPrice(priceHistory?.averagePrice ?? 0)} G
+        </p>
       </div>
       <Button>등록하기</Button>
     </div>
   )
 }
-
-const containerTw = cn`flex flex-col gap-2 p-4 border border-gray-200 bg-white rounded-sm`
-
-const imageTw = cn`overflow-hidden relative aspect-square rounded-sm`
-
-const titleWrapTw = cn`flex items-center gap-2`
-
-const titleTw = cn`text-lg font-medium text-gray-800`
-
-const gradeTw = cn`absolute top-2 left-2 flex`
-
-const descriptionTw = cn`text-base text-gray-500`
-
-const priceTw = cn`flex items-center justify-between bg-gray-100 p-4 my-2 rounded-sm`
-
-const priceLabelTw = cn`text-base text-gray-800`
-
-const priceValueTw = cn`text-base text-blue-600`
