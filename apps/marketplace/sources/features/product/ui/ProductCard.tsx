@@ -36,7 +36,7 @@ export const ProductCard = ({
       tabIndex={0}
     >
       <div className={imageTw}>
-        <Image src={item.imageSrc} alt={item.name} fill />
+        <Image src={item.imageSrc} alt={item.name} width={96} height={96} />
         <div className={gradeTw}>
           <ItemGradeBadge grade={item.grade} />
         </div>

@@ -6,7 +6,7 @@ import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Select } from '@shared/ui/Select'
 import { cn } from '@shared/util/cn'
-import { ALL_SELECT_OPTION, withAll } from '@shared/util/form'
+import { ALL_VALUE, withAll } from '@shared/util/form'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
 import { ProductList } from '@widgets/product/ui/ProductList'
@@ -29,7 +29,7 @@ export const SearchPage = () => {
                   value: key,
                 })),
               )}
-              defaultValue={ALL_SELECT_OPTION.value}
+              defaultValue={ALL_VALUE}
             />
           </FormField>
           <FormField label="등급">
@@ -40,7 +40,7 @@ export const SearchPage = () => {
                   value: key,
                 })),
               )}
-              defaultValue={ALL_SELECT_OPTION.value}
+              defaultValue={ALL_VALUE}
             />
           </FormField>
           <FormField label="거래 유형">
@@ -51,7 +51,7 @@ export const SearchPage = () => {
                   value: key,
                 })),
               )}
-              defaultValue={ALL_SELECT_OPTION.value}
+              defaultValue={ALL_VALUE}
             />
           </FormField>
         </div>

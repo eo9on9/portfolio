@@ -7,7 +7,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="1"
-          itemKey="woodenSword"
+          itemKey="wooden_sword"
           type="sell"
           price={100}
           amount={2}
@@ -17,7 +17,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="2"
-          itemKey="steelSword"
+          itemKey="steel_sword"
           type="buy"
           price={100}
           amount={2}
@@ -27,7 +27,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="3"
-          itemKey="stoneSword"
+          itemKey="stone_sword"
           type="sell"
           price={100}
           amount={2}
@@ -37,7 +37,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="4"
-          itemKey="woodenSword"
+          itemKey="wooden_sword"
           type="sell"
           price={100}
           amount={2}
@@ -47,7 +47,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="5"
-          itemKey="demonSword"
+          itemKey="demon_sword"
           type="buy"
           price={100}
           amount={2}
@@ -57,7 +57,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="6"
-          itemKey="dragonSword"
+          itemKey="dragon_sword"
           type="sell"
           price={100}
           amount={2}
@@ -67,7 +67,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="7"
-          itemKey="steelSword"
+          itemKey="steel_sword"
           type="buy"
           price={100}
           amount={2}
@@ -77,7 +77,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="8"
-          itemKey="stoneSword"
+          itemKey="stone_sword"
           type="sell"
           price={100}
           amount={2}
@@ -87,7 +87,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="9"
-          itemKey="woodenSword"
+          itemKey="wooden_sword"
           type="sell"
           price={100}
           amount={2}
@@ -97,7 +97,7 @@ export const ProductList = () => {
       <li>
         <ProductCard
           productId="10"
-          itemKey="demonSword"
+          itemKey="demon_sword"
           type="buy"
           price={100}
           amount={2}
