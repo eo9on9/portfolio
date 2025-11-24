@@ -29,8 +29,9 @@ const fromGetPriceHistoryResponseDTO = (
 }
 
 export const getPriceHistory = async () => {
-  const response =
-    await request.get<GetPriceHistoryResponseDTO>('/price-history')
+  const response = await request.get<GetPriceHistoryResponseDTO>(
+    '/product/price-history',
+  )
 
   return fromGetPriceHistoryResponseDTO(response)
 }

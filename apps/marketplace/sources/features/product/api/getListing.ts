@@ -34,7 +34,7 @@ const fromGetListingResDTO = (dto: GetListingResDTO): GetListingRes => {
 }
 
 export const getListing = async (params: GetListingParams) => {
-  const response = await request.get<GetListingResDTO>('/listing', {
+  const response = await request.get<GetListingResDTO>('/product/listing', {
     params: toGetListingParamsDTO(params),
   })
 

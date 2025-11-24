@@ -16,7 +16,7 @@ const fromGetItemWikiResponseDTO = (
 }
 
 export const getItemWiki = async (): Promise<GetItemWikiResponse> => {
-  const response = await request.get<GetItemWikiResponseDTO>('/item-wiki')
+  const response = await request.get<GetItemWikiResponseDTO>('/item/wiki')
 
   return fromGetItemWikiResponseDTO(response)
 }

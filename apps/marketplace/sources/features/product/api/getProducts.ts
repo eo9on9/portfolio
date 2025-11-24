@@ -29,7 +29,7 @@ const fromGetProductsResDTO = (dto: GetProductsResDTO): GetProductsRes => {
 }
 
 export const getProducts = async ({ type, page }: GetProductsParams) => {
-  const response = await request.get<GetProductsResDTO>('/products', {
+  const response = await request.get<GetProductsResDTO>('/product/filter', {
     params: { type, page },
   })
 
