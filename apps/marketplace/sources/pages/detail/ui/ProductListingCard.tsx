@@ -5,6 +5,7 @@ import {
   PRODUCT_TYPE,
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
+import { SendProductMessageModal } from '@features/product/ui/SendProductMessageModal'
 import { Button } from '@shared/ui/Button'
 import { Table, TableColumn } from '@shared/ui/Table'
 import { ToggleGroup } from '@shared/ui/ToggleGroup'
@@ -13,8 +14,7 @@ import { useQuery } from '@tanstack/react-query'
 import { MessageSquare } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
-import { useMemo } from 'react'
-
+import { useMemo, useState } from 'react'
 interface ProductListingCardProps {
   itemKey: KindOfItemKey
 }
@@ -23,6 +23,9 @@ export const ProductListingCard = ({ itemKey }: ProductListingCardProps) => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const type = searchParams.get('type') ?? PRODUCT_TYPE[0]
+
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 
   const { data } = useQuery({
     queryKey: ['product', 'listing', itemKey],
@@ -55,8 +58,15 @@ export const ProductListingCard = ({ itemKey }: ProductListingCardProps) => {
       {
         header: '액션',
         align: 'center',
-        render: () => (
-          <Button variant="ghost">
+        render: item => (
+          <Button
+            variant="ghost"
+            onClick={() => {
+              setSelectedProduct(item)
+              setModalOpen(true)
+            }}
+            disabled={item.listedBy === '용사(나)'}
+          >
             <MessageSquare className="size-4" />
           </Button>
         ),
@@ -75,38 +85,47 @@ export const ProductListingCard = ({ itemKey }: ProductListingCardProps) => {
   )
 
   return (
-    <div className="flex flex-col gap-4 p-4 border border-gray-200 bg-white rounded-sm">
-      <ToggleGroup
-        options={[
-          {
-            label: `${PRODUCT_TYPE_LABELS['sell']} 목록 (${sellData?.length ?? 0})`,
-            value: 'sell',
-          },
-          {
-            label: `${PRODUCT_TYPE_LABELS['buy']} 목록 (${buyData?.length ?? 0})`,
-            value: 'buy',
-          },
-        ]}
-        fill
-        value={type}
-        onChange={value => {
-          router.replace({
-            pathname: router.pathname,
-            query: {
-              ...router.query,
-              type: value,
+    <>
+      <div className="flex flex-col gap-4 p-4 border border-gray-200 bg-white rounded-sm">
+        <ToggleGroup
+          options={[
+            {
+              label: `${PRODUCT_TYPE_LABELS['sell']} 목록 (${sellData?.length ?? 0})`,
+              value: 'sell',
             },
-          })
-        }}
-      />
-      <div className="overflow-x-auto">
-        <div className="w-full min-w-sm">
-          <Table
-            data={type === 'sell' ? sellData : buyData}
-            columns={columns}
-          />
+            {
+              label: `${PRODUCT_TYPE_LABELS['buy']} 목록 (${buyData?.length ?? 0})`,
+              value: 'buy',
+            },
+          ]}
+          fill
+          value={type}
+          onChange={value => {
+            router.replace({
+              pathname: router.pathname,
+              query: {
+                ...router.query,
+                type: value,
+              },
+            })
+          }}
+        />
+        <div className="overflow-x-auto">
+          <div className="w-full min-w-sm">
+            <Table
+              data={type === 'sell' ? sellData : buyData}
+              columns={columns}
+            />
+          </div>
         </div>
       </div>
-    </div>
+      {selectedProduct && (
+        <SendProductMessageModal
+          product={selectedProduct}
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
+    </>
   )
 }
