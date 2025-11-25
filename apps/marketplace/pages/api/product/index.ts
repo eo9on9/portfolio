@@ -13,18 +13,30 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
+  const rawProducts = await redis.get('products')
+  const products = rawProducts && (JSON.parse(rawProducts) as Product[])
+
+  if (!products) {
+    return res.status(400).json({
+      code: 'INTERNAL_SERVER_ERROR',
+      message: '서버 오류가 발생했습니다.',
+      data: null,
+    })
+  }
+
+  if (req.method === 'GET') {
+    const product = products.find(p => p.id === req.query.id)
+
+    return res.status(200).json({
+      code: 'SUCCESS',
+      message: '상품 목록 조회 성공',
+      data: {
+        product,
+      },
+    })
+  }
+
   if (req.method === 'POST') {
-    const rawProducts = await redis.get('products')
-    const products = rawProducts && (JSON.parse(rawProducts) as Product[])
-
-    if (!products) {
-      return res.status(400).json({
-        code: 'INTERNAL_SERVER_ERROR',
-        message: '서버 오류가 발생했습니다.',
-        data: null,
-      })
-    }
-
     const { item_key, type, price, amount } =
       req.body as unknown as NewProductParams
 

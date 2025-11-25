@@ -37,9 +37,9 @@ export const Header = () => {
         </li>
         <li>
           <MenuButton
-            href="/message"
+            href="/conversation"
             icon={<MessageSquare className="size-4" />}
-            label="쪽지함"
+            label="대화"
             noticeCount={3}
           />
         </li>

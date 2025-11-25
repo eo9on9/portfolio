@@ -1,0 +1,26 @@
+[
+  {
+    "id": "conv-1",
+    "partner": "골목대장",
+    "product_id": "180",
+    "last_message": "안녕하세요!",
+    "last_message_at": 1764053814809,
+    "has_new_message": false
+  },
+  {
+    "id": "conv-2",
+    "partner": "서리마녀",
+    "product_id": "181",
+    "last_message": "즐겜!",
+    "last_message_at": 1764053826044,
+    "has_new_message": true
+  },
+  {
+    "id": "conv-3",
+    "partner": "몬스터헌터",
+    "product_id": "182",
+    "last_message": "지금 거래 가능할까요?",
+    "last_message_at": 1764053833767,
+    "has_new_message": false
+  }
+]

@@ -5,7 +5,7 @@ import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import Image from 'next/image'
 import { useEffect } from 'react'
 
-export const MessageDetailPage = () => {
+export const ConversationPage = () => {
   useEffect(() => {
     window.scrollTo({
       top: document.documentElement.scrollHeight,
