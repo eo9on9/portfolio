@@ -1,7 +1,7 @@
 import { cnMerge } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import { LoaderCircle } from 'lucide-react'
-import { PropsWithChildren } from 'react'
+import { forwardRef, PropsWithChildren } from 'react'
 
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'ghost'
@@ -12,31 +12,42 @@ interface ButtonProps {
   isLoading?: boolean
 }
 
-export const Button = ({
-  variant = 'primary',
-  size = 'md',
-  className,
-  children,
-  onClick,
-  disabled,
-  isLoading = false,
-}: PropsWithChildren<ButtonProps>) => {
-  return (
-    <button
-      className={cnMerge(
-        buttonVariants({ variant, size, disabled }),
-        className,
-      )}
-      onClick={onClick}
-      disabled={disabled || isLoading}
-    >
-      <span className={textWrapperVariants({ isLoading })}>{children}</span>
-      {isLoading && (
-        <LoaderCircle className="absolute inset-0 m-auto size-4 animate-spin" />
-      )}
-    </button>
-  )
-}
+export const Button = forwardRef<
+  HTMLButtonElement,
+  PropsWithChildren<ButtonProps>
+>(
+  (
+    {
+      variant = 'primary',
+      size = 'md',
+      className,
+      children,
+      onClick,
+      disabled,
+      isLoading = false,
+    },
+    ref,
+  ) => {
+    return (
+      <button
+        ref={ref}
+        className={cnMerge(
+          buttonVariants({ variant, size, disabled }),
+          className,
+        )}
+        onClick={onClick}
+        disabled={disabled || isLoading}
+      >
+        <span className={textWrapperVariants({ isLoading })}>{children}</span>
+        {isLoading && (
+          <LoaderCircle className="absolute inset-0 m-auto size-4 animate-spin" />
+        )}
+      </button>
+    )
+  },
+)
+
+Button.displayName = 'Button'
 
 const buttonVariants = cva(
   'relative inline-block font-medium text-sm rounded-sm cursor-pointer transition-bg duration-200 ease-out',
