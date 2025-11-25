@@ -1,9 +1,14 @@
+import { KindOfItemCategory } from '@entities/item/model/itemCategory'
+import { KindOfItemGrade } from '@entities/item/model/itemGrade'
 import { fromProductDTO, ProductDTO } from '@features/product/api/dto/product'
 import { Product } from '@features/product/model/product'
 import { KindOfProductType } from '@features/product/model/productType'
 import { request } from '@shared/api/request'
 
-interface GetProductsParams {
+export interface GetProductsParams {
+  name?: string
+  category?: KindOfItemCategory
+  grade?: KindOfItemGrade
   type?: KindOfProductType
   page: number
 }
@@ -28,9 +33,9 @@ const fromGetProductsResDTO = (dto: GetProductsResDTO): GetProductsRes => {
   }
 }
 
-export const getProducts = async ({ type, page }: GetProductsParams) => {
+export const getProducts = async (params: GetProductsParams) => {
   const response = await request.get<GetProductsResDTO>('/product/filter', {
-    params: { type, page },
+    params: params,
   })
 
   return fromGetProductsResDTO(response)
