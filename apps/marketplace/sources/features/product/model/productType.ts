@@ -1,4 +1,4 @@
-export const PRODUCT_TYPE = ['buy', 'sell'] as const
+export const PRODUCT_TYPE = ['sell', 'buy'] as const
 
 export type KindOfProductType = (typeof PRODUCT_TYPE)[number]
 

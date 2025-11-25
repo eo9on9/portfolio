@@ -1,10 +1,13 @@
+import { getItemWiki } from '@entities/item/api/getItemWiki'
 import { ITEM_CATEGORY_LABELS } from '@entities/item/model/itemCategory'
-import { ITEM_DATABASE, KindOfItemKey } from '@entities/item/model/itemDatabase'
+import { KindOfItemKey } from '@entities/item/model/itemDatabase'
 import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
 import { KindOfProductType } from '@features/product/model/productType'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
+import { Beacon } from '@shared/ui/Beacon'
 import { cn } from '@shared/util/cn'
 import { toAgo, toPrice } from '@shared/util/format'
+import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 
 interface ProductCardProps {
@@ -26,42 +29,53 @@ export const ProductCard = ({
   createdAt,
   onClick,
 }: ProductCardProps) => {
-  const item = ITEM_DATABASE[itemKey]
+  const { data: itemWiki } = useQuery({
+    queryKey: ['item-wiki'],
+    queryFn: getItemWiki,
+  })
+
+  const item = itemWiki?.[itemKey]
+
+  if (!item) return null
 
   return (
-    <div
-      className={containerTw}
-      onClick={() => onClick?.(productId)}
-      role="button"
-      tabIndex={0}
-    >
-      <div className={imageTw}>
-        <Image src={item.imageSrc} alt={item.name} width={96} height={96} />
-        <div className={gradeTw}>
-          <ItemGradeBadge grade={item.grade} />
-        </div>
-      </div>
-      <div className={infoTw}>
-        <div className={upperInfoTw}>
-          <div className={infoLineTw}>
-            <p className={nameTw}>{item.name}</p>
-            <ProductTypeBadge type={type} />
-          </div>
-          <div className={infoLineTw}>
-            <p className={categoryTw}>{ITEM_CATEGORY_LABELS[item.category]}</p>
+    <Beacon>
+      <div
+        className={containerTw}
+        onClick={() => onClick?.(productId)}
+        role="button"
+        tabIndex={0}
+      >
+        <div className={imageTw}>
+          <Image src={item.imageSrc} alt={item.name} width={96} height={96} />
+          <div className={gradeTw}>
+            <ItemGradeBadge grade={item.grade} />
           </div>
         </div>
-        <div className={lowerInfoTw}>
-          <div className={infoLineTw}>
-            <div className={priceAmountTw}>
-              <p className={priceTw}>{toPrice(price)} G</p>
-              <p className={amountTw}>x {amount}</p>
+        <div className={infoTw}>
+          <div className={upperInfoTw}>
+            <div className={infoLineTw}>
+              <p className={nameTw}>{item.name}</p>
+              <ProductTypeBadge type={type} />
             </div>
-            <p className={agoTw}>{toAgo(createdAt)}</p>
+            <div className={infoLineTw}>
+              <p className={categoryTw}>
+                {ITEM_CATEGORY_LABELS[item.category]}
+              </p>
+            </div>
+          </div>
+          <div className={lowerInfoTw}>
+            <div className={infoLineTw}>
+              <div className={priceAmountTw}>
+                <p className={priceTw}>{toPrice(price)} G</p>
+                <p className={amountTw}>x {amount}</p>
+              </div>
+              <p className={agoTw}>{toAgo(createdAt)}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </Beacon>
   )
 }
 

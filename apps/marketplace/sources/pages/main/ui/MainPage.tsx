@@ -29,7 +29,7 @@ export const MainPage = () => {
   const queryClient = useQueryClient()
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ['products'],
+      queryKey: ['product', 'filter'],
       getNextPageParam: (lastPage: GetProductsRes) =>
         lastPage.page < lastPage.totalPages
           ? { page: lastPage.page + 1 }
@@ -63,7 +63,7 @@ export const MainPage = () => {
               q.set('tab', value)
               const qs = q.toString() ?? ''
               router.push(`?${qs}`)
-              queryClient.removeQueries({ queryKey: ['products'] })
+              queryClient.removeQueries({ queryKey: ['product', 'filter'] })
             }}
             fill
           />
@@ -74,19 +74,17 @@ export const MainPage = () => {
           .flatMap(page => page.products)
           .map(product => (
             <li key={product.id}>
-              <Beacon>
-                <ProductCard
-                  productId={product.id}
-                  itemKey={product.itemKey}
-                  type={product.type}
-                  price={product.price}
-                  amount={product.amount}
-                  createdAt={product.createdAt}
-                  onClick={() =>
-                    router.push(`/detail/${product.itemKey}?from=main`)
-                  }
-                />
-              </Beacon>
+              <ProductCard
+                productId={product.id}
+                itemKey={product.itemKey}
+                type={product.type}
+                price={product.price}
+                amount={product.amount}
+                createdAt={product.createdAt}
+                onClick={() =>
+                  router.push(`/detail/${product.itemKey}?from=main`)
+                }
+              />
             </li>
           ))}
       </ul>

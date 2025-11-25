@@ -2,7 +2,7 @@ import { KindOfItemKey } from '@entities/item/model/itemKey'
 import { getListing } from '@features/product/api/getListing'
 import { Product } from '@features/product/model/product'
 import {
-  KindOfProductType,
+  PRODUCT_TYPE,
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
 import { Button } from '@shared/ui/Button'
@@ -11,17 +11,21 @@ import { ToggleGroup } from '@shared/ui/ToggleGroup'
 import { toAgo, toPrice } from '@shared/util/format'
 import { useQuery } from '@tanstack/react-query'
 import { MessageSquare } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/router'
+import { useMemo } from 'react'
 
 interface ProductListingCardProps {
   itemKey: KindOfItemKey
 }
 
 export const ProductListingCard = ({ itemKey }: ProductListingCardProps) => {
-  const [type, setType] = useState<KindOfProductType>('sell')
+  const router = useRouter()
+  const searchParams = useSearchParams()
+  const type = searchParams.get('type') ?? PRODUCT_TYPE[0]
 
   const { data } = useQuery({
-    queryKey: ['listing', itemKey],
+    queryKey: ['product', 'listing', itemKey],
     queryFn: () => getListing({ itemKey }),
     enabled: !!itemKey,
   })
@@ -85,7 +89,15 @@ export const ProductListingCard = ({ itemKey }: ProductListingCardProps) => {
         ]}
         fill
         value={type}
-        onChange={value => setType(value as KindOfProductType)}
+        onChange={value => {
+          router.replace({
+            pathname: router.pathname,
+            query: {
+              ...router.query,
+              type: value,
+            },
+          })
+        }}
       />
       <div className="overflow-x-auto">
         <div className="w-full min-w-sm">

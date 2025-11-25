@@ -36,6 +36,7 @@
   /* colors */
   --color-primary: var(--color-gray-800);
   --color-secondary: var(--color-gray-500);
+  --color-error: var(--color-red-400);
 
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1024px;

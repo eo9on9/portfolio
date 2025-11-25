@@ -3,7 +3,7 @@ export function toAgo(timestamp: number): string {
   const diff = Math.floor((now - timestamp) / 1000) // 초 단위 차이
 
   if (diff < 60) {
-    return `${diff}초 전`
+    return '방금 전'
   }
 
   const minutes = Math.floor(diff / 60)
