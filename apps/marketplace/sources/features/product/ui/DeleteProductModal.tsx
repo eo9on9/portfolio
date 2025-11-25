@@ -1,10 +1,9 @@
-import { getItemWiki } from '@entities/item/api/getItemWiki'
+import { useItem } from '@entities/item/model/useItem'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
 import { Button } from '@shared/ui/Button'
 import { Modal } from '@shared/ui/Modal'
 import { toPrice } from '@shared/util/format'
-import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 
 interface DeleteProductModalProps {
@@ -18,12 +17,7 @@ export const DeleteProductModal = ({
   open,
   onClose,
 }: DeleteProductModalProps) => {
-  const { data: itemWiki } = useQuery({
-    queryKey: ['item-wiki'],
-    queryFn: getItemWiki,
-  })
-
-  const item = itemWiki?.[product?.itemKey]
+  const item = useItem(product.itemKey)
 
   if (!item) return null
 

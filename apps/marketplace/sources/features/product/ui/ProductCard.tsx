@@ -1,13 +1,12 @@
-import { getItemWiki } from '@entities/item/api/getItemWiki'
 import { ITEM_CATEGORY_LABELS } from '@entities/item/model/itemCategory'
-import { KindOfItemKey } from '@entities/item/model/itemDatabase'
+import { KindOfItemKey } from '@entities/item/model/itemKey'
+import { useItem } from '@entities/item/model/useItem'
 import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
 import { KindOfProductType } from '@features/product/model/productType'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
 import { Beacon } from '@shared/ui/Beacon'
 import { cn } from '@shared/util/cn'
 import { toAgo, toPrice } from '@shared/util/format'
-import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 
 interface ProductCardProps {
@@ -29,12 +28,7 @@ export const ProductCard = ({
   createdAt,
   onClick,
 }: ProductCardProps) => {
-  const { data: itemWiki } = useQuery({
-    queryKey: ['item-wiki'],
-    queryFn: getItemWiki,
-  })
-
-  const item = itemWiki?.[itemKey]
+  const item = useItem(itemKey)
 
   if (!item) return null
 

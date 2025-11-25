@@ -1,5 +1,5 @@
-import { getItemWiki } from '@entities/item/api/getItemWiki'
 import { KindOfItemKey } from '@entities/item/model/itemKey'
+import { useItem } from '@entities/item/model/useItem'
 import { createProduct } from '@features/product/api/createProduct'
 import {
   KindOfProductType,
@@ -16,7 +16,7 @@ import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 import { Select } from '@shared/ui/Select'
 import { useToast } from '@shared/ui/Toast'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
@@ -40,10 +40,7 @@ export const CreateProductModal = ({
   const toast = useToast()
   const queryClient = useQueryClient()
 
-  const { data: itemWiki } = useQuery({
-    queryKey: ['item-wiki'],
-    queryFn: getItemWiki,
-  })
+  const item = useItem(itemKey)
 
   const { mutateAsync, isPending } = useMutation({
     mutationFn: createProduct,
@@ -86,15 +83,13 @@ export const CreateProductModal = ({
     if (open) reset()
   }, [open, reset])
 
-  const info = itemWiki?.[itemKey]
-
-  if (!info) return null
+  if (!item) return null
 
   return (
     <Modal title="등록하기" open={open} onClose={onClose}>
       <div className="flex flex-col gap-2">
         <p className="mt-2 text-base text-gray-500">
-          {info.name}을 등록합니다.
+          {item.name}을 등록합니다.
         </p>
         <FormField label="거래 유형">
           <Controller

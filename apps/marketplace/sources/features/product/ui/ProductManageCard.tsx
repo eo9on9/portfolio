@@ -1,10 +1,9 @@
-import { getItemWiki } from '@entities/item/api/getItemWiki'
+import { useItem } from '@entities/item/model/useItem'
 import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
 import { Button } from '@shared/ui/Button'
 import { toFullDate, toPrice } from '@shared/util/format'
-import { useQuery } from '@tanstack/react-query'
 import { Trash2 } from 'lucide-react'
 import Image from 'next/image'
 
@@ -19,12 +18,7 @@ export const ProductManageCard = ({
   onClick,
   onDelete,
 }: ProductManageCardProps) => {
-  const { data: itemWiki } = useQuery({
-    queryKey: ['item-wiki'],
-    queryFn: getItemWiki,
-  })
-
-  const item = itemWiki?.[product.itemKey]
+  const item = useItem(product.itemKey)
 
   if (!item) return null
 

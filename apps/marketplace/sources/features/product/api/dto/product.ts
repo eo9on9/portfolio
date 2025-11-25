@@ -1,4 +1,4 @@
-import { KindOfItemKey } from '@entities/item/model/itemDatabase'
+import { KindOfItemKey } from '@entities/item/model/itemKey'
 import { Product } from '@features/product/model/product'
 import { KindOfProductType } from '@features/product/model/productType'
 

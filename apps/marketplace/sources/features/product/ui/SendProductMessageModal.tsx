@@ -1,4 +1,4 @@
-import { getItemWiki } from '@entities/item/api/getItemWiki'
+import { useItem } from '@entities/item/model/useItem'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
 import { VALIDATION_REQUIRED } from '@shared/constant/validation'
@@ -7,7 +7,6 @@ import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 import { toPrice } from '@shared/util/format'
-import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -34,12 +33,7 @@ export const SendProductMessageModal = ({
     },
   })
 
-  const { data: itemWiki } = useQuery({
-    queryKey: ['item-wiki'],
-    queryFn: getItemWiki,
-  })
-
-  const item = itemWiki?.[product.itemKey]
+  const item = useItem(product.itemKey)
 
   const handleSendMessage = handleSubmit(data => {
     console.log(data)
