@@ -82,36 +82,38 @@ export const ConversationPage = () => {
 
   return (
     <MainLayout>
-      <div className="fixed top-14 left-0 flex flex-wrap gap-2 items-center justify-between w-full px-6 py-2 backdrop-blur-md border-b border-gray-200">
-        <p className="text-base font-medium text-gray-800">
-          {conversationData?.conversation.partner}님과의 대화
-        </p>
-        {item && (
-          <div className="flex items-center gap-2 border border-gray-200 rounded-sm p-1 bg-white">
-            <div className="relative size-10 rounded-sm overflow-hidden">
-              <Image
-                src={item.imageSrc}
-                alt={item.name}
-                width={40}
-                height={40}
-              />
-            </div>
-            <div className="flex flex-col gap-1">
-              <div className="flex items-center gap-2">
-                <p className="text-sm text-gray-800">{item?.name}</p>
-                <ProductTypeBadge type={productData!.product.type} />
+      <div className="fixed top-14 left-0 right-0 backdrop-blur-md border-b border-gray-200">
+        <div className="flex flex-wrap items-center justify-between gap-2 w-full max-w-[1280px] mx-auto px-6 py-2">
+          <p className="text-base font-medium text-gray-800">
+            {conversationData?.conversation.partner}님과의 대화
+          </p>
+          {item && (
+            <div className="flex items-center gap-2 border border-gray-200 rounded-sm p-1 bg-white">
+              <div className="relative size-10 rounded-sm overflow-hidden">
+                <Image
+                  src={item.imageSrc}
+                  alt={item.name}
+                  width={40}
+                  height={40}
+                />
               </div>
-              <div className="flex items-center gap-2">
-                <p className="text-sm text-blue-600">
-                  {toPrice(productData?.product.price || 0)} G
-                </p>
-                <p className="text-sm text-gray-500">
-                  x {productData?.product.amount}
-                </p>
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2">
+                  <p className="text-sm text-gray-800">{item?.name}</p>
+                  <ProductTypeBadge type={productData!.product.type} />
+                </div>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm text-blue-600">
+                    {toPrice(productData?.product.price || 0)} G
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    x {productData?.product.amount}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
       <div className="flex flex-col gap-4 pt-20">
         {Object.entries(groupedMessages).map(([date, messages]) => (
@@ -130,18 +132,20 @@ export const ConversationPage = () => {
         ))}
       </div>
 
-      <div className="fixed bottom-0 left-0 w-full px-6 py-4 backdrop-blur-md border-t border-gray-200">
-        <div className="flex items-center gap-2">
-          <div className="flex-1 flex flex-col">
-            <Input
-              placeholder="메시지를 입력하세요."
-              value={message}
-              onChange={e => setMessage(e.target.value)}
-            />
+      <div className="fixed bottom-0 left-0 right-0 backdrop-blur-md border-t border-gray-200">
+        <div className="w-full max-w-[1280px] mx-auto px-6 py-4">
+          <div className="flex items-center gap-2">
+            <div className="flex-1 flex flex-col">
+              <Input
+                placeholder="메시지를 입력하세요."
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+              />
+            </div>
+            <Button onClick={handleSendMessage} disabled={!message}>
+              전송
+            </Button>
           </div>
-          <Button onClick={handleSendMessage} disabled={!message}>
-            전송
-          </Button>
         </div>
       </div>
     </MainLayout>

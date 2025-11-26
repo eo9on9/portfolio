@@ -1,16 +1,13 @@
-import { cn } from '@shared/util/cn'
 import { Header } from '@widgets/layout/ui/Header'
 import { PropsWithChildren } from 'react'
 
 export const MainLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div className={containerCn}>
+    <div className="pt-14">
       <Header />
-      <main className={mainCn}>{children}</main>
+      <main className="flex flex-col gap-6 max-w-[1280px] mx-auto pt-6 px-6 pb-[100px]">
+        {children}
+      </main>
     </div>
   )
 }
-
-const containerCn = cn`pt-14`
-
-const mainCn = cn`flex flex-col gap-6 pt-6 px-6 pb-[100px]`

@@ -1,5 +1,4 @@
 import { Beacon } from '@shared/ui/Beacon'
-import { cn } from '@shared/util/cn'
 import { useNewMessageCount } from '@widgets/layout/model/useNewMessageCount'
 import { MenuButton } from '@widgets/layout/ui/MenuButton'
 import { Home, MessageSquare, Package, Search } from 'lucide-react'
@@ -10,62 +9,59 @@ export const Header = () => {
   const { count } = useNewMessageCount()
 
   return (
-    <header className={containerCn}>
-      <div className={leftCn}>
-        <Link href="/main" className={logoCn}>
-          <Image src="/images/logo.png" alt="logo" width={40} height={40} />
-        </Link>
-        <h1 className={titleCn}>아이템 거래소</h1>
+    <header className="z-100 fixed top-0 left-0 right-0 border-b border-gray-200 backdrop-blur-md">
+      <div className="flex items-center justify-between w-full max-w-[1280px] h-14 mx-auto px-6 ">
+        <div className="flex items-center gap-2">
+          <Link
+            href="/main"
+            className="relative overflow-hidden size-10 rounded-sm"
+          >
+            <Image src="/images/logo.png" alt="logo" width={40} height={40} />
+          </Link>
+          <h1 className="text-sm font-semibold text-gray-800 hidden tablet:block">
+            아이템 거래소
+          </h1>
+        </div>
+        <ul className="flex items-center gap-1">
+          <li>
+            <Beacon>
+              <MenuButton
+                href="/main"
+                icon={<Home className="size-4" />}
+                label="메인"
+              />
+            </Beacon>
+          </li>
+          <li>
+            <Beacon>
+              <MenuButton
+                href="/search"
+                icon={<Search className="size-4" />}
+                label="아이템 검색"
+              />
+            </Beacon>
+          </li>
+          <li>
+            <Beacon>
+              <MenuButton
+                href="/manage"
+                icon={<Package className="size-4" />}
+                label="아이템 관리"
+              />
+            </Beacon>
+          </li>
+          <li>
+            <Beacon>
+              <MenuButton
+                href="/conversation"
+                icon={<MessageSquare className="size-4" />}
+                label="대화"
+                noticeCount={count}
+              />
+            </Beacon>
+          </li>
+        </ul>
       </div>
-      <ul className={menuCn}>
-        <li>
-          <Beacon>
-            <MenuButton
-              href="/main"
-              icon={<Home className="size-4" />}
-              label="메인"
-            />
-          </Beacon>
-        </li>
-        <li>
-          <Beacon>
-            <MenuButton
-              href="/search"
-              icon={<Search className="size-4" />}
-              label="아이템 검색"
-            />
-          </Beacon>
-        </li>
-        <li>
-          <Beacon>
-            <MenuButton
-              href="/manage"
-              icon={<Package className="size-4" />}
-              label="아이템 관리"
-            />
-          </Beacon>
-        </li>
-        <li>
-          <Beacon>
-            <MenuButton
-              href="/conversation"
-              icon={<MessageSquare className="size-4" />}
-              label="대화"
-              noticeCount={count}
-            />
-          </Beacon>
-        </li>
-      </ul>
     </header>
   )
 }
-
-const containerCn = cn`z-100 fixed top-0 left-0 right-0 flex items-center justify-between h-14 pl-6 pr-4 border-b border-gray-200 backdrop-blur-md`
-
-const leftCn = cn`flex items-center gap-2`
-
-const logoCn = cn`relative overflow-hidden size-10 rounded-sm`
-
-const titleCn = cn`text-sm font-semibold text-gray-800 hidden tablet:block`
-
-const menuCn = cn`flex items-center gap-1`

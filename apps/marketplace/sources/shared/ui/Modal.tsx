@@ -52,16 +52,16 @@ export const Modal = ({
   return (
     <Dialog open={isCreated} onOpenChange={onClose}>
       <DialogPortal>
-        <div className={containerTw}>
+        <div className="z-100 fixed inset-0 flex items-center justify-center">
           <DialogOverlay className={dimVariants({ isShow })} />
           <DialogContent className={contentVariants({ isShow })}>
-            <div className={headTw}>
+            <div className="flex items-center justify-between">
               <DialogTitle asChild>
-                <h3 className={titleTw}>{title}</h3>
+                <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
               </DialogTitle>
               <DialogClose asChild>
                 <Button variant="ghost" size="md">
-                  <X className={xTw} />
+                  <X className="size-4 text-gray-500" />
                 </Button>
               </DialogClose>
             </div>
@@ -74,14 +74,6 @@ export const Modal = ({
     </Dialog>
   )
 }
-
-const containerTw = cn`z-100 fixed inset-0 flex items-center justify-center`
-
-const headTw = cn`flex items-center justify-between`
-
-const titleTw = cn`text-lg font-semibold text-gray-800`
-
-const xTw = cn`size-4 text-gray-500`
 
 const dimVariants = cva(
   cn`absolute inset-0 bg-black/50 transition-opacity duration-200 ease-out`,
@@ -96,7 +88,7 @@ const dimVariants = cva(
 )
 
 const contentVariants = cva(
-  cn`p-6 relative w-lg bg-white rounded-sm shadow-md transition-all duration-200 ease-out`,
+  cn`p-6 relative w-lg max-w-[90%] bg-white rounded-sm shadow-md transition-all duration-200 ease-out`,
   {
     variants: {
       isShow: {
