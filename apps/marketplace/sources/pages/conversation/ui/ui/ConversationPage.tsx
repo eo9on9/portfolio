@@ -7,6 +7,7 @@ import { MessageBubble } from '@features/conversation/ui/MessageBubble'
 import { groupMessagesByDate } from '@features/conversation/util/groupMessagesByDate'
 import { getProduct } from '@features/product/api/getProduct'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
+import { useSSE } from '@shared/api/useSSE'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
 import { toDate, toPrice } from '@shared/util/format'
@@ -17,6 +18,8 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 export const ConversationPage = () => {
+  const { event } = useSSE()
+
   const queryClient = useQueryClient()
   const router = useRouter()
 
@@ -60,6 +63,12 @@ export const ConversationPage = () => {
       queryClient.invalidateQueries({ queryKey: ['messages', conversationId] })
     },
   })
+
+  useEffect(() => {
+    if (event?.type === 'auto-reply') {
+      queryClient.invalidateQueries({ queryKey: ['messages', conversationId] })
+    }
+  }, [event, conversationId, queryClient])
 
   useEffect(() => {
     window.scrollTo({
@@ -114,7 +123,7 @@ export const ConversationPage = () => {
             </div>
             <div className="flex flex-col gap-4">
               {messages.map(message => (
-                <MessageBubble key={message.id} message={message} />
+                <MessageBubble key={message.messageId} message={message} />
               ))}
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { redis } from '@server/redis'
 import { Conversation, Message } from '@server/types'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { sendToAll } from '../sse'
 
 interface NewProductParams {
   partner: string
@@ -103,7 +104,40 @@ export default async function handler(
       await redis.set('conversations', JSON.stringify(newConversations))
     }
 
-    res.status(200).json({
+    setTimeout(async () => {
+      const now = Number(Date.now())
+      await redis.set(
+        'messages',
+        JSON.stringify([
+          ...newMessages,
+          {
+            message_id: `msg-${maxMessageId + 2}`,
+            conversation_id: conversationId,
+            sender: partner,
+            content: `${content}에 대한 자동 답변입니다.`,
+            created_at: now,
+          },
+        ]),
+      )
+      const newConversations = conversations.map(c =>
+        c.conversation_id === conversationId
+          ? {
+              ...c,
+              last_message: `${content}에 대한 자동 답변입니다.`,
+              last_message_at: now,
+              has_new_message: true,
+            }
+          : c,
+      )
+      await redis.set('conversations', JSON.stringify(newConversations))
+      sendToAll({
+        type: 'auto-reply',
+        content: `${content}에 대한 자동 답변입니다.`,
+        created_at: Number(Date.now()),
+      })
+    }, 1000)
+
+    return res.status(200).json({
       code: 'SUCCESS',
       message: '메시지 전송 성공',
       data: {

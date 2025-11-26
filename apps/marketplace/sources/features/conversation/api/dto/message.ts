@@ -1,7 +1,7 @@
 import { Message } from '@features/conversation/model/message'
 
 export interface MessageDTO {
-  id: string
+  message_id: string
   conversation_id: string
   sender: string
   content: string
@@ -10,7 +10,7 @@ export interface MessageDTO {
 
 export const fromMessageDTO = (dto: MessageDTO): Message => {
   return {
-    id: dto.id,
+    messageId: dto.message_id,
     conversationId: dto.conversation_id,
     sender: dto.sender,
     content: dto.content,

@@ -1,5 +1,5 @@
 export interface Message {
-  id: string
+  messageId: string
   conversationId: string
   sender: string
   content: string
