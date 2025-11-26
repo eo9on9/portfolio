@@ -1,4 +1,5 @@
 import { useItem } from '@entities/item/model/useItem'
+import { sendMessage } from '@features/conversation/api/sendMessage'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
 import { VALIDATION_REQUIRED } from '@shared/constant/validation'
@@ -6,7 +7,9 @@ import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
+import { useToast } from '@shared/ui/Toast'
 import { toPrice } from '@shared/util/format'
+import { useMutation } from '@tanstack/react-query'
 import Image from 'next/image'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -22,11 +25,24 @@ export const SendProductMessageModal = ({
   open,
   onClose,
 }: SendProductMessageModalProps) => {
+  const toast = useToast()
+
+  const { mutate, isPending } = useMutation({
+    mutationFn: sendMessage,
+    onSuccess: () => {
+      toast.success('메시지가 전송되었습니다.')
+      onClose()
+    },
+    onError: () => {
+      toast.error('메시지 전송에 실패했습니다.')
+    },
+  })
+
   const {
     reset,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     defaultValues: {
       message: '',
@@ -36,7 +52,11 @@ export const SendProductMessageModal = ({
   const item = useItem(product.itemKey)
 
   const handleSendMessage = handleSubmit(data => {
-    console.log(data)
+    mutate({
+      partner: product.listedBy,
+      productId: product.id,
+      content: data.message,
+    })
   })
 
   useEffect(() => {
@@ -86,7 +106,13 @@ export const SendProductMessageModal = ({
           <Button variant="secondary" size="lg" onClick={onClose}>
             취소
           </Button>
-          <Button variant="primary" size="lg" onClick={handleSendMessage}>
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={handleSendMessage}
+            isLoading={isPending}
+            disabled={!isValid}
+          >
             보내기
           </Button>
         </div>

@@ -1,10 +1,13 @@
 import { cn } from '@shared/util/cn'
+import { useNewMessageCount } from '@widgets/layout/model/useNewMessageCount'
 import { MenuButton } from '@widgets/layout/ui/MenuButton'
 import { Home, MessageSquare, Package, Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export const Header = () => {
+  const { count } = useNewMessageCount()
+
   return (
     <header className={containerCn}>
       <div className={leftCn}>
@@ -40,7 +43,7 @@ export const Header = () => {
             href="/conversation"
             icon={<MessageSquare className="size-4" />}
             label="대화"
-            noticeCount={3}
+            noticeCount={count}
           />
         </li>
       </ul>

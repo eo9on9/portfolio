@@ -79,8 +79,10 @@ export default async function handler(
     const newMessages = [...messages, newMessage]
     await redis.set('messages', JSON.stringify(newMessages))
 
+    let newConversations: Conversation[] = []
+
     if (existingConversation) {
-      const newConversations = conversations.map(c =>
+      newConversations = conversations.map(c =>
         c.conversation_id === existingConversation.conversation_id
           ? {
               ...c,
@@ -90,19 +92,24 @@ export default async function handler(
             }
           : c,
       )
-      await redis.set('conversations', JSON.stringify(newConversations))
     } else {
       const newConversation: Conversation = {
-        conversation_id: newMessage.conversation_id,
+        conversation_id: conversationId,
         partner,
         product_id,
         last_message: content,
         last_message_at: now,
         has_new_message: true,
       }
-      const newConversations = [...conversations, newConversation]
-      await redis.set('conversations', JSON.stringify(newConversations))
+      newConversations = [...conversations, newConversation]
     }
+
+    await redis.set('conversations', JSON.stringify(newConversations))
+    sendToAll({
+      type: 'new-message-count',
+      payload: newConversations.filter((c: Conversation) => c.has_new_message)
+        .length,
+    })
 
     setTimeout(async () => {
       const now = Number(Date.now())
@@ -119,7 +126,7 @@ export default async function handler(
           },
         ]),
       )
-      const newConversations = conversations.map(c =>
+      const repliedNewConversations = newConversations.map(c =>
         c.conversation_id === conversationId
           ? {
               ...c,
@@ -129,12 +136,19 @@ export default async function handler(
             }
           : c,
       )
-      await redis.set('conversations', JSON.stringify(newConversations))
+      await redis.set('conversations', JSON.stringify(repliedNewConversations))
       sendToAll({
-        type: 'auto-reply',
-        content: `${content}에 대한 자동 답변입니다.`,
-        created_at: Number(Date.now()),
+        type: 'new-message-count',
+        payload: repliedNewConversations.filter(
+          (c: Conversation) => c.has_new_message,
+        ).length,
       })
+      setTimeout(() => {
+        sendToAll({
+          type: 'auto-reply',
+          content: `${content}에 대한 자동 답변입니다.`,
+        })
+      }, 100)
     }, 1000)
 
     return res.status(200).json({

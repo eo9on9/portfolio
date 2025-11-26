@@ -6,6 +6,7 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import '@app/globals.css'
 import { SSEProvider } from '@shared/api/useSSE'
+import { NewMessageCountProvider } from '@widgets/layout/model/useNewMessageCount'
 
 const queryClient = new QueryClient()
 
@@ -15,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
       <ToastProvider>
         <SSEProvider>
           <ErrorBoundary FallbackComponent={AppErrorFallback}>
-            <Component {...pageProps} />
+            <NewMessageCountProvider>
+              <Component {...pageProps} />
+            </NewMessageCountProvider>
           </ErrorBoundary>
         </SSEProvider>
       </ToastProvider>
