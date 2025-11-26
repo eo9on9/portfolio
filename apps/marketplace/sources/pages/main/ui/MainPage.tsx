@@ -3,7 +3,9 @@ import {
   KindOfProductType,
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
-import { ProductCard } from '@features/product/ui/ProductCard'
+import { ProductLinkCard } from '@features/product/ui/ProductLinkCard'
+import { useQueryParams } from '@shared/hook/useQueryParams'
+import { useReplaceQueryParams } from '@shared/hook/useReplaceQueryParams'
 import { Beacon } from '@shared/ui/Beacon'
 import { IntersectionDetector } from '@shared/ui/IntersectionDetector'
 import { ToggleGroup } from '@shared/ui/ToggleGroup'
@@ -11,8 +13,6 @@ import { ALL_VALUE, allToUndefined, withAll } from '@shared/util/form'
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
-import { useSearchParams } from 'next/navigation'
-import { useRouter } from 'next/router'
 
 const TOGGLE_GROUP_OPTIONS = withAll(
   Object.entries(PRODUCT_TYPE_LABELS).map(([key, value]) => ({
@@ -22,25 +22,35 @@ const TOGGLE_GROUP_OPTIONS = withAll(
 )
 
 export const MainPage = () => {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const tab = searchParams.get('tab') ?? ALL_VALUE
-
   const queryClient = useQueryClient()
+  const replaceQueryParams = useReplaceQueryParams()
+
+  const type = useQueryParams('type') ?? ALL_VALUE
+
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteQuery({
       queryKey: ['product', 'filter'],
       getNextPageParam: (lastPage: GetProductsRes) =>
         lastPage.page < lastPage.totalPages
-          ? { page: lastPage.page + 1 }
+          ? {
+              page: lastPage.page + 1,
+              type: allToUndefined(type) as KindOfProductType,
+            }
           : undefined,
-      initialPageParam: { page: 1 },
+      initialPageParam: {
+        page: 1,
+        type: allToUndefined(type) as KindOfProductType,
+      },
       queryFn: ({ pageParam }) =>
         getProducts({
           ...pageParam,
-          type: allToUndefined(tab) as KindOfProductType,
         }),
     })
+
+  const handleTypeChange = (value: string) => {
+    replaceQueryParams({ type: value })
+    queryClient.removeQueries({ queryKey: ['product', 'filter'] })
+  }
 
   const handleIntersectionDetect = () => {
     if (!hasNextPage || isFetchingNextPage) return
@@ -57,14 +67,8 @@ export const MainPage = () => {
         <Beacon className="block">
           <ToggleGroup
             options={TOGGLE_GROUP_OPTIONS}
-            value={tab}
-            onChange={value => {
-              const q = new URLSearchParams()
-              q.set('tab', value)
-              const qs = q.toString() ?? ''
-              router.push(`?${qs}`)
-              queryClient.removeQueries({ queryKey: ['product', 'filter'] })
-            }}
+            value={type}
+            onChange={handleTypeChange}
             fill
           />
         </Beacon>
@@ -74,16 +78,9 @@ export const MainPage = () => {
           .flatMap(page => page.products)
           .map(product => (
             <li key={product.id}>
-              <ProductCard
-                productId={product.id}
-                itemKey={product.itemKey}
-                type={product.type}
-                price={product.price}
-                amount={product.amount}
-                createdAt={product.createdAt}
-                onClick={() =>
-                  router.push(`/detail/${product.itemKey}?from=main`)
-                }
+              <ProductLinkCard
+                product={product}
+                href={`/detail/${product.itemKey}?from=main`}
               />
             </li>
           ))}

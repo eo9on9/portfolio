@@ -1,3 +1,4 @@
+import { Beacon } from '@shared/ui/Beacon'
 import { cn } from '@shared/util/cn'
 import { useNewMessageCount } from '@widgets/layout/model/useNewMessageCount'
 import { MenuButton } from '@widgets/layout/ui/MenuButton'
@@ -18,33 +19,41 @@ export const Header = () => {
       </div>
       <ul className={menuCn}>
         <li>
-          <MenuButton
-            href="/main"
-            icon={<Home className="size-4" />}
-            label="메인"
-          />
+          <Beacon>
+            <MenuButton
+              href="/main"
+              icon={<Home className="size-4" />}
+              label="메인"
+            />
+          </Beacon>
         </li>
         <li>
-          <MenuButton
-            href="/search"
-            icon={<Search className="size-4" />}
-            label="아이템 검색"
-          />
+          <Beacon>
+            <MenuButton
+              href="/search"
+              icon={<Search className="size-4" />}
+              label="아이템 검색"
+            />
+          </Beacon>
         </li>
         <li>
-          <MenuButton
-            href="/manage"
-            icon={<Package className="size-4" />}
-            label="아이템 관리"
-          />
+          <Beacon>
+            <MenuButton
+              href="/manage"
+              icon={<Package className="size-4" />}
+              label="아이템 관리"
+            />
+          </Beacon>
         </li>
         <li>
-          <MenuButton
-            href="/conversation"
-            icon={<MessageSquare className="size-4" />}
-            label="대화"
-            noticeCount={count}
-          />
+          <Beacon>
+            <MenuButton
+              href="/conversation"
+              icon={<MessageSquare className="size-4" />}
+              label="대화"
+              noticeCount={count}
+            />
+          </Beacon>
         </li>
       </ul>
     </header>
