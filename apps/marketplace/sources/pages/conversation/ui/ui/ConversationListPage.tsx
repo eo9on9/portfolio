@@ -18,10 +18,12 @@ export const ConversationListPage = () => {
       <PageTop title="대화 목록" description="대화 목록을 확인하세요." />
       <ul className="flex flex-col gap-4">
         {data?.conversations.map(conversation => (
-          <li key={conversation.id}>
+          <li key={conversation.conversationId}>
             <ConversationCard
               conversation={conversation}
-              onClick={() => router.push(`/conversation/${conversation.id}`)}
+              onClick={() =>
+                router.push(`/conversation/${conversation.conversationId}`)
+              }
             />
           </li>
         ))}

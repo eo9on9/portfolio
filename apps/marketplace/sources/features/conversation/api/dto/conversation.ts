@@ -1,7 +1,7 @@
 import { Conversation } from '@features/conversation/model/conversation'
 
 export interface ConversationDTO {
-  id: string
+  conversation_id: string
   partner: string
   product_id: string
   last_message: string
@@ -11,7 +11,7 @@ export interface ConversationDTO {
 
 export const fromConversationDTO = (dto: ConversationDTO): Conversation => {
   return {
-    id: dto.id,
+    conversationId: dto.conversation_id,
     partner: dto.partner,
     productId: dto.product_id,
     lastMessage: dto.last_message,

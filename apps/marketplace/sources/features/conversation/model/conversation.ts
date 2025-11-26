@@ -1,5 +1,5 @@
 export interface Conversation {
-  id: string
+  conversationId: string
   partner: string
   productId: string
   lastMessage: string

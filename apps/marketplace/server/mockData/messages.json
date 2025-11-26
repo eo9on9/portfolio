@@ -1,0 +1,42 @@
+[
+  {
+    "id": "msg-1",
+    "conversation_id": "conv-1",
+    "sender": "검수집가",
+    "content": "나무 검을 구매하고 싶습니다. 얼마에 팔아드릴까요?",
+    "created_at": 1764118550704,
+    "is_read": true
+  },
+  {
+    "id": "msg-2",
+    "conversation_id": "conv-1",
+    "sender": "용사(나)",
+    "content": "10000원에 팔아드릴게요!",
+    "created_at": 1764118557302,
+    "is_read": true
+  },
+  {
+    "id": "msg-3",
+    "conversation_id": "conv-1",
+    "sender": "검수집가",
+    "content": "좋아요! 구매 가능합니다.",
+    "created_at": 1764118564595,
+    "is_read": true
+  },
+  {
+    "id": "msg-4",
+    "conversation_id": "conv-2",
+    "sender": "용사(나)",
+    "content": "안녕하세요",
+    "created_at": 1764118564595,
+    "is_read": true
+  },
+  {
+    "id": "msg-5",
+    "conversation_id": "conv-2",
+    "sender": "서리마녀",
+    "content": "물건 확인 후 구매 가능합니다.",
+    "created_at": 1764118564595,
+    "is_read": false
+  }
+]

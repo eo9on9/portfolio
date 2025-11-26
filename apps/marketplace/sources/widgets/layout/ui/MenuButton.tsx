@@ -20,7 +20,7 @@ export const MenuButton = ({
   const pathname = usePathname()
   const params = useSearchParams()
   const isPressed =
-    pathname === href || params.get('from') === href.replace('/', '')
+    params.get('from') === href.replace('/', '') || pathname?.includes(href)
 
   return (
     <Link href={href} className={linkVariants({ isPressed })}>
