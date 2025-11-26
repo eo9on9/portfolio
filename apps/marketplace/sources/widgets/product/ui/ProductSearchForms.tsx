@@ -5,12 +5,12 @@ import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Select } from '@shared/ui/Select'
 import { withAll } from '@shared/util/form'
-import { ProductFilterForm } from '@widgets/product/model/useProductFilterForm'
+import { ProductSearchForm } from '@widgets/product/model/useProductSearchForm'
 import { Search } from 'lucide-react'
 import { Controller, useFormContext } from 'react-hook-form'
 
-export const ProductFilterForms = () => {
-  const { control, register } = useFormContext<ProductFilterForm>()
+export const ProductSearchForms = () => {
+  const { control, register } = useFormContext<ProductSearchForm>()
 
   return (
     <div className="flex flex-col gap-2">

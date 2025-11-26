@@ -1,4 +1,7 @@
-import { getProducts, GetProductsRes } from '@features/product/api/getProducts'
+import {
+  searchProducts,
+  SearchProductsRes,
+} from '@features/product/api/searchProducts'
 import {
   KindOfProductType,
   PRODUCT_TYPE_LABELS,
@@ -29,8 +32,8 @@ export const MainPage = () => {
 
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useInfiniteQuery({
-      queryKey: ['product', 'filter'],
-      getNextPageParam: (lastPage: GetProductsRes) =>
+      queryKey: ['product', 'search'],
+      getNextPageParam: (lastPage: SearchProductsRes) =>
         lastPage.page < lastPage.totalPages
           ? {
               page: lastPage.page + 1,
@@ -42,14 +45,14 @@ export const MainPage = () => {
         type: allToUndefined(type) as KindOfProductType,
       },
       queryFn: ({ pageParam }) =>
-        getProducts({
+        searchProducts({
           ...pageParam,
         }),
     })
 
   const handleTypeChange = (value: string) => {
     replaceQueryParams({ type: value })
-    queryClient.removeQueries({ queryKey: ['product', 'filter'] })
+    queryClient.removeQueries({ queryKey: ['product', 'search'] })
   }
 
   const handleIntersectionDetect = () => {

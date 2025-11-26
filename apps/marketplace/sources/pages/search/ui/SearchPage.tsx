@@ -1,64 +1,54 @@
 import {
-  getProducts,
-  GetProductsParams,
-  GetProductsRes,
-} from '@features/product/api/getProducts'
-import { ProductCard } from '@features/product/ui/ProductCard'
+  searchProducts,
+  SearchProductsRes,
+} from '@features/product/api/searchProducts'
+import { ProductLinkCard } from '@features/product/ui/ProductLinkCard'
 import { IntersectionDetector } from '@shared/ui/IntersectionDetector'
 import { allToUndefined, emptyToUndefined } from '@shared/util/form'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
-import { useProductFilterForm } from '@widgets/product/model/useProductFilterForm'
-import { useProductFilterUrlParams } from '@widgets/product/model/useProductFilterUrlParams'
-import { ProductFilterActions } from '@widgets/product/ui/ProductFilterActions'
-import { ProductFilterForms } from '@widgets/product/ui/ProductFilterForms'
-import { useRouter } from 'next/router'
-import { useEffect } from 'react'
+import { useProductSearchForm } from '@widgets/product/model/useProductSearchForm'
+import { useProductSearchUrlParams } from '@widgets/product/model/useProductSearchUrlParams'
+import { ProductSearchActions } from '@widgets/product/ui/ProductSearchActions'
+import { ProductSearchForms } from '@widgets/product/ui/ProductSearchForms'
+import { useEffect, useMemo } from 'react'
 import { FormProvider } from 'react-hook-form'
 
 export const SearchPage = () => {
-  const router = useRouter()
+  const { urlParams, setUrlParams } = useProductSearchUrlParams()
 
-  const { urlParams, setUrlParams } = useProductFilterUrlParams()
+  const params = useMemo(
+    () => ({
+      name: emptyToUndefined(urlParams.name),
+      category: allToUndefined(urlParams.category),
+      grade: allToUndefined(urlParams.grade),
+      type: allToUndefined(urlParams.type),
+    }),
+    [urlParams],
+  )
 
   const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
     useInfiniteQuery({
-      queryKey: ['product', 'filter', JSON.stringify(urlParams)],
-      getNextPageParam: (lastPage: GetProductsRes) =>
+      queryKey: ['product', 'search', JSON.stringify(urlParams)],
+      getNextPageParam: (lastPage: SearchProductsRes) =>
         lastPage.page < lastPage.totalPages
-          ? {
-              page: lastPage.page + 1,
-              name: emptyToUndefined(urlParams.name),
-              category: allToUndefined(urlParams.category),
-              grade: allToUndefined(urlParams.grade),
-              type: allToUndefined(urlParams.type),
-            }
+          ? { page: lastPage.page + 1, ...params }
           : undefined,
-      initialPageParam: {
-        page: 1,
-        name: emptyToUndefined(urlParams.name),
-        category: allToUndefined(urlParams.category),
-        grade: allToUndefined(urlParams.grade),
-        type: allToUndefined(urlParams.type),
-      } as GetProductsParams,
+      initialPageParam: { page: 1, ...params },
       queryFn: ({ pageParam }) =>
-        getProducts({
+        searchProducts({
           ...pageParam,
         }),
       retry: false,
     })
 
-  const form = useProductFilterForm()
-
+  const form = useProductSearchForm()
   const { reset, handleSubmit } = form
 
-  const handleFilter = handleSubmit(data => {
+  const handleSearch = handleSubmit(data => {
     setUrlParams(data)
   })
-
-  const products = data?.pages.flatMap(page => page.products) ?? []
-
   const handleIntersectionDetect = () => {
     if (!hasNextPage || isFetchingNextPage) return
     fetchNextPage()
@@ -72,25 +62,20 @@ export const SearchPage = () => {
     <MainLayout>
       <PageTop title="아이템 검색" description="원하는 아이템을 검색하세요." />
       <FormProvider {...form}>
-        <ProductFilterForms />
-        <ProductFilterActions onFilter={handleFilter} />
+        <ProductSearchForms />
+        <ProductSearchActions onSearch={handleSearch} />
       </FormProvider>
       <ul className="grid grid-cols-1 desktop:grid-cols-2 gap-4">
-        {products.map(product => (
-          <li key={product.id}>
-            <ProductCard
-              productId={product.id}
-              itemKey={product.itemKey}
-              type={product.type}
-              price={product.price}
-              amount={product.amount}
-              createdAt={product.createdAt}
-              onClick={() =>
-                router.push(`/detail/${product.itemKey}?from=search`)
-              }
-            />
-          </li>
-        ))}
+        {data?.pages
+          .flatMap(page => page.products)
+          .map(product => (
+            <li key={product.id}>
+              <ProductLinkCard
+                product={product}
+                href={`/detail/${product.itemKey}?from=search`}
+              />
+            </li>
+          ))}
       </ul>
       <IntersectionDetector onDetect={handleIntersectionDetect} />
     </MainLayout>

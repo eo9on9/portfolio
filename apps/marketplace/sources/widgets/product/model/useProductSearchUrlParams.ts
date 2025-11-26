@@ -2,16 +2,16 @@ import { KindOfItemCategory } from '@entities/item/model/itemCategory'
 import { KindOfItemGrade } from '@entities/item/model/itemGrade'
 import { KindOfProductType } from '@features/product/model/productType'
 import { ALL_VALUE, WithAll } from '@shared/util/form'
-import { ProductFilterForm } from '@widgets/product/model/useProductFilterForm'
+import { ProductSearchForm } from '@widgets/product/model/useProductSearchForm'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { useCallback, useMemo } from 'react'
 
-export const useProductFilterUrlParams = () => {
+export const useProductSearchUrlParams = () => {
   const router = useRouter()
   const params = useSearchParams()
 
-  const urlParams: ProductFilterForm = useMemo(
+  const urlParams: ProductSearchForm = useMemo(
     () => ({
       name: params.get('name') ?? '',
       category: (params.get('category') ??
@@ -23,7 +23,7 @@ export const useProductFilterUrlParams = () => {
   )
 
   const setUrlParams = useCallback(
-    (query: ProductFilterForm) => {
+    (query: ProductSearchForm) => {
       const q = new URLSearchParams()
       if (query.name) q.set('name', query.name)
       if (query.category) q.set('category', query.category)

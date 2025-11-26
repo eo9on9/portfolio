@@ -5,7 +5,7 @@ import { Product } from '@features/product/model/product'
 import { KindOfProductType } from '@features/product/model/productType'
 import { request } from '@shared/api/request'
 
-export interface GetProductsParams {
+export interface SearchProductsParams {
   name?: string
   category?: KindOfItemCategory
   grade?: KindOfItemGrade
@@ -13,19 +13,21 @@ export interface GetProductsParams {
   page: number
 }
 
-interface GetProductsResDTO {
+interface SearchProductsResDTO {
   products: ProductDTO[]
   totalPages: number
   page: number
 }
 
-export interface GetProductsRes {
+export interface SearchProductsRes {
   products: Product[]
   totalPages: number
   page: number
 }
 
-const fromGetProductsResDTO = (dto: GetProductsResDTO): GetProductsRes => {
+const fromSearchProductsResDTO = (
+  dto: SearchProductsResDTO,
+): SearchProductsRes => {
   return {
     products: dto.products.map(product => fromProductDTO(product)),
     totalPages: dto.totalPages,
@@ -33,10 +35,10 @@ const fromGetProductsResDTO = (dto: GetProductsResDTO): GetProductsRes => {
   }
 }
 
-export const getProducts = async (params: GetProductsParams) => {
-  const response = await request.get<GetProductsResDTO>('/product/filter', {
+export const searchProducts = async (params: SearchProductsParams) => {
+  const response = await request.get<SearchProductsResDTO>('/product/search', {
     params: params,
   })
 
-  return fromGetProductsResDTO(response)
+  return fromSearchProductsResDTO(response)
 }

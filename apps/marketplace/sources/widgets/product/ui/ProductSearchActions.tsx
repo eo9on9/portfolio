@@ -1,25 +1,25 @@
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import {
-  PRODUCT_FILTER_FORM_DEFAULT_VALUES,
-  ProductFilterForm,
-} from '@widgets/product/model/useProductFilterForm'
+  PRODUCT_SEARCH_FORM_DEFAULT_VALUES,
+  ProductSearchForm,
+} from '@widgets/product/model/useProductSearchForm'
 import { FunnelX, Search } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
 
-interface ProductFilterActionsProps {
-  onFilter?: () => void
+interface ProductSearchActionsProps {
+  onSearch?: () => void
 }
 
-export const ProductFilterActions = ({
-  onFilter,
-}: ProductFilterActionsProps) => {
-  const { reset } = useFormContext<ProductFilterForm>()
+export const ProductSearchActions = ({
+  onSearch,
+}: ProductSearchActionsProps) => {
+  const { reset } = useFormContext<ProductSearchForm>()
 
   return (
     <div className="flex items-center gap-2 justify-between">
       <Beacon className="order-2">
-        <Button variant="primary" size="lg" onClick={onFilter}>
+        <Button variant="primary" size="lg" onClick={onSearch}>
           <Search className="w-4 h-4" />
           검색
         </Button>
@@ -29,12 +29,12 @@ export const ProductFilterActions = ({
           variant="ghost"
           size="lg"
           onClick={() => {
-            reset(PRODUCT_FILTER_FORM_DEFAULT_VALUES)
-            onFilter?.()
+            reset(PRODUCT_SEARCH_FORM_DEFAULT_VALUES)
+            onSearch?.()
           }}
         >
           <FunnelX className="w-4 h-4" />
-          필터 초기화
+          검색 초기화
         </Button>
       </Beacon>
     </div>
