@@ -9,7 +9,7 @@ export const ConversationListPage = () => {
   const router = useRouter()
 
   const { data } = useQuery({
-    queryKey: ['conversations'],
+    queryKey: ['conversation', 'list'],
     queryFn: getConversations,
   })
 

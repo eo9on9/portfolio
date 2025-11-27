@@ -24,7 +24,7 @@ const fromGetConversationsDTO = (
 }
 
 export const getConversations = async (): Promise<GetConversationsRes> => {
-  const response = await request.get<GetConversationsDTO>('/conversations')
+  const response = await request.get<GetConversationsDTO>('/conversation/list')
 
   return fromGetConversationsDTO(response)
 }
