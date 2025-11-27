@@ -19,3 +19,8 @@ export const VALIDATION_POSITIVE_NUMBER = validationFactory(
   /^[1-9][0-9]*$/,
   '양수로 입력해주세요.',
 )
+
+export const VALIDATION_MESSAGE = validationFactory(
+  /^.*\S.*$/,
+  '메시지를 입력해주세요.',
+)

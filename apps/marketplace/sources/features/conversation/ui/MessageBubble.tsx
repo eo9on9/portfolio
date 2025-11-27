@@ -39,11 +39,14 @@ const innerCn = cva('flex flex-col gap-2 max-w-[80%]', {
   },
 })
 
-const bubbleCn = cva('text-sm text-gray-800 rounded-sm p-2', {
-  variants: {
-    isMine: {
-      true: 'bg-blue-200',
-      false: 'bg-gray-200',
+const bubbleCn = cva(
+  'text-sm text-gray-800 rounded-sm p-2 whitespace-pre-wrap',
+  {
+    variants: {
+      isMine: {
+        true: 'bg-blue-200',
+        false: 'bg-gray-200',
+      },
     },
   },
-})
+)

@@ -1,5 +1,9 @@
 import { sendMessage } from '@features/conversation/api/sendMessage'
 import { Conversation } from '@features/conversation/model/conversation'
+import {
+  VALIDATION_MESSAGE,
+  VALIDATION_REQUIRED,
+} from '@shared/constant/validation'
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
@@ -51,7 +55,13 @@ export const ConversationActions = ({
           <div className="flex-1 flex flex-col">
             <Input
               placeholder="메시지를 입력하세요."
-              {...register('message', { required: true })}
+              {...register('message', {
+                required: VALIDATION_REQUIRED.message,
+                pattern: {
+                  value: VALIDATION_MESSAGE.pattern,
+                  message: VALIDATION_MESSAGE.message,
+                },
+              })}
             />
           </div>
           <Beacon>

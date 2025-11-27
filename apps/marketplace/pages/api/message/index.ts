@@ -41,21 +41,7 @@ export default async function handler(
       })
     }
 
-    const maxMessageId =
-      messages.length > 0
-        ? Math.max(
-            ...messages.map(m => Number(m.message_id.replace('msg-', ''))),
-          )
-        : 0
-
-    const maxConversationId =
-      conversations.length > 0
-        ? Math.max(
-            ...conversations.map(c =>
-              Number(c.conversation_id.replace('conv-', '')),
-            ),
-          )
-        : 0
+    const now = Number(Date.now())
 
     const existingConversation = conversations.find(
       conversation =>
@@ -65,12 +51,10 @@ export default async function handler(
 
     const conversationId = existingConversation
       ? existingConversation.conversation_id
-      : `conv-${maxConversationId + 1}`
-
-    const now = Number(Date.now())
+      : `conv-${now}`
 
     const newMessage: Message = {
-      message_id: `msg-${maxMessageId + 1}`,
+      message_id: `msg-${now}`,
       conversation_id: conversationId,
       sender: MY_NAME,
       content,
@@ -114,15 +98,16 @@ export default async function handler(
 
     setTimeout(async () => {
       const now = Number(Date.now())
+      const replyContent = `"${content}"에 대한 자동 답변입니다.`
       await redis.set(
         'messages',
         JSON.stringify([
           ...newMessages,
           {
-            message_id: `msg-${maxMessageId + 2}`,
+            message_id: `msg-${now}`,
             conversation_id: conversationId,
             sender: partner,
-            content: `${content}에 대한 자동 답변입니다.`,
+            content: replyContent,
             created_at: now,
           },
         ]),
@@ -131,7 +116,7 @@ export default async function handler(
         c.conversation_id === conversationId
           ? {
               ...c,
-              last_message: `${content}에 대한 자동 답변입니다.`,
+              last_message: replyContent,
               last_message_at: now,
               has_new_message: true,
             }
@@ -147,7 +132,7 @@ export default async function handler(
       setTimeout(() => {
         sendToAll({
           type: 'auto-reply',
-          content: `${content}에 대한 자동 답변입니다.`,
+          content: replyContent,
         })
       }, 100)
     }, 1000)

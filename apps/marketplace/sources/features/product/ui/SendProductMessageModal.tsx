@@ -2,7 +2,10 @@ import { useItem } from '@entities/item/model/useItem'
 import { sendMessage } from '@features/conversation/api/sendMessage'
 import { Product } from '@features/product/model/product'
 import { ProductSummaryCard } from '@features/product/ui/ProductSummaryCard'
-import { VALIDATION_REQUIRED } from '@shared/constant/validation'
+import {
+  VALIDATION_MESSAGE,
+  VALIDATION_REQUIRED,
+} from '@shared/constant/validation'
 import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
@@ -75,7 +78,13 @@ export const SendProductMessageModal = ({
         </div>
         <FormField label="문의 내용" errorMessage={errors.message?.message}>
           <Input
-            {...register('message', { required: VALIDATION_REQUIRED.message })}
+            {...register('message', {
+              required: VALIDATION_REQUIRED.message,
+              pattern: {
+                value: VALIDATION_MESSAGE.pattern,
+                message: VALIDATION_MESSAGE.message,
+              },
+            })}
             placeholder="문의 내용을 입력하세요."
             isError={!!errors.message}
           />
