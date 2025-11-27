@@ -1,4 +1,5 @@
 import { getConversations } from '@features/conversation/api/getConversations'
+import { Beacon } from '@shared/ui/Beacon'
 import { useQuery } from '@tanstack/react-query'
 import { ConversationCard } from '@widgets/conversation/ui/ConversationCard'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
@@ -19,12 +20,14 @@ export const ConversationListPage = () => {
       <ul className="flex flex-col gap-4">
         {data?.conversations.map(conversation => (
           <li key={conversation.conversationId}>
-            <ConversationCard
-              conversation={conversation}
-              onClick={() =>
-                router.push(`/conversation/${conversation.conversationId}`)
-              }
-            />
+            <Beacon>
+              <ConversationCard
+                conversation={conversation}
+                onClick={() =>
+                  router.push(`/conversation/${conversation.conversationId}`)
+                }
+              />
+            </Beacon>
           </li>
         ))}
       </ul>

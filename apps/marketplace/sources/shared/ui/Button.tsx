@@ -10,6 +10,7 @@ interface ButtonProps {
   className?: string
   disabled?: boolean
   isLoading?: boolean
+  type?: 'button' | 'submit'
 }
 
 export const Button = forwardRef<
@@ -25,6 +26,7 @@ export const Button = forwardRef<
       onClick,
       disabled,
       isLoading = false,
+      type = 'button',
     },
     ref,
   ) => {
@@ -37,6 +39,7 @@ export const Button = forwardRef<
         )}
         onClick={onClick}
         disabled={disabled || isLoading}
+        type={type}
       >
         <span className={textWrapperVariants({ isLoading })}>{children}</span>
         {isLoading && (

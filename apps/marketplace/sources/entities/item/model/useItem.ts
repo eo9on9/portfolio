@@ -1,8 +1,8 @@
 import { KindOfItemKey } from '@entities/item/model/itemKey'
 import { useItemWiki } from '@entities/item/model/useItemWiki'
 
-export const useItem = (itemKey: KindOfItemKey) => {
+export const useItem = (itemKey?: KindOfItemKey) => {
   const itemWiki = useItemWiki()
 
-  return itemWiki?.[itemKey]
+  return itemKey && itemWiki?.[itemKey]
 }
