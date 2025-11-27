@@ -10,6 +10,7 @@ import {
   VALIDATION_POSITIVE_NUMBER,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
@@ -42,7 +43,7 @@ export const CreateProductModal = ({
 
   const item = useItem(itemKey)
 
-  const { mutateAsync, isPending } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: createProduct,
     onSuccess: () => {
       toast.success('상품이 등록되었습니다.')
@@ -71,7 +72,7 @@ export const CreateProductModal = ({
   })
 
   const handleCreateProduct = handleSubmit(data => {
-    mutateAsync({
+    mutate({
       itemKey,
       type: data.type,
       price: Number(data.price),
@@ -135,14 +136,16 @@ export const CreateProductModal = ({
           <Button variant="secondary" size="lg" onClick={onClose}>
             취소
           </Button>
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={handleCreateProduct}
-            isLoading={isPending}
-          >
-            등록하기
-          </Button>
+          <Beacon>
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={handleCreateProduct}
+              isLoading={isPending}
+            >
+              등록하기
+            </Button>
+          </Beacon>
         </div>
       </div>
     </Modal>

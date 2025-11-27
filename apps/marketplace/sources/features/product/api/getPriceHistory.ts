@@ -1,36 +1,47 @@
+import { KindOfItemKey } from '@entities/item/model/itemKey'
 import { request } from '@shared/api/request'
 
+interface GetPriceHistoryParamsDTO {
+  item_key: string
+}
+
+interface GetPriceHistoryParams {
+  itemKey: KindOfItemKey
+}
+
+const toGetPriceHistoryParamsDTO = (
+  params: GetPriceHistoryParams,
+): GetPriceHistoryParamsDTO => {
+  return {
+    item_key: params.itemKey,
+  }
+}
+
 interface GetPriceHistoryResponseDTO {
-  price_history: {
-    date: Date
-    price: number
-  }[]
-  average_price: number
+  history: { date: number; price: number }[]
+  average: number
 }
 
 interface GetPriceHistoryResponse {
-  priceHistory: {
-    date: Date
-    price: number
-  }[]
-  averagePrice: number
+  history: { date: number; price: number }[]
+  average: number
 }
 
 const fromGetPriceHistoryResponseDTO = (
   dto: GetPriceHistoryResponseDTO,
 ): GetPriceHistoryResponse => {
   return {
-    priceHistory: dto.price_history.map(price => ({
-      date: new Date(price.date),
-      price: price.price,
-    })),
-    averagePrice: dto.average_price,
+    history: dto.history,
+    average: dto.average,
   }
 }
 
-export const getPriceHistory = async () => {
+export const getPriceHistory = async (params: GetPriceHistoryParams) => {
   const response = await request.get<GetPriceHistoryResponseDTO>(
     '/product/price-history',
+    {
+      params: toGetPriceHistoryParamsDTO(params),
+    },
   )
 
   return fromGetPriceHistoryResponseDTO(response)

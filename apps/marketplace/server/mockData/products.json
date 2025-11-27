@@ -4,7 +4,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "대장장이토르",
-    "price": 3869220,
+    "price": 9066430,
     "amount": 27,
     "created_at": 1763950261957
   },
@@ -13,7 +13,7 @@
     "item_key": "dragon_armor",
     "type": "sell",
     "listed_by": "서리마녀",
-    "price": 673310,
+    "price": 3259489,
     "amount": 21,
     "created_at": 1763950081957
   },
@@ -22,7 +22,7 @@
     "item_key": "metal_armor",
     "type": "sell",
     "listed_by": "슬라임킬러",
-    "price": 94413,
+    "price": 1424639,
     "amount": 26,
     "created_at": 1763949901957
   },
@@ -31,7 +31,7 @@
     "item_key": "ore",
     "type": "sell",
     "listed_by": "용맹한방랑자",
-    "price": 11263,
+    "price": 13638,
     "amount": 1,
     "created_at": 1763949721957
   },
@@ -40,7 +40,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "대장장이토르",
-    "price": 411044,
+    "price": 8435022,
     "amount": 44,
     "created_at": 1763949541957
   },
@@ -49,7 +49,7 @@
     "item_key": "steel_sword",
     "type": "sell",
     "listed_by": "몬스터헌터",
-    "price": 840,
+    "price": 1096980,
     "amount": 35,
     "created_at": 1763949361957
   },
@@ -58,7 +58,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "대장장이토르",
-    "price": 251,
+    "price": 1018486,
     "amount": 11,
     "created_at": 1763949181957
   },
@@ -67,7 +67,7 @@
     "item_key": "mp_potion",
     "type": "buy",
     "listed_by": "몬스터헌터",
-    "price": 72159,
+    "price": 1652,
     "amount": 50,
     "created_at": 1763949001957
   },
@@ -76,7 +76,7 @@
     "item_key": "wooden_sword",
     "type": "buy",
     "listed_by": "서리마녀",
-    "price": 167919,
+    "price": 99232,
     "amount": 4,
     "created_at": 1763948821957
   },
@@ -85,7 +85,7 @@
     "item_key": "demon_sword",
     "type": "buy",
     "listed_by": "슬라임킬러",
-    "price": 253,
+    "price": 2253768,
     "amount": 41,
     "created_at": 1763948641957
   },
@@ -94,7 +94,7 @@
     "item_key": "scroll",
     "type": "sell",
     "listed_by": "모험왕",
-    "price": 40492,
+    "price": 8693627,
     "amount": 35,
     "created_at": 1763948461957
   },
@@ -103,7 +103,7 @@
     "item_key": "mp_potion",
     "type": "sell",
     "listed_by": "용맹한방랑자",
-    "price": 724,
+    "price": 1969,
     "amount": 15,
     "created_at": 1763948281957
   },
@@ -112,7 +112,7 @@
     "item_key": "hp_potion",
     "type": "buy",
     "listed_by": "대장장이토르",
-    "price": 4861927,
+    "price": 1152,
     "amount": 39,
     "created_at": 1763948101957
   },
@@ -121,7 +121,7 @@
     "item_key": "leather_armor",
     "type": "sell",
     "listed_by": "용맹한방랑자",
-    "price": 9327,
+    "price": 791455,
     "amount": 43,
     "created_at": 1763947921957
   },
@@ -130,7 +130,7 @@
     "item_key": "dragon_sword",
     "type": "buy",
     "listed_by": "만렙전사",
-    "price": 258483,
+    "price": 4848026,
     "amount": 11,
     "created_at": 1763947741957
   },
@@ -139,7 +139,7 @@
     "item_key": "stone_sword",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 3230894,
+    "price": 443076,
     "amount": 25,
     "created_at": 1763947561957
   },
@@ -148,7 +148,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "만렙전사",
-    "price": 936911,
+    "price": 8549448,
     "amount": 13,
     "created_at": 1763947381957
   },
@@ -157,7 +157,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "어둠의추적자",
-    "price": 861244,
+    "price": 1120554,
     "amount": 19,
     "created_at": 1763947201957
   },
@@ -166,7 +166,7 @@
     "item_key": "metal_armor",
     "type": "buy",
     "listed_by": "마법학도",
-    "price": 234990,
+    "price": 1431608,
     "amount": 9,
     "created_at": 1763947021957
   },
@@ -175,7 +175,7 @@
     "item_key": "scroll",
     "type": "sell",
     "listed_by": "모험왕",
-    "price": 869690,
+    "price": 6974096,
     "amount": 12,
     "created_at": 1763946841957
   },
@@ -184,7 +184,7 @@
     "item_key": "ore",
     "type": "buy",
     "listed_by": "서리마녀",
-    "price": 7914,
+    "price": 14361,
     "amount": 47,
     "created_at": 1763946661957
   },
@@ -193,7 +193,7 @@
     "item_key": "mp_potion",
     "type": "sell",
     "listed_by": "모험왕",
-    "price": 243,
+    "price": 2032,
     "amount": 34,
     "created_at": 1763946481957
   },
@@ -202,7 +202,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "드래곤슬레이어",
-    "price": 1230835,
+    "price": 974264,
     "amount": 9,
     "created_at": 1763946301957
   },
@@ -211,7 +211,7 @@
     "item_key": "cloth_armor",
     "type": "sell",
     "listed_by": "드래곤슬레이어",
-    "price": 472847,
+    "price": 319523,
     "amount": 17,
     "created_at": 1763946121957
   },
@@ -220,7 +220,7 @@
     "item_key": "mp_potion",
     "type": "sell",
     "listed_by": "방패장인",
-    "price": 749,
+    "price": 1849,
     "amount": 17,
     "created_at": 1763945941957
   },
@@ -229,7 +229,7 @@
     "item_key": "dragon_sword",
     "type": "buy",
     "listed_by": "모험왕",
-    "price": 6409,
+    "price": 5044573,
     "amount": 40,
     "created_at": 1763945761957
   },
@@ -238,7 +238,7 @@
     "item_key": "crown",
     "type": "sell",
     "listed_by": "약초채집가",
-    "price": 3711441,
+    "price": 5461567,
     "amount": 31,
     "created_at": 1763945581957
   },
@@ -247,7 +247,7 @@
     "item_key": "hp_potion",
     "type": "sell",
     "listed_by": "만렙전사",
-    "price": 2157,
+    "price": 1084,
     "amount": 20,
     "created_at": 1763945401957
   },
@@ -256,7 +256,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "포션중독자",
-    "price": 5155,
+    "price": 7093949,
     "amount": 33,
     "created_at": 1763945221957
   },
@@ -265,7 +265,7 @@
     "item_key": "cloth_armor",
     "type": "sell",
     "listed_by": "만렙전사",
-    "price": 439,
+    "price": 334180,
     "amount": 42,
     "created_at": 1763945041957
   },
@@ -274,7 +274,7 @@
     "item_key": "dragon_armor",
     "type": "buy",
     "listed_by": "골드사냥꾼",
-    "price": 338288,
+    "price": 2563799,
     "amount": 15,
     "created_at": 1763944861957
   },
@@ -283,7 +283,7 @@
     "item_key": "dragon_armor",
     "type": "buy",
     "listed_by": "대장장이토르",
-    "price": 378338,
+    "price": 3403927,
     "amount": 4,
     "created_at": 1763944681957
   },
@@ -292,7 +292,7 @@
     "item_key": "metal_armor",
     "type": "buy",
     "listed_by": "골드사냥꾼",
-    "price": 9797,
+    "price": 1486207,
     "amount": 28,
     "created_at": 1763944501957
   },
@@ -301,7 +301,7 @@
     "item_key": "demon_sword",
     "type": "sell",
     "listed_by": "몬스터헌터",
-    "price": 2285862,
+    "price": 2254586,
     "amount": 27,
     "created_at": 1763944321957
   },
@@ -310,7 +310,7 @@
     "item_key": "dragon_armor",
     "type": "sell",
     "listed_by": "슬라임킬러",
-    "price": 967,
+    "price": 3216038,
     "amount": 20,
     "created_at": 1763944141957
   },
@@ -319,7 +319,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "어둠의추적자",
-    "price": 4380483,
+    "price": 1070667,
     "amount": 41,
     "created_at": 1763943961957
   },
@@ -328,7 +328,7 @@
     "item_key": "dragon_armor",
     "type": "sell",
     "listed_by": "마법학도",
-    "price": 46188,
+    "price": 3442769,
     "amount": 38,
     "created_at": 1763943781957
   },
@@ -337,7 +337,7 @@
     "item_key": "ore",
     "type": "buy",
     "listed_by": "골드사냥꾼",
-    "price": 334152,
+    "price": 14916,
     "amount": 23,
     "created_at": 1763943601957
   },
@@ -346,7 +346,7 @@
     "item_key": "cloth_armor",
     "type": "buy",
     "listed_by": "몬스터헌터",
-    "price": 225,
+    "price": 279631,
     "amount": 10,
     "created_at": 1763943421957
   },
@@ -355,7 +355,7 @@
     "item_key": "crown",
     "type": "buy",
     "listed_by": "광산의요정",
-    "price": 591,
+    "price": 4482181,
     "amount": 48,
     "created_at": 1763943241957
   },
@@ -364,7 +364,7 @@
     "item_key": "mp_potion",
     "type": "buy",
     "listed_by": "방패장인",
-    "price": 4616,
+    "price": 1965,
     "amount": 7,
     "created_at": 1763943061957
   },
@@ -373,7 +373,7 @@
     "item_key": "wooden_sword",
     "type": "buy",
     "listed_by": "광산의요정",
-    "price": 800135,
+    "price": 85498,
     "amount": 10,
     "created_at": 1763942881957
   },
@@ -382,7 +382,7 @@
     "item_key": "stone_sword",
     "type": "sell",
     "listed_by": "검수집가",
-    "price": 116,
+    "price": 464568,
     "amount": 30,
     "created_at": 1763942701957
   },
@@ -391,7 +391,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "빛의기사",
-    "price": 232,
+    "price": 8350146,
     "amount": 15,
     "created_at": 1763942521957
   },
@@ -400,7 +400,7 @@
     "item_key": "mp_potion",
     "type": "sell",
     "listed_by": "몬스터헌터",
-    "price": 400762,
+    "price": 2005,
     "amount": 25,
     "created_at": 1763942341957
   },
@@ -409,7 +409,7 @@
     "item_key": "wooden_sword",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 576,
+    "price": 109467,
     "amount": 6,
     "created_at": 1763942161957
   },
@@ -418,7 +418,7 @@
     "item_key": "stone_sword",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 62150,
+    "price": 515323,
     "amount": 44,
     "created_at": 1763941981957
   },
@@ -427,7 +427,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "마법학도",
-    "price": 480,
+    "price": 1083967,
     "amount": 4,
     "created_at": 1763941801957
   },
@@ -436,7 +436,7 @@
     "item_key": "cloth_armor",
     "type": "sell",
     "listed_by": "약초채집가",
-    "price": 1941393,
+    "price": 291198,
     "amount": 19,
     "created_at": 1763941621957
   },
@@ -445,7 +445,7 @@
     "item_key": "metal_armor",
     "type": "sell",
     "listed_by": "빠른발도술",
-    "price": 5719,
+    "price": 1539296,
     "amount": 12,
     "created_at": 1763941441957
   },
@@ -454,7 +454,7 @@
     "item_key": "wooden_sword",
     "type": "buy",
     "listed_by": "드래곤슬레이어",
-    "price": 89677,
+    "price": 107048,
     "amount": 27,
     "created_at": 1763941261957
   },
@@ -463,7 +463,7 @@
     "item_key": "cloth_armor",
     "type": "buy",
     "listed_by": "슬라임킬러",
-    "price": 76853,
+    "price": 286367,
     "amount": 18,
     "created_at": 1763941081957
   },
@@ -472,7 +472,7 @@
     "item_key": "stone_sword",
     "type": "sell",
     "listed_by": "대장장이토르",
-    "price": 90637,
+    "price": 499455,
     "amount": 12,
     "created_at": 1763940901957
   },
@@ -481,7 +481,7 @@
     "item_key": "wooden_sword",
     "type": "buy",
     "listed_by": "용맹한방랑자",
-    "price": 530625,
+    "price": 111174,
     "amount": 2,
     "created_at": 1763940721957
   },
@@ -490,7 +490,7 @@
     "item_key": "ore",
     "type": "buy",
     "listed_by": "방패장인",
-    "price": 306261,
+    "price": 16253,
     "amount": 10,
     "created_at": 1763940541957
   },
@@ -499,7 +499,7 @@
     "item_key": "mp_potion",
     "type": "sell",
     "listed_by": "방패장인",
-    "price": 98977,
+    "price": 1827,
     "amount": 41,
     "created_at": 1763940361957
   },
@@ -508,7 +508,7 @@
     "item_key": "scroll",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 82739,
+    "price": 7879465,
     "amount": 27,
     "created_at": 1763940181957
   },
@@ -517,7 +517,7 @@
     "item_key": "dragon_armor",
     "type": "buy",
     "listed_by": "포션중독자",
-    "price": 805,
+    "price": 3193161,
     "amount": 1,
     "created_at": 1763940001957
   },
@@ -526,7 +526,7 @@
     "item_key": "mp_potion",
     "type": "buy",
     "listed_by": "몬스터헌터",
-    "price": 8919,
+    "price": 2018,
     "amount": 11,
     "created_at": 1763939821957
   },
@@ -535,7 +535,7 @@
     "item_key": "demon_sword",
     "type": "sell",
     "listed_by": "골드사냥꾼",
-    "price": 750,
+    "price": 2283266,
     "amount": 45,
     "created_at": 1763939641957
   },
@@ -544,7 +544,7 @@
     "item_key": "ore",
     "type": "buy",
     "listed_by": "방패장인",
-    "price": 4073,
+    "price": 16034,
     "amount": 38,
     "created_at": 1763939461957
   },
@@ -553,7 +553,7 @@
     "item_key": "wooden_sword",
     "type": "sell",
     "listed_by": "칼끝장전",
-    "price": 1323,
+    "price": 96179,
     "amount": 29,
     "created_at": 1763939281957
   },
@@ -562,7 +562,7 @@
     "item_key": "crown",
     "type": "buy",
     "listed_by": "만렙전사",
-    "price": 2743763,
+    "price": 5733201,
     "amount": 31,
     "created_at": 1763939101957
   },
@@ -571,7 +571,7 @@
     "item_key": "cloth_armor",
     "type": "sell",
     "listed_by": "몬스터헌터",
-    "price": 1102102,
+    "price": 277317,
     "amount": 13,
     "created_at": 1763938921957
   },
@@ -580,7 +580,7 @@
     "item_key": "stone_sword",
     "type": "buy",
     "listed_by": "슬라임킬러",
-    "price": 45384,
+    "price": 562680,
     "amount": 2,
     "created_at": 1763938741957
   },
@@ -589,7 +589,7 @@
     "item_key": "ring",
     "type": "sell",
     "listed_by": "칼끝장전",
-    "price": 6401,
+    "price": 1884390,
     "amount": 20,
     "created_at": 1763938561957
   },
@@ -598,7 +598,7 @@
     "item_key": "steel_sword",
     "type": "sell",
     "listed_by": "포션중독자",
-    "price": 86226,
+    "price": 933489,
     "amount": 25,
     "created_at": 1763938381957
   },
@@ -607,7 +607,7 @@
     "item_key": "ore",
     "type": "buy",
     "listed_by": "빠른발도술",
-    "price": 1388276,
+    "price": 16872,
     "amount": 50,
     "created_at": 1763938201957
   },
@@ -616,7 +616,7 @@
     "item_key": "wooden_sword",
     "type": "sell",
     "listed_by": "만렙전사",
-    "price": 514,
+    "price": 96949,
     "amount": 30,
     "created_at": 1763938021957
   },
@@ -625,7 +625,7 @@
     "item_key": "leather_armor",
     "type": "sell",
     "listed_by": "대장장이토르",
-    "price": 64804,
+    "price": 603894,
     "amount": 26,
     "created_at": 1763937841957
   },
@@ -634,7 +634,7 @@
     "item_key": "cloth_armor",
     "type": "buy",
     "listed_by": "빛의기사",
-    "price": 77748,
+    "price": 255105,
     "amount": 6,
     "created_at": 1763937661957
   },
@@ -643,7 +643,7 @@
     "item_key": "mp_potion",
     "type": "sell",
     "listed_by": "용맹한방랑자",
-    "price": 1886242,
+    "price": 1699,
     "amount": 31,
     "created_at": 1763937481957
   },
@@ -652,7 +652,7 @@
     "item_key": "wooden_sword",
     "type": "sell",
     "listed_by": "방패장인",
-    "price": 436,
+    "price": 91722,
     "amount": 49,
     "created_at": 1763937301957
   },
@@ -661,7 +661,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "빛의기사",
-    "price": 551346,
+    "price": 1148337,
     "amount": 16,
     "created_at": 1763937121957
   },
@@ -670,7 +670,7 @@
     "item_key": "dragon_sword",
     "type": "buy",
     "listed_by": "모험왕",
-    "price": 1765074,
+    "price": 4975333,
     "amount": 34,
     "created_at": 1763936941957
   },
@@ -679,7 +679,7 @@
     "item_key": "cloth_armor",
     "type": "buy",
     "listed_by": "어둠의추적자",
-    "price": 111,
+    "price": 269070,
     "amount": 7,
     "created_at": 1763936761957
   },
@@ -688,7 +688,7 @@
     "item_key": "ring",
     "type": "buy",
     "listed_by": "광산의요정",
-    "price": 208054,
+    "price": 1757063,
     "amount": 43,
     "created_at": 1763936581957
   },
@@ -697,7 +697,7 @@
     "item_key": "dragon_armor",
     "type": "buy",
     "listed_by": "서리마녀",
-    "price": 147,
+    "price": 3443037,
     "amount": 10,
     "created_at": 1763936401957
   },
@@ -706,7 +706,7 @@
     "item_key": "wooden_sword",
     "type": "buy",
     "listed_by": "광산의요정",
-    "price": 19371,
+    "price": 112147,
     "amount": 42,
     "created_at": 1763936221957
   },
@@ -715,7 +715,7 @@
     "item_key": "dragon_sword",
     "type": "buy",
     "listed_by": "검수집가",
-    "price": 855814,
+    "price": 4521715,
     "amount": 35,
     "created_at": 1763936041957
   },
@@ -724,7 +724,7 @@
     "item_key": "steel_sword",
     "type": "sell",
     "listed_by": "드래곤슬레이어",
-    "price": 120604,
+    "price": 1098903,
     "amount": 27,
     "created_at": 1763935861957
   },
@@ -733,7 +733,7 @@
     "item_key": "dragon_armor",
     "type": "sell",
     "listed_by": "약초채집가",
-    "price": 770458,
+    "price": 2966699,
     "amount": 38,
     "created_at": 1763935681957
   },
@@ -742,7 +742,7 @@
     "item_key": "steel_sword",
     "type": "sell",
     "listed_by": "방패장인",
-    "price": 106028,
+    "price": 1127074,
     "amount": 3,
     "created_at": 1763935501957
   },
@@ -751,7 +751,7 @@
     "item_key": "leather_armor",
     "type": "buy",
     "listed_by": "골드사냥꾼",
-    "price": 90875,
+    "price": 760767,
     "amount": 3,
     "created_at": 1763935321957
   },
@@ -760,7 +760,7 @@
     "item_key": "dragon_armor",
     "type": "buy",
     "listed_by": "마법학도",
-    "price": 576,
+    "price": 2837010,
     "amount": 4,
     "created_at": 1763935141957
   },
@@ -769,7 +769,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "어둠의추적자",
-    "price": 569,
+    "price": 1085713,
     "amount": 16,
     "created_at": 1763934961957
   },
@@ -778,7 +778,7 @@
     "item_key": "hp_potion",
     "type": "buy",
     "listed_by": "몬스터헌터",
-    "price": 592,
+    "price": 1096,
     "amount": 44,
     "created_at": 1763934781957
   },
@@ -787,7 +787,7 @@
     "item_key": "leather_armor",
     "type": "sell",
     "listed_by": "드래곤슬레이어",
-    "price": 18679,
+    "price": 783054,
     "amount": 43,
     "created_at": 1763934601957
   },
@@ -796,7 +796,7 @@
     "item_key": "ring",
     "type": "buy",
     "listed_by": "서리마녀",
-    "price": 40353,
+    "price": 1996768,
     "amount": 20,
     "created_at": 1763934421957
   },
@@ -805,7 +805,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "포션중독자",
-    "price": 1512355,
+    "price": 1047636,
     "amount": 35,
     "created_at": 1763934241957
   },
@@ -814,7 +814,7 @@
     "item_key": "demon_sword",
     "type": "sell",
     "listed_by": "약초채집가",
-    "price": 3187755,
+    "price": 1713968,
     "amount": 25,
     "created_at": 1763934061957
   },
@@ -823,7 +823,7 @@
     "item_key": "wooden_sword",
     "type": "sell",
     "listed_by": "비밀결사단",
-    "price": 74557,
+    "price": 102855,
     "amount": 9,
     "created_at": 1763933881957
   },
@@ -832,7 +832,7 @@
     "item_key": "hp_potion",
     "type": "buy",
     "listed_by": "어둠의추적자",
-    "price": 261098,
+    "price": 1333,
     "amount": 6,
     "created_at": 1763933701957
   },
@@ -841,7 +841,7 @@
     "item_key": "crown",
     "type": "buy",
     "listed_by": "드래곤슬레이어",
-    "price": 715,
+    "price": 4334039,
     "amount": 32,
     "created_at": 1763933521957
   },
@@ -850,7 +850,7 @@
     "item_key": "wooden_sword",
     "type": "sell",
     "listed_by": "비밀결사단",
-    "price": 816,
+    "price": 98940,
     "amount": 46,
     "created_at": 1763933341957
   },
@@ -859,7 +859,7 @@
     "item_key": "dragon_armor",
     "type": "sell",
     "listed_by": "만렙전사",
-    "price": 59902,
+    "price": 2660321,
     "amount": 27,
     "created_at": 1763933161957
   },
@@ -868,7 +868,7 @@
     "item_key": "leather_armor",
     "type": "sell",
     "listed_by": "만렙전사",
-    "price": 90186,
+    "price": 765407,
     "amount": 11,
     "created_at": 1763932981957
   },
@@ -877,7 +877,7 @@
     "item_key": "demon_sword",
     "type": "buy",
     "listed_by": "빠른발도술",
-    "price": 454,
+    "price": 2084637,
     "amount": 11,
     "created_at": 1763932801957
   },
@@ -886,7 +886,7 @@
     "item_key": "crown",
     "type": "buy",
     "listed_by": "광산의요정",
-    "price": 68309,
+    "price": 5618456,
     "amount": 5,
     "created_at": 1763932621957
   },
@@ -895,7 +895,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "어둠의추적자",
-    "price": 218,
+    "price": 1036275,
     "amount": 42,
     "created_at": 1763932441957
   },
@@ -904,7 +904,7 @@
     "item_key": "cloth_armor",
     "type": "buy",
     "listed_by": "빛의기사",
-    "price": 147,
+    "price": 277501,
     "amount": 45,
     "created_at": 1763932261957
   },
@@ -913,7 +913,7 @@
     "item_key": "ore",
     "type": "sell",
     "listed_by": "검수집가",
-    "price": 2863537,
+    "price": 14622,
     "amount": 22,
     "created_at": 1763932081957
   },
@@ -922,7 +922,7 @@
     "item_key": "crown",
     "type": "buy",
     "listed_by": "빛의기사",
-    "price": 921,
+    "price": 5325996,
     "amount": 9,
     "created_at": 1763931901957
   },
@@ -931,7 +931,7 @@
     "item_key": "scroll",
     "type": "sell",
     "listed_by": "어둠의추적자",
-    "price": 523,
+    "price": 6902871,
     "amount": 6,
     "created_at": 1763931721957
   },
@@ -940,7 +940,7 @@
     "item_key": "dragon_sword",
     "type": "buy",
     "listed_by": "마법학도",
-    "price": 6359,
+    "price": 4747172,
     "amount": 18,
     "created_at": 1763931541957
   },
@@ -949,7 +949,7 @@
     "item_key": "metal_armor",
     "type": "buy",
     "listed_by": "약초채집가",
-    "price": 2540360,
+    "price": 1363335,
     "amount": 48,
     "created_at": 1763931361957
   },
@@ -958,7 +958,7 @@
     "item_key": "ore",
     "type": "sell",
     "listed_by": "몬스터헌터",
-    "price": 486,
+    "price": 14187,
     "amount": 11,
     "created_at": 1763931181957
   },
@@ -967,7 +967,7 @@
     "item_key": "ore",
     "type": "sell",
     "listed_by": "마법학도",
-    "price": 556711,
+    "price": 16466,
     "amount": 26,
     "created_at": 1763931001957
   },
@@ -976,7 +976,7 @@
     "item_key": "cloth_armor",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 1204959,
+    "price": 273223,
     "amount": 34,
     "created_at": 1763930821957
   },
@@ -985,7 +985,7 @@
     "item_key": "stone_sword",
     "type": "sell",
     "listed_by": "포션중독자",
-    "price": 949991,
+    "price": 481592,
     "amount": 23,
     "created_at": 1763930641957
   },
@@ -994,7 +994,7 @@
     "item_key": "metal_armor",
     "type": "buy",
     "listed_by": "포션중독자",
-    "price": 863,
+    "price": 1649437,
     "amount": 41,
     "created_at": 1763930461957
   },
@@ -1003,7 +1003,7 @@
     "item_key": "leather_armor",
     "type": "buy",
     "listed_by": "만렙전사",
-    "price": 8392,
+    "price": 752478,
     "amount": 49,
     "created_at": 1763930281957
   },
@@ -1012,7 +1012,7 @@
     "item_key": "ring",
     "type": "sell",
     "listed_by": "광산의요정",
-    "price": 825024,
+    "price": 2238178,
     "amount": 34,
     "created_at": 1763930101957
   },
@@ -1021,7 +1021,7 @@
     "item_key": "stone_sword",
     "type": "sell",
     "listed_by": "만렙전사",
-    "price": 900281,
+    "price": 505459,
     "amount": 10,
     "created_at": 1763929921957
   },
@@ -1030,7 +1030,7 @@
     "item_key": "hp_potion",
     "type": "sell",
     "listed_by": "몬스터헌터",
-    "price": 1401,
+    "price": 1042,
     "amount": 37,
     "created_at": 1763929741957
   },
@@ -1039,7 +1039,7 @@
     "item_key": "metal_armor",
     "type": "sell",
     "listed_by": "빠른발도술",
-    "price": 41005,
+    "price": 1659440,
     "amount": 24,
     "created_at": 1763929561957
   },
@@ -1048,7 +1048,7 @@
     "item_key": "ore",
     "type": "sell",
     "listed_by": "몬스터헌터",
-    "price": 543,
+    "price": 12954,
     "amount": 17,
     "created_at": 1763929381957
   },
@@ -1057,7 +1057,7 @@
     "item_key": "cloth_armor",
     "type": "buy",
     "listed_by": "드래곤슬레이어",
-    "price": 5362,
+    "price": 260757,
     "amount": 45,
     "created_at": 1763929201957
   },
@@ -1066,7 +1066,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "칼끝장전",
-    "price": 1395,
+    "price": 7114557,
     "amount": 32,
     "created_at": 1763929021957
   },
@@ -1075,7 +1075,7 @@
     "item_key": "ring",
     "type": "sell",
     "listed_by": "어둠의추적자",
-    "price": 546,
+    "price": 1922073,
     "amount": 4,
     "created_at": 1763928841957
   },
@@ -1084,7 +1084,7 @@
     "item_key": "dragon_sword",
     "type": "buy",
     "listed_by": "서리마녀",
-    "price": 746851,
+    "price": 4819018,
     "amount": 23,
     "created_at": 1763928661957
   },
@@ -1093,7 +1093,7 @@
     "item_key": "hp_potion",
     "type": "buy",
     "listed_by": "광산의요정",
-    "price": 4291407,
+    "price": 1187,
     "amount": 22,
     "created_at": 1763928481957
   },
@@ -1102,7 +1102,7 @@
     "item_key": "cloth_armor",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 9377,
+    "price": 321047,
     "amount": 20,
     "created_at": 1763928301957
   },
@@ -1111,7 +1111,7 @@
     "item_key": "dragon_sword",
     "type": "buy",
     "listed_by": "비밀결사단",
-    "price": 3189625,
+    "price": 4877485,
     "amount": 36,
     "created_at": 1763928121957
   },
@@ -1120,7 +1120,7 @@
     "item_key": "dragon_armor",
     "type": "sell",
     "listed_by": "포션중독자",
-    "price": 86505,
+    "price": 2672643,
     "amount": 7,
     "created_at": 1763927941957
   },
@@ -1129,7 +1129,7 @@
     "item_key": "wooden_sword",
     "type": "sell",
     "listed_by": "용맹한방랑자",
-    "price": 679,
+    "price": 97732,
     "amount": 31,
     "created_at": 1763927761957
   },
@@ -1138,7 +1138,7 @@
     "item_key": "dragon_sword",
     "type": "buy",
     "listed_by": "약초채집가",
-    "price": 5115,
+    "price": 5048110,
     "amount": 7,
     "created_at": 1763927581957
   },
@@ -1147,7 +1147,7 @@
     "item_key": "cloth_armor",
     "type": "buy",
     "listed_by": "만렙전사",
-    "price": 2081,
+    "price": 279562,
     "amount": 15,
     "created_at": 1763927401957
   },
@@ -1156,7 +1156,7 @@
     "item_key": "scroll",
     "type": "sell",
     "listed_by": "마법학도",
-    "price": 552,
+    "price": 8738561,
     "amount": 43,
     "created_at": 1763927221957
   },
@@ -1165,7 +1165,7 @@
     "item_key": "ring",
     "type": "buy",
     "listed_by": "칼끝장전",
-    "price": 3699865,
+    "price": 1759796,
     "amount": 5,
     "created_at": 1763927041957
   },
@@ -1174,7 +1174,7 @@
     "item_key": "metal_armor",
     "type": "buy",
     "listed_by": "방패장인",
-    "price": 4679,
+    "price": 1428473,
     "amount": 50,
     "created_at": 1763926861957
   },
@@ -1183,7 +1183,7 @@
     "item_key": "crown",
     "type": "buy",
     "listed_by": "드래곤슬레이어",
-    "price": 30374,
+    "price": 4602254,
     "amount": 30,
     "created_at": 1763926681957
   },
@@ -1192,7 +1192,7 @@
     "item_key": "metal_armor",
     "type": "sell",
     "listed_by": "방패장인",
-    "price": 79677,
+    "price": 1492010,
     "amount": 20,
     "created_at": 1763926501957
   },
@@ -1201,7 +1201,7 @@
     "item_key": "metal_armor",
     "type": "buy",
     "listed_by": "드래곤슬레이어",
-    "price": 3386498,
+    "price": 1661423,
     "amount": 28,
     "created_at": 1763926321957
   },
@@ -1210,7 +1210,7 @@
     "item_key": "metal_armor",
     "type": "sell",
     "listed_by": "어둠의추적자",
-    "price": 1765229,
+    "price": 1709481,
     "amount": 14,
     "created_at": 1763926141957
   },
@@ -1219,7 +1219,7 @@
     "item_key": "ore",
     "type": "sell",
     "listed_by": "빠른발도술",
-    "price": 4928509,
+    "price": 15420,
     "amount": 47,
     "created_at": 1763925961957
   },
@@ -1228,7 +1228,7 @@
     "item_key": "dragon_armor",
     "type": "buy",
     "listed_by": "빠른발도술",
-    "price": 373051,
+    "price": 2827238,
     "amount": 30,
     "created_at": 1763925781957
   },
@@ -1237,7 +1237,7 @@
     "item_key": "stone_sword",
     "type": "buy",
     "listed_by": "검수집가",
-    "price": 259,
+    "price": 500175,
     "amount": 27,
     "created_at": 1763925601957
   },
@@ -1246,7 +1246,7 @@
     "item_key": "mp_potion",
     "type": "buy",
     "listed_by": "서리마녀",
-    "price": 72996,
+    "price": 1640,
     "amount": 1,
     "created_at": 1763925421957
   },
@@ -1255,7 +1255,7 @@
     "item_key": "demon_sword",
     "type": "sell",
     "listed_by": "만렙전사",
-    "price": 8059,
+    "price": 1882549,
     "amount": 43,
     "created_at": 1763925241957
   },
@@ -1264,7 +1264,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "광산의요정",
-    "price": 485449,
+    "price": 8891527,
     "amount": 19,
     "created_at": 1763925061957
   },
@@ -1273,7 +1273,7 @@
     "item_key": "dragon_sword",
     "type": "sell",
     "listed_by": "드래곤슬레이어",
-    "price": 248,
+    "price": 4591642,
     "amount": 37,
     "created_at": 1763924881957
   },
@@ -1282,7 +1282,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "어둠의추적자",
-    "price": 836,
+    "price": 7862424,
     "amount": 6,
     "created_at": 1763924701957
   },
@@ -1291,7 +1291,7 @@
     "item_key": "ring",
     "type": "sell",
     "listed_by": "모험왕",
-    "price": 760672,
+    "price": 2170549,
     "amount": 16,
     "created_at": 1763924521957
   },
@@ -1300,7 +1300,7 @@
     "item_key": "leather_armor",
     "type": "buy",
     "listed_by": "방패장인",
-    "price": 38769,
+    "price": 714811,
     "amount": 38,
     "created_at": 1763924341957
   },
@@ -1309,7 +1309,7 @@
     "item_key": "scroll",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 651077,
+    "price": 7079299,
     "amount": 9,
     "created_at": 1763924161957
   },
@@ -1318,7 +1318,7 @@
     "item_key": "hp_potion",
     "type": "buy",
     "listed_by": "빛의기사",
-    "price": 145294,
+    "price": 1222,
     "amount": 28,
     "created_at": 1763923981957
   },
@@ -1327,7 +1327,7 @@
     "item_key": "dragon_armor",
     "type": "sell",
     "listed_by": "서리마녀",
-    "price": 9467,
+    "price": 3338156,
     "amount": 41,
     "created_at": 1763923801957
   },
@@ -1336,7 +1336,7 @@
     "item_key": "ore",
     "type": "buy",
     "listed_by": "약초채집가",
-    "price": 3157,
+    "price": 16981,
     "amount": 1,
     "created_at": 1763923621957
   },
@@ -1345,7 +1345,7 @@
     "item_key": "steel_sword",
     "type": "buy",
     "listed_by": "서리마녀",
-    "price": 408274,
+    "price": 997540,
     "amount": 41,
     "created_at": 1763923441957
   },
@@ -1354,7 +1354,7 @@
     "item_key": "metal_armor",
     "type": "sell",
     "listed_by": "슬라임킬러",
-    "price": 2559268,
+    "price": 1386795,
     "amount": 26,
     "created_at": 1763923261957
   },
@@ -1363,7 +1363,7 @@
     "item_key": "ore",
     "type": "buy",
     "listed_by": "용맹한방랑자",
-    "price": 478,
+    "price": 15028,
     "amount": 39,
     "created_at": 1763923081957
   },
@@ -1372,7 +1372,7 @@
     "item_key": "crown",
     "type": "sell",
     "listed_by": "검수집가",
-    "price": 841035,
+    "price": 5492142,
     "amount": 14,
     "created_at": 1763922901957
   },
@@ -1381,7 +1381,7 @@
     "item_key": "scroll",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 561,
+    "price": 7183396,
     "amount": 44,
     "created_at": 1763922721957
   },
@@ -1390,7 +1390,7 @@
     "item_key": "ring",
     "type": "buy",
     "listed_by": "용맹한방랑자",
-    "price": 3332198,
+    "price": 1997503,
     "amount": 28,
     "created_at": 1763922541957
   },
@@ -1399,7 +1399,7 @@
     "item_key": "mp_potion",
     "type": "sell",
     "listed_by": "서리마녀",
-    "price": 906,
+    "price": 1581,
     "amount": 24,
     "created_at": 1763922361957
   },
@@ -1408,7 +1408,7 @@
     "item_key": "hp_potion",
     "type": "sell",
     "listed_by": "모험왕",
-    "price": 294,
+    "price": 1181,
     "amount": 2,
     "created_at": 1763922181957
   },
@@ -1417,7 +1417,7 @@
     "item_key": "dragon_armor",
     "type": "sell",
     "listed_by": "포션중독자",
-    "price": 7324,
+    "price": 2830326,
     "amount": 4,
     "created_at": 1763922001957
   },
@@ -1426,7 +1426,7 @@
     "item_key": "leather_armor",
     "type": "sell",
     "listed_by": "검수집가",
-    "price": 3574173,
+    "price": 734690,
     "amount": 24,
     "created_at": 1763921821957
   },
@@ -1435,7 +1435,7 @@
     "item_key": "wooden_sword",
     "type": "sell",
     "listed_by": "모험왕",
-    "price": 1390711,
+    "price": 112095,
     "amount": 27,
     "created_at": 1763921641957
   },
@@ -1444,7 +1444,7 @@
     "item_key": "ring",
     "type": "buy",
     "listed_by": "어둠의추적자",
-    "price": 519,
+    "price": 2189409,
     "amount": 19,
     "created_at": 1763921461957
   },
@@ -1453,7 +1453,7 @@
     "item_key": "steel_sword",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 935972,
+    "price": 1105037,
     "amount": 46,
     "created_at": 1763921281957
   },
@@ -1462,7 +1462,7 @@
     "item_key": "hp_potion",
     "type": "buy",
     "listed_by": "만렙전사",
-    "price": 216756,
+    "price": 1119,
     "amount": 20,
     "created_at": 1763921101957
   },
@@ -1471,7 +1471,7 @@
     "item_key": "demon_sword",
     "type": "buy",
     "listed_by": "드래곤슬레이어",
-    "price": 97120,
+    "price": 2062752,
     "amount": 18,
     "created_at": 1763920921957
   },
@@ -1480,7 +1480,7 @@
     "item_key": "mp_potion",
     "type": "buy",
     "listed_by": "광산의요정",
-    "price": 31288,
+    "price": 1859,
     "amount": 7,
     "created_at": 1763920741957
   },
@@ -1489,7 +1489,7 @@
     "item_key": "ore",
     "type": "buy",
     "listed_by": "검수집가",
-    "price": 2939356,
+    "price": 14983,
     "amount": 14,
     "created_at": 1763920561957
   },
@@ -1498,7 +1498,7 @@
     "item_key": "dragon_sword",
     "type": "sell",
     "listed_by": "어둠의추적자",
-    "price": 6094,
+    "price": 4963490,
     "amount": 24,
     "created_at": 1763920381957
   },
@@ -1507,7 +1507,7 @@
     "item_key": "dragon_sword",
     "type": "sell",
     "listed_by": "빛의기사",
-    "price": 51958,
+    "price": 4601721,
     "amount": 40,
     "created_at": 1763920201957
   },
@@ -1516,7 +1516,7 @@
     "item_key": "steel_sword",
     "type": "sell",
     "listed_by": "빠른발도술",
-    "price": 3190541,
+    "price": 958213,
     "amount": 3,
     "created_at": 1763920021957
   },
@@ -1525,7 +1525,7 @@
     "item_key": "demon_sword",
     "type": "buy",
     "listed_by": "마법학도",
-    "price": 954,
+    "price": 2038873,
     "amount": 37,
     "created_at": 1763919841957
   },
@@ -1534,7 +1534,7 @@
     "item_key": "dragon_sword",
     "type": "buy",
     "listed_by": "서리마녀",
-    "price": 222266,
+    "price": 4591806,
     "amount": 30,
     "created_at": 1763919661957
   },
@@ -1543,7 +1543,7 @@
     "item_key": "stone_sword",
     "type": "sell",
     "listed_by": "광산의요정",
-    "price": 7455,
+    "price": 490674,
     "amount": 15,
     "created_at": 1763919481957
   },
@@ -1552,7 +1552,7 @@
     "item_key": "leather_armor",
     "type": "sell",
     "listed_by": "만렙전사",
-    "price": 18532,
+    "price": 727551,
     "amount": 26,
     "created_at": 1763919301957
   },
@@ -1561,7 +1561,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "서리마녀",
-    "price": 4806139,
+    "price": 7476707,
     "amount": 18,
     "created_at": 1763919121957
   },
@@ -1570,7 +1570,7 @@
     "item_key": "ring",
     "type": "sell",
     "listed_by": "어둠의추적자",
-    "price": 1508937,
+    "price": 1916626,
     "amount": 27,
     "created_at": 1763918941957
   },
@@ -1579,7 +1579,7 @@
     "item_key": "demon_sword",
     "type": "buy",
     "listed_by": "빛의기사",
-    "price": 79257,
+    "price": 1847288,
     "amount": 34,
     "created_at": 1763918761957
   },
@@ -1588,7 +1588,7 @@
     "item_key": "mp_potion",
     "type": "buy",
     "listed_by": "약초채집가",
-    "price": 3565400,
+    "price": 1587,
     "amount": 16,
     "created_at": 1763918581957
   },
@@ -1597,7 +1597,7 @@
     "item_key": "hp_potion",
     "type": "sell",
     "listed_by": "방패장인",
-    "price": 920,
+    "price": 1310,
     "amount": 29,
     "created_at": 1763918401957
   },
@@ -1606,7 +1606,7 @@
     "item_key": "hp_potion",
     "type": "buy",
     "listed_by": "광산의요정",
-    "price": 1209552,
+    "price": 1259,
     "amount": 42,
     "created_at": 1763918221957
   },
@@ -1615,7 +1615,7 @@
     "item_key": "leather_armor",
     "type": "buy",
     "listed_by": "몬스터헌터",
-    "price": 163,
+    "price": 712311,
     "amount": 8,
     "created_at": 1763918041957
   },
@@ -1624,7 +1624,7 @@
     "item_key": "scroll",
     "type": "buy",
     "listed_by": "드래곤슬레이어",
-    "price": 429,
+    "price": 7755955,
     "amount": 31,
     "created_at": 1763917861957
   },
@@ -1633,7 +1633,7 @@
     "item_key": "ore",
     "type": "buy",
     "listed_by": "드래곤슬레이어",
-    "price": 4895376,
+    "price": 12854,
     "amount": 4,
     "created_at": 1763917681957
   },
@@ -1642,7 +1642,7 @@
     "item_key": "cloth_armor",
     "type": "buy",
     "listed_by": "포션중독자",
-    "price": 1548,
+    "price": 294116,
     "amount": 23,
     "created_at": 1763917501957
   },
@@ -1651,7 +1651,7 @@
     "item_key": "mp_potion",
     "type": "sell",
     "listed_by": "어둠의추적자",
-    "price": 2331360,
+    "price": 1918,
     "amount": 5,
     "created_at": 1763917321957
   },
@@ -1660,7 +1660,7 @@
     "item_key": "stone_sword",
     "type": "buy",
     "listed_by": "모험왕",
-    "price": 623,
+    "price": 457952,
     "amount": 43,
     "created_at": 1763917141957
   }

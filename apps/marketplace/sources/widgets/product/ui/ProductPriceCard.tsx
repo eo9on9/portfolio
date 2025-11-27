@@ -1,3 +1,4 @@
+import { KindOfItemKey } from '@entities/item/model/itemKey'
 import { getPriceHistory } from '@features/product/api/getPriceHistory'
 import { toPrice } from '@shared/util/format'
 import { useQuery } from '@tanstack/react-query'
@@ -12,10 +13,15 @@ import {
   YAxis,
 } from 'recharts'
 
-export const ProductPriceCard = () => {
+interface ProductPriceCardProps {
+  itemKey: KindOfItemKey
+}
+
+export const ProductPriceCard = ({ itemKey }: ProductPriceCardProps) => {
   const { data } = useQuery({
-    queryKey: ['price-history'],
-    queryFn: getPriceHistory,
+    queryKey: ['price-history', itemKey],
+    queryFn: () => getPriceHistory({ itemKey }),
+    enabled: !!itemKey,
   })
 
   if (!data) return null
@@ -28,11 +34,13 @@ export const ProductPriceCard = () => {
       </div>
       <div>
         <ResponsiveContainer width="100%" height={200}>
-          <LineChart data={data.priceHistory}>
+          <LineChart data={data.history}>
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis
               dataKey="date"
-              tickFormatter={date => `${date.getMonth() + 1}/${date.getDate()}`}
+              tickFormatter={date =>
+                `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}`
+              }
             />
             <YAxis tickFormatter={value => `${(value / 1000).toFixed(0)}K`} />
             <Tooltip

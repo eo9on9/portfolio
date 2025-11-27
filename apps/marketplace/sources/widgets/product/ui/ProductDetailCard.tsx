@@ -4,6 +4,7 @@ import { ItemCategoryBadge } from '@entities/item/ui/ItemCategoryBadge'
 import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
 import { getPriceHistory } from '@features/product/api/getPriceHistory'
 import { CreateProductModal } from '@features/product/ui/CreateProductModal'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { toPrice } from '@shared/util/format'
 import { useQuery } from '@tanstack/react-query'
@@ -19,9 +20,10 @@ export const ProductDetailCard = ({ itemKey }: ProductDetailCardProps) => {
 
   const item = useItem(itemKey)
 
-  const { data: priceHistory } = useQuery({
-    queryKey: ['price-history'],
-    queryFn: getPriceHistory,
+  const { data } = useQuery({
+    queryKey: ['price-history', itemKey],
+    queryFn: () => getPriceHistory({ itemKey }),
+    enabled: !!itemKey,
   })
 
   if (!item) return null
@@ -43,10 +45,14 @@ export const ProductDetailCard = ({ itemKey }: ProductDetailCardProps) => {
         <div className="flex items-center justify-between bg-gray-100 p-4 my-2 rounded-sm">
           <p className="text-base text-gray-800">평균 시세</p>
           <p className="text-base text-blue-600">
-            {toPrice(priceHistory?.averagePrice ?? 0)} G
+            {toPrice(data?.average ?? 0)} G
           </p>
         </div>
-        <Button onClick={() => setModalOpen(true)}>등록하기</Button>
+        <Beacon>
+          <Button onClick={() => setModalOpen(true)} className="w-full">
+            등록하기
+          </Button>
+        </Beacon>
       </div>
       <CreateProductModal
         itemKey={itemKey}
