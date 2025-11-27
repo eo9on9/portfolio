@@ -1,4 +1,4 @@
-import { useSSE } from '@shared/api/useSSE'
+import { useSSE } from '@shared/hook/useSSE'
 import {
   createContext,
   PropsWithChildren,

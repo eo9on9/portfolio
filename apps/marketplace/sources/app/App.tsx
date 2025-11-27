@@ -1,6 +1,6 @@
 import { AppErrorFallback } from '@app/AppErrorFallback'
 import { Guide } from '@app/Guide'
-import { SSEProvider } from '@shared/api/useSSE'
+import { SSEProvider } from '@shared/hook/useSSE'
 import { ToastProvider } from '@shared/ui/Toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { LayoutProvider } from '@widgets/layout/model/useLayoutContext'

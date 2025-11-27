@@ -1,6 +1,6 @@
 import { getConversation } from '@features/conversation/api/getConversation'
 import { getMessages } from '@features/conversation/api/getMessages'
-import { useSSE } from '@shared/api/useSSE'
+import { useSSE } from '@shared/hook/useSSE'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { ConversationActions } from '@widgets/conversation/ui/ConversationActions'
 import { ConversationHeader } from '@widgets/conversation/ui/ConversationHeader'

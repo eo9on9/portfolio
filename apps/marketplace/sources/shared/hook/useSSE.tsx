@@ -17,7 +17,6 @@ export const SSEProvider = ({ children }: { children: React.ReactNode }) => {
   const eventSourceRef = useRef<EventSource | null>(null)
 
   useEffect(() => {
-    // 이미 연결됐다면 또 만들지 않음 (앱 전체 단 하나)
     if (!eventSourceRef.current) {
       eventSourceRef.current = new EventSource('/api/sse')
 
@@ -35,7 +34,6 @@ export const SSEProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     return () => {
-      // Provider가 언마운트될 일이 거의 없지만 안전하게 정리
       eventSourceRef.current?.close()
     }
   }, [])
