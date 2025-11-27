@@ -80,7 +80,7 @@ export const DeleteProductModal = ({
               variant="primary"
               size="lg"
               isLoading={isPending}
-              onClick={() => mutate({ id: product.id })}
+              onClick={() => mutate({ productId: product.productId })}
             >
               삭제하기
             </Button>

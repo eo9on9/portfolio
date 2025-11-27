@@ -26,7 +26,7 @@ export default async function handler(
   }
 
   if (req.method === 'GET') {
-    const product = products.find(p => p.id === req.query.id)
+    const product = products.find(p => p.product_id === req.query.product_id)
 
     return res.status(200).json({
       code: 'SUCCESS',
@@ -49,17 +49,16 @@ export default async function handler(
       })
     }
 
-    const maxId =
-      products.length > 0 ? Math.max(...products.map(p => Number(p.id))) : 0
+    const now = Number(Date.now())
 
     const newProduct: Product = {
-      id: (maxId + 1).toString(),
+      product_id: `prd-${now}`,
       item_key,
       type,
       listed_by: MY_NAME,
       price,
       amount,
-      created_at: Date.now(),
+      created_at: now,
     }
 
     const newProducts = [newProduct, ...products]
@@ -75,9 +74,9 @@ export default async function handler(
   }
 
   if (req.method === 'DELETE') {
-    const { id } = req.body as unknown as { id: string }
+    const { product_id } = req.body as unknown as { product_id: string }
 
-    const newProducts = products.filter(p => p.id !== id)
+    const newProducts = products.filter(p => p.product_id !== product_id)
     await redis.set('products', JSON.stringify(newProducts))
 
     return res.status(200).json({

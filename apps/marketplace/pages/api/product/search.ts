@@ -12,8 +12,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const rawItemDB = await redis.get('itemDB')
-  const itemDB = rawItemDB && JSON.parse(rawItemDB)
+  const rawItemWiki = await redis.get('itemWiki')
+  const itemWiki = rawItemWiki && JSON.parse(rawItemWiki)
 
   const rawProducts = await redis.get('products')
   const products = rawProducts && JSON.parse(rawProducts)
@@ -26,7 +26,7 @@ export default async function handler(
   if (!page || isNaN(Number(page))) {
     return res.status(400).json({
       code: 'BAD_REQUEST',
-      message: '`page` 파라미터는 필수이며 숫자여야 합니다.',
+      message: '필수 파라미터가 누락되었습니다.',
       data: null,
     })
   }
@@ -39,7 +39,7 @@ export default async function handler(
 
   // ---- ⭐ 필터링 로직 ----
   filtered = filtered.filter(product => {
-    const meta = itemDB[product.item_key as keyof typeof itemDB]
+    const meta = itemWiki[product.item_key as keyof typeof itemWiki]
 
     if (!meta) return false
 

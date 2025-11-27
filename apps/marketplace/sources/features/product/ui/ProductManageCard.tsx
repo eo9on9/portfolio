@@ -24,7 +24,7 @@ export const ProductManageCard = ({
   if (!item) return null
 
   return (
-    <>
+    <Beacon>
       <div
         className="flex items-center flex-wrap gap-4 w-full p-2 border border-gray-200 bg-white rounded-sm cursor-pointer transition-shadow duration-200 ease-out hover:shadow-md"
         onClick={() => onClick?.(product)}
@@ -71,6 +71,6 @@ export const ProductManageCard = ({
           </Button>
         </Beacon>
       </div>
-    </>
+    </Beacon>
   )
 }

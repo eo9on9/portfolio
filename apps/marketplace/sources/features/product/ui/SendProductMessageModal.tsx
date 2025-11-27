@@ -53,7 +53,7 @@ export const SendProductMessageModal = ({
   const handleSendMessage = handleSubmit(data => {
     mutate({
       partner: product.listedBy,
-      productId: product.id,
+      productId: product.productId,
       content: data.message,
     })
   })

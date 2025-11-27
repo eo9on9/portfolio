@@ -5,7 +5,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const rawItemWiki = await redis.get('itemDB')
+  const rawItemWiki = await redis.get('itemWiki')
   const itemWiki = rawItemWiki && JSON.parse(rawItemWiki)
 
   if (!itemWiki) {
@@ -18,7 +18,7 @@ export default async function handler(
 
   res.status(200).json({
     code: 'SUCCESS',
-    message: 'ItemDB 조회 성공',
+    message: '아이템 위키 조회 성공',
     data: itemWiki,
   })
 }

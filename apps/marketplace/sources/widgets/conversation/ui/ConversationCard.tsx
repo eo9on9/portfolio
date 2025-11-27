@@ -21,7 +21,7 @@ export const ConversationCard = ({
 }: ConversationCardProps) => {
   const { data } = useQuery({
     queryKey: ['product', conversation.productId],
-    queryFn: () => getProduct({ id: conversation.productId }),
+    queryFn: () => getProduct({ productId: conversation.productId }),
   })
 
   const item = useItem(data?.product.itemKey as KindOfItemKey)

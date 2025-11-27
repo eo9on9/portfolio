@@ -17,8 +17,13 @@ import { toAgo, toPrice } from '@shared/util/format'
 import { useQuery } from '@tanstack/react-query'
 import { MessageSquare } from 'lucide-react'
 import { useMemo, useState } from 'react'
+
 interface ProductListingCardProps {
   itemKey: KindOfItemKey
+}
+
+interface ProductTableData extends Product {
+  id: string
 }
 
 export const ProductListingCard = ({ itemKey }: ProductListingCardProps) => {
@@ -33,7 +38,16 @@ export const ProductListingCard = ({ itemKey }: ProductListingCardProps) => {
     enabled: !!itemKey,
   })
 
-  const columns: TableColumn<Product>[] = useMemo(
+  const productsWithId: ProductTableData[] = useMemo(
+    () =>
+      data?.products.map(product => ({
+        ...product,
+        id: product.productId,
+      })) ?? [],
+    [data],
+  )
+
+  const columns: TableColumn<ProductTableData>[] = useMemo(
     () => [
       {
         header: type === 'sell' ? '판매자' : '구매자',
@@ -78,12 +92,12 @@ export const ProductListingCard = ({ itemKey }: ProductListingCardProps) => {
   )
 
   const sellData = useMemo(
-    () => data?.products.filter(item => item.type === 'sell') ?? [],
-    [data],
+    () => productsWithId.filter(item => item.type === 'sell') ?? [],
+    [productsWithId],
   )
   const buyData = useMemo(
-    () => data?.products.filter(item => item.type === 'buy') ?? [],
-    [data],
+    () => productsWithId.filter(item => item.type === 'buy') ?? [],
+    [productsWithId],
   )
 
   return (

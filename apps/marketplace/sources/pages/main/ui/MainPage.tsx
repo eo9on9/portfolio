@@ -80,7 +80,7 @@ export const MainPage = () => {
         {data?.pages
           .flatMap(page => page.products)
           .map(product => (
-            <li key={product.id}>
+            <li key={product.productId}>
               <ProductLinkCard
                 product={product}
                 href={`/detail/${product.itemKey}?from=main`}

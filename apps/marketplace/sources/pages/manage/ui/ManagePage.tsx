@@ -55,21 +55,19 @@ export const ManagePage = () => {
       </div>
       <ul className="grid grid-cols-1 desktop:grid-cols-2 gap-4">
         {products.map(product => (
-          <li key={product.id}>
-            <Beacon>
-              <ProductManageCard
-                product={product}
-                onClick={() => {
-                  router.push(
-                    `/detail/${product.itemKey}?from=manage&type=${product.type}`,
-                  )
-                }}
-                onDelete={product => {
-                  setSelectedProduct(product)
-                  setModalOpen(true)
-                }}
-              />
-            </Beacon>
+          <li key={product.productId}>
+            <ProductManageCard
+              product={product}
+              onClick={() => {
+                router.push(
+                  `/detail/${product.itemKey}?from=manage&type=${product.type}`,
+                )
+              }}
+              onDelete={product => {
+                setSelectedProduct(product)
+                setModalOpen(true)
+              }}
+            />
           </li>
         ))}
       </ul>

@@ -15,7 +15,7 @@ export const ConversationHeader = ({
 }: ConversationHeaderProps) => {
   const { data: productData } = useQuery({
     queryKey: ['product', conversation.productId],
-    queryFn: () => getProduct({ id: conversation.productId }),
+    queryFn: () => getProduct({ productId: conversation.productId }),
   })
 
   const item = useItem(productData?.product.itemKey)

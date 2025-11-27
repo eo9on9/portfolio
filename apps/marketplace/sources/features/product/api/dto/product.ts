@@ -3,7 +3,7 @@ import { Product } from '@features/product/model/product'
 import { KindOfProductType } from '@features/product/model/productType'
 
 export interface ProductDTO {
-  id: string
+  product_id: string
   item_key: string
   type: string
   listed_by: string
@@ -14,7 +14,7 @@ export interface ProductDTO {
 
 export const fromProductDTO = (dto: ProductDTO): Product => {
   return {
-    id: dto.id,
+    productId: dto.product_id,
     itemKey: dto.item_key as KindOfItemKey,
     type: dto.type as KindOfProductType,
     listedBy: dto.listed_by,
