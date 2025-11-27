@@ -73,6 +73,19 @@ export default async function handler(
     })
   }
 
+  if (req.method === 'DELETE') {
+    const { id } = req.body as unknown as { id: string }
+
+    const newProducts = products.filter(p => p.id !== id)
+    await redis.set('products', JSON.stringify(newProducts))
+
+    return res.status(200).json({
+      code: 'SUCCESS',
+      message: '상품 삭제 성공',
+      data: null,
+    })
+  }
+
   return res.status(405).json({
     code: 'METHOD_NOT_ALLOWED',
     message: 'Method Not Allowed',

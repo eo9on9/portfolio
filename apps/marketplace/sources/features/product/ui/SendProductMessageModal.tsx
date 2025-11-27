@@ -81,7 +81,7 @@ export const SendProductMessageModal = ({
           />
         </FormField>
         <div className="flex justify-end gap-2 mt-2">
-          <Button variant="secondary" size="lg" onClick={onClose}>
+          <Button variant="ghost" size="lg" onClick={onClose}>
             취소
           </Button>
           <Beacon>

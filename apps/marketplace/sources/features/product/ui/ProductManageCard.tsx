@@ -2,6 +2,7 @@ import { useItem } from '@entities/item/model/useItem'
 import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { toFullDate, toPrice } from '@shared/util/format'
 import { Trash2 } from 'lucide-react'
@@ -53,20 +54,22 @@ export const ProductManageCard = ({
             </p>
           </div>
         </div>
-        <Button
-          ref={ref => {
-            if (ref) {
-              ref.addEventListener('click', e => {
-                e.stopPropagation()
-                onDelete?.(product)
-              })
-            }
-          }}
-          variant="ghost"
-          size="lg"
-        >
-          <Trash2 className="size-4 text-red-600" />
-        </Button>
+        <Beacon>
+          <Button
+            ref={ref => {
+              if (ref) {
+                ref.addEventListener('click', e => {
+                  e.stopPropagation()
+                  onDelete?.(product)
+                })
+              }
+            }}
+            variant="ghost"
+            size="lg"
+          >
+            <Trash2 className="size-4 text-red-600" />
+          </Button>
+        </Beacon>
       </div>
     </>
   )

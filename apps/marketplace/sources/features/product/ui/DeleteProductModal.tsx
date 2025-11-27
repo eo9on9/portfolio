@@ -1,9 +1,13 @@
 import { useItem } from '@entities/item/model/useItem'
+import { deleteProduct } from '@features/product/api/deleteProduct'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
+import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { Modal } from '@shared/ui/Modal'
+import { useToast } from '@shared/ui/Toast'
 import { toPrice } from '@shared/util/format'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import Image from 'next/image'
 
 interface DeleteProductModalProps {
@@ -17,13 +21,25 @@ export const DeleteProductModal = ({
   open,
   onClose,
 }: DeleteProductModalProps) => {
+  const toast = useToast()
+  const queryClient = useQueryClient()
   const item = useItem(product.itemKey)
 
-  if (!item) return null
+  const { mutate, isPending } = useMutation({
+    mutationFn: deleteProduct,
+    onSuccess: () => {
+      toast.success('상품이 삭제되었습니다.')
+      queryClient.invalidateQueries({
+        queryKey: ['product'],
+      })
+      onClose()
+    },
+    onError: () => {
+      toast.error('상품 삭제에 실패했습니다.')
+    },
+  })
 
-  const handleDeleteProduct = () => {
-    console.log('delete product')
-  }
+  if (!item) return null
 
   return (
     <Modal title="상품 삭제" open={open} onClose={onClose}>
@@ -59,9 +75,16 @@ export const DeleteProductModal = ({
           <Button variant="ghost" size="lg" onClick={onClose}>
             취소
           </Button>
-          <Button variant="primary" size="lg" onClick={handleDeleteProduct}>
-            삭제
-          </Button>
+          <Beacon>
+            <Button
+              variant="primary"
+              size="lg"
+              isLoading={isPending}
+              onClick={() => mutate({ id: product.id })}
+            >
+              삭제하기
+            </Button>
+          </Beacon>
         </div>
       </div>
     </Modal>
