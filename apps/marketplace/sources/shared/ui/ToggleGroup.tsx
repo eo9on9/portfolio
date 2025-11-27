@@ -1,4 +1,3 @@
-import { cn } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import { useState } from 'react'
 
@@ -34,11 +33,13 @@ export const ToggleGroup = ({
         <button
           type="button"
           key={option.value}
-          className={labelTw}
+          className="flex-1 flex items-center justify-center gap-2 px-3 py-1.5 rounded-sm whitespace-nowrap cursor-pointer transition-bg duration-200 ease-out aria-pressed:bg-white aria-pressed:cursor-auto"
           aria-pressed={option.value === value}
           onClick={() => handleChange(option.value)}
         >
-          <span className={textTw}>{option.label}</span>
+          <span className="text-sm font-medium text-gray-800">
+            {option.label}
+          </span>
         </button>
       ))}
     </div>
@@ -46,7 +47,7 @@ export const ToggleGroup = ({
 }
 
 const containerVariants = cva(
-  cn`inline-flex items-center gap-2 p-1 bg-gray-100 rounded-sm`,
+  'inline-flex items-center gap-2 p-1 bg-gray-100 rounded-sm',
   {
     variants: {
       fill: {
@@ -56,14 +57,3 @@ const containerVariants = cva(
     },
   },
 )
-
-const labelTw = cn([
-  /** base */
-  'flex-1 flex items-center justify-center gap-2 px-3 py-1.5 rounded-sm whitespace-nowrap cursor-pointer',
-  /** animation */
-  'transition-bg duration-200 ease-out',
-  /** states */
-  'aria-pressed:bg-white aria-pressed:cursor-auto',
-])
-
-const textTw = cn`text-sm font-medium text-gray-800`

@@ -2,7 +2,7 @@ import {
   Toast as PrimitiveToast,
   ToastDescription as PrimitiveToastDescription,
 } from '@radix-ui/react-toast'
-import { cn, cnMerge } from '@shared/util/cn'
+import { cnMerge } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import { Frown, Info, Smile } from 'lucide-react'
 import { ToastVariant } from './types'
@@ -21,9 +21,9 @@ export const Toast = ({
   setIsOpen,
 }: ToastProps) => {
   const Icon = {
-    success: <Smile className={cnMerge(iconTw, 'text-green-600')} />,
-    error: <Frown className={cnMerge(iconTw, 'text-red-600')} />,
-    default: <Info className={cnMerge(iconTw, 'text-gray-600')} />,
+    success: <Smile className={cnMerge('size-5', 'text-green-600')} />,
+    error: <Frown className={cnMerge('size-5', 'text-red-600')} />,
+    default: <Info className={cnMerge('size-5', 'text-gray-600')} />,
   }[variant]
 
   return (
@@ -34,9 +34,9 @@ export const Toast = ({
       duration={3000}
     >
       <PrimitiveToastDescription>
-        <div className={descriptionTw}>
+        <div className="flex items-center gap-2">
           <span>{Icon}</span>
-          <span className={messageTw}>{message}</span>
+          <span className="text-sm font-medium text-gray-800">{message}</span>
         </div>
       </PrimitiveToastDescription>
     </PrimitiveToast>
@@ -62,9 +62,3 @@ const toastVariants = cva(
     },
   },
 )
-
-const iconTw = cn`size-5`
-
-const descriptionTw = cn`flex items-center gap-2`
-
-const messageTw = cn`text-sm font-medium text-gray-800`

@@ -1,4 +1,3 @@
-import { cn } from '@shared/util/cn'
 import {
   cloneElement,
   isValidElement,
@@ -32,20 +31,14 @@ export const FormField = ({
   })
 
   return (
-    <div className={containerTw}>
+    <div className="flex flex-col gap-2">
       <div>
-        <label htmlFor={id} className={labelTw}>
+        <label htmlFor={id} className="text-sm font-medium text-gray-800">
           {label}
         </label>
       </div>
       {childrenWithProps}
-      {errorMessage && <p className={errorMessageTw}>{errorMessage}</p>}
+      {errorMessage && <p className="text-xs text-error">{errorMessage}</p>}
     </div>
   )
 }
-
-const containerTw = cn`flex flex-col gap-2`
-
-const labelTw = cn`text-sm font-medium text-gray-800`
-
-const errorMessageTw = cn`text-xs text-error`

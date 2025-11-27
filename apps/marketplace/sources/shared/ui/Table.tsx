@@ -1,4 +1,4 @@
-import { cn, cnMerge } from '@shared/util/cn'
+import { cnMerge } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import { LoaderCircle } from 'lucide-react'
 import { ReactNode } from 'react'
@@ -27,10 +27,10 @@ export const Table = <T extends IDType>({
   isLoading,
 }: TableProps<T>) => {
   return (
-    <div className={containerCn}>
-      <table className={tableCn}>
+    <div className="w-fit min-w-full rounded-sm border border-gray-200 overflow-hidden">
+      <table className="w-full">
         <thead>
-          <tr className={headRowCn}>
+          <tr className="border-b border-gray-200 bg-white">
             {columns.map((column, index) => (
               <th
                 key={(column.accessorKey as string) ?? index}
@@ -47,21 +47,27 @@ export const Table = <T extends IDType>({
         <tbody>
           {isLoading ? (
             <tr>
-              <td colSpan={columns.length} className={messageCellCn}>
-                <div className={loadingCn}>
-                  <LoaderCircle className={loadingIconCn} />
+              <td
+                colSpan={columns.length}
+                className="h-48 text-center text-gray-500 bg-white"
+              >
+                <div className="flex items-center justify-center h-full">
+                  <LoaderCircle className="size-8 animate-spin" />
                 </div>
               </td>
             </tr>
           ) : !data.length ? (
             <tr>
-              <td colSpan={columns.length} className={messageCellCn}>
+              <td
+                colSpan={columns.length}
+                className="h-48 text-center text-gray-500 bg-white"
+              >
                 데이터가 없습니다.
               </td>
             </tr>
           ) : (
             data.map(item => (
-              <tr key={item.id} className={bodyRowCn}>
+              <tr key={item.id} className="bg-white hover:bg-gray-50">
                 {columns.map((column, index) => (
                   <td
                     key={(column.accessorKey as string) ?? index}
@@ -81,21 +87,7 @@ export const Table = <T extends IDType>({
   )
 }
 
-const containerCn = cn`w-fit min-w-full rounded-sm border border-gray-200 overflow-hidden`
-
-const tableCn = cn`w-full`
-
-const headRowCn = cn`border-b border-gray-200 bg-white`
-
-const messageCellCn = cn`h-48 text-center text-gray-500 bg-white`
-
-const loadingCn = cn`flex items-center justify-center h-full`
-
-const loadingIconCn = cn`size-8 animate-spin`
-
-const bodyRowCn = cn`bg-white hover:bg-gray-50`
-
-const cellVariants = cva(cn`h-12 p-2 text-sm text-gray-800`, {
+const cellVariants = cva('h-12 p-2 text-sm text-gray-800', {
   variants: {
     align: {
       left: 'text-left',

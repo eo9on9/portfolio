@@ -11,17 +11,17 @@ export const MessageBubble = ({ message }: MessageBubbleProps) => {
   const isMine = message.sender === MY_NAME
 
   return (
-    <div className={containerCn({ isMine })}>
-      <div className={innerCn({ isMine })}>
+    <div className={containerVariants({ isMine })}>
+      <div className={innerVariants({ isMine })}>
         <p className="text-sm font-medium text-gray-800">{message.sender}</p>
-        <p className={bubbleCn({ isMine })}>{message.content}</p>
+        <p className={bubbleVariants({ isMine })}>{message.content}</p>
         <p className="text-sm text-gray-500">{toFullDate(message.createdAt)}</p>
       </div>
     </div>
   )
 }
 
-const containerCn = cva('flex', {
+const containerVariants = cva('flex', {
   variants: {
     isMine: {
       true: 'justify-end',
@@ -30,7 +30,7 @@ const containerCn = cva('flex', {
   },
 })
 
-const innerCn = cva('flex flex-col gap-2 max-w-[80%]', {
+const innerVariants = cva('flex flex-col gap-2 max-w-[80%]', {
   variants: {
     isMine: {
       true: 'items-end',
@@ -39,7 +39,7 @@ const innerCn = cva('flex flex-col gap-2 max-w-[80%]', {
   },
 })
 
-const bubbleCn = cva(
+const bubbleVariants = cva(
   'text-sm text-gray-800 rounded-sm p-2 whitespace-pre-wrap',
   {
     variants: {

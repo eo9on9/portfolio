@@ -7,7 +7,6 @@ import {
   DialogPortal,
   DialogTitle,
 } from '@radix-ui/react-dialog'
-import { cn } from '@shared/util/cn'
 import { cva } from 'class-variance-authority'
 import { X } from 'lucide-react'
 import { PropsWithChildren, useEffect, useRef, useState } from 'react'
@@ -76,7 +75,7 @@ export const Modal = ({
 }
 
 const dimVariants = cva(
-  cn`absolute inset-0 bg-black/50 transition-opacity duration-200 ease-out`,
+  'absolute inset-0 bg-black/50 transition-opacity duration-200 ease-out',
   {
     variants: {
       isShow: {
@@ -88,7 +87,7 @@ const dimVariants = cva(
 )
 
 const contentVariants = cva(
-  cn`p-6 relative w-lg max-w-[90%] bg-white rounded-sm shadow-md transition-all duration-200 ease-out`,
+  'p-6 relative w-lg max-w-[90%] bg-white rounded-sm shadow-md transition-all duration-200 ease-out',
   {
     variants: {
       isShow: {
