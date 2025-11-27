@@ -8,6 +8,7 @@ import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { Send } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 
 interface ConversationActionsProps {
@@ -54,7 +55,9 @@ export const ConversationActions = ({
         <form onSubmit={handleSendMessage} className="flex items-center gap-2">
           <div className="flex-1 flex flex-col">
             <Input
+              icon={<Send className="size-4 text-gray-400" />}
               placeholder="메시지를 입력하세요."
+              autoComplete="off"
               {...register('message', {
                 required: VALIDATION_REQUIRED.message,
                 pattern: {

@@ -13,6 +13,7 @@ import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 import { useToast } from '@shared/ui/Toast'
 import { useMutation } from '@tanstack/react-query'
+import { Send } from 'lucide-react'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
@@ -78,6 +79,7 @@ export const SendProductMessageModal = ({
         </div>
         <FormField label="문의 내용" errorMessage={errors.message?.message}>
           <Input
+            icon={<Send className="size-4 text-gray-400" />}
             {...register('message', {
               required: VALIDATION_REQUIRED.message,
               pattern: {

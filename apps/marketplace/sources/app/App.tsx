@@ -1,8 +1,9 @@
 import { AppErrorFallback } from '@app/AppErrorFallback'
+import { Guide } from '@app/Guide'
 import { SSEProvider } from '@shared/api/useSSE'
 import { ToastProvider } from '@shared/ui/Toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { NewMessageCountProvider } from '@widgets/layout/model/useNewMessageCount'
+import { LayoutProvider } from '@widgets/layout/model/useLayoutContext'
 import { PropsWithChildren } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
@@ -14,7 +15,10 @@ export const App = ({ children }: PropsWithChildren) => {
       <ToastProvider>
         <SSEProvider>
           <ErrorBoundary FallbackComponent={AppErrorFallback}>
-            <NewMessageCountProvider>{children}</NewMessageCountProvider>
+            <LayoutProvider>
+              {children}
+              <Guide />
+            </LayoutProvider>
           </ErrorBoundary>
         </SSEProvider>
       </ToastProvider>

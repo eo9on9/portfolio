@@ -1,12 +1,12 @@
 import { Beacon } from '@shared/ui/Beacon'
-import { useNewMessageCount } from '@widgets/layout/model/useNewMessageCount'
+import { useLayoutContext } from '@widgets/layout/model/useLayoutContext'
 import { MenuButton } from '@widgets/layout/ui/MenuButton'
 import { Home, MessageSquare, Package, Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export const Header = () => {
-  const { count } = useNewMessageCount()
+  const { newMessageCount } = useLayoutContext()
 
   return (
     <header className="z-100 fixed top-0 left-0 right-0 border-b border-gray-200 backdrop-blur-md">
@@ -56,7 +56,7 @@ export const Header = () => {
                 href="/conversation"
                 icon={<MessageSquare className="size-4" />}
                 label="대화"
-                noticeCount={count}
+                noticeCount={newMessageCount}
               />
             </Beacon>
           </li>
