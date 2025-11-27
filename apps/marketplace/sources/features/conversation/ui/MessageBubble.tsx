@@ -1,4 +1,5 @@
 import { Message } from '@features/conversation/model/message'
+import { MY_NAME } from '@shared/constant/user'
 import { toFullDate } from '@shared/util/format'
 import { cva } from 'class-variance-authority'
 
@@ -7,7 +8,7 @@ interface MessageBubbleProps {
 }
 
 export const MessageBubble = ({ message }: MessageBubbleProps) => {
-  const isMine = message.sender === '용사(나)'
+  const isMine = message.sender === MY_NAME
 
   return (
     <div className={containerCn({ isMine })}>

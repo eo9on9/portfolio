@@ -12,7 +12,6 @@ export default async function handler(
   res.setHeader('Content-Type', 'text/event-stream')
   res.setHeader('Cache-Control', 'no-cache, no-transform')
   res.setHeader('Connection', 'keep-alive')
-  // res.setHeader('X-Accel-Buffering', 'no') // nginx/Vercel에서 버퍼링 방지
   res.flushHeaders()
 
   const rawConversations = await redis.get('conversations')

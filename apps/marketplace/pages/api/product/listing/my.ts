@@ -1,3 +1,4 @@
+import { MY_NAME } from '@server/constants'
 import { redis } from '@server/redis'
 import { Product } from '@server/types'
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -20,7 +21,7 @@ export default async function handler(
   let filtered = [...products].sort((a, b) => b.created_at - a.created_at)
 
   filtered = filtered.filter(product => {
-    if (product.listed_by !== '용사(나)') return false
+    if (product.listed_by !== MY_NAME) return false
 
     return true
   })

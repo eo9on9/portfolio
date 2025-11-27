@@ -1,3 +1,4 @@
+import { MY_NAME } from '@server/constants'
 import { redis } from '@server/redis'
 import { Product } from '@server/types'
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -55,7 +56,7 @@ export default async function handler(
       id: (maxId + 1).toString(),
       item_key,
       type,
-      listed_by: '용사(나)',
+      listed_by: MY_NAME,
       price,
       amount,
       created_at: Date.now(),

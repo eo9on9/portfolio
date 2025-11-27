@@ -1,3 +1,4 @@
+import { MY_NAME } from '@server/constants'
 import { redis } from '@server/redis'
 import { Conversation, Message } from '@server/types'
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -71,7 +72,7 @@ export default async function handler(
     const newMessage: Message = {
       message_id: `msg-${maxMessageId + 1}`,
       conversation_id: conversationId,
-      sender: '용사(나)',
+      sender: MY_NAME,
       content,
       created_at: now,
     }
