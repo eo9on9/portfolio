@@ -1,6 +1,5 @@
 import { AppErrorFallback } from '@app/AppErrorFallback'
 import { Guide } from '@app/Guide'
-import { SSEProvider } from '@shared/hook/useSSE'
 import { ToastProvider } from '@shared/ui/Toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { LayoutProvider } from '@widgets/layout/model/useLayoutContext'
@@ -13,14 +12,14 @@ export const App = ({ children }: PropsWithChildren) => {
   return (
     <QueryClientProvider client={queryClient}>
       <ToastProvider>
-        <SSEProvider>
-          <ErrorBoundary FallbackComponent={AppErrorFallback}>
-            <LayoutProvider>
-              {children}
-              <Guide />
-            </LayoutProvider>
-          </ErrorBoundary>
-        </SSEProvider>
+        {/* <SSEProvider> */}
+        <ErrorBoundary FallbackComponent={AppErrorFallback}>
+          <LayoutProvider>
+            {children}
+            <Guide />
+          </LayoutProvider>
+        </ErrorBoundary>
+        {/* </SSEProvider> */}
       </ToastProvider>
     </QueryClientProvider>
   )

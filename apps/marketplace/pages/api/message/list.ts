@@ -1,7 +1,7 @@
+import { pusher } from '@server/pusher'
 import { redis } from '@server/redis'
 import { Conversation } from '@server/types'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { sendToAll } from '../sse'
 
 interface FilterParams {
   conversation_id?: string
@@ -53,12 +53,15 @@ export default async function handler(
         : conversation,
     )
     await redis.set('conversations', JSON.stringify(newConversations))
-
-    sendToAll({
-      type: 'new-message-count',
+    await pusher.trigger('new-message-count', 'new-message-count', {
       payload: newConversations.filter((c: Conversation) => c.has_new_message)
         .length,
     })
+    // sendToAll({
+    //   type: 'new-message-count',
+    //   payload: newConversations.filter((c: Conversation) => c.has_new_message)
+    //     .length,
+    // })
 
     return res.status(200).json({
       code: 'SUCCESS',

@@ -1,18 +1,17 @@
 import { getConversation } from '@features/conversation/api/getConversation'
 import { getMessages } from '@features/conversation/api/getMessages'
-import { useSSE } from '@shared/hook/useSSE'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { ConversationActions } from '@widgets/conversation/ui/ConversationActions'
 import { ConversationHeader } from '@widgets/conversation/ui/ConversationHeader'
 import { MessageList } from '@widgets/conversation/ui/MessageList'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { useRouter } from 'next/router'
+import Pusher from 'pusher-js'
 import { useEffect } from 'react'
 
 export const ConversationPage = () => {
   const queryClient = useQueryClient()
   const router = useRouter()
-  const { event } = useSSE()
   const { id: conversationId } = router.query as { id: string }
 
   const { data: conversationData } = useQuery({
@@ -28,10 +27,23 @@ export const ConversationPage = () => {
   })
 
   useEffect(() => {
-    if (event?.type === 'auto-reply') {
+    const pusher = new Pusher('f91108b021151316d7d9', {
+      cluster: 'ap3',
+    })
+
+    const channel = pusher.subscribe('auto-reply')
+
+    channel.bind('auto-reply', (data: { payload: string }) => {
+      console.log('auto-reply', data)
       queryClient.invalidateQueries({ queryKey: ['messages', conversationId] })
+    })
+
+    return () => {
+      channel.unbind_all()
+      channel.unsubscribe()
+      pusher.disconnect()
     }
-  }, [event, conversationId, queryClient])
+  }, [conversationId, queryClient])
 
   useEffect(() => {
     window.scrollTo({

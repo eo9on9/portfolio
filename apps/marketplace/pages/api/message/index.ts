@@ -1,8 +1,8 @@
 import { MY_NAME } from '@server/constants'
+import { pusher } from '@server/pusher'
 import { redis } from '@server/redis'
 import { Conversation, Message } from '@server/types'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { sendToAll } from '../sse'
 
 interface NewProductParams {
   partner: string
@@ -90,11 +90,15 @@ export default async function handler(
     }
 
     await redis.set('conversations', JSON.stringify(newConversations))
-    sendToAll({
-      type: 'new-message-count',
+    await pusher.trigger('new-message-count', 'new-message-count', {
       payload: newConversations.filter((c: Conversation) => c.has_new_message)
         .length,
     })
+    // sendToAll({
+    //   type: 'new-message-count',
+    //   payload: newConversations.filter((c: Conversation) => c.has_new_message)
+    //     .length,
+    // })
 
     setTimeout(async () => {
       const now = Number(Date.now())
@@ -123,17 +127,25 @@ export default async function handler(
           : c,
       )
       await redis.set('conversations', JSON.stringify(repliedNewConversations))
-      sendToAll({
-        type: 'new-message-count',
+      pusher.trigger('new-message-count', 'new-message-count', {
         payload: repliedNewConversations.filter(
           (c: Conversation) => c.has_new_message,
         ).length,
       })
+      // sendToAll({
+      //   type: 'new-message-count',
+      //   payload: repliedNewConversations.filter(
+      //     (c: Conversation) => c.has_new_message,
+      //   ).length,
+      // })
       setTimeout(() => {
-        sendToAll({
-          type: 'auto-reply',
-          content: replyContent,
+        pusher.trigger('auto-reply', 'auto-reply', {
+          payload: replyContent,
         })
+        // sendToAll({
+        //   type: 'auto-reply',
+        //   content: replyContent,
+        // })
       }, 100)
     }, 1000)
 

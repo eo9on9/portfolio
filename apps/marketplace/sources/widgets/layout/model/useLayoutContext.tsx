@@ -1,4 +1,5 @@
-import { useSSE } from '@shared/hook/useSSE'
+import { getInit } from '@app/api/getInit'
+import Pusher from 'pusher-js'
 import {
   createContext,
   PropsWithChildren,
@@ -16,14 +17,30 @@ const LayoutContext = createContext<LayoutContextValue>({
 })
 
 export const LayoutProvider = ({ children }: PropsWithChildren) => {
-  const { event } = useSSE()
   const [newMessageCount, setNewMessageCount] = useState(0)
 
   useEffect(() => {
-    if (event?.type === 'new-message-count') {
-      setNewMessageCount(event.payload as number)
+    const pusher = new Pusher('f91108b021151316d7d9', {
+      cluster: 'ap3',
+    })
+
+    const channel = pusher.subscribe('new-message-count')
+
+    channel.bind('new-message-count', (data: { payload: number }) => {
+      setNewMessageCount(data.payload)
+    })
+
+    channel.bind('pusher:subscription_succeeded', () => {
+      console.log('pusher:subscription_succeeded')
+      getInit()
+    })
+
+    return () => {
+      channel.unbind_all()
+      channel.unsubscribe()
+      pusher.disconnect()
     }
-  }, [event])
+  }, [])
 
   return (
     <LayoutContext.Provider value={{ newMessageCount }}>
