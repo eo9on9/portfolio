@@ -4,7 +4,12 @@
 
 각 서비스의 대표 UI를 구현하고 핵심 구현 포인트를 문서화합니다.
 
-## 목록
+## 목차
+
+[1. 관리자 시스템(어드민) 웹](#관리자-시스템어드민-웹)
+[2. 아이템 거래소 웹](#아이템-거래소-웹)
+
+## 프로젝트
 
 ### 관리자 시스템(어드민) 웹
 
@@ -17,6 +22,8 @@
 ![dashboard](./assets/screenshot/admin/dashboard.png)
 
 ![customer](./assets/screenshot/admin/customer.png)
+
+---
 
 ### 아이템 거래소 웹
 
