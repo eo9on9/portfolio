@@ -90,7 +90,7 @@ export default async function handler(
     }
 
     await redis.set('conversations', JSON.stringify(newConversations))
-    await pusher.trigger('new-message-count', 'new-message-count', {
+    await pusher.trigger('marketplace', 'new-message-count', {
       payload: newConversations.filter((c: Conversation) => c.has_new_message)
         .length,
     })
@@ -127,7 +127,7 @@ export default async function handler(
           : c,
       )
       await redis.set('conversations', JSON.stringify(repliedNewConversations))
-      pusher.trigger('new-message-count', 'new-message-count', {
+      pusher.trigger('marketplace', 'new-message-count', {
         payload: repliedNewConversations.filter(
           (c: Conversation) => c.has_new_message,
         ).length,
@@ -139,7 +139,7 @@ export default async function handler(
       //   ).length,
       // })
       setTimeout(() => {
-        pusher.trigger('auto-reply', 'auto-reply', {
+        pusher.trigger('marketplace', 'auto-reply', {
           payload: replyContent,
         })
         // sendToAll({

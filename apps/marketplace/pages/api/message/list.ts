@@ -53,7 +53,7 @@ export default async function handler(
         : conversation,
     )
     await redis.set('conversations', JSON.stringify(newConversations))
-    await pusher.trigger('new-message-count', 'new-message-count', {
+    await pusher.trigger('marketplace', 'new-message-count', {
       payload: newConversations.filter((c: Conversation) => c.has_new_message)
         .length,
     })
