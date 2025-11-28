@@ -1,4 +1,4 @@
-import { getInit } from '@app/api/getInit'
+import { getConversationState } from '@features/conversation/api/getConversationState'
 import Pusher from 'pusher-js'
 import { createContext, useContext, useEffect, useState } from 'react'
 
@@ -31,18 +31,15 @@ export const PusherProvider = ({ children }: { children: React.ReactNode }) => {
     const channel = pusher.subscribe('marketplace')
 
     channel.bind('auto-reply', (data: { payload: string }) => {
-      console.log('>> auto-reply', data)
       setAutoReplyEvent({ name: 'auto-reply', data: data.payload })
     })
 
     channel.bind('new-message-count', (data: { payload: number }) => {
-      console.log('>> new-message-count', data)
       setNewMessageEvent({ name: 'new-message-count', data: data.payload })
     })
 
     channel.bind('pusher:subscription_succeeded', () => {
-      console.log('pusher:subscription_succeeded')
-      getInit()
+      getConversationState()
     })
 
     return () => {
