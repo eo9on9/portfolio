@@ -1,8 +1,8 @@
 import Pusher from 'pusher'
 
 export const pusher = new Pusher({
-  appId: '2083707',
-  key: 'f91108b021151316d7d9',
-  secret: '6e611b5fcff9a461d4f2',
-  cluster: 'ap3',
+  appId: process.env.PUSHER_APP_ID!,
+  key: process.env.NEXT_PUBLIC_PUSHER_KEY!,
+  secret: process.env.PUSHER_SECRET!,
+  cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER!,
 })

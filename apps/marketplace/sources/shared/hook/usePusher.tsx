@@ -24,8 +24,8 @@ export const PusherProvider = ({ children }: { children: React.ReactNode }) => {
   )
 
   useEffect(() => {
-    const pusher = new Pusher('f91108b021151316d7d9', {
-      cluster: 'ap3',
+    const pusher = new Pusher(process.env.NEXT_PUBLIC_PUSHER_KEY!, {
+      cluster: process.env.NEXT_PUBLIC_PUSHER_CLUSTER!,
     })
 
     const channel = pusher.subscribe('marketplace')
