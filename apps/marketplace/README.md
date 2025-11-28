@@ -64,7 +64,12 @@ pnpm dev
 - entities: 비즈니스 도메인 단위
 - shared: 공통 전역 리소스 단위
 
-## [작성중] 핵심 구현 내용
+## 핵심 구현 내용
+
+- [[공통] 아이템 데이터 공통코드화](https://morning-stone-025.notion.site/2b9e1b25930480968f21f8db24bb2a4e)
+- [[목록] 무한 스크롤](https://morning-stone-025.notion.site/2b9e1b259304803a8e3df5edd89d1742)
+- [[메시지] 실시간 이벤트](https://morning-stone-025.notion.site/2b9e1b2593048094b7b6e2a66e2b7f92)
+- [[검색] URL 쿼리 연동](https://morning-stone-025.notion.site/URL-2b9e1b2593048024b32bd5687782d246)
 
 ## 로드맵
 
