@@ -1,26 +1,34 @@
 [
   {
-    "id": "conv-1",
-    "partner": "골목대장",
-    "product_id": "180",
-    "last_message": "안녕하세요!",
-    "last_message_at": 1764053814809,
+    "conversation_id": "conv-1764305440858",
+    "partner": "비밀결사단",
+    "product_id": "prd-1763933881957",
+    "last_message": "네, 마을 입구에서 기다리겠습니다!",
+    "last_message_at": 1764305646241,
     "has_new_message": false
   },
   {
-    "id": "conv-2",
+    "conversation_id": "conv-1764251241000",
+    "partner": "만렙전사",
+    "product_id": "prd-1763924881957",
+    "last_message": "네, 감사합니다!",
+    "last_message_at": 1764306056187,
+    "has_new_message": false
+  },
+  {
+    "conversation_id": "conv-1764306263636",
     "partner": "서리마녀",
-    "product_id": "181",
-    "last_message": "즐겜!",
-    "last_message_at": 1764053826044,
+    "product_id": "prd-1763919121957",
+    "last_message": "용사님도 즐겜하세요 😄",
+    "last_message_at": 1764306397921,
     "has_new_message": true
   },
   {
-    "id": "conv-3",
-    "partner": "몬스터헌터",
-    "product_id": "182",
-    "last_message": "지금 거래 가능할까요?",
-    "last_message_at": 1764053833767,
-    "has_new_message": false
+    "conversation_id": "conv-1764241954000",
+    "partner": "약초채집가",
+    "product_id": "prd-1763945581957",
+    "last_message": "왕관 판매 중이에요! 얼마에 구매하시나요?",
+    "last_message_at": 1764242164000,
+    "has_new_message": true
   }
 ]
