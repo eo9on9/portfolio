@@ -1,4 +1,4 @@
-import { MY_NAME } from '@server/constants'
+import { pusher } from '@server/pusher'
 import { redis } from '@server/redis'
 import { Conversation, Message } from '@server/types'
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -48,60 +48,51 @@ export default async function handler(
         conversation.partner === partner,
     )
 
-    const conversationId = existingConversation
-      ? existingConversation.conversation_id
-      : `conv-${now}`
+    if (!existingConversation) {
+      return res.status(400).json({
+        code: 'BAD_REQUEST',
+        message: '존재하지 않는 대화입니다.',
+        data: null,
+      })
+    }
+
+    const replyContent = `"${content}"에 대한 자동 답변입니다.`
 
     const newMessage: Message = {
       message_id: `msg-${now}`,
-      conversation_id: conversationId,
-      sender: MY_NAME,
-      content,
+      conversation_id: existingConversation.conversation_id,
+      sender: partner,
+      content: replyContent,
       created_at: now,
     }
 
     const newMessages = [...messages, newMessage]
     await redis.set('messages', JSON.stringify(newMessages))
 
-    let newConversations: Conversation[] = []
-
-    if (existingConversation) {
-      newConversations = conversations.map(c =>
-        c.conversation_id === existingConversation.conversation_id
-          ? {
-              ...c,
-              last_message: content,
-              last_message_at: now,
-              has_new_message: false,
-            }
-          : c,
-      )
-    } else {
-      const newConversation: Conversation = {
-        conversation_id: conversationId,
-        partner,
-        product_id,
-        last_message: content,
-        last_message_at: now,
-        has_new_message: false,
-      }
-      newConversations = [...conversations, newConversation]
-    }
+    const newConversations: Conversation[] = conversations.map(c =>
+      c.conversation_id === existingConversation.conversation_id
+        ? {
+            ...c,
+            last_message: replyContent,
+            last_message_at: now,
+            has_new_message: true,
+          }
+        : c,
+    )
 
     await redis.set('conversations', JSON.stringify(newConversations))
-    // await pusher.trigger('marketplace', 'new-message-count', {
-    //   payload: newConversations.filter((c: Conversation) => c.has_new_message)
-    //     .length,
-    // })
+    await pusher.trigger('marketplace', 'new-message-count', {
+      payload: newConversations.filter((c: Conversation) => c.has_new_message)
+        .length,
+    })
+    await pusher.trigger('marketplace', 'auto-reply', {
+      payload: replyContent,
+    })
 
-    res.status(200).json({
+    return res.status(200).json({
       code: 'SUCCESS',
-      message: '메시지 전송 성공',
-      data: {
-        messages: newMessages
-          .filter(m => m.conversation_id === conversationId)
-          .sort((a, b) => a.created_at - b.created_at),
-      },
+      message: '자동 답변 전송 성공',
+      data: null,
     })
   }
 

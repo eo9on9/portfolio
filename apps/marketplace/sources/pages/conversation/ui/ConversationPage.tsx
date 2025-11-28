@@ -10,10 +10,10 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
 export const ConversationPage = () => {
-  const { autoReplyEvent } = usePusher()
   const queryClient = useQueryClient()
   const router = useRouter()
   const { id: conversationId } = router.query as { id: string }
+  const { autoReplyEvent } = usePusher()
 
   const { data: conversationData } = useQuery({
     queryKey: ['conversation', conversationId],
@@ -29,29 +29,9 @@ export const ConversationPage = () => {
 
   useEffect(() => {
     if (autoReplyEvent) {
-      console.log('autoReplyEvent', autoReplyEvent)
       queryClient.invalidateQueries({ queryKey: ['messages', conversationId] })
     }
   }, [autoReplyEvent, conversationId, queryClient])
-
-  // useEffect(() => {
-  //   const pusher = new Pusher('f91108b021151316d7d9', {
-  //     cluster: 'ap3',
-  //   })
-
-  //   const channel = pusher.subscribe('auto-reply')
-
-  //   channel.bind('auto-reply', (data: { payload: string }) => {
-  //     console.log('auto-reply', data)
-  //     queryClient.invalidateQueries({ queryKey: ['messages', conversationId] })
-  //   })
-
-  //   return () => {
-  //     channel.unbind_all()
-  //     channel.unsubscribe()
-  //     pusher.disconnect()
-  //   }
-  // }, [conversationId, queryClient])
 
   useEffect(() => {
     window.scrollTo({

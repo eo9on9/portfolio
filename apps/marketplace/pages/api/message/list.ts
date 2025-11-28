@@ -57,11 +57,6 @@ export default async function handler(
       payload: newConversations.filter((c: Conversation) => c.has_new_message)
         .length,
     })
-    // sendToAll({
-    //   type: 'new-message-count',
-    //   payload: newConversations.filter((c: Conversation) => c.has_new_message)
-    //     .length,
-    // })
 
     return res.status(200).json({
       code: 'SUCCESS',

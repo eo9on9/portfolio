@@ -1,12 +1,14 @@
+import { usePusher } from '@shared/hook/usePusher'
 import { Beacon } from '@shared/ui/Beacon'
-import { useLayoutContext } from '@widgets/layout/model/useLayoutContext'
 import { MenuButton } from '@widgets/layout/ui/MenuButton'
 import { Home, MessageSquare, Package, Search } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export const Header = () => {
-  const { newMessageCount } = useLayoutContext()
+  const { newMessageEvent } = usePusher()
+
+  const newMessageCount = newMessageEvent?.data as number
 
   return (
     <header className="z-100 fixed top-0 left-0 right-0 border-b border-gray-200 backdrop-blur-md">

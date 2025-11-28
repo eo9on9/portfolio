@@ -3,7 +3,6 @@ import { Guide } from '@app/Guide'
 import { PusherProvider } from '@shared/hook/usePusher'
 import { ToastProvider } from '@shared/ui/Toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { LayoutProvider } from '@widgets/layout/model/useLayoutContext'
 import { PropsWithChildren } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
@@ -15,10 +14,8 @@ export const App = ({ children }: PropsWithChildren) => {
       <ToastProvider>
         <PusherProvider>
           <ErrorBoundary FallbackComponent={AppErrorFallback}>
-            <LayoutProvider>
-              {children}
-              <Guide />
-            </LayoutProvider>
+            {children}
+            <Guide />
           </ErrorBoundary>
         </PusherProvider>
       </ToastProvider>

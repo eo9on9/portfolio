@@ -46,5 +46,11 @@ export const sendMessage = async (params: SendMessageParams) => {
     data: toSendMessageParamsDTO(params),
   })
 
+  setTimeout(() => {
+    request.post<SendMessageResDTO>('/message/auto-reply', {
+      data: toSendMessageParamsDTO(params),
+    })
+  }, 1000)
+
   return fromSendMessageResDTO(response)
 }
