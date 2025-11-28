@@ -1,5 +1,5 @@
-import { AppGuideModal } from '@app/AppGuideModal'
-import { ConversationGuide } from '@app/ConversationGuide'
+import { AppGuideModal } from '@app/ui/AppGuideModal'
+import { ConversationGuide } from '@app/ui/ConversationGuide'
 import { guideStorage } from '@shared/store/guideStorage'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'

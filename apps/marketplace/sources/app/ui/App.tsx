@@ -1,5 +1,5 @@
-import { AppErrorFallback } from '@app/AppErrorFallback'
-import { Guide } from '@app/Guide'
+import { AppErrorFallback } from '@app/ui/AppErrorFallback'
+import { Guide } from '@app/ui/Guide'
 import { PusherProvider } from '@shared/hook/usePusher'
 import { ToastProvider } from '@shared/ui/Toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'

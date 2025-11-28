@@ -1,1 +1,1 @@
-export { NotFoundPage as default } from '@app/NotFoundPage'
+export { NotFoundPage as default } from '@app/ui/NotFoundPage'

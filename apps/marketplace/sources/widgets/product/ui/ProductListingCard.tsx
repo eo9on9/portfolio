@@ -1,5 +1,5 @@
 import { KindOfItemKey } from '@entities/item/model/itemKey'
-import { getListing } from '@features/product/api/getListing'
+import { getItemListing } from '@features/product/api/getItemListing'
 import { Product } from '@features/product/model/product'
 import {
   PRODUCT_TYPE,
@@ -34,7 +34,7 @@ export const ProductListingCard = ({ itemKey }: ProductListingCardProps) => {
 
   const { data } = useQuery({
     queryKey: ['product', 'listing', itemKey],
-    queryFn: () => getListing({ itemKey }),
+    queryFn: () => getItemListing({ itemKey }),
     enabled: !!itemKey,
   })
 
