@@ -94,62 +94,93 @@ export default async function handler(
       payload: newConversations.filter((c: Conversation) => c.has_new_message)
         .length,
     })
-    // sendToAll({
-    //   type: 'new-message-count',
-    //   payload: newConversations.filter((c: Conversation) => c.has_new_message)
-    //     .length,
-    // })
 
-    setTimeout(async () => {
-      const now = Number(Date.now())
-      const replyContent = `"${content}"에 대한 자동 답변입니다.`
-      await redis.set(
-        'messages',
-        JSON.stringify([
-          ...newMessages,
-          {
-            message_id: `msg-${now}`,
-            conversation_id: conversationId,
-            sender: partner,
-            content: replyContent,
-            created_at: now,
-          },
-        ]),
-      )
-      const repliedNewConversations = newConversations.map(c =>
-        c.conversation_id === conversationId
-          ? {
-              ...c,
-              last_message: replyContent,
-              last_message_at: now,
-              has_new_message: true,
-            }
-          : c,
-      )
-      await redis.set('conversations', JSON.stringify(repliedNewConversations))
-      pusher.trigger('marketplace', 'new-message-count', {
-        payload: repliedNewConversations.filter(
-          (c: Conversation) => c.has_new_message,
-        ).length,
+    const replyPromise = () =>
+      new Promise(resolve => {
+        setTimeout(async () => {
+          const now = Number(Date.now())
+          const replyContent = `"${content}"에 대한 자동 답변입니다.`
+          await redis.set(
+            'messages',
+            JSON.stringify([
+              ...newMessages,
+              {
+                message_id: `msg-${now}`,
+                conversation_id: conversationId,
+                sender: partner,
+                content: replyContent,
+                created_at: now,
+              },
+            ]),
+          )
+          const repliedNewConversations = newConversations.map(c =>
+            c.conversation_id === conversationId
+              ? {
+                  ...c,
+                  last_message: replyContent,
+                  last_message_at: now,
+                  has_new_message: true,
+                }
+              : c,
+          )
+          await redis.set(
+            'conversations',
+            JSON.stringify(repliedNewConversations),
+          )
+          pusher.trigger('marketplace', 'new-message-count', {
+            payload: repliedNewConversations.filter(
+              (c: Conversation) => c.has_new_message,
+            ).length,
+          })
+          pusher.trigger('marketplace', 'auto-reply', {
+            payload: replyContent,
+          })
+          resolve(true)
+        }, 1000)
       })
-      // sendToAll({
-      //   type: 'new-message-count',
-      //   payload: repliedNewConversations.filter(
-      //     (c: Conversation) => c.has_new_message,
-      //   ).length,
-      // })
-      setTimeout(() => {
-        pusher.trigger('marketplace', 'auto-reply', {
-          payload: replyContent,
-        })
-        // sendToAll({
-        //   type: 'auto-reply',
-        //   content: replyContent,
-        // })
-      }, 100)
-    }, 1000)
 
-    return res.status(200).json({
+    // await replyPromise()
+
+    // setTimeout(async () => {
+    //   const now = Number(Date.now())
+    //   const replyContent = `"${content}"에 대한 자동 답변입니다.`
+    //   await redis.set(
+    //     'messages',
+    //     JSON.stringify([
+    //       ...newMessages,
+    //       {
+    //         message_id: `msg-${now}`,
+    //         conversation_id: conversationId,
+    //         sender: partner,
+    //         content: replyContent,
+    //         created_at: now,
+    //       },
+    //     ]),
+    //   )
+    //   const repliedNewConversations = newConversations.map(c =>
+    //     c.conversation_id === conversationId
+    //       ? {
+    //           ...c,
+    //           last_message: replyContent,
+    //           last_message_at: now,
+    //           has_new_message: true,
+    //         }
+    //       : c,
+    //   )
+    //   await redis.set('conversations', JSON.stringify(repliedNewConversations))
+    //   pusher.trigger('marketplace', 'new-message-count', {
+    //     payload: repliedNewConversations.filter(
+    //       (c: Conversation) => c.has_new_message,
+    //     ).length,
+    //   })
+    //   setTimeout(() => {
+    //     pusher.trigger('marketplace', 'auto-reply', {
+    //       payload: replyContent,
+    //     })
+    //   }, 100)
+    // }, 1000)
+
+    res.status(200).json({
       code: 'SUCCESS',
       message: '메시지 전송 성공',
       data: {
@@ -158,6 +189,8 @@ export default async function handler(
           .sort((a, b) => a.created_at - b.created_at),
       },
     })
+
+    await replyPromise()
   }
 
   return res.status(405).json({
