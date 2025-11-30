@@ -8,17 +8,17 @@ interface PusherEvent {
 }
 
 interface PusherContextValue {
-  autoReplyEvent: PusherEvent | null
+  replyEvent: PusherEvent | null
   newMessageEvent: PusherEvent | null
 }
 
 const PusherContext = createContext<PusherContextValue>({
-  autoReplyEvent: null,
+  replyEvent: null,
   newMessageEvent: null,
 })
 
 export const PusherProvider = ({ children }: { children: React.ReactNode }) => {
-  const [autoReplyEvent, setAutoReplyEvent] = useState<PusherEvent | null>(null)
+  const [replyEvent, setReplyEvent] = useState<PusherEvent | null>(null)
   const [newMessageEvent, setNewMessageEvent] = useState<PusherEvent | null>(
     null,
   )
@@ -30,8 +30,8 @@ export const PusherProvider = ({ children }: { children: React.ReactNode }) => {
 
     const channel = pusher.subscribe('marketplace')
 
-    channel.bind('auto-reply', (data: { payload: string }) => {
-      setAutoReplyEvent({ name: 'auto-reply', data: data.payload })
+    channel.bind('reply', (data: { payload: string }) => {
+      setReplyEvent({ name: 'reply', data: data.payload })
     })
 
     channel.bind('new-message-count', (data: { payload: number }) => {
@@ -50,7 +50,7 @@ export const PusherProvider = ({ children }: { children: React.ReactNode }) => {
   }, [])
 
   return (
-    <PusherContext.Provider value={{ autoReplyEvent, newMessageEvent }}>
+    <PusherContext.Provider value={{ replyEvent, newMessageEvent }}>
       {children}
     </PusherContext.Provider>
   )

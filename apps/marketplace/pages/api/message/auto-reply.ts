@@ -85,7 +85,7 @@ export default async function handler(
       payload: newConversations.filter((c: Conversation) => c.has_new_message)
         .length,
     })
-    await pusher.trigger('marketplace', 'auto-reply', {
+    await pusher.trigger('marketplace', 'reply', {
       payload: replyContent,
     })
 

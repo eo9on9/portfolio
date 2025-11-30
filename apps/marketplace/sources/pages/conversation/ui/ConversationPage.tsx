@@ -13,7 +13,7 @@ export const ConversationPage = () => {
   const queryClient = useQueryClient()
   const router = useRouter()
   const { id: conversationId } = router.query as { id: string }
-  const { autoReplyEvent } = usePusher()
+  const { replyEvent } = usePusher()
 
   const { data: conversationData } = useQuery({
     queryKey: ['conversation', conversationId],
@@ -28,10 +28,10 @@ export const ConversationPage = () => {
   })
 
   useEffect(() => {
-    if (autoReplyEvent) {
+    if (replyEvent) {
       queryClient.invalidateQueries({ queryKey: ['messages', conversationId] })
     }
-  }, [autoReplyEvent, conversationId, queryClient])
+  }, [replyEvent, conversationId, queryClient])
 
   useEffect(() => {
     window.scrollTo({
