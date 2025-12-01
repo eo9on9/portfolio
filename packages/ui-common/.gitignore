@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 __test
+
+*storybook.log
+storybook-static
