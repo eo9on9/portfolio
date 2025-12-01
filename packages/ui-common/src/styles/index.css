@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+
+@import './fonts.css';
+
+@layer base {
+  button:not([disabled]) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-gray-300;
+  }
+}
