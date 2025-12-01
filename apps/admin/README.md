@@ -1,6 +1,6 @@
 # 관리자 시스템(어드민) 웹
 
-[🔗 사이트 바로가기](https://portfolio-admin-git-main-eo9on9s-projects.vercel.app/)
+[🔗 사이트 바로가기](https://portfolio-admin-silk.vercel.app/)
 
 [🔗 개발 문서 바로가기](https://morning-stone-025.notion.site/2ace1b2593048015a62fdeb9eeff63f5)
 

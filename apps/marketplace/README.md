@@ -1,6 +1,6 @@
 # 아이템 거래소 웹
 
-[🔗 사이트 바로가기](https://portfolio-market-ftwa4jmuj-eo9on9s-projects.vercel.app/)
+[🔗 사이트 바로가기](https://portfolio-market-seven.vercel.app/)
 
 [🔗 개발 문서 바로가기](https://morning-stone-025.notion.site/2b9e1b259304801797c5e5c92967dbf9)
 
@@ -68,7 +68,7 @@ pnpm dev
 
 - [[공통] 아이템 데이터 공통코드화](https://morning-stone-025.notion.site/2b9e1b25930480968f21f8db24bb2a4e)
 - [[목록] 무한 스크롤](https://morning-stone-025.notion.site/2b9e1b259304803a8e3df5edd89d1742)
-- [[메시지] 실시간 이벤트](https://morning-stone-025.notion.site/2b9e1b2593048094b7b6e2a66e2b7f92)
+- [[알림·대화] 실시간 이벤트](https://morning-stone-025.notion.site/2b9e1b2593048094b7b6e2a66e2b7f92)
 - [[검색] URL 쿼리 연동](https://morning-stone-025.notion.site/URL-2b9e1b2593048024b32bd5687782d246)
 
 ## 로드맵

@@ -14,7 +14,7 @@
 
 ### 관리자 시스템(어드민) 웹
 
-[🔗 사이트 바로가기](https://portfolio-admin-git-main-eo9on9s-projects.vercel.app/)
+[🔗 사이트 바로가기](https://portfolio-admin-silk.vercel.app/)
 
 [🔗 코드 바로가기](https://github.com/eo9on9/portfolio/tree/main/apps/admin)
 
@@ -28,7 +28,7 @@
 
 ### 아이템 거래소 웹
 
-[🔗 사이트 바로가기](https://portfolio-market-ftwa4jmuj-eo9on9s-projects.vercel.app/)
+[🔗 사이트 바로가기](https://portfolio-market-seven.vercel.app/)
 
 [🔗 코드 바로가기](https://github.com/eo9on9/portfolio/tree/main/apps/marketplace)
 
