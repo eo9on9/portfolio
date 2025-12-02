@@ -45,7 +45,7 @@ export const Button = <T extends ElementType = 'button'>({
 }
 
 const buttonVariants = cva(
-  'relative inline-block font-medium text-sm rounded-sm transition-bg duration-200 ease-out focus-visible-ring',
+  'relative inline-block font-medium text-sm rounded-sm transition-bg duration-200 ease-out focus-visible-ring font-pretendard',
   {
     variants: {
       variant: {

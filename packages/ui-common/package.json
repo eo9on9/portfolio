@@ -3,14 +3,19 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "types": "./dist/components/index.d.ts",
+  "exports": {
+    ".": "./dist/components/index.js",
+    "./styles.css": "./dist/components/index.css"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build && pnpm build-styles",
+    "build": "vite build && tsc -p tsconfig.build.json && pnpm build-styles",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build-styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css",
+    "build-styles": "tailwindcss -i ./src/styles/index.css -o ./dist/components/index.css",
     "test": "vitest run",
     "test:watch": "vitest --passWithNoTests"
   },
