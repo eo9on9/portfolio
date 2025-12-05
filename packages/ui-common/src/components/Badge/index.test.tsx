@@ -7,11 +7,16 @@ describe('<Badge />', () => {
 
     getByText('테스트뱃지')
   })
-  test('span 속성이 전달되면 전달된 속성으로 렌더링된다.', () => {
-    const { getByRole } = setup(<Badge role="status">테스트뱃지</Badge>)
+  test('as 속성이 있으면 전달된 컴포넌트로 렌더링된다.', () => {
+    const { getByRole } = setup(
+      <Badge as="a" href="https://www.test.com">
+        Click me
+      </Badge>,
+    )
 
-    const el = getByRole('status')
-
-    expect(el).toHaveAttribute('role', 'status')
+    expect(getByRole('link', { name: /Click me/ })).toHaveAttribute(
+      'href',
+      'https://www.test.com',
+    )
   })
 })

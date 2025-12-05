@@ -3,20 +3,22 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "types": "./dist/components/index.d.ts",
   "exports": {
-    ".": "./dist/components/index.js",
-    "./styles.css": "./dist/components/index.css"
+    ".": {
+      "types": "./dist/components/index.d.ts",
+      "default": "./dist/components/index.js"
+    },
+    "./styles.css": "./dist/index.css"
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && tsc -p tsconfig.build.json && pnpm build-styles",
+    "build": "vite build && tsc -p tsconfig.build.json && tsc-alias && pnpm build-styles",
     "build:watch": "chokidar 'src/**/*' --ignore 'src/**/*.stories.tsx' --ignore 'src/**/*.test.tsx' -c 'pnpm build'",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build-styles": "tailwindcss -i ./src/styles/index.css -o ./dist/components/index.css",
+    "build-styles": "tailwindcss -i ./src/styles/index.css -o ./dist/index.css",
     "test": "vitest run",
     "test:watch": "vitest --passWithNoTests"
   },
@@ -24,8 +26,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.548.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
@@ -40,8 +42,8 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.10.1",
-    "@types/react": "19.1.0",
-    "@types/react-dom": "19.1.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^5.1.1",
     "chokidar-cli": "^3.0.0",
     "eslint": "^9.39.1",
@@ -50,6 +52,7 @@
     "jsdom": "^27.2.0",
     "storybook": "^10.1.2",
     "tailwindcss": "^4.1.16",
+    "tsc-alias": "^1.8.16",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",

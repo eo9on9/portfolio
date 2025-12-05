@@ -1,4 +1,4 @@
-import { PolymorphicComponentProps } from '@/types/polymorphic'
+import { type PolymorphicComponentProps } from '@/types/polymorphic'
 import { cnMerge } from '@/utils/cn'
 import { cva } from 'class-variance-authority'
 import { LoaderCircle } from 'lucide-react'
