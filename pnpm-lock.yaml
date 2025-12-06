@@ -202,6 +202,9 @@ importers:
       '@repo/ui-common':
         specifier: workspace:*
         version: link:../../packages/ui-common
+      lucide-react:
+        specifier: ^0.548.0
+        version: 0.548.0(react@19.2.0)
       next:
         specifier: 16.0.6
         version: 16.0.6(react-dom@19.2.0(react@19.2.0))(react@19.2.0)

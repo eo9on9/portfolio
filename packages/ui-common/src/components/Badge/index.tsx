@@ -15,7 +15,7 @@ export const Badge = <T extends ElementType = 'span'>({
   return (
     <Component
       className={cnMerge(
-        'inline-block w-fit px-2 py-0.5 text-xs font-medium text-gray-800 rounded-sm bg-white',
+        'inline-block w-fit px-2 py-0.5 font-pretendard text-xs font-medium text-gray-800 rounded-sm bg-white focus-visible-ring',
         className,
       )}
       {...props}

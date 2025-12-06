@@ -6,6 +6,8 @@
   --font-pretendard:
     'Pretendard', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-error: var(--color-red-400);
 }
 
 @layer base {
