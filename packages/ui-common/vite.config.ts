@@ -17,5 +17,8 @@ export default defineConfig({
       formats: ['es'],
       fileName: 'components/index',
     },
+    rollupOptions: {
+      external: ['react', 'react-dom', '@radix-ui/react-select'],
+    },
   },
 })

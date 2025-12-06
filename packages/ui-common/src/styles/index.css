@@ -2,6 +2,8 @@
 
 @import './fonts.css';
 
+@import './keyframes.css';
+
 @theme {
   --font-pretendard:
     'Pretendard', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
