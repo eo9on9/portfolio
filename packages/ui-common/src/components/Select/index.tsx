@@ -69,7 +69,7 @@ export const Select = ({
               <SelectItem
                 key={value}
                 value={value}
-                className="flex items-center gap-2 px-2 h-8 text-sm text-gray-800 outline-none rounded-sm focus:bg-gray-100 cursor-pointer focus:ring-0"
+                className="flex items-center gap-2 px-2 h-8 font-pretendard text-sm text-gray-800 outline-none rounded-sm focus:bg-gray-100 cursor-pointer focus:ring-0"
               >
                 <SelectItemText>{label}</SelectItemText>
                 <SelectItemIndicator>
@@ -85,7 +85,7 @@ export const Select = ({
 }
 
 const triggerVariants = cva(
-  'inline-flex items-center justify-between gap-2 h-10 pl-4 pr-3 text-sm text-gray-800 data-placeholder:text-gray-400 border bg-gray-100 rounded-sm  focus-visible-ring',
+  'inline-flex items-center justify-between gap-2 h-10 pl-4 pr-3 font-pretendard text-sm text-gray-800 data-placeholder:text-gray-400 border bg-gray-100 rounded-sm  focus-visible-ring',
   {
     variants: {
       isError: {
