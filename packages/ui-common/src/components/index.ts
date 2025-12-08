@@ -10,4 +10,6 @@ export * from './Modal'
 
 export * from './Select'
 
+export * from './Toast'
+
 export * from './ToggleGroup'

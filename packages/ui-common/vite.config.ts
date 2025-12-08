@@ -23,6 +23,7 @@ export default defineConfig({
         'react-dom',
         '@radix-ui/react-select',
         '@radix-ui/react-dialog',
+        '@radix-ui/react-toast',
       ],
     },
   },
