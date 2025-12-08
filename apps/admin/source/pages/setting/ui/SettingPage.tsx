@@ -1,5 +1,4 @@
-import { Beacon } from '@repo/ui-common'
-import { ToggleGroup } from '@shared/ui/ToggleGroup'
+import { Beacon, ToggleGroup } from '@repo/ui-common'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'
 import { Bell, Lock, User } from 'lucide-react'
@@ -44,11 +43,14 @@ export const SettingPage = () => {
     <MainLayout>
       <PageTop title="설정" description="시스템 설정을 관리합니다." />
       <Beacon className="w-fit">
-        <ToggleGroup
-          options={ToggleGroupOptions}
-          value={toggleValue}
-          onChange={value => setToggle(value)}
-        />
+        <div className="min-w-sm">
+          <ToggleGroup
+            options={ToggleGroupOptions}
+            value={toggleValue}
+            onChange={value => setToggle(value)}
+            fill
+          />
+        </div>
       </Beacon>
       {toggleValue === 'profile' && <ProfileSettingContent />}
       {toggleValue === 'notification' && <NotificationSettingContent />}
