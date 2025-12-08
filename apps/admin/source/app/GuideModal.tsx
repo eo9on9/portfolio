@@ -1,5 +1,4 @@
-import { Beacon, Button } from '@repo/ui-common'
-import { Modal } from '@shared/ui/Modal'
+import { Beacon, Button, Modal } from '@repo/ui-common'
 
 interface GuideModalProps {
   open: boolean

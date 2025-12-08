@@ -1,8 +1,7 @@
 import { User } from '@entities/user/model/user'
 import { USER_ROLE_LABELS } from '@entities/user/model/userRole'
-import { Button, FormField, Input } from '@repo/ui-common'
+import { Button, FormField, Input, Modal } from '@repo/ui-common'
 import { accessTokenStorage } from '@shared/store/accessTokenStorage'
-import { Modal } from '@shared/ui/Modal'
 
 interface ProfileModalProps {
   user: User

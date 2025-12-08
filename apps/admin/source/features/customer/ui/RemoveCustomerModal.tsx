@@ -2,8 +2,7 @@ import { GetCustomersRes } from '@entities/customer/api/getCustomers'
 import { removeCustomer } from '@entities/customer/api/removeCustomer'
 import { Customer } from '@entities/customer/model/customer'
 import { useCustomerFilterUrlParams } from '@features/customer/model/useCustomerFilterUrlParams'
-import { Beacon, Button, useToast } from '@repo/ui-common'
-import { Modal } from '@shared/ui/Modal'
+import { Beacon, Button, Modal, useToast } from '@repo/ui-common'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 interface RemoveCustomerModalProps {
