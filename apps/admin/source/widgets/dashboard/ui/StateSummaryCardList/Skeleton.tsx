@@ -1,4 +1,4 @@
-import { Skeleton as SkeletonUI } from '@shared/ui/Skeleton'
+import { Skeleton as SkeletonUI } from '@repo/ui-common'
 
 export const Skeleton = () => {
   return (
