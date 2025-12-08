@@ -1,9 +1,9 @@
 import { getNotifications } from '@entities/user/api/getNotifications'
 import { updateNotifications } from '@entities/user/api/updateNotifications'
 import { Notifications } from '@entities/user/model/notifications'
+import { useToast } from '@repo/ui-common'
 import { Beacon } from '@shared/ui/Beacon'
 import { Switch } from '@shared/ui/Switch'
-import { useToast } from '@shared/ui/Toast'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 

@@ -7,6 +7,7 @@ import {
   CUSTOMER_STATUS,
   CUSTOMER_STATUS_LABELS,
 } from '@entities/customer/model/customerStatus'
+import { useToast } from '@repo/ui-common'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
@@ -19,7 +20,6 @@ import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 import { Select, SelectOption } from '@shared/ui/Select'
-import { useToast } from '@shared/ui/Toast'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'

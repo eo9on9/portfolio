@@ -1,6 +1,7 @@
 import { getProfile } from '@entities/user/api/getProfile'
 import { updateProfile } from '@entities/user/api/updateProfile'
 import { KindOfUserRole, USER_ROLE_LABELS } from '@entities/user/model/userRole'
+import { useToast } from '@repo/ui-common'
 import {
   VALIDATION_NAME,
   VALIDATION_PHONE,
@@ -11,7 +12,6 @@ import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Select } from '@shared/ui/Select'
-import { useToast } from '@shared/ui/Toast'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'

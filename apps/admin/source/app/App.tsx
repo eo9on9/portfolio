@@ -1,6 +1,6 @@
 import { GuideModal } from '@app/GuideModal'
+import { ToastProvider } from '@repo/ui-common'
 import { alreadySeenGuideStorage } from '@shared/store/alreadySeenGuideStorage'
-import { ToastProvider } from '@shared/ui/Toast/useToast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { LayoutProvider } from '@widgets/layout/model/useLayout'
 import Head from 'next/head'
