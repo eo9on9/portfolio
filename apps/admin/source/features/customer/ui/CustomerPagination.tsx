@@ -1,6 +1,5 @@
 import { CustomerFilterForm } from '@features/customer/model/useCustomerFilterForm'
-import { Beacon } from '@repo/ui-common'
-import { Pagination } from '@shared/ui/Pagination'
+import { Beacon, Pagination } from '@repo/ui-common'
 import { Controller, useFormContext } from 'react-hook-form'
 
 interface CustomerPaginationProps {
