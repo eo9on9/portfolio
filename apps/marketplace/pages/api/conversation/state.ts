@@ -18,7 +18,7 @@ export default async function handler(
     })
   }
 
-  pusher.trigger('marketplace', 'new-message-count', {
+  await pusher.trigger('marketplace', 'new-message-count', {
     payload: conversations.filter((c: Conversation) => c.has_new_message)
       .length,
   })
