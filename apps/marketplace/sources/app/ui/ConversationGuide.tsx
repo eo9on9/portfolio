@@ -1,4 +1,4 @@
-import { Modal } from '@shared/ui/Modal'
+import { Modal } from '@repo/ui-common'
 import Image from 'next/image'
 
 interface ConversationGuideProps {
