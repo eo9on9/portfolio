@@ -11,9 +11,9 @@ import {
   FormField,
   Input,
   Modal,
+  Select,
   useToast,
 } from '@repo/ui-common'
-import { Select } from '@shared/ui/Select'
 import { toDate } from '@shared/util/format'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'

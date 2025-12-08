@@ -13,6 +13,8 @@ import {
   FormField,
   Input,
   Modal,
+  Select,
+  SelectOption,
   useToast,
 } from '@repo/ui-common'
 import {
@@ -21,7 +23,6 @@ import {
   VALIDATION_PHONE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Select, SelectOption } from '@shared/ui/Select'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'

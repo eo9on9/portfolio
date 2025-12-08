@@ -1,12 +1,11 @@
 import { CUSTOMER_STATUS_LABELS } from '@entities/customer/model/customerStatus'
 import { CustomerFilterForm } from '@features/customer/model/useCustomerFilterForm'
-import { FormField, Input } from '@repo/ui-common'
+import { FormField, Input, Select } from '@repo/ui-common'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
   VALIDATION_PHONE,
 } from '@shared/constant/validation'
-import { Select } from '@shared/ui/Select'
 import { withAll } from '@shared/util/form'
 import { Controller, useFormContext } from 'react-hook-form'
 

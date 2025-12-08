@@ -1,4 +1,4 @@
-import { SelectOption } from '@shared/ui/Select'
+import { SelectOption } from '@repo/ui-common'
 
 export const ALL_SELECT_OPTION = {
   label: '전체',
