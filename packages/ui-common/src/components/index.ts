@@ -14,6 +14,8 @@ export * from './Select'
 
 export * from './Skeleton'
 
+export * from './Switch'
+
 export * from './Table'
 
 export * from './Toast'
