@@ -7,9 +7,9 @@ import {
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
 import { ProductLinkCard } from '@features/product/ui/ProductLinkCard'
+import { Beacon } from '@repo/ui-common'
 import { useQueryParams } from '@shared/hook/useQueryParams'
 import { useReplaceQueryParams } from '@shared/hook/useReplaceQueryParams'
-import { Beacon } from '@shared/ui/Beacon'
 import { IntersectionDetector } from '@shared/ui/IntersectionDetector'
 import { ToggleGroup } from '@shared/ui/ToggleGroup'
 import { ALL_VALUE, allToUndefined, withAll } from '@shared/util/form'

@@ -1,10 +1,10 @@
 import { sendMessage } from '@features/conversation/api/sendMessage'
 import { Conversation } from '@features/conversation/model/conversation'
+import { Beacon } from '@repo/ui-common'
 import {
   VALIDATION_MESSAGE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { Input } from '@shared/ui/Input'
 import { useMutation, useQueryClient } from '@tanstack/react-query'

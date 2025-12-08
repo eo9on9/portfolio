@@ -2,12 +2,11 @@ import { useItem } from '@entities/item/model/useItem'
 import { sendMessage } from '@features/conversation/api/sendMessage'
 import { Product } from '@features/product/model/product'
 import { ProductSummaryCard } from '@features/product/ui/ProductSummaryCard'
-import { useToast } from '@repo/ui-common'
+import { Beacon, useToast } from '@repo/ui-common'
 import {
   VALIDATION_MESSAGE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'

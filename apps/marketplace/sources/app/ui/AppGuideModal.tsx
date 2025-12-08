@@ -1,4 +1,4 @@
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { Button } from '@shared/ui/Button'
 import { Modal } from '@shared/ui/Modal'
 

@@ -6,10 +6,10 @@ import {
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
 import { SendProductMessageModal } from '@features/product/ui/SendProductMessageModal'
+import { Beacon } from '@repo/ui-common'
 import { MY_NAME } from '@shared/constant/user'
 import { useQueryParams } from '@shared/hook/useQueryParams'
 import { useReplaceQueryParams } from '@shared/hook/useReplaceQueryParams'
-import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { Table, TableColumn } from '@shared/ui/Table'
 import { ToggleGroup } from '@shared/ui/ToggleGroup'

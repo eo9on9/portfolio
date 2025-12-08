@@ -1,5 +1,5 @@
+import { Beacon } from '@repo/ui-common'
 import { usePusher } from '@shared/hook/usePusher'
-import { Beacon } from '@shared/ui/Beacon'
 import { MenuButton } from '@widgets/layout/ui/MenuButton'
 import { Home, MessageSquare, Package, Search } from 'lucide-react'
 import Image from 'next/image'

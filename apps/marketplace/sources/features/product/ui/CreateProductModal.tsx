@@ -6,12 +6,11 @@ import {
   PRODUCT_TYPE,
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
-import { useToast } from '@repo/ui-common'
+import { Beacon, useToast } from '@repo/ui-common'
 import {
   VALIDATION_POSITIVE_NUMBER,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
