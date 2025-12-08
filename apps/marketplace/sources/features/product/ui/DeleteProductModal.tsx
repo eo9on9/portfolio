@@ -3,6 +3,7 @@ import { deleteProduct } from '@features/product/api/deleteProduct'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
 import { Beacon, Button, Modal, useToast } from '@repo/ui-common'
+import { ITEM_BLUR_DATA_URL } from '@shared/constant/blur'
 import { toPrice } from '@shared/util/format'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import Image from 'next/image'
@@ -52,6 +53,8 @@ export const DeleteProductModal = ({
                 alt={item.name}
                 width={40}
                 height={40}
+                placeholder="blur"
+                blurDataURL={ITEM_BLUR_DATA_URL}
               />
             </div>
             <div className="flex flex-col gap-1">

@@ -3,6 +3,7 @@ import { useItem } from '@entities/item/model/useItem'
 import { Conversation } from '@features/conversation/model/conversation'
 import { getProduct } from '@features/product/api/getProduct'
 import { Badge, Beacon } from '@repo/ui-common'
+import { ITEM_BLUR_DATA_URL } from '@shared/constant/blur'
 import { cnMerge } from '@shared/util/cn'
 import { toFullDate } from '@shared/util/format'
 import { useQuery } from '@tanstack/react-query'
@@ -56,7 +57,14 @@ export const ConversationCard = ({
         </div>
         <div className="flex items-center gap-2">
           <div className="relative size-10 rounded-sm overflow-hidden">
-            <Image src={item.imageSrc} alt={item.name} width={40} height={40} />
+            <Image
+              src={item.imageSrc}
+              alt={item.name}
+              width={40}
+              height={40}
+              placeholder="blur"
+              blurDataURL={ITEM_BLUR_DATA_URL}
+            />
           </div>
           <p className="text-sm text-gray-500">{item.name}</p>
         </div>

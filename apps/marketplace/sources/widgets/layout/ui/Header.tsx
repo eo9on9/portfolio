@@ -1,4 +1,5 @@
 import { Beacon } from '@repo/ui-common'
+import { LOGO_BLUR_DATA_URL } from '@shared/constant/blur'
 import { usePusher } from '@shared/hook/usePusher'
 import { MenuButton } from '@widgets/layout/ui/MenuButton'
 import { Home, MessageSquare, Package, Search } from 'lucide-react'
@@ -18,7 +19,14 @@ export const Header = () => {
             href="/main"
             className="relative overflow-hidden size-10 rounded-sm"
           >
-            <Image src="/images/logo.png" alt="logo" width={40} height={40} />
+            <Image
+              src="/images/logo.png"
+              alt="logo"
+              width={40}
+              height={40}
+              placeholder="blur"
+              blurDataURL={LOGO_BLUR_DATA_URL}
+            />
           </Link>
           <h1 className="text-sm font-semibold text-gray-800 hidden tablet:block">
             아이템 거래소

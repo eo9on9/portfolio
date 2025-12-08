@@ -4,6 +4,7 @@ import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
 import { Beacon } from '@repo/ui-common'
+import { ITEM_BLUR_DATA_URL } from '@shared/constant/blur'
 import { toAgo, toPrice } from '@shared/util/format'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -27,7 +28,14 @@ export const ProductLinkCard = ({ product, href }: ProductLinkCardProps) => {
         tabIndex={0}
       >
         <div className="relative size-24 rounded-sm overflow-hidden">
-          <Image src={item.imageSrc} alt={item.name} width={96} height={96} />
+          <Image
+            src={item.imageSrc}
+            alt={item.name}
+            width={96}
+            height={96}
+            placeholder="blur"
+            blurDataURL={ITEM_BLUR_DATA_URL}
+          />
           <div className="absolute top-2 left-2 flex">
             <ItemGradeBadge grade={item.grade} />
           </div>

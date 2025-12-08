@@ -2,6 +2,7 @@ import { useItem } from '@entities/item/model/useItem'
 import { Conversation } from '@features/conversation/model/conversation'
 import { getProduct } from '@features/product/api/getProduct'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
+import { ITEM_BLUR_DATA_URL } from '@shared/constant/blur'
 import { toPrice } from '@shared/util/format'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
@@ -34,6 +35,8 @@ export const ConversationHeader = ({
                 alt={item.name}
                 width={40}
                 height={40}
+                placeholder="blur"
+                blurDataURL={ITEM_BLUR_DATA_URL}
               />
             </div>
             <div className="flex flex-col gap-1">

@@ -5,6 +5,7 @@ import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
 import { getPriceHistory } from '@features/product/api/getPriceHistory'
 import { CreateProductModal } from '@features/product/ui/CreateProductModal'
 import { Beacon, Button } from '@repo/ui-common'
+import { ITEM_BLUR_DATA_URL } from '@shared/constant/blur'
 import { toPrice } from '@shared/util/format'
 import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
@@ -31,7 +32,14 @@ export const ProductDetailCard = ({ itemKey }: ProductDetailCardProps) => {
     <>
       <div className="flex flex-col gap-2 p-4 border border-gray-200 bg-white rounded-sm">
         <div className="overflow-hidden relative aspect-square rounded-sm">
-          <Image src={item.imageSrc} alt={item.name} loading="eager" fill />
+          <Image
+            src={item.imageSrc}
+            alt={item.name}
+            loading="eager"
+            placeholder="blur"
+            blurDataURL={ITEM_BLUR_DATA_URL}
+            fill
+          />
           <div className="absolute top-2 left-2 flex">
             <ItemGradeBadge grade={item.grade} />
           </div>

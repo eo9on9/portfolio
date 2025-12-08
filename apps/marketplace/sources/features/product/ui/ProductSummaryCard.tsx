@@ -1,6 +1,7 @@
 import { useItem } from '@entities/item/model/useItem'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
+import { ITEM_BLUR_DATA_URL } from '@shared/constant/blur'
 import { toPrice } from '@shared/util/format'
 import Image from 'next/image'
 
@@ -16,7 +17,14 @@ export const ProductSummaryCard = ({ product }: ProductSummaryCardProps) => {
   return (
     <div className="flex items-center gap-2 border border-gray-200 rounded-sm p-1 bg-white">
       <div className="relative size-10 rounded-sm overflow-hidden">
-        <Image src={item.imageSrc} alt={item.name} width={40} height={40} />
+        <Image
+          src={item.imageSrc}
+          alt={item.name}
+          width={40}
+          height={40}
+          placeholder="blur"
+          blurDataURL={ITEM_BLUR_DATA_URL}
+        />
       </div>
       <div className="flex flex-col gap-1">
         <div className="flex items-center gap-2">

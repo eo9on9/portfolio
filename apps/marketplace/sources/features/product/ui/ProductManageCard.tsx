@@ -3,6 +3,7 @@ import { ItemGradeBadge } from '@entities/item/ui/ItemGradeBadge'
 import { Product } from '@features/product/model/product'
 import { ProductTypeBadge } from '@features/product/ui/ProductTypeBadge'
 import { Beacon, Button } from '@repo/ui-common'
+import { ITEM_BLUR_DATA_URL } from '@shared/constant/blur'
 import { toFullDate, toPrice } from '@shared/util/format'
 import { Trash2 } from 'lucide-react'
 import Image from 'next/image'
@@ -31,7 +32,14 @@ export const ProductManageCard = ({
         tabIndex={0}
       >
         <div className="relative size-24 rounded-sm overflow-hidden">
-          <Image src={item.imageSrc} alt={item.name} width={96} height={96} />
+          <Image
+            src={item.imageSrc}
+            alt={item.name}
+            width={96}
+            height={96}
+            placeholder="blur"
+            blurDataURL={ITEM_BLUR_DATA_URL}
+          />
           <div className="absolute top-2 left-2 flex">
             <ItemGradeBadge grade={item.grade} />
           </div>
