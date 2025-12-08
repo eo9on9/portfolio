@@ -12,13 +12,13 @@ import {
   FormField,
   Input,
   Modal,
+  Select,
   useToast,
 } from '@repo/ui-common'
 import {
   VALIDATION_POSITIVE_NUMBER,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Select } from '@shared/ui/Select'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
