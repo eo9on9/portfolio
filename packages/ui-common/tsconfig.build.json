@@ -3,7 +3,8 @@
   "compilerOptions": {
     "declaration": true,
     "emitDeclarationOnly": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "types": ["node"]
   },
   "include": ["src/components"],
   "exclude": ["src/components/**/*.stories.tsx", "src/components/**/*.test.tsx"]

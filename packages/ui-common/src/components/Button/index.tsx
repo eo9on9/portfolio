@@ -5,7 +5,7 @@ import { LoaderCircle } from 'lucide-react'
 import { ElementType } from 'react'
 
 interface ButtonCustomProps {
-  variant?: 'primary'
+  variant?: 'primary' | 'secondary' | 'ghost'
   size?: 'md'
   isLoading?: boolean
 }

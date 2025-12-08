@@ -18,7 +18,12 @@ export default defineConfig({
       fileName: 'components/index',
     },
     rollupOptions: {
-      external: ['react', 'react-dom', '@radix-ui/react-select'],
+      external: [
+        'react',
+        'react-dom',
+        '@radix-ui/react-select',
+        '@radix-ui/react-dialog',
+      ],
     },
   },
 })

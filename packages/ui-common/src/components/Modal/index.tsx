@@ -1,0 +1,99 @@
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+} from '@radix-ui/react-dialog'
+import { cva } from 'class-variance-authority'
+import { X } from 'lucide-react'
+import { PropsWithChildren, useEffect, useRef, useState } from 'react'
+import { Button } from '../Button'
+
+export interface ModalProps {
+  title: string
+  open: boolean
+  onClose?: () => void
+}
+
+export const Modal = ({
+  title,
+  open,
+  onClose,
+  children,
+}: PropsWithChildren<ModalProps>) => {
+  const [isCreated, setIsCreated] = useState(false)
+  const [isShow, setIsShow] = useState(false)
+  const timer = useRef<NodeJS.Timeout | null>(null)
+
+  useEffect(() => {
+    if (timer.current) clearTimeout(timer.current)
+
+    if (open) {
+      setIsCreated(true)
+
+      timer.current = setTimeout(() => {
+        setIsShow(true)
+      }, 10)
+    } else {
+      if (timer.current) clearTimeout(timer.current)
+
+      setIsShow(false)
+
+      timer.current = setTimeout(() => {
+        setIsCreated(false)
+      }, 200)
+    }
+  }, [open])
+
+  return (
+    <Dialog open={isCreated} onOpenChange={onClose}>
+      <DialogPortal>
+        <div className="z-100 fixed inset-0 flex items-center justify-center">
+          <DialogOverlay className={dimVariants({ isShow })} />
+          <DialogContent className={contentVariants({ isShow })}>
+            <div className="flex items-center justify-between">
+              <DialogTitle asChild>
+                <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
+              </DialogTitle>
+              <DialogClose asChild>
+                <Button variant="ghost" size="md" aria-label="Close">
+                  <X className="size-4 text-gray-500" />
+                </Button>
+              </DialogClose>
+            </div>
+            <DialogDescription asChild>
+              <div>{children}</div>
+            </DialogDescription>
+          </DialogContent>
+        </div>
+      </DialogPortal>
+    </Dialog>
+  )
+}
+
+const dimVariants = cva(
+  'absolute inset-0 bg-black/50 transition-opacity duration-200 ease-out',
+  {
+    variants: {
+      isShow: {
+        true: 'opacity-100',
+        false: 'opacity-0',
+      },
+    },
+  },
+)
+
+const contentVariants = cva(
+  'p-6 relative w-lg max-w-[90%] bg-white rounded-sm shadow-md transition-all duration-200 ease-out',
+  {
+    variants: {
+      isShow: {
+        true: 'opacity-100 scale-100',
+        false: 'opacity-0 scale-95',
+      },
+    },
+  },
+)
