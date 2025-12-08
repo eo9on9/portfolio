@@ -6,7 +6,7 @@ import { ElementType } from 'react'
 
 interface ButtonCustomProps {
   variant?: 'primary' | 'secondary' | 'ghost'
-  size?: 'md'
+  size?: 'md' | 'lg'
   isLoading?: boolean
 }
 

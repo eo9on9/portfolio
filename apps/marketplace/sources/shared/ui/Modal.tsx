@@ -7,10 +7,10 @@ import {
   DialogPortal,
   DialogTitle,
 } from '@radix-ui/react-dialog'
+import { Button } from '@repo/ui-common'
 import { cva } from 'class-variance-authority'
 import { X } from 'lucide-react'
 import { PropsWithChildren, useEffect, useRef, useState } from 'react'
-import { Button } from './Button'
 
 interface ModalProps {
   title: string

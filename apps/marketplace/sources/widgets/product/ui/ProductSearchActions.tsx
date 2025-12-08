@@ -1,5 +1,4 @@
-import { Beacon } from '@repo/ui-common'
-import { Button } from '@shared/ui/Button'
+import { Beacon, Button } from '@repo/ui-common'
 import {
   PRODUCT_SEARCH_FORM_DEFAULT_VALUES,
   ProductSearchForm,
