@@ -1,11 +1,10 @@
 import { sendMessage } from '@features/conversation/api/sendMessage'
 import { Conversation } from '@features/conversation/model/conversation'
-import { Beacon, Button } from '@repo/ui-common'
+import { Beacon, Button, Input } from '@repo/ui-common'
 import {
   VALIDATION_MESSAGE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Input } from '@shared/ui/Input'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Send } from 'lucide-react'
 import { useForm } from 'react-hook-form'
