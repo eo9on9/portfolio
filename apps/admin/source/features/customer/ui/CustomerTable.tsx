@@ -1,7 +1,6 @@
 import { Customer } from '@entities/customer/model/customer'
 import { CUSTOMER_STATUS_LABELS } from '@entities/customer/model/customerStatus'
-import { Beacon, Button } from '@repo/ui-common'
-import { Table, TableColumn } from '@shared/ui/Table'
+import { Beacon, Button, Table, TableColumn } from '@repo/ui-common'
 import { Edit, Trash2 } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { RemoveCustomerModal } from './RemoveCustomerModal'

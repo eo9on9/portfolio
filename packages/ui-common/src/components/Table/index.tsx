@@ -4,7 +4,7 @@ import { LoaderCircle } from 'lucide-react'
 import { ReactNode } from 'react'
 
 export interface IDType {
-  id: string
+  id: string | number
 }
 
 export interface TableColumn<T extends IDType> {
