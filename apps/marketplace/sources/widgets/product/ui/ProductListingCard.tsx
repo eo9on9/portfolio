@@ -6,11 +6,16 @@ import {
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
 import { SendProductMessageModal } from '@features/product/ui/SendProductMessageModal'
-import { Beacon, Button, Table, TableColumn } from '@repo/ui-common'
+import {
+  Beacon,
+  Button,
+  Table,
+  TableColumn,
+  ToggleGroup,
+} from '@repo/ui-common'
 import { MY_NAME } from '@shared/constant/user'
 import { useQueryParams } from '@shared/hook/useQueryParams'
 import { useReplaceQueryParams } from '@shared/hook/useReplaceQueryParams'
-import { ToggleGroup } from '@shared/ui/ToggleGroup'
 import { toAgo, toPrice } from '@shared/util/format'
 import { useQuery } from '@tanstack/react-query'
 import { MessageSquare } from 'lucide-react'
