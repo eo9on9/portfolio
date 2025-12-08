@@ -7,14 +7,13 @@ import {
   CUSTOMER_STATUS,
   CUSTOMER_STATUS_LABELS,
 } from '@entities/customer/model/customerStatus'
-import { Beacon, Button, FormField, useToast } from '@repo/ui-common'
+import { Beacon, Button, FormField, Input, useToast } from '@repo/ui-common'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
   VALIDATION_PHONE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 import { Select, SelectOption } from '@shared/ui/Select'
 import { useMutation, useQueryClient } from '@tanstack/react-query'

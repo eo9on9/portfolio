@@ -1,6 +1,6 @@
 import { ORDER_STATUS_LABELS } from '@entities/order/model/orderStatus'
 import { OrderFilterForm } from '@features/order/model/useOrderFilterForm'
-import { Input } from '@shared/ui/Input'
+import { Input } from '@repo/ui-common'
 import { Select } from '@shared/ui/Select'
 import { withAll } from '@shared/util/form'
 import { Controller, useFormContext } from 'react-hook-form'
