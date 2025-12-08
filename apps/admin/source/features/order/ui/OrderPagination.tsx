@@ -1,5 +1,5 @@
 import { OrderFilterForm } from '@features/order/model/useOrderFilterForm'
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { Pagination } from '@shared/ui/Pagination'
 import { Controller, useFormContext } from 'react-hook-form'
 

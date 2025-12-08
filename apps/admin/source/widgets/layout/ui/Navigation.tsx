@@ -1,4 +1,4 @@
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { cva } from 'class-variance-authority'
 import {
   FileText,

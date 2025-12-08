@@ -7,14 +7,13 @@ import {
   CUSTOMER_STATUS,
   CUSTOMER_STATUS_LABELS,
 } from '@entities/customer/model/customerStatus'
-import { useToast } from '@repo/ui-common'
+import { Beacon, useToast } from '@repo/ui-common'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
   VALIDATION_PHONE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'

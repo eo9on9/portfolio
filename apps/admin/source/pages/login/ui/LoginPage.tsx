@@ -1,7 +1,6 @@
 import { login, LoginParams } from '@features/auth/api/login'
-import { useToast } from '@repo/ui-common'
+import { Beacon, useToast } from '@repo/ui-common'
 import { accessTokenStorage } from '@shared/store/accessTokenStorage'
-import { Beacon } from '@shared/ui/Beacon'
 import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'

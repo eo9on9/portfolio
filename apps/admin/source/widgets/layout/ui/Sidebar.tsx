@@ -1,5 +1,5 @@
 import { UserProfile } from '@features/user/ui/UserProfile'
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { Button } from '@shared/ui/Button'
 import { useLayout } from '@widgets/layout/model/useLayout'
 import { Navigation } from '@widgets/layout/ui/Navigation'

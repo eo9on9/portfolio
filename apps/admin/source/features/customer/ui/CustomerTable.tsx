@@ -1,6 +1,6 @@
 import { Customer } from '@entities/customer/model/customer'
 import { CUSTOMER_STATUS_LABELS } from '@entities/customer/model/customerStatus'
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { Button } from '@shared/ui/Button'
 import { Table, TableColumn } from '@shared/ui/Table'
 import { Edit, Trash2 } from 'lucide-react'

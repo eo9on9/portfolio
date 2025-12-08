@@ -2,7 +2,7 @@ import {
   ORDER_FILTER_FORM_DEFAULT_VALUES,
   OrderFilterForm,
 } from '@features/order/model/useOrderFilterForm'
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { Button } from '@shared/ui/Button'
 import { FunnelX, Search } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'

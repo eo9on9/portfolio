@@ -1,7 +1,7 @@
 import { Order } from '@entities/order/model/order'
 import { ORDER_STATUS_LABELS } from '@entities/order/model/orderStatus'
 import { ViewOrderModal } from '@features/order/ui/ViewOrderModal'
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { Button } from '@shared/ui/Button'
 import { Table, TableColumn } from '@shared/ui/Table'
 import { toDate } from '@shared/util/format'

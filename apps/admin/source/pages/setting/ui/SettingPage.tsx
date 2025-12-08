@@ -1,4 +1,4 @@
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { ToggleGroup } from '@shared/ui/ToggleGroup'
 import { MainLayout } from '@widgets/layout/ui/MainLayout'
 import { PageTop } from '@widgets/layout/ui/PageTop'

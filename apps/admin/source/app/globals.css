@@ -1,36 +1,9 @@
+@import '@repo/ui-common/styles.css';
+
 @import 'tailwindcss';
-
-@font-face {
-  src: url('/fonts/Pretendard-Regular.woff2') format('woff2');
-  font-family: 'Pretendard';
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  src: url('/fonts/Pretendard-Medium.woff2') format('woff2');
-  font-family: 'Pretendard';
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  src: url('/fonts/Pretendard-SemiBold.woff2') format('woff2');
-  font-family: 'Pretendard';
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  src: url('/fonts/Pretendard-Bold.woff2') format('woff2');
-  font-family: 'Pretendard';
-  font-weight: 700;
-  font-style: normal;
-}
 
 @theme {
   /* fonts */
-  --font-pretendard: 'Pretendard', sans-serif;
   --default-font-family: var(--font-pretendard);
 
   /* colors */

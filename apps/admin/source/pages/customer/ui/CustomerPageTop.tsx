@@ -1,5 +1,5 @@
 import { CreateCustomerModal } from '@features/customer/ui/CreateCustomerModal'
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { Button } from '@shared/ui/Button'
 import { PageTop } from '@widgets/layout/ui/PageTop'
 import { Plus } from 'lucide-react'

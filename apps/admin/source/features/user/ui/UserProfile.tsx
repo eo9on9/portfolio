@@ -1,5 +1,5 @@
 import { getProfile } from '@entities/user/api/getProfile'
-import { Beacon } from '@shared/ui/Beacon'
+import { Beacon } from '@repo/ui-common'
 import { useQuery } from '@tanstack/react-query'
 import { cva } from 'class-variance-authority'
 import { User as UserIcon } from 'lucide-react'
