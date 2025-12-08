@@ -1,11 +1,10 @@
 import { getPasswordUpdatedAt } from '@entities/user/api/getPasswordUpdatedAt'
 import { resetPassword } from '@entities/user/api/resetPassword'
-import { Button, useToast } from '@repo/ui-common'
+import { Button, FormField, useToast } from '@repo/ui-common'
 import {
   VALIDATION_PASSWORD,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { toDate } from '@shared/util/format'
 import { useMutation, useQuery } from '@tanstack/react-query'

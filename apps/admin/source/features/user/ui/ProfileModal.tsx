@@ -1,8 +1,7 @@
 import { User } from '@entities/user/model/user'
 import { USER_ROLE_LABELS } from '@entities/user/model/userRole'
-import { Button } from '@repo/ui-common'
+import { Button, FormField } from '@repo/ui-common'
 import { accessTokenStorage } from '@shared/store/accessTokenStorage'
-import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
 

@@ -1,13 +1,12 @@
 import { getProfile } from '@entities/user/api/getProfile'
 import { updateProfile } from '@entities/user/api/updateProfile'
 import { KindOfUserRole, USER_ROLE_LABELS } from '@entities/user/model/userRole'
-import { Beacon, Button, useToast } from '@repo/ui-common'
+import { Beacon, Button, FormField, useToast } from '@repo/ui-common'
 import {
   VALIDATION_NAME,
   VALIDATION_PHONE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Select } from '@shared/ui/Select'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'

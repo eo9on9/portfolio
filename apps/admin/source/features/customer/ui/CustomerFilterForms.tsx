@@ -1,11 +1,11 @@
 import { CUSTOMER_STATUS_LABELS } from '@entities/customer/model/customerStatus'
 import { CustomerFilterForm } from '@features/customer/model/useCustomerFilterForm'
+import { FormField } from '@repo/ui-common'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
   VALIDATION_PHONE,
 } from '@shared/constant/validation'
-import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Select } from '@shared/ui/Select'
 import { withAll } from '@shared/util/form'

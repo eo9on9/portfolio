@@ -1,7 +1,6 @@
 import { login, LoginParams } from '@features/auth/api/login'
-import { Beacon, Button, useToast } from '@repo/ui-common'
+import { Beacon, Button, FormField, useToast } from '@repo/ui-common'
 import { accessTokenStorage } from '@shared/store/accessTokenStorage'
-import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { useMutation } from '@tanstack/react-query'
 import { Key, Lock, Mail } from 'lucide-react'
