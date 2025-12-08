@@ -2,7 +2,7 @@ import {
   ITEM_CATEGORY_LABELS,
   KindOfItemCategory,
 } from '@entities/item/model/itemCategory'
-import { Badge } from '@shared/ui/Badge'
+import { Badge } from '@repo/ui-common'
 
 interface ItemCategoryBadgeProps {
   category: KindOfItemCategory

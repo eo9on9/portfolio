@@ -2,7 +2,7 @@ import {
   KindOfProductType,
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
-import { Badge } from '@shared/ui/Badge'
+import { Badge } from '@repo/ui-common'
 import { cva } from 'class-variance-authority'
 
 interface ProductTypeBadgeProps {

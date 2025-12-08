@@ -2,7 +2,7 @@ import {
   ITEM_GRADE_LABELS,
   KindOfItemGrade,
 } from '@entities/item/model/itemGrade'
-import { Badge } from '@shared/ui/Badge'
+import { Badge } from '@repo/ui-common'
 import { cva } from 'class-variance-authority'
 
 interface ItemGradeBadgeProps {
