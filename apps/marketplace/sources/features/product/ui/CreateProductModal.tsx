@@ -6,12 +6,18 @@ import {
   PRODUCT_TYPE,
   PRODUCT_TYPE_LABELS,
 } from '@features/product/model/productType'
-import { Beacon, Button, Input, Modal, useToast } from '@repo/ui-common'
+import {
+  Beacon,
+  Button,
+  FormField,
+  Input,
+  Modal,
+  useToast,
+} from '@repo/ui-common'
 import {
   VALIDATION_POSITIVE_NUMBER,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { FormField } from '@shared/ui/FormField'
 import { Select } from '@shared/ui/Select'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
