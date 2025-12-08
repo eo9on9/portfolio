@@ -1,7 +1,7 @@
 import { AppErrorFallback } from '@app/ui/AppErrorFallback'
 import { Guide } from '@app/ui/Guide'
+import { ToastProvider } from '@repo/ui-common'
 import { PusherProvider } from '@shared/hook/usePusher'
-import { ToastProvider } from '@shared/ui/Toast'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import Head from 'next/head'
 import { PropsWithChildren } from 'react'

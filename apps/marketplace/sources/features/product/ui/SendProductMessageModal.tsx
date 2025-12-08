@@ -2,6 +2,7 @@ import { useItem } from '@entities/item/model/useItem'
 import { sendMessage } from '@features/conversation/api/sendMessage'
 import { Product } from '@features/product/model/product'
 import { ProductSummaryCard } from '@features/product/ui/ProductSummaryCard'
+import { useToast } from '@repo/ui-common'
 import {
   VALIDATION_MESSAGE,
   VALIDATION_REQUIRED,
@@ -11,7 +12,6 @@ import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'
-import { useToast } from '@shared/ui/Toast'
 import { useMutation } from '@tanstack/react-query'
 import { Send } from 'lucide-react'
 import { useEffect } from 'react'
