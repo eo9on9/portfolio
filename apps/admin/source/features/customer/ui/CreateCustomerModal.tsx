@@ -3,14 +3,13 @@ import {
   CreateCustomerParams,
 } from '@entities/customer/api/createCustomer'
 import { GetCustomersRes } from '@entities/customer/api/getCustomers'
-import { Beacon, useToast } from '@repo/ui-common'
+import { Beacon, Button, useToast } from '@repo/ui-common'
 import {
   VALIDATION_EMAIL,
   VALIDATION_NAME,
   VALIDATION_PHONE,
   VALIDATION_REQUIRED,
 } from '@shared/constant/validation'
-import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'

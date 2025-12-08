@@ -1,7 +1,6 @@
 import { login, LoginParams } from '@features/auth/api/login'
-import { Beacon, useToast } from '@repo/ui-common'
+import { Beacon, Button, useToast } from '@repo/ui-common'
 import { accessTokenStorage } from '@shared/store/accessTokenStorage'
-import { Button } from '@shared/ui/Button'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { useMutation } from '@tanstack/react-query'

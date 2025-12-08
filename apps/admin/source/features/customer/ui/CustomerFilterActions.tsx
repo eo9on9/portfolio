@@ -2,8 +2,7 @@ import {
   CUSTOMER_FILTER_FORM_DEFAULT_VALUES,
   CustomerFilterForm,
 } from '@features/customer/model/useCustomerFilterForm'
-import { Beacon } from '@repo/ui-common'
-import { Button } from '@shared/ui/Button'
+import { Beacon, Button } from '@repo/ui-common'
 import { FunnelX, Search } from 'lucide-react'
 import { useFormContext } from 'react-hook-form'
 

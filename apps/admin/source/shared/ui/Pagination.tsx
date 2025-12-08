@@ -1,10 +1,10 @@
+import { Button } from '@repo/ui-common'
 import {
   ChevronFirst,
   ChevronLast,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react'
-import { Button } from './Button'
 
 interface PaginationProps {
   totalPages: number

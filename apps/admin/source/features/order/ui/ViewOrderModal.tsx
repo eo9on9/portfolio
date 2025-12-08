@@ -5,8 +5,7 @@ import {
   ORDER_STATUS_LABELS,
 } from '@entities/order/model/orderStatus'
 import { useOrderFilterUrlParams } from '@features/order/model/useOrderFilterUrlParams'
-import { Beacon, useToast } from '@repo/ui-common'
-import { Button } from '@shared/ui/Button'
+import { Beacon, Button, useToast } from '@repo/ui-common'
 import { FormField } from '@shared/ui/FormField'
 import { Input } from '@shared/ui/Input'
 import { Modal } from '@shared/ui/Modal'

@@ -1,6 +1,5 @@
 import { UserProfile } from '@features/user/ui/UserProfile'
-import { Beacon } from '@repo/ui-common'
-import { Button } from '@shared/ui/Button'
+import { Beacon, Button } from '@repo/ui-common'
 import { useLayout } from '@widgets/layout/model/useLayout'
 import { Navigation } from '@widgets/layout/ui/Navigation'
 import { cva } from 'class-variance-authority'
