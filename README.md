@@ -20,11 +20,11 @@
 
 [🔗 코드 바로가기](https://github.com/eo9on9/portfolio/tree/main/apps/admin)
 
-![login](./assets/screenshot/admin/login.png)
+<img src="./assets/screenshot/admin/login.png" width="600" />
 
-![dashboard](./assets/screenshot/admin/dashboard.png)
+<img src="./assets/screenshot/admin/dashboard.png" width="600" />
 
-![customer](./assets/screenshot/admin/customer.png)
+<img src="./assets/screenshot/admin/customer.png" width="600" />
 
 ---
 
@@ -34,15 +34,15 @@
 
 [🔗 코드 바로가기](https://github.com/eo9on9/portfolio/tree/main/apps/marketplace)
 
-![main](./assets/screenshot/marketplace/main.png)
+<img src="./assets/screenshot/marketplace/main.png" width="600" />
 
-![search](./assets/screenshot/marketplace/search.png)
+<img src="./assets/screenshot/marketplace/search.png" width="600" />
 
-![detail](./assets/screenshot/marketplace/detail.png)
+<img src="./assets/screenshot/marketplace/detail.png" width="600" />
 
-![conversation-list](./assets/screenshot/marketplace/conversation-list.png)
+<img src="./assets/screenshot/marketplace/conversation-list.png" width="600" />
 
-![conversation](./assets/screenshot/marketplace/conversation.png)
+<img src="./assets/screenshot/marketplace/conversation.png" width="600" />
 
 ---
 
@@ -52,8 +52,8 @@
 
 [🔗 코드 바로가기](https://github.com/eo9on9/portfolio/tree/main/packages/ui-common)
 
-![button](./assets/screenshot/ui-common/button.png)
+<img src="./assets/screenshot/ui-common/button.png" width="600" />
 
-![select](./assets/screenshot/ui-common/select.png)
+<img src="./assets/screenshot/ui-common/select.png" width="600" />
 
-![table](./assets/screenshot/ui-common/table.png)
+<img src="./assets/screenshot/ui-common/table.png" width="600" />
